@@ -51,7 +51,6 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     private Node<E> head = null; // reference to first Node of the list
-    private Node<E> tail = null; // reference to last Node of the list
     private int size = 0; // keeps track of the size of the list
 
     /**
