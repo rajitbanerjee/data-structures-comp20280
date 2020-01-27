@@ -1,4 +1,5 @@
-# COMP20280 Data Structures (Spring Trimester, 2020)
+# COMP20280 Data Structures 
+### Spring Trimester, 2020
 This repository contains code from weekly practical sessions for the module COMP20280.
 
 ## Authors
