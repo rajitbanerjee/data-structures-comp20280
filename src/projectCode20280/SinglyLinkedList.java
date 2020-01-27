@@ -24,7 +24,7 @@ public class SinglyLinkedList<E> implements List<E> {
          * @param element the element that will compose the list
          * @param next    reference to the next node
          */
-        public Node(E element, Node<E> next) {
+        Node(E element, Node<E> next) {
             this.element = element;
             this.next = next;
         }
@@ -45,7 +45,7 @@ public class SinglyLinkedList<E> implements List<E> {
         }
 
         // Mutator for next Node<E>
-        public void setNext(Node<E> next) {
+        void setNext(Node<E> next) {
             this.next = next;
         }
     }
