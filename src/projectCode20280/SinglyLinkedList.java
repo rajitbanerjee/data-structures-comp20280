@@ -95,14 +95,16 @@ public class SinglyLinkedList<E> implements List<E> {
      */
     @Override
     public void add(int i, E e) {
-        Node<E> newest = new Node<>(e, null);
-        Node<E> temp = head;
+        Node<E> newest = new Node<>(e, null); // create Node to be inserted
+        Node<E> temp = head; // temporary Node for list traversal
         if (temp == null) {
+            // if list is empty, insert new Node at the first position
             head = newest;
         } else {
-            int index = 0;
+            int index = 0; // temporary index for list traversal
             while (temp != null) {
                 if (index == i - 1) {
+                    // insert new Node at required index i
                     newest.setNext(temp.getNext());
                     temp.setNext(newest);
                     size++;
@@ -114,10 +116,33 @@ public class SinglyLinkedList<E> implements List<E> {
         }
     }
 
+    /**
+     * Remove the element at index i of the list.
+     *
+     * @param i index from which the element needs to be removed
+     * @return the element that has been removed, null
+     */
     @Override
     public E remove(int i) {
-        // TODO Auto-generated method stub
-        return null;
+        E removed = null; // element to be removed
+        Node<E> temp = head; //temporary Node for list traversal
+        if (temp == null || i >= size) {
+            // cannot remove element if list is empty or specified index is out of bounds
+            throw new RuntimeException("Cannot remove any elements!");
+        } else {
+            int index = 0; // temporary index for list traversal
+            while (temp != null) {
+                if (index == i - 1) {
+                    removed = temp.getNext().getElement(); // element to be removed
+                    temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
+                    size--;
+                    break;
+                }
+                temp = temp.getNext();
+                index++;
+            }
+        }
+        return removed;
     }
 
     @Override
