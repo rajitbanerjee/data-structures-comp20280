@@ -1,12 +1,9 @@
+# COMP20280 Data Structures (Spring Trimester, 2020)
+This repository contains code from weekly practical sessions for the module COMP20280.
 
-Upstream Repo for COMP20280
-
-This repo contains the starter code for the Data Structures repository.
-
-This repo will be updated during the semester.
-
-Student Name: Rajit Banerjee
-Student Number: 18202817
+## Authors
+* [Rajit Banerjee](https://github.com/rajitbanerjee), 18202817
+* [Dr. Aonghus Lawlor](https://github.com/aonghus), lecturer
 
 
 
