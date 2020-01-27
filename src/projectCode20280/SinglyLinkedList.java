@@ -106,12 +106,12 @@ public class SinglyLinkedList<E> implements List<E> {
 	public static void main(String[] args) {
 		String[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-		SinglyLinkedList<String> sll = new SinglyLinkedList<String>();
-		for (String s : alphabet) {
-			sll.addFirst(s);
-			sll.addLast(s);
-		}
-		System.out.println(sll.toString());
+        SinglyLinkedList<String> sll = new SinglyLinkedList<>();
+        for (String s : alphabet) {
+            sll.addFirst(s);
+            sll.addLast(s);
+        }
+        System.out.println(sll.toString());
 
 		sll.removeFirst();
 		System.out.println(sll.toString());
