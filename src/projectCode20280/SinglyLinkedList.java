@@ -106,13 +106,13 @@ public class SinglyLinkedList<E> implements List<E> {
                     // insert new Node at required index i
                     newest.setNext(temp.getNext());
                     temp.setNext(newest);
-                    size++;
                     break;
                 }
                 temp = temp.getNext();
                 index++;
             }
         }
+        size++;
     }
 
     /**
@@ -179,6 +179,7 @@ public class SinglyLinkedList<E> implements List<E> {
 
     /**
      * Remove the last element from the list
+     *
      * @return the removed last element
      */
     @Override
@@ -201,16 +202,39 @@ public class SinglyLinkedList<E> implements List<E> {
         return removed;
     }
 
+    /**
+     * Adds an element to the beginning of the list.
+     *
+     * @param e the element to be added to the list
+     */
     @Override
     public void addFirst(E e) {
-        // TODO Auto-generated method stub
-
+        head = new Node<>(e, head);
+        size++;
     }
 
+    /**
+     * Adds an element to the end of the list.
+     *
+     * @param e the element to the added to the list
+     */
     @Override
     public void addLast(E e) {
-        // TODO Auto-generated method stub
-
+        Node<E> newest = new Node<>(e, null);
+        Node<E> temp = head; // temporary Node for list traversal
+        if(isEmpty()) {
+            head = new Node<>(e, head);
+        } else {
+            while(temp != null) {
+                if (temp.getNext() == null) {
+                    // make the current last Node point to the newly added last Node
+                    temp.setNext(newest);
+                    break;
+                }
+                temp = temp.getNext();
+            }
+        }
+        size++;
     }
 
     public static void main(String[] args) {
