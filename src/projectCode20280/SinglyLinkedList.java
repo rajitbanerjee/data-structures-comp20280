@@ -73,7 +73,7 @@ public class SinglyLinkedList<E> implements List<E> {
     public E get(int i) {
         int index = 0; // temporary index used for list traversal
         Node<E> temp = head; // temporary Node for list traversal
-        if (temp == null) {
+        if (isEmpty()) {
             throw new RuntimeException("List is empty!");
         }
         while (temp != null) {
@@ -96,7 +96,7 @@ public class SinglyLinkedList<E> implements List<E> {
     public void add(int i, E e) {
         Node<E> newest = new Node<>(e, null); // create Node to be inserted
         Node<E> temp = head; // temporary Node for list traversal
-        if (temp == null) {
+        if (isEmpty()) {
             // if list is empty, insert new Node at the first position
             head = newest;
         } else {
@@ -125,7 +125,7 @@ public class SinglyLinkedList<E> implements List<E> {
     public E remove(int i) {
         E removed = null; // element to be removed
         Node<E> temp = head; //temporary Node for list traversal
-        if (temp == null || i >= size) {
+        if (isEmpty() || i >= size) {
             // cannot remove element if list is empty or specified index is out of bounds
             throw new RuntimeException("Cannot remove any elements!");
         } else {
@@ -166,20 +166,39 @@ public class SinglyLinkedList<E> implements List<E> {
     @Override
     public E removeFirst() {
         E removed;
-        if (head == null) {
+        if (isEmpty()) {
             throw new RuntimeException("List is empty!");
         } else {
             // store first element in temp variable and remove the Node
             removed = head.getElement();
             head = head.getNext();
+            size--;
         }
         return removed;
     }
 
+    /**
+     * Remove the last element from the list
+     * @return the removed last element
+     */
     @Override
     public E removeLast() {
-        // TODO Auto-generated method stub
-        return null;
+        E removed = null; // element to be removed
+        Node<E> temp = head; // temporary Node for list traversal
+        if (isEmpty()) {
+            throw new RuntimeException("List is empty!");
+        } else {
+            while (temp != null) {
+                if (temp.getNext().getNext() == null) { // temp is the 2nd last Node
+                    removed = temp.getNext().getElement(); // last element is the one to remove
+                    temp.setNext(null); // nullify the reference to the last Node
+                    size--;
+                    break;
+                }
+                temp = temp.getNext();
+            }
+        }
+        return removed;
     }
 
     @Override
