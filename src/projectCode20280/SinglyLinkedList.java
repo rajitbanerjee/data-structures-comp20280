@@ -9,7 +9,7 @@ import java.util.Iterator;
  * @author Aonghus Lawlor
  */
 
-public class SinglyLinkedList<E> implements List<E> {
+public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
 
     // Constituent Node of SinglyLinkedList
     private static class Node<E> {

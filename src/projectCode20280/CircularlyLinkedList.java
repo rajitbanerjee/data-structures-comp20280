@@ -2,7 +2,7 @@ package projectCode20280;
 
 import java.util.Iterator;
 
-public class CircularlyLinkedList<E> implements List<E> {
+public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 
 	private class Node<E> {
 
