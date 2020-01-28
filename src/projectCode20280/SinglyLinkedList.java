@@ -144,10 +144,31 @@ public class SinglyLinkedList<E> implements List<E> {
         return removed;
     }
 
+    /**
+     * Returns a new ListIterator object.
+     *
+     * @return instance of ListIterator class
+     */
     @Override
     public Iterator<E> iterator() {
-        // TODO Auto-generated method stub
-        return null;
+        return new ListIterator();
+    }
+
+    // Inner class whose instance is returned by the iterator() method
+    private class ListIterator implements Iterator<E> {
+        Node<E> temp = head;
+
+        @Override
+        public boolean hasNext() {
+            return temp != null;
+        }
+
+        @Override
+        public E next() {
+            E ans = temp.getElement();
+            temp = temp.getNext();
+            return ans;
+        }
     }
 
     /**
@@ -222,10 +243,10 @@ public class SinglyLinkedList<E> implements List<E> {
     public void addLast(E e) {
         Node<E> newest = new Node<>(e, null);
         Node<E> temp = head; // temporary Node for list traversal
-        if(isEmpty()) {
+        if (isEmpty()) {
             head = new Node<>(e, head);
         } else {
-            while(temp != null) {
+            while (temp != null) {
                 if (temp.getNext() == null) {
                     // make the current last Node point to the newly added last Node
                     temp.setNext(newest);
@@ -238,6 +259,8 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     public static void main(String[] args) {
+        // TEST 1: Given in skeleton code
+        System.out.println("\nTEST 1 from given GitHub code:");
         String[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
         SinglyLinkedList<String> sll = new SinglyLinkedList<>();
@@ -259,5 +282,39 @@ public class SinglyLinkedList<E> implements List<E> {
         for (String s : sll) {
             System.out.print(s + ", ");
         }
+
+        // TEST 2: Given in practical 1
+        System.out.println("\nTEST 2 from Practical 1:");
+        SinglyLinkedList<Integer> ll = new SinglyLinkedList<Integer>();
+        //LinkedList<Integer> ll = new LinkedList<Integer>();
+        ll.addFirst(0);
+        ll.addFirst(1);
+        ll.addFirst(3);
+        ll.addFirst(4);
+        ll.addFirst(5);
+        ll.add(3, 2);
+        System.out.println(ll);
+        ll.addFirst(-100);
+        ll.addLast(+100);
+        System.out.println(ll);
+        ll.removeFirst();
+        ll.removeLast();
+        System.out.println(ll);
+        // Removes the item in the specified index ll.remove(2); System.out.println(ll);
+        ll.removeFirst();
+        System.out.println(ll);
+        ll.removeLast();
+        System.out.println(ll);
+        ll.removeFirst();
+        System.out.println(ll);
+        ll.addFirst(9999);
+        ll.addFirst(8888);
+        ll.addFirst(7777);
+
+        System.out.println(ll);
+        System.out.println(ll.get(0));
+        System.out.println(ll.get(1));
+        System.out.println(ll.get(2));
+        System.out.println(ll);
     }
 }
