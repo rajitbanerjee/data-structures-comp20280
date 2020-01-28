@@ -10,13 +10,13 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         private Node<E> next; // reference to next Node in the list
         private Node<E> prev; // reference to previous Node in the List
 
-		/**
-		 * Creates a new node with given element and next node reference.
-		 *
-		 * @param element the element that will compose the list
-		 * @param next    reference to the next Node
-		 * @param prev reference to the previous Node
-		 */
+        /**
+         * Creates a new node with given element and next node reference.
+         *
+         * @param element the element that will compose the list
+         * @param next    reference to the next Node
+         * @param prev    reference to the previous Node
+         */
         Node(E element, Node<E> next, Node<E> prev) {
             this.element = element;
             this.next = next;
@@ -121,23 +121,57 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     public static void main(String[] args) {
-        DoublyLinkedList<Integer> ll = new DoublyLinkedList<Integer>();
-        ll.addFirst(0);
-        ll.addFirst(1);
-        ll.addFirst(2);
-        ll.addLast(-1);
+        // TEST 1: Given in skeleton code
+        System.out.println("\nTEST 1 from given GitHub code:");
+        DoublyLinkedList<Integer> dll = new DoublyLinkedList<>();
+        dll.addFirst(0);
+        dll.addFirst(1);
+        dll.addFirst(2);
+        dll.addLast(-1);
+        System.out.println(dll);
+
+        dll.removeFirst();
         System.out.println(ll);
 
-        ll.removeFirst();
-        System.out.println(ll);
+        dll.removeLast();
+        System.out.println(dll);
 
-        ll.removeLast();
-        System.out.println(ll);
-
-        for (Integer e : ll) {
+        for (Integer e : dll) {
             System.out.println("value: " + e);
         }
+
+        // TEST 2: Given in practical 1
+        System.out.println("\nTEST 2 from Practical 1:");
+        DoublyLinkedList<Integer> ll = new DoublyLinkedList<>();
+        //LinkedList<Integer> ll = new LinkedList<Integer>();
+        ll.addFirst(0);
+        ll.addFirst(1);
+        ll.addFirst(3);
+        ll.addFirst(4);
+        ll.addFirst(5);
+        ll.add(3, 2);
+        System.out.println(ll);
+        ll.addFirst(-100);
+        ll.addLast(+100);
+        System.out.println(ll);
+        ll.removeFirst();
+        ll.removeLast();
+        System.out.println(ll);
+        // Removes the item in the specified index ll.remove(2); System.out.println(ll);
+        ll.removeFirst();
+        System.out.println(ll);
+        ll.removeLast();
+        System.out.println(ll);
+        ll.removeFirst();
+        System.out.println(ll);
+        ll.addFirst(9999);
+        ll.addFirst(8888);
+        ll.addFirst(7777);
+
+        System.out.println(ll);
+        System.out.println(ll.get(0));
+        System.out.println(ll.get(1));
+        System.out.println(ll.get(2));
+        System.out.println(ll);
     }
-
-
 }
