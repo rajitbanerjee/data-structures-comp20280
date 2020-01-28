@@ -20,7 +20,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
          * Creates a new node with given element and next node reference.
          *
          * @param element the element that will compose the list
-         * @param next    reference to the next node
+         * @param next    reference to the next Node
          */
         Node(E element, Node<E> next) {
             this.element = element;
