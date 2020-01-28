@@ -72,15 +72,15 @@ public class SinglyLinkedList<E> implements List<E> {
     @Override
     public E get(int i) {
         int index = 0; // temporary index used for list traversal
-        Node<E> temp = head; // temporary Node for list traversal
+        Iterator<E> itr = iterator();
         if (isEmpty()) {
             throw new RuntimeException("List is empty!");
         }
-        while (temp != null) {
+        while (itr.hasNext()) {
             if (index == i) {
-                return temp.getElement();
+                return itr.next();
             }
-            temp = temp.getNext();
+            itr.next();
             index++;
         }
         return null;
