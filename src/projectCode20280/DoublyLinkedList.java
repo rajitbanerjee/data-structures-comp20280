@@ -44,35 +44,64 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         }
 
         // Mutator for reference to next Node
-        public void setNext(Node<E> next) {
+        void setNext(Node<E> next) {
             this.next = next;
         }
 
         // Mutator for reference to previous Node
-        public void setPrev(Node<E> prev) {
+        void setPrev(Node<E> prev) {
             this.prev = prev;
         }
     }
 
+    private Node<E> header;
+    private Node<E> trailer;
+    private int size;
+
+    public DoublyLinkedList() {
+        header = new Node<>(null, null, null);
+        trailer = new Node<>(null, null, header);
+        header.setNext(trailer);
+        size = 0;
+    }
+
     private void addBetween(E e, Node<E> predecessor, Node<E> successor) {
-        // TODO
+        Node<E> newest = new Node<>(e, successor, predecessor);
+        predecessor.setNext(newest);
+        successor.setPrev(newest);
+        size++;
     }
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        return size == 0;
     }
 
+    /**
+     * Returns the element at index i of the List.
+     *
+     * @param i the index of the list which contains required element
+     * @return the element at index i
+     */
     @Override
     public E get(int i) {
-        // TODO Auto-generated method stub
+        int index = 0; // temporary index used for list traversal
+        Iterator<E> itr = iterator();
+        if (isEmpty()) {
+            throw new RuntimeException("List is empty!");
+        }
+        while (itr.hasNext()) {
+            if (index == i) {
+                return itr.next();
+            }
+            itr.next();
+            index++;
+        }
         return null;
     }
 
@@ -131,7 +160,7 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         System.out.println(dll);
 
         dll.removeFirst();
-        System.out.println(ll);
+        System.out.println(dll);
 
         dll.removeLast();
         System.out.println(dll);
