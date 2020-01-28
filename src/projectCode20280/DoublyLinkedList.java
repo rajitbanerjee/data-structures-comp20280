@@ -4,8 +4,41 @@ import java.util.Iterator;
 
 public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
 
-	private class Node<E> {
-		
+	// Constituent Node of DoublyLinkedList
+	private static class Node<E> {
+		private E element; // element stored in the Node
+		private Node<E> next; // reference to next Node in the list
+		private Node<E> prev; // reference to previous Node in the List
+
+		Node(E element, Node<E> next, Node<E> prev) {
+			this.element = element;
+			this.next = next;
+			this.prev = prev;
+		}
+
+		E getElement() {
+			return element;
+		}
+
+		Node<E> getNext() {
+			return next;
+		}
+
+		Node<E> getPrev() {
+			return prev;
+		}
+
+		public void setElement(E element) {
+			this.element = element;
+		}
+
+		public void setNext(Node<E> next) {
+			this.next = next;
+		}
+
+		public void setPrev(Node<E> prev) {
+			this.prev = prev;
+		}
 	}
 	
 	private void addBetween(E e, Node<E> predecessor, Node<E> successor) {

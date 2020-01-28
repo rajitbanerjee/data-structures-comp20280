@@ -13,10 +13,8 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
 
     // Constituent Node of SinglyLinkedList
     private static class Node<E> {
-        // Instance variables to represent a Node element and a reference to the next
-        // Node
-        private E element;
-        private Node<E> next;
+        private E element; // element stored in the Node
+        private Node<E> next; // reference to the next Node in the list
 
         /**
          * Creates a new node with given element and next node reference.
