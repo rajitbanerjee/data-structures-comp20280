@@ -258,6 +258,22 @@ public class SinglyLinkedList<E> implements List<E> {
         size++;
     }
 
+    /**
+     * Gives the String implementation of the list.
+     *
+     * @return the String containing the comma-separated list elements
+     */
+    @Override
+    public String toString() {
+        String list = "[";
+        for (E e : this) {
+            list += e.toString() + ", ";
+        }
+        list = list.substring(0, list.length() - 2);
+        list += "]";
+        return list;
+    }
+
     public static void main(String[] args) {
         // TEST 1: Given in skeleton code
         System.out.println("\nTEST 1 from given GitHub code:");
