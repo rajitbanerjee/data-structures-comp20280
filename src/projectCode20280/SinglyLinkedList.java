@@ -158,10 +158,22 @@ public class SinglyLinkedList<E> implements List<E> {
         return size;
     }
 
+    /**
+     * Removes the first element from the list.
+     *
+     * @return the removed first element
+     */
     @Override
     public E removeFirst() {
-        // TODO Auto-generated method stub
-        return null;
+        E removed;
+        if (head == null) {
+            throw new RuntimeException("List is empty!");
+        } else {
+            // store first element in temp variable and remove the Node
+            removed = head.getElement();
+            head = head.getNext();
+        }
+        return removed;
     }
 
     @Override
