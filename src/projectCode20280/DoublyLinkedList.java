@@ -199,16 +199,26 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
 
+    /**
+     * Insert a Node at the front of the list.
+     *
+     * @param e Node element to be inserted
+     */
     @Override
     public void addFirst(E e) {
-        // TODO Auto-generated method stub
-
+        addBetween(e, header, header.getNext());
+        size++;
     }
 
+    /**
+     * Insert a Node at the end of the list.
+     *
+     * @param e Node element to be inserted
+     */
     @Override
     public void addLast(E e) {
-        // TODO Auto-generated method stub
-
+        addBetween(e, trailer.getPrev(), trailer);
+        size++;
     }
 
     public static void main(String[] args) {
