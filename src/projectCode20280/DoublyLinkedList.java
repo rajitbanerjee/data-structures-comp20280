@@ -1,6 +1,7 @@
 package projectCode20280;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
 
@@ -72,11 +73,21 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         size++;
     }
 
+    /**
+     * Finds the current number of Nodes in the list.
+     *
+     * @return the instance variable size which stores the list's length
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Checks if the list is empty.
+     *
+     * @return {@code true} if the list is empty, {@code false} otherwise
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;
@@ -93,7 +104,7 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         int index = 0; // temporary index used for list traversal
         Iterator<E> itr = iterator();
         if (isEmpty()) {
-            throw new RuntimeException("List is empty!");
+            throw new NoSuchElementException();
         }
         while (itr.hasNext()) {
             if (index == i) {
@@ -119,21 +130,72 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
 
     @Override
     public Iterator<E> iterator() {
-        // TODO Auto-generated method stub
-        return null;
+        return new ListIterator();
+
     }
 
+    private class ListIterator implements Iterator<E> {
+        Node<E> temp = header.getNext();
 
+        @Override
+        public boolean hasNext() {
+            return temp != trailer;
+        }
+
+        @Override
+        public E next() {
+            E ans = temp.getElement();
+            temp = temp.getNext();
+            return ans;
+        }
+
+        public boolean hasPrevious() {
+            return temp != header;
+        }
+
+        public E previous() {
+            E ans = temp.getElement();
+            temp = temp.getPrev();
+            return ans;
+        }
+
+        public int nextIndex() {
+            return 0;
+        }
+
+        public int previousIndex() {
+            return 0;
+        }
+    }
+
+    /**
+     * Deletes the first Node of the list.
+     *
+     * @return the removed first Node in the list
+     */
     @Override
     public E removeFirst() {
-        // TODO Auto-generated method stub
-        return null;
+        E removed = header.getNext().getElement();
+        Node<E> newFirst = header.getNext().getNext();
+        header.setNext(newFirst);
+        newFirst.setPrev(header);
+        size--;
+        return removed;
     }
 
+    /**
+     * Deletes the last Node of the list.
+     *
+     * @return the removed last Node in the list
+     */
     @Override
     public E removeLast() {
-        // TODO Auto-generated method stub
-        return null;
+        E removed = trailer.getPrev().getElement();
+        Node<E> newLast = trailer.getPrev().getPrev();
+        trailer.setPrev(newLast);
+        newLast.setNext(trailer);
+        size--;
+        return removed;
     }
 
 
