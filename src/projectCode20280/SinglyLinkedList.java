@@ -1,6 +1,7 @@
 package projectCode20280;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  * Implementation of a Singly Linked List.
@@ -72,7 +73,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         int index = 0; // temporary index used for list traversal
         Iterator<E> itr = iterator();
         if (isEmpty()) {
-            throw new RuntimeException("List is empty!");
+            throw new NoSuchElementException();
         }
         while (itr.hasNext()) {
             if (index == i) {
@@ -125,7 +126,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         Node<E> temp = head; //temporary Node for list traversal
         if (isEmpty() || i >= size) {
             // cannot remove element if list is empty or specified index is out of bounds
-            throw new RuntimeException("Cannot remove any elements!");
+            throw new NoSuchElementException();
         } else {
             int index = 0; // temporary index for list traversal
             while (temp != null) {
@@ -158,7 +159,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
 
         @Override
         public boolean hasNext() {
-            return temp != null;
+            return temp.getNext() != null;
         }
 
         @Override
@@ -186,7 +187,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     public E removeFirst() {
         E removed;
         if (isEmpty()) {
-            throw new RuntimeException("List is empty!");
+            throw new NoSuchElementException();
         } else {
             // store first element in temp variable and remove the Node
             removed = head.getElement();
@@ -206,7 +207,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         E removed = null; // element to be removed
         Node<E> temp = head; // temporary Node for list traversal
         if (isEmpty()) {
-            throw new RuntimeException("List is empty!");
+            throw new NoSuchElementException();
         } else {
             while (temp != null) {
                 if (temp.getNext().getNext() == null) { // temp is the 2nd last Node
