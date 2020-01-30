@@ -40,9 +40,9 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         }
 
         // Mutator for Node element
-        public void setElement(E element) {
-            this.element = element;
-        }
+//        public void setElement(E element) {
+//            this.element = element;
+//        }
 
         // Mutator for reference to next Node
         void setNext(Node<E> next) {
@@ -55,17 +55,26 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         }
     }
 
+    // Sentinel Nodes
     private Node<E> header;
     private Node<E> trailer;
+    // Size tracker
     private int size;
 
-    public DoublyLinkedList() {
+    private DoublyLinkedList() {
         header = new Node<>(null, null, null);
         trailer = new Node<>(null, null, header);
         header.setNext(trailer);
         size = 0;
     }
 
+    /**
+     * Insert a Node element in between two given Nodes
+     *
+     * @param e           the element to be inserted
+     * @param predecessor the Node just before the new Node
+     * @param successor   the Node just after the new Node
+     */
     private void addBetween(E e, Node<E> predecessor, Node<E> successor) {
         Node<E> newest = new Node<>(e, successor, predecessor);
         predecessor.setNext(newest);
@@ -116,19 +125,24 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         return null;
     }
 
+    /**
+     * Insert a Node at a given index
+     *
+     * @param i index at which Node is to be inserted
+     * @param e Node element to be inserted
+     */
     @Override
     public void add(int i, E e) {
-        Node<E> temp;
-        int index;
-        if (isEmpty()) {
-            addBetween(e, header, trailer);
-        } else if (i >= size) {
+        Node<E> temp; // temporary Node for list traversal
+        int index; // temporary index
+        if (isEmpty() || i >= size) {
             addLast(e);
         } else {
             index = 0;
             temp = header.getNext();
             while (temp != trailer) {
                 if (index == i) {
+                    // insert Node when index is found
                     addBetween(e, temp.getPrev(), temp);
                     break;
                 }
@@ -168,11 +182,17 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         return removed;
     }
 
+    /**
+     * Returns a new ListIterator object.
+     *
+     * @return instance of ListIterator class
+     */
     @Override
     public Iterator<E> iterator() {
         return new ListIterator();
     }
 
+    // Inner class whose instance is returned by the iterator() method
     private class ListIterator implements Iterator<E> {
         Node<E> temp = header.getNext();
         int nextIndex = 0;
@@ -269,13 +289,13 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
      */
     @Override
     public String toString() {
-        String list = "[";
+        StringBuilder list = new StringBuilder("[");
         for (E e : this) {
-            list += e.toString() + ", ";
+            list.append(e.toString()).append(", ");
         }
-        list = list.substring(0, list.length() - 2);
-        list += "]";
-        return list;
+        list = new StringBuilder(list.substring(0, list.length() - 2));
+        list.append("]");
+        return list.toString();
     }
 
     public static void main(String[] args) {

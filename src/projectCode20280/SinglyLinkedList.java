@@ -39,9 +39,9 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         }
 
         // Mutator for element
-        public void setElement(E element) {
-            this.element = element;
-        }
+//        public void setElement(E element) {
+//            this.element = element;
+//        }
 
         // Mutator for next Node<E>
         void setNext(Node<E> next) {
@@ -95,8 +95,8 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     public void add(int i, E e) {
         Node<E> newest = new Node<>(e, null); // create Node to be inserted
         Node<E> temp = head; // temporary Node for list traversal
-        if (isEmpty()) {
-            // if list is empty, insert new Node at the first position
+        if (isEmpty() || i >= size) {
+            // if list is empty or index is more than size, insert new Node at the first position
             head = newest;
         } else {
             int index = 0; // temporary index for list traversal
@@ -264,13 +264,13 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
      */
     @Override
     public String toString() {
-        String list = "[";
+        StringBuilder list = new StringBuilder("[");
         for (E e : this) {
-            list += e.toString() + ", ";
+            list.append(e.toString()).append(", ");
         }
-        list = list.substring(0, list.length() - 2);
-        list += "]";
-        return list;
+        list = new StringBuilder(list.substring(0, list.length() - 2));
+        list.append("]");
+        return list.toString();
     }
 
     public static void main(String[] args) {
@@ -300,7 +300,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
 
         // TEST 2: Given in practical 1
         System.out.println("\nTEST 2 from Practical 1:");
-        SinglyLinkedList<Integer> ll = new SinglyLinkedList<Integer>();
+        SinglyLinkedList<Integer> ll = new SinglyLinkedList<>();
         //LinkedList<Integer> ll = new LinkedList<Integer>();
         ll.addFirst(0);
         ll.addFirst(1);
