@@ -74,32 +74,68 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 	
 	
 	public static void main(String[] args) {
-		CircularlyLinkedList<Integer> ll = new CircularlyLinkedList<Integer>();
+		// TEST 1: Given in skeleton code
+		System.out.println("\nTEST 1 from given GitHub code:");
+		CircularlyLinkedList<Integer> cll = new CircularlyLinkedList<>();
 		for(int i = 10; i < 20; ++i) {
-			ll.addLast(i);
+			cll.addLast(i);
 		}
 
-		System.out.println(ll);
+		System.out.println(cll);
 
-		ll.removeFirst();
-		System.out.println(ll);
+		cll.removeFirst();
+		System.out.println(cll);
 
-		ll.removeLast();
+		cll.removeLast();
 
-		ll.rotate();
-		System.out.println(ll);
+		cll.rotate();
+		System.out.println(cll);
 
-		ll.removeFirst();
-		ll.rotate();
-		System.out.println(ll);
+		cll.removeFirst();
+		cll.rotate();
+		System.out.println(cll);
 
-		ll.removeLast();
-		ll.rotate();
-		System.out.println(ll);
+		cll.removeLast();
+		cll.rotate();
+		System.out.println(cll);
 
-		for (Integer e : ll) {
+		for (Integer e : cll) {
 			System.out.println("value: " + e);
 		}
+
+		// TEST 2: Given in practical 1
+		System.out.println("\nTEST 2 from Practical 1:");
+		SinglyLinkedList<Integer> ll = new SinglyLinkedList<>();
+		//LinkedList<Integer> ll = new LinkedList<Integer>();
+		ll.addFirst(0);
+		ll.addFirst(1);
+		ll.addFirst(3);
+		ll.addFirst(4);
+		ll.addFirst(5);
+		ll.add(3, 2);
+		System.out.println(ll);
+		ll.addFirst(-100);
+		ll.addLast(+100);
+		System.out.println(ll);
+		ll.removeFirst();
+		ll.removeLast();
+		System.out.println(ll);
+		// Removes the item in the specified index ll.remove(2); System.out.println(ll);
+		ll.removeFirst();
+		System.out.println(ll);
+		ll.removeLast();
+		System.out.println(ll);
+		ll.removeFirst();
+		System.out.println(ll);
+		ll.addFirst(9999);
+		ll.addFirst(8888);
+		ll.addFirst(7777);
+
+		System.out.println(ll);
+		System.out.println(ll.get(0));
+		System.out.println(ll.get(1));
+		System.out.println(ll.get(2));
+		System.out.println(ll);
 
 	}
 }
