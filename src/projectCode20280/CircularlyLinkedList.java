@@ -46,14 +46,12 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return size;
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return size == 0;
 	}
 
 	@Override
@@ -86,10 +84,31 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 		return null;
 	}
 
+	/**
+	 * Returns a new ListIterator object.
+	 *
+	 * @return instance of ListIterator class
+	 */
 	@Override
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ListIterator();
+	}
+
+	// Inner class whose instance is returned by the iterator() method
+	private class ListIterator implements Iterator<E> {
+		Node<E> temp = tail.getNext();
+
+		@Override
+		public boolean hasNext() {
+			return temp != tail;
+		}
+
+		@Override
+		public E next() {
+			E ans = temp.getElement();
+			temp = temp.getNext();
+			return ans;
+		}
 	}
 
 	@Override
