@@ -95,8 +95,10 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     public void add(int i, E e) {
         Node<E> newest = new Node<>(e, null); // create Node to be inserted
         Node<E> temp = head; // temporary Node for list traversal
-        if (isEmpty() || i >= size) {
-            // if list is empty or index is more than size, insert new Node at the first position
+        if (i >= size) {
+            throw new RuntimeException("Specified index is greater than List size!");
+        } else if (isEmpty()) {
+            // if list is empty insert new Node at the first position
             head = newest;
         } else {
             int index = 0; // temporary index for list traversal
