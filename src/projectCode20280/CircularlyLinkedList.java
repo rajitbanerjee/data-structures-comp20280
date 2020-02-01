@@ -159,8 +159,10 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
     @Override
     public String toString() {
         StringBuilder list = new StringBuilder("[");
-        for (E e : this) {
-            list.append(e.toString()).append(", ");
+        Node<E> temp = tail.getNext();
+        while (temp != tail) {
+            list.append(temp.getElement().toString()).append(", ");
+            temp = temp.getNext();
         }
         list = new StringBuilder(list.substring(0, list.length() - 2));
         list.append("]");
