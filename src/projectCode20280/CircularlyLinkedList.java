@@ -225,7 +225,8 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
     public void addFirst(E e) {
         if (isEmpty()) {
             // create tail Node and link to itself
-            tail = new Node<>(e, tail);
+            tail = new Node<>(e, null);
+            tail.setNext(tail);
         } else {
             // create new Node to follow the tail
             Node<E> newest = new Node<>(e, tail.getNext());
