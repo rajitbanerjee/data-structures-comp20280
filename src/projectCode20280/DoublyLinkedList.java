@@ -59,11 +59,10 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     private Node<E> header = new Node<>(null, null, null);
     private Node<E> trailer = new Node<>(null, null, header);
     // Size tracker
-    private int size;
+    private int size = 0;
 
     public DoublyLinkedList() {
         header.setNext(trailer);
-        size = 0;
     }
 
     /**
