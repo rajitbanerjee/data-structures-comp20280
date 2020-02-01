@@ -4,8 +4,49 @@ import java.util.Iterator;
 
 public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 
-	private class Node<E> {
+	// Constituent Node of CircularlyLinkedList
+	private static class Node<E> {
+		private E element; // element stored in the Node
+		private Node<E> next; // reference to the next Node in the list
 
+		/**
+		 * Creates a new node with given element and next node reference.
+		 *
+		 * @param element the element that will compose the list
+		 * @param next    reference to the next Node
+		 */
+		Node(E element, Node<E> next) {
+			this.element = element;
+			this.next = next;
+		}
+
+		// Accessor for element
+		E getElement() {
+			return element;
+		}
+
+		// Accessor for next Node<E>
+		Node<E> getNext() {
+			return next;
+		}
+
+		// Mutator for element
+//        public void setElement(E element) {
+//            this.element = element;
+//        }
+
+		// Mutator for next Node<E>
+		void setNext(Node<E> next) {
+			this.next = next;
+		}
+	}
+
+	private Node<E> tail;
+	private int size;
+
+	public CircularlyLinkedList() {
+		tail = new Node<>(null, null);
+		size = 0;
 	}
 
 	@Override
