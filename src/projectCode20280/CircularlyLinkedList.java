@@ -86,8 +86,10 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
      */
     @Override
     public void add(int i, E e) {
-        if (i >= size) {
+        if (i > size) {
             throw new RuntimeException("Specified index is greater than List size!");
+        } else if (i == size) {
+            addLast(e);
         } else if (isEmpty()) {
             // if list is empty, insert new Node at the first position
             addFirst(e);
@@ -202,16 +204,18 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
     // Inner class whose instance is returned by the iterator() method
     private class ListIterator implements Iterator<E> {
         Node<E> temp = tail.getNext();
+        int index = 0;
 
         @Override
         public boolean hasNext() {
-            return temp != tail;
+            return index != size; // checks if one loop of the CLL is complete
         }
 
         @Override
         public E next() {
             E ans = temp.getElement();
             temp = temp.getNext();
+            index++;
             return ans;
         }
     }
@@ -265,10 +269,8 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
     @Override
     public String toString() {
         StringBuilder list = new StringBuilder("[");
-        Node<E> temp = tail.getNext();
-        while (temp != tail) {
-            list.append(temp.getElement().toString()).append(", ");
-            temp = temp.getNext();
+        for (E e : this) {
+            list.append(e.toString()).append(", ");
         }
         list = new StringBuilder(list.substring(0, list.length() - 2));
         list.append("]");
