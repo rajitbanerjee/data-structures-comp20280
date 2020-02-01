@@ -1,6 +1,7 @@
 package projectCode20280;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 
@@ -72,16 +73,55 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         return null;
     }
 
+    /**
+     * Remove the first Node from the list.
+     *
+     * @return the removed first element
+     */
     @Override
     public E removeFirst() {
-        // TODO Auto-generated method stub
-        return null;
+        E removed;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        } else if (size == 1) {
+            removed = tail.getElement();
+            tail = null;
+            size--;
+        } else {
+            removed = tail.getNext().getElement();
+            tail.setNext(tail.getNext().getNext());
+            size--;
+        }
+        return removed;
     }
 
+    /**
+     * Remove the last Node from the list.
+     *
+     * @return the removed last element
+     */
     @Override
     public E removeLast() {
-        // TODO Auto-generated method stub
-        return null;
+        E removed;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        } else if (size == 1) {
+            removed = tail.getElement();
+            tail = null;
+            size--;
+        } else {
+            Node<E> temp = tail.getNext();
+            removed = tail.getElement();
+            while (temp != tail) {
+                if (temp.getNext() == tail) {
+                    temp.setNext(tail.getNext());
+                    break;
+                }
+                temp = temp.getNext();
+            }
+            size--;
+        }
+        return removed;
     }
 
     /**
