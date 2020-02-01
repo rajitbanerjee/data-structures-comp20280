@@ -56,14 +56,12 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     // Sentinel Nodes
-    private Node<E> header;
-    private Node<E> trailer;
+    private Node<E> header = new Node<>(null, null, null);
+    private Node<E> trailer = new Node<>(null, null, header);
     // Size tracker
     private int size;
 
-    private DoublyLinkedList() {
-        header = new Node<>(null, null, null);
-        trailer = new Node<>(null, null, header);
+    public DoublyLinkedList() {
         header.setNext(trailer);
         size = 0;
     }

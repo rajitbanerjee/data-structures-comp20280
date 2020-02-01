@@ -41,13 +41,8 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 		}
 	}
 
-	private Node<E> tail; // reference to the last Node of the list
-	private int size; // size tracker
-
-	public CircularlyLinkedList() {
-		tail = new Node<>(null, null);
-		size = 0;
-	}
+	private Node<E> tail = null; // reference to the last Node of the list
+	private int size = 0; // size tracker
 
 	@Override
 	public int size() {
