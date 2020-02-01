@@ -55,9 +55,26 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         return size == 0;
     }
 
+    /**
+     * Returns the element at index i of the List.
+     *
+     * @param i the index of the list which contains required element
+     * @return the element at index i
+     */
     @Override
     public E get(int i) {
-        // TODO Auto-generated method stub
+        int index = 0; // temporary index used for list traversal
+        Iterator<E> itr = iterator();
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        while (itr.hasNext()) {
+            if (index == i) {
+                return itr.next();
+            }
+            itr.next();
+            index++;
+        }
         return null;
     }
 
