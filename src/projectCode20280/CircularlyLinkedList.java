@@ -86,7 +86,6 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
      */
     @Override
     public void add(int i, E e) {
-
         if (i >= size) {
             throw new RuntimeException("Specified index is greater than List size!");
         } else if (isEmpty()) {
@@ -94,8 +93,7 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
             addFirst(e);
         } else {
             Node<E> newest = new Node<>(e, null); // create Node to be inserted
-            Node<E> head = tail.getNext();
-            Node<E> temp = head; // temporary Node for list traversal
+            Node<E> temp = tail.getNext(); // temporary Node for list traversal
             int index = 0; // temporary index for list traversal
             while (temp != tail) {
                 if (index == i - 1) {
@@ -111,10 +109,33 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         }
     }
 
+    /**
+     * Remove the element at index i of the list.
+     *
+     * @param i index from which the element needs to be removed
+     * @return the element that has been removed, null
+     */
     @Override
     public E remove(int i) {
-        // TODO Auto-generated method stub
-        return null;
+        E removed = null; // element to be removed
+        if (isEmpty() || i >= size) {
+            // cannot remove element if list is empty or specified index is out of bounds
+            throw new NoSuchElementException();
+        } else {
+            Node<E> temp = tail.getNext(); //temporary Node for list traversal
+            int index = 0; // temporary index for list traversal
+            while (temp != tail) {
+                if (index == i - 1) {
+                    removed = temp.getNext().getElement(); // element to be removed
+                    temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
+                    size--;
+                    break;
+                }
+                temp = temp.getNext();
+                index++;
+            }
+        }
+        return removed;
     }
 
     /**

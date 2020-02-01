@@ -125,11 +125,11 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     @Override
     public E remove(int i) {
         E removed = null; // element to be removed
-        Node<E> temp = head; //temporary Node for list traversal
         if (isEmpty() || i >= size) {
             // cannot remove element if list is empty or specified index is out of bounds
             throw new NoSuchElementException();
         } else {
+            Node<E> temp = head; //temporary Node for list traversal
             int index = 0; // temporary index for list traversal
             while (temp != null) {
                 if (index == i - 1) {
