@@ -93,14 +93,14 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
      */
     @Override
     public void add(int i, E e) {
-        Node<E> newest = new Node<>(e, null); // create Node to be inserted
-        Node<E> temp = head; // temporary Node for list traversal
         if (i >= size) {
             throw new RuntimeException("Specified index is greater than List size!");
         } else if (isEmpty()) {
             // if list is empty insert new Node at the first position
-            head = newest;
+            addFirst(e);
         } else {
+            Node<E> newest = new Node<>(e, null); // create Node to be inserted
+            Node<E> temp = head; // temporary Node for list traversal
             int index = 0; // temporary index for list traversal
             while (temp != null) {
                 if (index == i - 1) {
@@ -112,8 +112,8 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
                 temp = temp.getNext();
                 index++;
             }
+            size++;
         }
-        size++;
     }
 
     /**

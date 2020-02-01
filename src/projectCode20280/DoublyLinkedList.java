@@ -130,13 +130,13 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
      */
     @Override
     public void add(int i, E e) {
-        Node<E> temp; // temporary Node for list traversal
-        int index; // temporary index
         if (i >= size) {
             throw new RuntimeException("Specified index is greater than List size!");
         } else if (isEmpty()) {
             addFirst(e);
         } else {
+            Node<E> temp; // temporary Node for list traversal
+            int index; // temporary index
             index = 0;
             temp = header.getNext();
             while (temp != trailer) {

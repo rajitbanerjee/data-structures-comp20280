@@ -78,10 +78,37 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         return null;
     }
 
+    /**
+     * Inserts an element e at index i of the list.
+     *
+     * @param i index at which to insert the element e
+     * @param e the element to be inserted at given index
+     */
     @Override
     public void add(int i, E e) {
-        // TODO Auto-generated method stub
 
+        if (i >= size) {
+            throw new RuntimeException("Specified index is greater than List size!");
+        } else if (isEmpty()) {
+            // if list is empty, insert new Node at the first position
+            addFirst(e);
+        } else {
+            Node<E> newest = new Node<>(e, null); // create Node to be inserted
+            Node<E> head = tail.getNext();
+            Node<E> temp = head; // temporary Node for list traversal
+            int index = 0; // temporary index for list traversal
+            while (temp != tail) {
+                if (index == i - 1) {
+                    // insert new Node at required index i
+                    newest.setNext(temp.getNext());
+                    temp.setNext(newest);
+                    break;
+                }
+                temp = temp.getNext();
+                index++;
+            }
+            size++;
+        }
     }
 
     @Override
