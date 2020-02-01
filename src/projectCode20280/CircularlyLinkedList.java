@@ -119,24 +119,36 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
     @Override
     public void addFirst(E e) {
         if (isEmpty()) {
-        	// create tail Node and link to itself
+            // create tail Node and link to itself
             tail = new Node<>(e, tail);
         } else {
-        	// create new Node to follow the tail
+            // create new Node to follow the tail
             Node<E> newest = new Node<>(e, tail.getNext());
             tail.setNext(newest);
         }
         size++;
     }
 
+    /**
+     * Insert a Node to the end of the list.
+     *
+     * @param e Node element to be inserted
+     */
     @Override
     public void addLast(E e) {
-        // TODO Auto-generated method stub
-
+        // add element to the front of the list
+        addFirst(e);
+        // change the tail to be the newly added Node in the front
+        rotate();
     }
 
+    /**
+     * Rotate the first element to the back of the list.
+     */
     public void rotate() {
-
+        if (!isEmpty()) {
+            tail = tail.getNext();
+        }
     }
 
 
