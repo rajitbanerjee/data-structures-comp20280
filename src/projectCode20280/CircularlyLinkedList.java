@@ -151,6 +151,21 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         }
     }
 
+    /**
+     * Gives the String implementation of the list.
+     *
+     * @return the String containing the comma-separated list elements
+     */
+    @Override
+    public String toString() {
+        StringBuilder list = new StringBuilder("[");
+        for (E e : this) {
+            list.append(e.toString()).append(", ");
+        }
+        list = new StringBuilder(list.substring(0, list.length() - 2));
+        list.append("]");
+        return list.toString();
+    }
 
     public static void main(String[] args) {
         // TEST 1: Given in skeleton code
