@@ -49,8 +49,13 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         }
     }
 
-    private Node<E> head = null; // reference to first Node of the list
-    private int size = 0; // keeps track of the size of the list
+    private Node<E> head;// reference to first Node of the list
+    private int size; // keeps track of the size of the list
+
+    public SinglyLinkedList() {
+        head = null;
+        size = 0;
+    }
 
     /**
      * Checks if the list is empty.
