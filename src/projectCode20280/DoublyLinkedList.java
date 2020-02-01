@@ -207,6 +207,7 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
             return ans;
         }
 
+        /*
         public boolean hasPrevious() {
             return temp != header;
         }
@@ -225,6 +226,7 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         public int previousIndex() {
             return nextIndex - 1;
         }
+        */
     }
 
     /**
