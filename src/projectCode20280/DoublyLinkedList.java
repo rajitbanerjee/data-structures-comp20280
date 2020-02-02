@@ -137,18 +137,13 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         } else if (isEmpty()) {
             addFirst(e);
         } else {
-            Node<E> temp; // temporary Node for list traversal
-            int index; // temporary index
-            index = 0;
-            temp = header.getNext();
-            while (temp != trailer) {
+            Node<E> temp = header.getNext(); // temporary Node for list traversal
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i) {
                     // insert Node when index is found
                     addBetween(e, temp.getPrev(), temp);
                     break;
                 }
-                temp = temp.getNext();
-                index++;
             }
         }
         size++;
@@ -168,16 +163,13 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
             throw new NoSuchElementException();
         } else {
             Node<E> temp = header.getNext(); //temporary Node for list traversal
-            int index = 0; // temporary index for list traversal
-            while (temp != null) {
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
                     removed = temp.getNext().getElement(); // element to be removed
                     temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
                     size--;
                     break;
                 }
-                temp = temp.getNext();
-                index++;
             }
         }
         return removed;
