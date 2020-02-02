@@ -89,6 +89,7 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         if (i > size) {
             throw new RuntimeException("Specified index is greater than List size!");
         } else if (i == size) {
+            // add element to the end of the list
             addLast(e);
         } else if (isEmpty()) {
             // if list is empty, insert new Node at the first position
@@ -96,16 +97,13 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         } else {
             Node<E> newest = new Node<>(e, null); // create Node to be inserted
             Node<E> temp = tail.getNext(); // temporary Node for list traversal
-            int index = 0; // temporary index for list traversal
-            while (temp != tail) {
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
                     // insert new Node at required index i
                     newest.setNext(temp.getNext());
                     temp.setNext(newest);
                     break;
                 }
-                temp = temp.getNext();
-                index++;
             }
             size++;
         }
@@ -125,16 +123,13 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
             throw new NoSuchElementException();
         } else {
             Node<E> temp = tail.getNext(); //temporary Node for list traversal
-            int index = 0; // temporary index for list traversal
-            while (temp != tail) {
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
                     removed = temp.getNext().getElement(); // element to be removed
                     temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
                     size--;
                     break;
                 }
-                temp = temp.getNext();
-                index++;
             }
         }
         return removed;
@@ -179,13 +174,16 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         } else {
             Node<E> temp = tail.getNext();
             removed = tail.getElement();
-            while (temp != tail) {
-                if (temp.getNext() == tail) {
-                    temp.setNext(tail.getNext());
-                    break;
-                }
+            int i = 0;
+            while (i < size - 1) {
+                // traverse the list until the 2nd last Node is reached
+                i++;
                 temp = temp.getNext();
             }
+            // make the 2nd last Node link to the first Node after the former tail
+            temp.setNext(tail.getNext());
+            // update the tail Node
+            tail = temp;
             size--;
         }
         return removed;
@@ -309,7 +307,7 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 
         // TEST 2: Given in practical 1
         System.out.println("\nTEST 2 from Practical 1:");
-        SinglyLinkedList<Integer> ll = new SinglyLinkedList<>();
+        CircularlyLinkedList<Integer> ll = new CircularlyLinkedList<>();
         //LinkedList<Integer> ll = new LinkedList<Integer>();
         ll.addFirst(0);
         ll.addFirst(1);
