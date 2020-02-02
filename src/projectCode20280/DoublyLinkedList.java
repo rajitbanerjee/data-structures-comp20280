@@ -130,8 +130,10 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
      */
     @Override
     public void add(int i, E e) {
-        if (i >= size) {
+        if (i > size) {
             throw new RuntimeException("Specified index is greater than List size!");
+        } else if (i == size) {
+            addLast(e);
         } else if (isEmpty()) {
             addFirst(e);
         } else {

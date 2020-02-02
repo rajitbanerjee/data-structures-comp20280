@@ -93,8 +93,11 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
      */
     @Override
     public void add(int i, E e) {
-        if (i >= size) {
+        if (i > size) {
             throw new RuntimeException("Specified index is greater than List size!");
+        } else if (i == size) {
+            // add element to the end of the list
+            addLast(e);
         } else if (isEmpty()) {
             // if list is empty insert new Node at the first position
             addFirst(e);
