@@ -112,16 +112,13 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         } else {
             Node<E> newest = new Node<>(e, null); // create Node to be inserted
             Node<E> temp = head; // temporary Node for list traversal
-            int index = 0; // temporary index for list traversal
-            while (temp != null) {
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
                     // insert new Node at required index i
                     newest.setNext(temp.getNext());
                     temp.setNext(newest);
                     break;
                 }
-                temp = temp.getNext();
-                index++;
             }
             size++;
         }
@@ -141,16 +138,13 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
             throw new NoSuchElementException();
         } else {
             Node<E> temp = head; //temporary Node for list traversal
-            int index = 0; // temporary index for list traversal
-            while (temp != null) {
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
                     removed = temp.getNext().getElement(); // element to be removed
                     temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
                     size--;
                     break;
                 }
-                temp = temp.getNext();
-                index++;
             }
         }
         return removed;

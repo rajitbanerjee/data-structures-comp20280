@@ -182,7 +182,7 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         } else {
             Node<E> temp = tail.getNext();
             removed = tail.getElement();
-            int i = 0;
+            int i = 0; // temporary index for loop control
             while (i < size - 1) {
                 // traverse the list until the 2nd last Node is reached
                 i++;
