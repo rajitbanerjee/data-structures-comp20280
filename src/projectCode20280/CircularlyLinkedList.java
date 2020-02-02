@@ -45,11 +45,19 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
     private Node<E> tail = null; // reference to the last Node of the list
     private int size = 0; // size tracker
 
+    /**
+     * Returns the current number of elements in the list.
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Checks if the list is empty.
+     *
+     * @return {@code true} if list if empty, else {@code false}
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;
