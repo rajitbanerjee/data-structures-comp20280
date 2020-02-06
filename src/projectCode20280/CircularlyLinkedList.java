@@ -75,9 +75,10 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
      *
      * @param i the index of the list which contains required element
      * @return the element at index i
+     * @throws NoSuchElementException if list is empty
      */
     @Override
-    public E get(int i) {
+    public E get(int i) throws NoSuchElementException {
         int index = 0; // temporary index used for list traversal
         Iterator<E> itr = iterator();
         if (isEmpty()) {
@@ -98,9 +99,10 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
      *
      * @param i index at which to insert the element e
      * @param e the element to be inserted at given index
+     * @throws RuntimeException if specified list index is out of bounds
      */
     @Override
-    public void add(int i, E e) {
+    public void add(int i, E e) throws RuntimeException {
         if (i > size) {
             throw new RuntimeException("Specified index is greater than List size!");
         } else if (i == size) {
@@ -129,9 +131,10 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
      *
      * @param i index from which the element needs to be removed
      * @return the element that has been removed, null
+     * @throws NoSuchElementException if list is empty or specified index is out of bounds
      */
     @Override
-    public E remove(int i) {
+    public E remove(int i) throws NoSuchElementException {
         E removed = null; // element to be removed
         if (isEmpty() || i >= size) {
             // cannot remove element if list is empty or specified index is out of bounds
@@ -154,9 +157,10 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
      * Remove the first Node from the list.
      *
      * @return the removed first element
+     * @throws NoSuchElementException if list is empty
      */
     @Override
-    public E removeFirst() {
+    public E removeFirst() throws NoSuchElementException {
         E removed;
         if (isEmpty()) {
             throw new NoSuchElementException();
@@ -176,9 +180,10 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
      * Remove the last Node from the list.
      *
      * @return the removed last element
+     * @throws NoSuchElementException if list is empty
      */
     @Override
-    public E removeLast() {
+    public E removeLast() throws NoSuchElementException {
         E removed;
         if (isEmpty()) {
             throw new NoSuchElementException();
