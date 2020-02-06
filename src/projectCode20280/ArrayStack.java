@@ -1,11 +1,16 @@
 package projectCode20280;
 
+/**
+ * Implementation of an array based Stack.
+ *
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
+ */
+
 public class ArrayStack<E> implements Stack<E> {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
+    public static final int MAX_SIZE = 1000;
+    private E stack[];
+    private int top = -1;
 
 	@Override
 	public int size() {
