@@ -8,7 +8,7 @@ package projectCode20280;
  */
 
 public class ArrayStack<E> implements Stack<E> {
-    public static final int MAX_SIZE = 1000; //default array capacity
+    private static int CAPACITY = 1000; //default array capacity
     private E[] stack;
     private int top;
 
@@ -21,13 +21,14 @@ public class ArrayStack<E> implements Stack<E> {
     ArrayStack(int capacity) {
         stack = (E[]) new Object[capacity];
         top = -1; // no initial stack members
+        ArrayStack.CAPACITY = capacity; // change the default stack capacity
     }
 
     /**
      * Construct array based stack with default maximum size.
      */
     ArrayStack() {
-        this(MAX_SIZE);
+        this(CAPACITY);
     }
 
     /**
@@ -58,7 +59,7 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public void push(E e) throws StackOverflowError {
-        if (size() == MAX_SIZE) {
+        if (size() == CAPACITY) {
             throw new StackOverflowError("Stack is full!");
         } else {
             stack[++top] = e;
