@@ -12,34 +12,39 @@ public class ArrayStack<E> implements Stack<E> {
     private E stack[];
     private int top = -1;
 
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int size() {
+        return top + 1;
+    }
 
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean isEmpty() {
+        return top == -1;
+    }
 
-	@Override
-	public void push(E e) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void push(E e) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public E top() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	@Override
-	public E pop() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public E top() {
+        return stack[top];
+    }
 
+    @Override
+    public E pop() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            E value = stack[top];
+            top--;
+            return value;
+        }
+    }
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+    }
 }
