@@ -39,9 +39,9 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         }
 
         // Mutator for element
-//        public void setElement(E element) {
-//            this.element = element;
-//        }
+        public void setElement(E element) {
+            this.element = element;
+        }
 
         // Mutator for next Node<E>
         void setNext(Node<E> next) {
@@ -262,6 +262,29 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     /**
+     * Reverses the order of list elements.
+     *
+     * @throws RuntimeException if list is empty
+     */
+    public void reverse() throws RuntimeException {
+        if (isEmpty()) {
+            throw new RuntimeException("List is empty!");
+        } else {
+            ArrayStack<E> stack = new ArrayStack<>(size);
+            for (E elem : this) {
+                // add list elements to Stack
+                stack.push(elem);
+            }
+            Node<E> temp = head;
+            while (temp != null) {
+                // reverse list order using LIFO concept
+                temp.setElement(stack.pop());
+                temp = temp.getNext();
+            }
+        }
+    }
+
+    /**
      * Gives the String implementation of the list.
      *
      * @return the String containing the comma-separated list elements
@@ -335,5 +358,8 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         System.out.println(ll.get(1));
         System.out.println(ll.get(2));
         System.out.println(ll);
+        //check reverse method
+        ll.reverse();
+        System.out.println("Reversed list: " + ll);
     }
 }

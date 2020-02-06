@@ -61,7 +61,7 @@ public class ArrayStack<E> implements Stack<E> {
         if (size() == MAX_SIZE) {
             throw new StackOverflowError("Stack is full!");
         } else {
-            stack[top++] = e;
+            stack[++top] = e;
         }
     }
 
@@ -93,7 +93,28 @@ public class ArrayStack<E> implements Stack<E> {
         }
     }
 
+    /**
+     * Gets String representation on Stack.
+     *
+     * @return String representation of Stack
+     */
+    @Override
+    public String toString() {
+        String ans = "";
+        for (int i = 0; i < top; i++) {
+            ans += stack[i] + ", ";
+        }
+        ans += stack[top];
+        return "Stack: " + ans;
+    }
+
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
+        ArrayStack<Integer> stk = new ArrayStack<>();
+        for (int i = 0; i < 10; i++) stk.push(i + 1);
+        System.out.println(stk);
+        stk.pop();
+        System.out.println(stk);
+        stk.pop();
+        System.out.println(stk);
     }
 }
