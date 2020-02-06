@@ -100,21 +100,25 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public String toString() {
-        String ans = "";
-        for (int i = 0; i < top; i++) {
-            ans += stack[i] + ", ";
+        StringBuilder ans = new StringBuilder("[");
+        for (int i = top; i >= 0; i--) {
+            ans.append(stack[i]).append(", ");
         }
-        ans += stack[top];
-        return "Stack: " + ans;
+        ans = new StringBuilder(ans.substring(0, ans.length() - 2));
+        ans.append("]");
+        return ans.toString();
     }
 
     public static void main(String[] args) {
         ArrayStack<Integer> stk = new ArrayStack<>();
-        for (int i = 0; i < 10; i++) stk.push(i + 1);
+        for (int i = 1; i <= 10; i++) {
+            stk.push(i);
+        }
         System.out.println(stk);
         stk.pop();
         System.out.println(stk);
         stk.pop();
+        stk.push(200);
         System.out.println(stk);
     }
 }

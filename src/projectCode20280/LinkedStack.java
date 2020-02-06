@@ -1,40 +1,85 @@
 package projectCode20280;
 
+/**
+ * Implementation of an linked list based Stack.
+ *
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
+ */
+
 public class LinkedStack<E> implements Stack<E> {
+    private SinglyLinkedList<E> stack = new SinglyLinkedList<>();
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    /**
+     * Gets the current number of Stack elements.
+     *
+     * @return the current size of the Stack
+     */
+    @Override
+    public int size() {
+        return stack.size();
+    }
 
-	}
+    /**
+     * Check if the Stack is empty.
+     *
+     * @return {@code true} if Stack has 0 elements, {@code false} otherwise
+     */
+    @Override
+    public boolean isEmpty() {
+        return stack.isEmpty();
+    }
 
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    /**
+     * Insert an element at the top of Stack.
+     *
+     * @param e the element to be inserted
+     */
+    @Override
+    public void push(E e) {
+        stack.addFirst(e);
+    }
 
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    /**
+     * Find the top element of the Stack.
+     *
+     * @return the top Stack element
+     */
+    @Override
+    public E top() {
+        return stack.get(0);
+    }
 
-	@Override
-	public void push(E e) {
-		// TODO Auto-generated method stub
-		
-	}
+    /**
+     * Removes the element from the top of the Stack.
+     *
+     * @return the removed element
+     */
+    @Override
+    public E pop() {
+        return stack.removeFirst();
+    }
 
-	@Override
-	public E top() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    /**
+     * Gets the String representation of the Stack
+     *
+     * @return String representation of Stack
+     */
+    @Override
+    public String toString() {
+        return stack.toString();
+    }
 
-	@Override
-	public E pop() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+    public static void main(String[] args) {
+        LinkedStack<Integer> stk = new LinkedStack<>();
+        for (int i = 1; i <= 10; i++) {
+            stk.push(i);
+        }
+        System.out.println(stk);
+        stk.pop();
+        System.out.println(stk);
+        stk.pop();
+        stk.push(200);
+        System.out.println(stk);
+    }
 }
