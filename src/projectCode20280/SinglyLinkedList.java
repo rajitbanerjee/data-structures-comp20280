@@ -169,7 +169,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
 
         @Override
         public boolean hasNext() {
-            return temp.getNext() != null;
+            return temp != null;
         }
 
         @Override
