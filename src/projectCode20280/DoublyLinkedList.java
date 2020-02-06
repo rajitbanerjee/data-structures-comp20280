@@ -3,6 +3,13 @@ package projectCode20280;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+/**
+ * Implementation of a Doubly Linked List.
+ *
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
+ */
+
 public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
 
     // Constituent Node of DoublyLinkedList
