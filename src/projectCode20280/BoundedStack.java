@@ -101,7 +101,7 @@ public class BoundedStack<E> implements Stack<E> {
     }
 
     public static void main(String[] args) {
-        BoundedStack<Integer> stk = new BoundedStack<>();
+        BoundedStack<Integer> stk = new BoundedStack<>(10);
         for (int i = 1; i <= 10; i++) {
             stk.push(i);
         }
@@ -113,5 +113,12 @@ public class BoundedStack<E> implements Stack<E> {
         System.out.println(stk);
         stk.reverse();
         System.out.println("Reversed: " + stk);
+        try {
+            stk.push(200);
+            stk.push(300);
+            System.out.println("Error: Stack is bounded, overflow has occurred!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
