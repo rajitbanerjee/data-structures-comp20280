@@ -1,7 +1,7 @@
 package projectCode20280;
 
 /**
- * Implementation of an linked list based Stack.
+ * Implementation of a linked list based Stack.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor

@@ -1,5 +1,12 @@
 package projectCode20280;
 
+/**
+ * Implementation of a linked list based Queue.
+ *
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
+ */
+
 public class LinkedQueue<E> implements Queue<E> {
 
 	public static void main(String[] args) {

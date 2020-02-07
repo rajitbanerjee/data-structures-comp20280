@@ -1,5 +1,12 @@
 package projectCode20280;
 
+/**
+ * Implementation of a linked list based Deque.
+ *
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
+ */
+
 public class LinkedDeque<E> implements Deque<E> {
 
 	public static void main(String[] args) {
