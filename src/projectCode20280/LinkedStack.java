@@ -70,6 +70,13 @@ public class LinkedStack<E> implements Stack<E> {
         return stack.toString();
     }
 
+    /**
+     * Reverses order of Stack elements.
+     */
+    public void reverse() {
+        stack.reverse();
+    }
+
     public static void main(String[] args) {
         LinkedStack<Integer> stk = new LinkedStack<>();
         for (int i = 1; i <= 10; i++) {
@@ -81,5 +88,7 @@ public class LinkedStack<E> implements Stack<E> {
         stk.pop();
         stk.push(200);
         System.out.println(stk);
+        stk.reverse();
+        System.out.println("Reversed: " + stk);
     }
 }
