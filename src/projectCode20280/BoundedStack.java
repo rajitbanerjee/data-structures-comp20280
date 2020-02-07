@@ -52,10 +52,15 @@ public class BoundedStack<E> implements Stack<E> {
      * Insert an element at the top of Stack.
      *
      * @param e the element to be inserted
+     * @throws StackOverflowError if stack capacity is exceeded
      */
     @Override
-    public void push(E e) {
-        stack.addFirst(e);
+    public void push(E e) throws StackOverflowError {
+        if (size() == MAX_SIZE) {
+            throw new StackOverflowError("Stack is full!");
+        } else {
+            stack.addFirst(e);
+        }
     }
 
     /**
