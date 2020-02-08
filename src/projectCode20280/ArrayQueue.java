@@ -8,40 +8,112 @@ package projectCode20280;
  */
 
 public class ArrayQueue<E> implements Queue<E> {
+    private static int CAPACITY = 1000; //default array capacity
+    private E[] queue;
+    private int front;
+    private int size;
 
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
+    @SuppressWarnings({"unchecked"})
+    ArrayQueue(int capacity) {
+        front = size = 0;
+        queue = (E[]) new Object[capacity];
+        ArrayQueue.CAPACITY = capacity;
+    }
 
+    ArrayQueue() {
+        this(CAPACITY);
     }
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        return size == 0;
     }
 
+
+    /**
+     * Inserts an element to the rear of Queue.
+     *
+     * @param e the element to be inserted
+     * @throws IllegalStateException queue has reached capacity
+     */
     @Override
-    public void enqueue(E e) {
-        // TODO Auto-generated method stub
-
+    public void enqueue(E e) throws IllegalStateException {
+        if (size == CAPACITY) {
+            throw new IllegalStateException("Queue is full!");
+        } else {
+            int rear = (front + size++) % CAPACITY; //circular array wraps around
+            queue[rear] = e;
+        }
     }
 
-    @Override
-    public E first() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
+    /**
+     * Remove front element of Queue.
+     *
+     * @return the removed front element
+     */
     @Override
     public E dequeue() {
-        // TODO Auto-generated method stub
-        return null;
+        if (isEmpty()) {
+            return null;
+        } else {
+            E removed = queue[front];
+            queue[front] = null;
+            front = (front + 1) % CAPACITY; // front index wraps around
+            size--;
+            return removed;
+        }
     }
 
+    /**
+     * Return (but not remove) the element at front of Queue.
+     *
+     * @return the front element of the Queue, null if empty
+     */
+    @Override
+    public E first() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            return queue[front];
+        }
+    }
+
+    /**
+     * Gets String representation of Queue.
+     *
+     * @return String representation of Queue
+     */
+    @Override
+    public String toString() {
+        StringBuilder ans = new StringBuilder("[");
+        for (int i = front; i < front + size; i++) {
+            ans.append(queue[i % CAPACITY]).append(", ");
+        }
+        ans = new StringBuilder(ans.substring(0, ans.length() - 2));
+        ans.append("]");
+        return ans.toString();
+    }
+
+    public static void main(String[] args) {
+        ArrayQueue<Integer> q = new ArrayQueue<>(10);
+        for (int i = 0; i < 10; i++) {
+            q.enqueue(i);
+        }
+        System.out.println(q);
+        q.dequeue();
+        System.out.println(q);
+        q.dequeue();
+        System.out.println(q);
+        q.enqueue(10);
+        System.out.println(q);
+        q.enqueue(11);
+        System.out.println(q);
+        q.enqueue(12);
+        System.out.println(q);
+    }
 }
