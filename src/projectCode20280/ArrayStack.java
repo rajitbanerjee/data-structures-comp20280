@@ -122,4 +122,5 @@ public class ArrayStack<E> implements Stack<E> {
         stk.push(200);
         System.out.println(stk);
     }
+
 }

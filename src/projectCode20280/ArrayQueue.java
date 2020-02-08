@@ -1,7 +1,7 @@
 package projectCode20280;
 
 /**
- * Implementation of an array based Queue..
+ * Implementation of an array based Queue.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
@@ -116,4 +116,5 @@ public class ArrayQueue<E> implements Queue<E> {
         q.enqueue(12);
         System.out.println(q);
     }
+
 }

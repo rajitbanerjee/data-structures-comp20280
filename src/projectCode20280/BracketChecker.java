@@ -66,4 +66,5 @@ public class BracketChecker {
             System.out.println("isBalanced " + (isBalanced ? " yes! " : " no! ") + input);
         }
     }
+
 }

@@ -357,4 +357,5 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         System.out.println(ll.get(2));
         System.out.println(ll);
     }
+
 }

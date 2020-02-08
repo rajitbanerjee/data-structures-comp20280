@@ -362,4 +362,5 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         ll.reverse();
         System.out.println("Reversed list: " + ll);
     }
+
 }

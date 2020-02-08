@@ -8,40 +8,54 @@ package projectCode20280;
  */
 
 public class LinkedQueue<E> implements Queue<E> {
+    private DoublyLinkedList<E> queue = new DoublyLinkedList<>();
+
+    @Override
+    public int size() {
+        return queue.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return queue.isEmpty();
+    }
+
+    @Override
+    public void enqueue(E e) {
+        queue.addLast(e);
+    }
+
+    @Override
+    public E first() {
+        return queue.get(0);
+    }
+
+    @Override
+    public E dequeue() {
+        return queue.removeFirst();
+    }
+
+	@Override
+	public String toString() {
+		return queue.toString();
+	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void enqueue(E e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public E first() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public E dequeue() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+        LinkedQueue<Integer> q = new LinkedQueue<>();
+        for (int i = 0; i < 10; i++) {
+            q.enqueue(i);
+        }
+        System.out.println(q);
+        q.dequeue();
+        System.out.println(q);
+        q.dequeue();
+        System.out.println(q);
+        q.enqueue(10);
+        System.out.println(q);
+        q.enqueue(11);
+        System.out.println(q);
+        q.enqueue(12);
+        System.out.println(q);
+    }
 
 }

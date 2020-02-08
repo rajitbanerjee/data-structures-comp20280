@@ -91,4 +91,5 @@ public class LinkedStack<E> implements Stack<E> {
         stk.reverse();
         System.out.println("Reversed: " + stk);
     }
+
 }
