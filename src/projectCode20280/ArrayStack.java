@@ -90,12 +90,12 @@ public class ArrayStack<E> implements Stack<E> {
         if (isEmpty()) {
             return null;
         } else {
-            return stack[top--];
+            return stack[top--] = null;
         }
     }
 
     /**
-     * Gets String representation on Stack.
+     * Gets String representation of Stack.
      *
      * @return String representation of Stack
      */
