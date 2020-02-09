@@ -8,7 +8,7 @@ package projectCode20280;
  */
 
 public class LinkedDeque<E> implements Deque<E> {
-    // Implement deque with DLL as base
+    // Implement deque with dq as base
     private DoublyLinkedList<E> deque = new DoublyLinkedList<>();
 
 	/**
@@ -18,7 +18,7 @@ public class LinkedDeque<E> implements Deque<E> {
 	 */
 	@Override
 	public int size() {
-		return 0;
+		return deque.size();
 	}
 
 	/**
@@ -28,7 +28,7 @@ public class LinkedDeque<E> implements Deque<E> {
 	 */
 	@Override
 	public boolean isEmpty() {
-		return false;
+		return deque.isEmpty();
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class LinkedDeque<E> implements Deque<E> {
 	 */
 	@Override
 	public E first() {
-		return null;
+		return deque.first();
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class LinkedDeque<E> implements Deque<E> {
 	 */
 	@Override
 	public E last() {
-		return null;
+		return deque.last();
 	}
 
 	/**
@@ -58,7 +58,7 @@ public class LinkedDeque<E> implements Deque<E> {
 	 */
 	@Override
 	public void addFirst(E e) {
-
+		deque.addFirst(e);
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class LinkedDeque<E> implements Deque<E> {
 	 */
 	@Override
 	public void addLast(E e) {
-
+		deque.addLast(e);
 	}
 
 	/**
@@ -78,7 +78,7 @@ public class LinkedDeque<E> implements Deque<E> {
 	 */
 	@Override
 	public E removeFirst() {
-		return null;
+		return deque.removeFirst();
 	}
 
 	/**
@@ -88,12 +88,31 @@ public class LinkedDeque<E> implements Deque<E> {
 	 */
 	@Override
 	public E removeLast() {
-		return null;
+		return deque.removeLast();
+	}
+
+	/**
+	 * Gets the String representation of the deque.
+	 * 
+	 * @return String representation of the deque
+	 */
+	public String toString() {
+		return deque.toString();
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		LinkedDeque<Integer> dq = new LinkedDeque<>();
+		dq.addFirst(0);
+		dq.addFirst(1);
+		dq.addFirst(2);
+		dq.addLast(-1);
+		System.out.println(dq);
 
+		dq.removeFirst();
+		System.out.println(dq);
+
+		dq.removeLast();
+		System.out.println(dq);
 	}
 
 }
