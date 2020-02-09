@@ -291,6 +291,7 @@ public class SinglyLinkedList<E> implements List<E> {
      */
     @Override
     public String toString() {
+        if (isEmpty()) return "[]";
         StringBuilder list = new StringBuilder("[");
         for (E e : this) {
             list.append(e.toString()).append(", ");

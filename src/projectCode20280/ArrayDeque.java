@@ -156,6 +156,7 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public String toString() {
+        if (isEmpty()) return "[]";
         StringBuilder ans = new StringBuilder("[");
         for (int i = front; i < front + size; i++) {
             ans.append(deque[i % CAPACITY]).append(", ");

@@ -107,6 +107,7 @@ public class ArrayQueue<E> implements Queue<E> {
      */
     @Override
     public String toString() {
+        if (isEmpty()) return "[]";
         StringBuilder ans = new StringBuilder("[");
         for (int i = front; i < front + size; i++) {
             ans.append(queue[i % CAPACITY]).append(", ");
@@ -114,6 +115,7 @@ public class ArrayQueue<E> implements Queue<E> {
         ans = new StringBuilder(ans.substring(0, ans.length() - 2));
         ans.append("]");
         return ans.toString();
+
     }
 
     public static void main(String[] args) {

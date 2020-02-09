@@ -286,6 +286,7 @@ public class CircularlyLinkedList<E> implements List<E> {
      */
     @Override
     public String toString() {
+        if (isEmpty()) return null;
         StringBuilder list = new StringBuilder("[");
         for (E e : this) {
             list.append(e.toString()).append(", ");

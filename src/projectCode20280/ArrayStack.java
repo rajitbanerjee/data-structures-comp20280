@@ -101,6 +101,7 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public String toString() {
+        if (isEmpty()) return null;
         StringBuilder ans = new StringBuilder("[");
         for (int i = top; i >= 0; i--) {
             ans.append(stack[i]).append(", ");
