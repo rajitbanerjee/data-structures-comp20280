@@ -8,6 +8,31 @@ package projectCode20280;
  */
 
 public class ArrayDeque<E> implements Deque<E> {
+    private static int CAPACITY = 1000; //default array capacity
+    private E[] deque;
+    private int front;
+    private int rear;
+    private int size;
+
+    /**
+     * Parameterised constructor, modifies the default Deque capacity.
+     *
+     * @param capacity the new capacity used to create a Deque
+     */
+    @SuppressWarnings({"unchecked"})
+    ArrayDeque(int capacity) {
+        front = rear = size = 0;
+        deque = (E[]) new Object[capacity];
+        ArrayDeque.CAPACITY = capacity;
+    }
+
+    /**
+     * Constructs a Queue with default capacity.
+     */
+    ArrayDeque() {
+        this(CAPACITY);
+    }
+
     /**
      * Returns the number of elements in the deque.
      *
@@ -15,7 +40,7 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     /**
@@ -25,7 +50,7 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     /**
@@ -35,7 +60,11 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public E first() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        } else {
+            return deque[front];
+        }
     }
 
     /**
@@ -45,7 +74,11 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public E last() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        } else {
+            return deque[rear];
+        }
     }
 
     /**
@@ -55,17 +88,23 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public void addFirst(E e) {
-
+        // TODO
     }
 
     /**
      * Inserts an element at the back of the deque.
      *
      * @param e the new element
+     * @throws IllegalStateException deque has reached capacity
      */
     @Override
-    public void addLast(E e) {
-
+    public void addLast(E e) throws IllegalStateException {
+        if (size == CAPACITY) {
+            throw new IllegalStateException("Deque is full!");
+        } else {
+            rear = (front + size++) % CAPACITY; //circular array wraps around
+            deque[rear] = e;
+        }
     }
 
     /**
@@ -75,7 +114,15 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public E removeFirst() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        } else {
+            E removed = deque[front];
+            deque[front] = null;
+            front = (front + 1) % CAPACITY; // front index wraps around
+            size--;
+            return removed;
+        }
     }
 
     /**
@@ -86,6 +133,11 @@ public class ArrayDeque<E> implements Deque<E> {
     @Override
     public E removeLast() {
         return null;
+        // TODO
+    }
+
+    public static void main(String[] args) {
+        // TODO
     }
 
 }
