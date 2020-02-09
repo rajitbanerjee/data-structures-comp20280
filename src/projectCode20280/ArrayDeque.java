@@ -1,13 +1,13 @@
 package projectCode20280;
 
 /**
- * Implementation of an array bases Deque.
+ * Implementation of an array based Deque.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
 
-public class ArrayDeque implements Deque<E> {
+public class ArrayDeque<E> implements Deque<E> {
     /**
      * Returns the number of elements in the deque.
      *
