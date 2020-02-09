@@ -77,6 +77,7 @@ public class LinkedStack<E> implements Stack<E> {
         stack.reverse();
     }
 
+
     public static void main(String[] args) {
         LinkedStack<Integer> stk = new LinkedStack<>();
         for (int i = 1; i <= 10; i++) {

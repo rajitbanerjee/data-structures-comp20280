@@ -8,6 +8,8 @@ package projectCode20280;
  */
 
 public class TwoStackQueue<E> implements Queue<E> {
+    LinkedStack<E> enqueueStack = new LinkedStack<>();
+    LinkedStack<E> dequeueStack = new LinkedStack<>();
 
     /**
      * Returns the number of elements in the queue.
@@ -16,7 +18,7 @@ public class TwoStackQueue<E> implements Queue<E> {
      */
     @Override
     public int size() {
-        return 0;
+        return enqueueStack.size() + dequeueStack.size();
     }
 
     /**
@@ -26,7 +28,7 @@ public class TwoStackQueue<E> implements Queue<E> {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return size() == 0;
     }
 
     /**
@@ -36,7 +38,16 @@ public class TwoStackQueue<E> implements Queue<E> {
      */
     @Override
     public void enqueue(E e) {
+        enqueueStack.push(e);
+    }
 
+    /**
+     * Move all elements from the enqueue stack to dequeue stack
+     */
+    private void moveElements() {
+        while (!enqueueStack.isEmpty()) {
+            dequeueStack.push(enqueueStack.pop());
+        }
     }
 
     /**
@@ -46,7 +57,14 @@ public class TwoStackQueue<E> implements Queue<E> {
      */
     @Override
     public E first() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        } else {
+            if (dequeueStack.isEmpty()) {
+                moveElements();
+            }
+            return dequeueStack.top();
+        }
     }
 
     /**
@@ -56,7 +74,14 @@ public class TwoStackQueue<E> implements Queue<E> {
      */
     @Override
     public E dequeue() {
-        return null;
+        if (isEmpty()) {
+            return null;
+        } else {
+            if (dequeueStack.isEmpty()) {
+                moveElements();
+            }
+            return dequeueStack.pop();
+        }
     }
 
     /**
@@ -66,13 +91,15 @@ public class TwoStackQueue<E> implements Queue<E> {
      */
     @Override
     public String toString() {
-        return null;
+        if (isEmpty()) return "[]";
+        return "Enqueue stack: " + enqueueStack.toString() +
+                "\nDequeue stack: " + dequeueStack.toString() + "\n";
     }
 
     // main method to run basic tests
     public static void main(String[] args) {
         TwoStackQueue<Integer> q = new TwoStackQueue<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 6; i++) {
             q.enqueue(i);
         }
         System.out.println(q);
@@ -80,11 +107,10 @@ public class TwoStackQueue<E> implements Queue<E> {
         System.out.println(q);
         q.dequeue();
         System.out.println(q);
-        q.enqueue(10);
+        q.enqueue(6);
         System.out.println(q);
-        q.enqueue(11);
-        System.out.println(q);
-        q.enqueue(12);
+        q.enqueue(7);
         System.out.println(q);
     }
+
 }
