@@ -88,7 +88,12 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public void addFirst(E e) {
-        // TODO
+        if (size == CAPACITY) {
+            throw new IllegalStateException("Deque is full!");
+        } else {
+            front = (rear - size++) % CAPACITY; //circular array wraps around
+            deque[front] = e;
+        }
     }
 
     /**
@@ -132,12 +137,30 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public E removeLast() {
-        return null;
-        // TODO
+        if (isEmpty()) {
+            return null;
+        } else {
+            E removed = deque[rear];
+            deque[rear] = null;
+            rear = (rear - 1) % CAPACITY; // front index wraps around
+            size--;
+            return removed;
+        }
     }
 
     public static void main(String[] args) {
-        // TODO
+        ArrayDeque<Integer> dq = new ArrayDeque<>();
+        dq.addFirst(0);
+        dq.addFirst(1);
+        dq.addFirst(2);
+        dq.addLast(-1);
+        System.out.println(dq);
+
+        dq.removeFirst();
+        System.out.println(dq);
+
+        dq.removeLast();
+        System.out.println(dq);
     }
 
 }
