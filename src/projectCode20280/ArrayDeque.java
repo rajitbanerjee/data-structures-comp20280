@@ -85,9 +85,10 @@ public class ArrayDeque<E> implements Deque<E> {
      * Inserts an element at the front of the deque.
      *
      * @param e the new element
+     * @throws IllegalStateException if deque has reached capacity
      */
     @Override
-    public void addFirst(E e) {
+    public void addFirst(E e) throws IllegalStateException {
         if (size == CAPACITY) {
             throw new IllegalStateException("Deque is full!");
         } else {
@@ -100,7 +101,7 @@ public class ArrayDeque<E> implements Deque<E> {
      * Inserts an element at the back of the deque.
      *
      * @param e the new element
-     * @throws IllegalStateException deque has reached capacity
+     * @throws IllegalStateException if deque has reached capacity
      */
     @Override
     public void addLast(E e) throws IllegalStateException {
