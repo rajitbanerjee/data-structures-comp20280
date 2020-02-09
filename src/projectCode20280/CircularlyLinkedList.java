@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
  * @author Aonghus Lawlor
  */
 
-public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
+public class CircularlyLinkedList<E> implements List<E> {
 
     // Constituent Node of CircularlyLinkedList
     private static class Node<E> {
