@@ -92,7 +92,7 @@ public class ArrayDeque<E> implements Deque<E> {
         if (size == CAPACITY) {
             throw new IllegalStateException("Deque is full!");
         } else {
-            front = (rear - size++) % CAPACITY; //circular array wraps around
+            front = Math.floorMod(rear - size++, CAPACITY); //circular array wraps around
             deque[front] = e;
         }
     }
@@ -143,7 +143,7 @@ public class ArrayDeque<E> implements Deque<E> {
         } else {
             E removed = deque[rear];
             deque[rear] = null;
-            rear = (rear - 1) % CAPACITY; // front index wraps around
+            rear = Math.floorMod(rear - 1, CAPACITY); // front index wraps around
             size--;
             return removed;
         }
