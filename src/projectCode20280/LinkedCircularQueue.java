@@ -67,6 +67,15 @@ public class LinkedCircularQueue<E> implements Queue<E> {
     }
 
     /**
+     * Rotate the first element to the back of the list.
+     * More efficient to use CircularlyLinkedList instead of the
+     * operation enqueue(dequeue()).
+     */
+    public void rotate() {
+        queue.rotate();
+    }
+
+    /**
      * Gets the String representation of the Queue
      *
      * @return the Queue as a String
@@ -88,6 +97,8 @@ public class LinkedCircularQueue<E> implements Queue<E> {
         q.dequeue();
         System.out.println(q);
         q.enqueue(10);
+        System.out.println(q);
+        q.rotate();
         System.out.println(q);
         q.enqueue(11);
         System.out.println(q);
