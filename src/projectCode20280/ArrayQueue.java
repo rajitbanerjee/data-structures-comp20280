@@ -13,6 +13,11 @@ public class ArrayQueue<E> implements Queue<E> {
     private int front;
     private int size;
 
+    /**
+     * Parameterised constructor, modifies the default Queue capacity.
+     *
+     * @param capacity the new capacity used to create a Queue
+     */
     @SuppressWarnings({"unchecked"})
     ArrayQueue(int capacity) {
         front = size = 0;
@@ -20,20 +25,32 @@ public class ArrayQueue<E> implements Queue<E> {
         ArrayQueue.CAPACITY = capacity;
     }
 
+    /**
+     * Constructs a Queue with default capacity.
+     */
     ArrayQueue() {
         this(CAPACITY);
     }
 
+    /**
+     * Returns the current number of elements in the Queue.
+     *
+     * @return number of elements in Queue
+     */
     @Override
     public int size() {
         return size;
     }
 
+    /**
+     * Checks if Queue is empty.
+     *
+     * @return {@code true} if Queue is empty, {@code false} otherwise
+     */
     @Override
     public boolean isEmpty() {
         return size == 0;
     }
-
 
     /**
      * Inserts an element to the rear of Queue.

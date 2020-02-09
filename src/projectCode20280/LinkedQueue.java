@@ -8,39 +8,71 @@ package projectCode20280;
  */
 
 public class LinkedQueue<E> implements Queue<E> {
+    // implement a LinkedQueue using DLL as base
     private DoublyLinkedList<E> queue = new DoublyLinkedList<>();
 
+    /**
+     * Finds number of Queue elements.
+     *
+     * @return current size of the Queue
+     */
     @Override
     public int size() {
         return queue.size();
     }
 
+    /**
+     * Check sif Queue is empty.
+     *
+     * @return {@code true} if Queue is empty, {@code false} otherwise
+     */
     @Override
     public boolean isEmpty() {
         return queue.isEmpty();
     }
 
+    /**
+     * Insert element to the rear of the Queue.
+     *
+     * @param e the element to be inserted
+     */
     @Override
     public void enqueue(E e) {
         queue.addLast(e);
     }
 
+    /**
+     * Peek (not remove) the front Queue element.
+     *
+     * @return element at the front of the Queue
+     */
     @Override
     public E first() {
         return queue.get(0);
     }
 
+    /**
+     * Remove an element from the front of the Queue.
+     *
+     * @return the removed front Queue element
+     */
     @Override
     public E dequeue() {
         return queue.removeFirst();
     }
 
-	@Override
-	public String toString() {
-		return queue.toString();
-	}
+    /**
+     * Gets the String representation of the Queue
+     *
+     * @return the Queue as a String
+     */
+    @Override
+    public String toString() {
+        return queue.toString();
+    }
 
-	public static void main(String[] args) {
+    // main method to run basic tests
+    public static void main(String[] args) {
         LinkedQueue<Integer> q = new LinkedQueue<>();
         for (int i = 0; i < 10; i++) {
             q.enqueue(i);
