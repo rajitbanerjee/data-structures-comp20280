@@ -13,39 +13,86 @@ package projectCode20280;
 
 public class LinkedCircularQueue<E> implements Queue<E> {
 
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
+    // implement a LinkedQueue using DLL as base
+    private CircularlyLinkedList<E> queue = new CircularlyLinkedList<>();
 
-    }
-
+    /**
+     * Finds number of Queue elements.
+     *
+     * @return current size of the Queue
+     */
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return queue.size();
     }
 
+    /**
+     * Checks if Queue is empty.
+     *
+     * @return {@code true} if Queue is empty, {@code false} otherwise
+     */
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return false;
+        return queue.isEmpty();
     }
 
+    /**
+     * Insert element to the rear of the Queue.
+     *
+     * @param e the element to be inserted
+     */
     @Override
     public void enqueue(E e) {
-        // TODO Auto-generated method stub
-
+        queue.addLast(e);
     }
 
+    /**
+     * Peek (not remove) the front Queue element.
+     *
+     * @return element at the front of the Queue
+     */
     @Override
     public E first() {
-        // TODO Auto-generated method stub
-        return null;
+        return queue.get(0);
     }
 
+    /**
+     * Remove an element from the front of the Queue.
+     *
+     * @return the removed front Queue element
+     */
     @Override
     public E dequeue() {
-        // TODO Auto-generated method stub
-        return null;
+        return queue.removeFirst();
+    }
+
+    /**
+     * Gets the String representation of the Queue
+     *
+     * @return the Queue as a String
+     */
+    @Override
+    public String toString() {
+        return queue.toString();
+    }
+
+    // main method to run basic tests
+    public static void main(String[] args) {
+        LinkedCircularQueue<Integer> q = new LinkedCircularQueue<>();
+        for (int i = 0; i < 10; i++) {
+            q.enqueue(i);
+        }
+        System.out.println(q);
+        q.dequeue();
+        System.out.println(q);
+        q.dequeue();
+        System.out.println(q);
+        q.enqueue(10);
+        System.out.println(q);
+        q.enqueue(11);
+        System.out.println(q);
+        q.enqueue(12);
+        System.out.println(q);
     }
 
 }

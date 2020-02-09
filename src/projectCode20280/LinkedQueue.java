@@ -22,7 +22,7 @@ public class LinkedQueue<E> implements Queue<E> {
     }
 
     /**
-     * Check sif Queue is empty.
+     * Checks if Queue is empty.
      *
      * @return {@code true} if Queue is empty, {@code false} otherwise
      */
