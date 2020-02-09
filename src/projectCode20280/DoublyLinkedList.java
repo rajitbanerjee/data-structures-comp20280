@@ -131,6 +131,34 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
+     * Gets the first element of the list.
+     *
+     * @return the element at the first Node of the list
+     * @throws NoSuchElementException if list is empty
+     */
+    public E first() throws NoSuchElementException {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        } else {
+            return header.getNext().getElement();
+        }
+    }
+
+    /**
+     * Gets the last element of the list.
+     *
+     * @return the element at the last Node of the list
+     * @throws NoSuchElementException if list is empty
+     */
+    public E last() throws NoSuchElementException {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        } else {
+            return trailer.getPrev().getElement();
+        }
+    }
+
+    /**
      * Insert a Node at a given index
      *
      * @param i index at which Node is to be inserted
