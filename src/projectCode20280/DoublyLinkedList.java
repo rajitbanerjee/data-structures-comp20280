@@ -264,31 +264,39 @@ public class DoublyLinkedList<E> implements List<E> {
     /**
      * Deletes the first Node of the list.
      *
-     * @return the removed first Node in the list
+     * @return the removed first Node in the list, null if empty
      */
     @Override
     public E removeFirst() {
-        E removed = header.getNext().getElement();
-        Node<E> newFirst = header.getNext().getNext();
-        header.setNext(newFirst);
-        newFirst.setPrev(header);
-        size--;
-        return removed;
+        if (isEmpty()) {
+            return null;
+        } else {
+            E removed = header.getNext().getElement();
+            Node<E> newFirst = header.getNext().getNext();
+            header.setNext(newFirst);
+            newFirst.setPrev(header);
+            size--;
+            return removed;
+        }
     }
 
     /**
      * Deletes the last Node of the list.
      *
-     * @return the removed last Node in the list
+     * @return the removed last Node in the list, null if empty
      */
     @Override
     public E removeLast() {
-        E removed = trailer.getPrev().getElement();
-        Node<E> newLast = trailer.getPrev().getPrev();
-        trailer.setPrev(newLast);
-        newLast.setNext(trailer);
-        size--;
-        return removed;
+        if (isEmpty()) {
+            return null;
+        } else {
+            E removed = trailer.getPrev().getElement();
+            Node<E> newLast = trailer.getPrev().getPrev();
+            trailer.setPrev(newLast);
+            newLast.setNext(trailer);
+            size--;
+            return removed;
+        }
     }
 
     /**
