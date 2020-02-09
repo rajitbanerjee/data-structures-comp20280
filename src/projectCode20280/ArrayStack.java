@@ -90,7 +90,7 @@ public class ArrayStack<E> implements Stack<E> {
         if (isEmpty()) {
             return null;
         } else {
-            return stack[top--] = null;
+            return stack[top--];
         }
     }
 
