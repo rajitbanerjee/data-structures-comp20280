@@ -149,6 +149,22 @@ public class ArrayDeque<E> implements Deque<E> {
         }
     }
 
+    /**
+     * Gets String representation of Deque.
+     *
+     * @return String representation of Deque
+     */
+    @Override
+    public String toString() {
+        StringBuilder ans = new StringBuilder("[");
+        for (int i = front; i < front + size; i++) {
+            ans.append(deque[i % CAPACITY]).append(", ");
+        }
+        ans = new StringBuilder(ans.substring(0, ans.length() - 2));
+        ans.append("]");
+        return ans.toString();
+    }
+
     public static void main(String[] args) {
         ArrayDeque<Integer> dq = new ArrayDeque<>();
         dq.addFirst(0);
