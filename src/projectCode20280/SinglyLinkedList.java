@@ -49,7 +49,7 @@ public class SinglyLinkedList<E> implements List<E> {
         }
     }
 
-    private Node<E> head = null;// reference to first Node of the list
+    private Node<E> head = null; // reference to first Node of the list
     private int size = 0; // keeps track of the size of the list
 
     /**
@@ -68,6 +68,33 @@ public class SinglyLinkedList<E> implements List<E> {
     @Override
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    /**
+     * Returns a new ListIterator object.
+     *
+     * @return instance of ListIterator class
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return new ListIterator();
+    }
+
+    // Inner class whose instance is returned by the iterator() method
+    private class ListIterator implements Iterator<E> {
+        Node<E> temp = head;
+
+        @Override
+        public boolean hasNext() {
+            return temp != null;
+        }
+
+        @Override
+        public E next() {
+            E ans = temp.getElement();
+            temp = temp.getNext();
+            return ans;
+        }
     }
 
     /**
@@ -92,6 +119,41 @@ public class SinglyLinkedList<E> implements List<E> {
             index++;
         }
         return null;
+    }
+
+    /**
+     * Adds an element to the beginning of the list.
+     *
+     * @param e the element to be added to the list
+     */
+    @Override
+    public void addFirst(E e) {
+        head = new Node<>(e, head);
+        size++;
+    }
+
+    /**
+     * Adds an element to the end of the list.
+     *
+     * @param e the element to the added to the list
+     */
+    @Override
+    public void addLast(E e) {
+        Node<E> newest = new Node<>(e, null);
+        Node<E> temp = head; // temporary Node for list traversal
+        if (isEmpty()) {
+            head = new Node<>(e, head);
+        } else {
+            while (temp != null) {
+                if (temp.getNext() == null) {
+                    // make the current last Node point to the newly added last Node
+                    temp.setNext(newest);
+                    break;
+                }
+                temp = temp.getNext();
+            }
+        }
+        size++;
     }
 
     /**
@@ -140,7 +202,7 @@ public class SinglyLinkedList<E> implements List<E> {
             // cannot remove element if list is empty or specified index is out of bounds
             throw new NoSuchElementException();
         } else {
-            Node<E> temp = head; //temporary Node for list traversal
+            Node<E> temp = head; // temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
                     removed = temp.getNext().getElement(); // element to be removed
@@ -151,33 +213,6 @@ public class SinglyLinkedList<E> implements List<E> {
             }
         }
         return removed;
-    }
-
-    /**
-     * Returns a new ListIterator object.
-     *
-     * @return instance of ListIterator class
-     */
-    @Override
-    public Iterator<E> iterator() {
-        return new ListIterator();
-    }
-
-    // Inner class whose instance is returned by the iterator() method
-    private class ListIterator implements Iterator<E> {
-        Node<E> temp = head;
-
-        @Override
-        public boolean hasNext() {
-            return temp != null;
-        }
-
-        @Override
-        public E next() {
-            E ans = temp.getElement();
-            temp = temp.getNext();
-            return ans;
-        }
     }
 
     /**
@@ -201,7 +236,7 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * Remove the last element from the list
+     * Remove the last element from the list.
      *
      * @return the removed last element
      * @throws NoSuchElementException if list is empty
@@ -224,41 +259,6 @@ public class SinglyLinkedList<E> implements List<E> {
             }
         }
         return removed;
-    }
-
-    /**
-     * Adds an element to the beginning of the list.
-     *
-     * @param e the element to be added to the list
-     */
-    @Override
-    public void addFirst(E e) {
-        head = new Node<>(e, head);
-        size++;
-    }
-
-    /**
-     * Adds an element to the end of the list.
-     *
-     * @param e the element to the added to the list
-     */
-    @Override
-    public void addLast(E e) {
-        Node<E> newest = new Node<>(e, null);
-        Node<E> temp = head; // temporary Node for list traversal
-        if (isEmpty()) {
-            head = new Node<>(e, head);
-        } else {
-            while (temp != null) {
-                if (temp.getNext() == null) {
-                    // make the current last Node point to the newly added last Node
-                    temp.setNext(newest);
-                    break;
-                }
-                temp = temp.getNext();
-            }
-        }
-        size++;
     }
 
     /**
