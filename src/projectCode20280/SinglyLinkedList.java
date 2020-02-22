@@ -116,12 +116,10 @@ public class SinglyLinkedList<E> implements List<E> {
     public void add(int i, E e) throws RuntimeException {
         if (i > size) {
             throw new RuntimeException("Specified index is greater than List size!");
-        } else if (i == size) {
-            // add element to the end of the list
-            addLast(e);
-        } else if (isEmpty()) {
-            // if list is empty insert new Node at the first position
+        } else if (i == 0) {
             addFirst(e);
+        } else if (i == size) {
+            addLast(e);
         } else {
             Node<E> newest = new Node<>(e, null); // create Node to be inserted
             Node<E> temp = head; // temporary Node for list traversal
@@ -201,6 +199,8 @@ public class SinglyLinkedList<E> implements List<E> {
         if (isEmpty() || i >= size) {
             // cannot remove element if list is empty or specified index is out of bounds
             throw new NoSuchElementException();
+        } else if (i == 0) {
+            removeFirst();
         } else {
             Node<E> temp = head; // temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
