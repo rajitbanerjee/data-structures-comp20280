@@ -1,0 +1,96 @@
+package projectCode20280;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class ArrayDequeTest {
+    private Deque<String> deque;
+
+    @BeforeEach
+    void setUp() {
+        deque = new ArrayDeque<>();
+    }
+
+    @Test
+    void testSizeAndIsEmpty() {
+        assertEquals(0, deque.size());
+        assertTrue(deque.isEmpty());
+    }
+
+    @Test
+    void testAddFirst() {
+        deque.addFirst("A");
+        assertEquals("[A]", deque.toString());
+        deque.addFirst("B");
+        assertEquals("[B, A]", deque.toString());
+    }
+
+    @Test
+    void testAddLast() {
+        deque.addLast("A");
+        assertEquals("[A]", deque.toString());
+        deque.addLast("B");
+        assertEquals("[A, B]", deque.toString());
+    }
+
+    @Test
+    void testFirst() {
+        assertNull(deque.first());
+        deque.addFirst("C");
+        deque.addFirst("B");
+        deque.addFirst("A");
+        assertEquals("A", deque.first());
+        deque.addFirst("F");
+        assertEquals("F", deque.first());
+    }
+
+    @Test
+    void testLast() {
+        assertNull(deque.last());
+        deque.addFirst("C");
+        deque.addFirst("B");
+        deque.addFirst("A");
+        assertEquals("C", deque.last());
+        deque.addLast("F");
+        assertEquals("F", deque.last());
+    }
+
+    @Test
+    void testRemoveFirst() {
+        try {
+            deque.removeFirst();
+            fail("Deque is empty!");
+        } catch (Exception ignored) {
+            // test passed
+        }
+        deque.addFirst("A");
+        deque.addFirst("B");
+        deque.removeFirst();
+        assertEquals("[A]", deque.toString());
+        deque.removeFirst();
+        assertEquals(0, deque.size());
+        assertEquals("[]", deque.toString());
+    }
+
+    @Test
+    void testRemoveLast() {
+        try {
+            deque.removeLast();
+            fail("Deque is empty!");
+        } catch (Exception ignored) {
+            // test passed
+        }
+        deque.addFirst("A");
+        deque.addFirst("B");
+        deque.addFirst("C");
+        deque.removeLast();
+        assertEquals("[C, B]", deque.toString());
+        deque.removeLast();
+        assertEquals("[C]", deque.toString());
+        deque.removeLast();
+        assertEquals("[]", deque.toString());
+    }
+
+}
