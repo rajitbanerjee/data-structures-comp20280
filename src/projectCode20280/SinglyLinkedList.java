@@ -71,57 +71,6 @@ public class SinglyLinkedList<E> implements List<E> {
     }
 
     /**
-     * Returns a new ListIterator object.
-     *
-     * @return instance of ListIterator class
-     */
-    @Override
-    public Iterator<E> iterator() {
-        return new ListIterator();
-    }
-
-    // Inner class whose instance is returned by the iterator() method
-    private class ListIterator implements Iterator<E> {
-        Node<E> temp = head;
-
-        @Override
-        public boolean hasNext() {
-            return temp != null;
-        }
-
-        @Override
-        public E next() {
-            E ans = temp.getElement();
-            temp = temp.getNext();
-            return ans;
-        }
-    }
-
-    /**
-     * Returns the element at index i of the List.
-     *
-     * @param i the index of the list which contains required element
-     * @return the element at index i
-     * @throws NoSuchElementException if list is empty
-     */
-    @Override
-    public E get(int i) throws NoSuchElementException {
-        int index = 0; // temporary index used for list traversal
-        Iterator<E> itr = iterator();
-        if (isEmpty()) {
-            throw new NoSuchElementException();
-        }
-        while (itr.hasNext()) {
-            if (index == i) {
-                return itr.next();
-            }
-            itr.next();
-            index++;
-        }
-        return null;
-    }
-
-    /**
      * Adds an element to the beginning of the list.
      *
      * @param e the element to be added to the list
@@ -186,6 +135,57 @@ public class SinglyLinkedList<E> implements List<E> {
             }
             size++;
         }
+    }
+
+    /**
+     * Returns a new ListIterator object.
+     *
+     * @return instance of ListIterator class
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return new ListIterator();
+    }
+
+    // Inner class whose instance is returned by the iterator() method
+    private class ListIterator implements Iterator<E> {
+        Node<E> temp = head;
+
+        @Override
+        public boolean hasNext() {
+            return temp != null;
+        }
+
+        @Override
+        public E next() {
+            E ans = temp.getElement();
+            temp = temp.getNext();
+            return ans;
+        }
+    }
+
+    /**
+     * Returns the element at index i of the List.
+     *
+     * @param i the index of the list which contains required element
+     * @return the element at index i
+     * @throws NoSuchElementException if list is empty
+     */
+    @Override
+    public E get(int i) throws NoSuchElementException {
+        int index = 0; // temporary index used for list traversal
+        Iterator<E> itr = iterator();
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+        while (itr.hasNext()) {
+            if (index == i) {
+                return itr.next();
+            }
+            itr.next();
+            index++;
+        }
+        return null;
     }
 
     /**
