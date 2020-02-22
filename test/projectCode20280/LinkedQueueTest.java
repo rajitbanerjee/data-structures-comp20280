@@ -29,6 +29,7 @@ class LinkedQueueTest {
 
     @Test
     void testFirst() {
+        assertNull(queue.first());
         queue.enqueue("C");
         queue.enqueue("B");
         queue.enqueue("A");
@@ -39,6 +40,12 @@ class LinkedQueueTest {
 
     @Test
     void testDequeue() {
+        try {
+            queue.dequeue();
+            fail("Queue is empty!");
+        } catch (Exception ignored) {
+            // test passed
+        }
         queue.enqueue("C");
         queue.enqueue("B");
         queue.enqueue("A");
