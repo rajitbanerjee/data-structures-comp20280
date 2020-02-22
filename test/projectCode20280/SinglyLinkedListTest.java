@@ -57,14 +57,7 @@ class SinglyLinkedListTest {
 
     @Test
     void testGetAtIndex() {
-        try {
-            list.get(2);
-            list.addFirst("A");
-            list.get(1);
-            fail("List index out of bounds!");
-        } catch (Exception e) {
-            // test passed
-        }
+        assertNull(list.get(2));
         list.addLast("A");
         list.addFirst("B");
         list.addLast("C");

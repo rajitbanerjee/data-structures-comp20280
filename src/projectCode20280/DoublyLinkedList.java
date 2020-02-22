@@ -184,15 +184,14 @@ public class DoublyLinkedList<E> implements List<E> {
      *
      * @param i the index of the list which contains required element
      * @return the element at index i
-     * @throws NoSuchElementException if list is empty
      */
     @Override
-    public E get(int i) throws NoSuchElementException {
+    public E get(int i) {
         E ans = null;
         int index = 0; // temporary index used for list traversal
         Iterator<E> itr = iterator();
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            return null;
         }
         while (itr.hasNext()) {
             if (index == i) {
