@@ -1,5 +1,7 @@
 package projectCode20280;
 
+import java.util.NoSuchElementException;
+
 /**
  * Implementation of an array based Deque.
  *
@@ -117,11 +119,12 @@ public class ArrayDeque<E> implements Deque<E> {
      * Removes and returns the first element of the deque.
      *
      * @return element removed (or null if empty)
+     * @throws NoSuchElementException if deque is empty
      */
     @Override
-    public E removeFirst() {
+    public E removeFirst() throws NoSuchElementException{
         if (isEmpty()) {
-            return null;
+            throw new NoSuchElementException();
         } else {
             E removed = deque[front];
             deque[front] = null;
@@ -134,12 +137,13 @@ public class ArrayDeque<E> implements Deque<E> {
     /**
      * Removes and returns the last element of the deque.
      *
-     * @return element removed (or null if empty)
+     * @return element removed
+     * @throws NoSuchElementException if deque is empty
      */
     @Override
-    public E removeLast() {
+    public E removeLast() throws NoSuchElementException {
         if (isEmpty()) {
-            return null;
+            throw new NoSuchElementException();
         } else {
             E removed = deque[rear];
             deque[rear] = null;
