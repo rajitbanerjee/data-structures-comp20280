@@ -55,12 +55,12 @@ public class ArrayStack<E> implements Stack<E> {
      * Insert an element at the top of Stack.
      *
      * @param e the element to be inserted
-     * @throws StackOverflowError if push operation is tried on a full Stack
+     * @throws IllegalStateException if push operation is tried on a full Stack
      */
     @Override
-    public void push(E e) throws StackOverflowError {
+    public void push(E e) throws IllegalStateException {
         if (size() == CAPACITY) {
-            throw new StackOverflowError("Stack is full!");
+            throw new IllegalStateException("Stack is full!");
         } else {
             stack[++top] = e;
         }
