@@ -107,27 +107,50 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * Returns the element at index i of the List.
+     * Insert a Node at the front of the list.
      *
-     * @param i the index of the list which contains required element
-     * @return the element at index i
-     * @throws NoSuchElementException if list is empty
+     * @param e Node element to be inserted
      */
     @Override
-    public E get(int i) throws NoSuchElementException {
-        int index = 0; // temporary index used for list traversal
-        Iterator<E> itr = iterator();
-        if (isEmpty()) {
-            throw new NoSuchElementException();
-        }
-        while (itr.hasNext()) {
-            if (index == i) {
-                return itr.next();
+    public void addFirst(E e) {
+        addBetween(e, header, header.getNext());
+    }
+
+    /**
+     * Insert a Node at the end of the list.
+     *
+     * @param e Node element to be inserted
+     */
+    @Override
+    public void addLast(E e) {
+        addBetween(e, trailer.getPrev(), trailer);
+    }
+
+    /**
+     * Insert a Node at a given index
+     *
+     * @param i index at which Node is to be inserted
+     * @param e Node element to be inserted
+     * @throws RuntimeException if specified list index is out of bounds
+     */
+    @Override
+    public void add(int i, E e) throws RuntimeException {
+        if (i > size) {
+            throw new RuntimeException("Specified index is greater than List size!");
+        } else if (i == 0) {
+            addFirst(e);
+        } else if (i == size) {
+            addLast(e);
+        } else {
+            Node<E> temp = header.getNext(); // temporary Node for list traversal
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
+                if (index == i) {
+                    // insert Node when index is found
+                    addBetween(e, temp.getPrev(), temp);
+                    break;
+                }
             }
-            itr.next();
-            index++;
         }
-        return null;
     }
 
     /**
@@ -157,58 +180,27 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
-     * Insert a Node at a given index
+     * Returns the element at index i of the List.
      *
-     * @param i index at which Node is to be inserted
-     * @param e Node element to be inserted
-     * @throws RuntimeException if specified list index is out of bounds
+     * @param i the index of the list which contains required element
+     * @return the element at index i
+     * @throws NoSuchElementException if list is empty
      */
     @Override
-    public void add(int i, E e) throws RuntimeException {
-        if (i > size) {
-            throw new RuntimeException("Specified index is greater than List size!");
-        } else if (i == size) {
-            addLast(e);
-        } else if (isEmpty()) {
-            addFirst(e);
-        } else {
-            Node<E> temp = header.getNext(); // temporary Node for list traversal
-            for (int index = 0; index < size; index++, temp = temp.getNext()) {
-                if (index == i) {
-                    // insert Node when index is found
-                    addBetween(e, temp.getPrev(), temp);
-                    break;
-                }
-            }
-        }
-        size++;
-    }
-
-    /**
-     * Remove the element at index i of the list.
-     *
-     * @param i index from which the element needs to be removed
-     * @return the element that has been removed, null
-     * @throws NoSuchElementException if list is empty or specified index is out of bounds
-     */
-    @Override
-    public E remove(int i) throws NoSuchElementException {
-        E removed = null; // element to be removed
-        if (isEmpty() || i >= size) {
-            // cannot remove element if list is empty or specified index is out of bounds
+    public E get(int i) throws NoSuchElementException {
+        int index = 0; // temporary index used for list traversal
+        Iterator<E> itr = iterator();
+        if (isEmpty()) {
             throw new NoSuchElementException();
-        } else {
-            Node<E> temp = header.getNext(); //temporary Node for list traversal
-            for (int index = 0; index < size; index++, temp = temp.getNext()) {
-                if (index == i - 1) {
-                    removed = temp.getNext().getElement(); // element to be removed
-                    temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
-                    size--;
-                    break;
-                }
-            }
         }
-        return removed;
+        while (itr.hasNext()) {
+            if (index == i) {
+                return itr.next();
+            }
+            itr.next();
+            index++;
+        }
+        return null;
     }
 
     /**
@@ -264,61 +256,76 @@ public class DoublyLinkedList<E> implements List<E> {
     /**
      * Deletes the first Node of the list.
      *
-     * @return the removed first Node in the list, null if empty
+     * @return the removed first Node in the list
+     * @throws NoSuchElementException if list is empty
      */
     @Override
-    public E removeFirst() {
+    public E removeFirst() throws NoSuchElementException {
+        E removed;
         if (isEmpty()) {
-            return null;
+            throw new NoSuchElementException();
         } else {
-            E removed = header.getNext().getElement();
+            removed = header.getNext().getElement();
             Node<E> newFirst = header.getNext().getNext();
             header.setNext(newFirst);
             newFirst.setPrev(header);
             size--;
-            return removed;
         }
+        return removed;
     }
 
     /**
      * Deletes the last Node of the list.
      *
      * @return the removed last Node in the list, null if empty
+     * @throws NoSuchElementException if list is empty
      */
     @Override
-    public E removeLast() {
+    public E removeLast() throws NoSuchElementException {
+        E removed = null;
         if (isEmpty()) {
-            return null;
+            throw new NoSuchElementException();
+        } else if (size == 1) {
+            removeFirst();
         } else {
-            E removed = trailer.getPrev().getElement();
+            removed = trailer.getPrev().getElement();
             Node<E> newLast = trailer.getPrev().getPrev();
             trailer.setPrev(newLast);
             newLast.setNext(trailer);
             size--;
-            return removed;
         }
+        return removed;
     }
 
     /**
-     * Insert a Node at the front of the list.
+     * Remove the element at index i of the list.
      *
-     * @param e Node element to be inserted
+     * @param i index from which the element needs to be removed
+     * @return the element that has been removed, null
+     * @throws NoSuchElementException if list is empty or specified index is out of bounds
      */
     @Override
-    public void addFirst(E e) {
-        addBetween(e, header, header.getNext());
-        size++;
-    }
-
-    /**
-     * Insert a Node at the end of the list.
-     *
-     * @param e Node element to be inserted
-     */
-    @Override
-    public void addLast(E e) {
-        addBetween(e, trailer.getPrev(), trailer);
-        size++;
+    public E remove(int i) throws NoSuchElementException {
+        E removed = null; // element to be removed
+        if (isEmpty() || i >= size) {
+            // cannot remove element if list is empty or specified index is out of bounds
+            throw new NoSuchElementException();
+        } else if (i == 0) {
+            removeFirst();
+        } else if (i == size - 1) {
+            removeLast();
+        } else {
+            Node<E> temp = header.getNext(); //temporary Node for list traversal
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
+                if (index == i - 1) {
+                    removed = temp.getNext().getElement(); // element to be removed
+                    temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
+                    size--;
+                    break;
+                }
+            }
+        }
+        return removed;
     }
 
     /**
@@ -328,7 +335,7 @@ public class DoublyLinkedList<E> implements List<E> {
      */
     @Override
     public String toString() {
-        if (isEmpty()) return null;
+        if (isEmpty()) return "[]";
         StringBuilder list = new StringBuilder("[");
         for (E e : this) {
             list.append(e.toString()).append(", ");
