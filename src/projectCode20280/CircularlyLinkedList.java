@@ -71,27 +71,35 @@ public class CircularlyLinkedList<E> implements List<E> {
     }
 
     /**
-     * Returns the element at index i of the List.
+     * Insert a Node to the beginning of the list.
      *
-     * @param i the index of the list which contains required element
-     * @return the element at index i
-     * @throws NoSuchElementException if list is empty
+     * @param e Node element to be inserted
      */
     @Override
-    public E get(int i) throws NoSuchElementException {
-        int index = 0; // temporary index used for list traversal
-        Iterator<E> itr = iterator();
+    public void addFirst(E e) {
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            // create tail Node and link to itself
+            tail = new Node<>(e, null);
+            tail.setNext(tail);
+        } else {
+            // create new Node to follow the tail
+            Node<E> newest = new Node<>(e, tail.getNext());
+            tail.setNext(newest);
         }
-        while (itr.hasNext()) {
-            if (index == i) {
-                return itr.next();
-            }
-            itr.next();
-            index++;
-        }
-        return null;
+        size++;
+    }
+
+    /**
+     * Insert a Node to the end of the list.
+     *
+     * @param e Node element to be inserted
+     */
+    @Override
+    public void addLast(E e) {
+        // add element to the front of the list
+        addFirst(e);
+        // change the tail to be the newly added Node in the front
+        rotate();
     }
 
     /**
@@ -105,12 +113,10 @@ public class CircularlyLinkedList<E> implements List<E> {
     public void add(int i, E e) throws RuntimeException {
         if (i > size) {
             throw new RuntimeException("Specified index is greater than List size!");
-        } else if (i == size) {
-            // add element to the end of the list
-            addLast(e);
-        } else if (isEmpty()) {
-            // if list is empty, insert new Node at the first position
+        } else if (i == 0) {
             addFirst(e);
+        } else if (i == size) {
+            addLast(e);
         } else {
             Node<E> newest = new Node<>(e, null); // create Node to be inserted
             Node<E> temp = tail.getNext(); // temporary Node for list traversal
@@ -127,30 +133,57 @@ public class CircularlyLinkedList<E> implements List<E> {
     }
 
     /**
-     * Remove the element at index i of the list.
+     * Returns a new ListIterator object.
      *
-     * @param i index from which the element needs to be removed
-     * @return the element that has been removed, null
-     * @throws NoSuchElementException if list is empty or specified index is out of bounds
+     * @return instance of ListIterator class
      */
     @Override
-    public E remove(int i) throws NoSuchElementException {
-        E removed = null; // element to be removed
-        if (isEmpty() || i >= size) {
-            // cannot remove element if list is empty or specified index is out of bounds
-            throw new NoSuchElementException();
-        } else {
-            Node<E> temp = tail.getNext(); //temporary Node for list traversal
-            for (int index = 0; index < size; index++, temp = temp.getNext()) {
-                if (index == i - 1) {
-                    removed = temp.getNext().getElement(); // element to be removed
-                    temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
-                    size--;
-                    break;
-                }
-            }
+    public Iterator<E> iterator() {
+        return new ListIterator();
+    }
+
+    // Inner class whose instance is returned by the iterator() method
+    private class ListIterator implements Iterator<E> {
+        Node<E> temp = tail;
+        int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return index != size; // checks if one loop of the CLL is complete
         }
-        return removed;
+
+        @Override
+        public E next() {
+            E ans = temp.getNext().getElement();
+            temp = temp.getNext();
+            index++;
+            return ans;
+        }
+    }
+
+    /**
+     * Returns the element at index i of the List.
+     *
+     * @param i the index of the list which contains required element
+     * @return the element at index i
+     */
+    @Override
+    public E get(int i) {
+        E ans = null;
+        int index = 0; // temporary index used for list traversal
+        Iterator<E> itr = iterator();
+        if (isEmpty()) {
+            return null;
+        }
+        while (itr.hasNext()) {
+            if (index == i) {
+                ans = itr.next();
+                break;
+            }
+            itr.next();
+            index++;
+        }
+        return ans;
     }
 
     /**
@@ -210,64 +243,32 @@ public class CircularlyLinkedList<E> implements List<E> {
     }
 
     /**
-     * Returns a new ListIterator object.
+     * Remove the element at index i of the list.
      *
-     * @return instance of ListIterator class
+     * @param i index from which the element needs to be removed
+     * @return the element that has been removed, null
+     * @throws NoSuchElementException if list is empty or specified index is out of bounds
      */
     @Override
-    public Iterator<E> iterator() {
-        return new ListIterator();
-    }
-
-    // Inner class whose instance is returned by the iterator() method
-    private class ListIterator implements Iterator<E> {
-        Node<E> temp = tail.getNext();
-        int index = 0;
-
-        @Override
-        public boolean hasNext() {
-            return index != size; // checks if one loop of the CLL is complete
-        }
-
-        @Override
-        public E next() {
-            E ans = temp.getElement();
-            temp = temp.getNext();
-            index++;
-            return ans;
-        }
-    }
-
-    /**
-     * Insert a Node to the beginning of the list.
-     *
-     * @param e Node element to be inserted
-     */
-    @Override
-    public void addFirst(E e) {
-        if (isEmpty()) {
-            // create tail Node and link to itself
-            tail = new Node<>(e, null);
-            tail.setNext(tail);
+    public E remove(int i) throws NoSuchElementException {
+        E removed = null; // element to be removed
+        if (isEmpty() || i >= size) {
+            // cannot remove element if list is empty or specified index is out of bounds
+            throw new NoSuchElementException();
+        } else if (i == 0) {
+            removeFirst();
         } else {
-            // create new Node to follow the tail
-            Node<E> newest = new Node<>(e, tail.getNext());
-            tail.setNext(newest);
+            Node<E> temp = tail.getNext(); //temporary Node for list traversal
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
+                if (index == i - 1) {
+                    removed = temp.getNext().getElement(); // element to be removed
+                    temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
+                    size--;
+                    break;
+                }
+            }
         }
-        size++;
-    }
-
-    /**
-     * Insert a Node to the end of the list.
-     *
-     * @param e Node element to be inserted
-     */
-    @Override
-    public void addLast(E e) {
-        // add element to the front of the list
-        addFirst(e);
-        // change the tail to be the newly added Node in the front
-        rotate();
+        return removed;
     }
 
     /**
@@ -286,7 +287,7 @@ public class CircularlyLinkedList<E> implements List<E> {
      */
     @Override
     public String toString() {
-        if (isEmpty()) return null;
+        if (isEmpty()) return "[]";
         StringBuilder list = new StringBuilder("[");
         for (E e : this) {
             list.append(e.toString()).append(", ");
