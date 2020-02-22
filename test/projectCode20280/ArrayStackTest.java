@@ -54,7 +54,12 @@ class ArrayStackTest {
 
     @Test
     void testPop() {
-        assertNull(stack.pop());
+        try {
+            stack.pop();
+            fail("Stack is empty!");
+        } catch (Exception ignored) {
+            // test passed
+        }
         stack.push("A");
         stack.pop();
         assertEquals("[]", stack.toString());

@@ -1,5 +1,7 @@
 package projectCode20280;
 
+import java.util.NoSuchElementException;
+
 /**
  * Implementation of an array based Stack.
  *
@@ -84,11 +86,12 @@ public class ArrayStack<E> implements Stack<E> {
      * Removes the top element of Stack.
      *
      * @return the removed top element of Stack
+     * @throws NoSuchElementException if Stack is empty
      */
     @Override
-    public E pop() {
+    public E pop() throws NoSuchElementException {
         if (isEmpty()) {
-            return null;
+            throw new NoSuchElementException();
         } else {
             return stack[top--];
         }
