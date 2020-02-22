@@ -171,6 +171,7 @@ public class SinglyLinkedList<E> implements List<E> {
      */
     @Override
     public E get(int i) throws NoSuchElementException {
+        E ans = null;
         int index = 0; // temporary index used for list traversal
         Iterator<E> itr = iterator();
         if (isEmpty()) {
@@ -178,12 +179,13 @@ public class SinglyLinkedList<E> implements List<E> {
         }
         while (itr.hasNext()) {
             if (index == i) {
-                return itr.next();
+                ans = itr.next();
+                break;
             }
             itr.next();
             index++;
         }
-        return null;
+        return ans;
     }
 
     /**

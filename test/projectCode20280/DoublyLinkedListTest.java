@@ -1,3 +1,4 @@
+
 package projectCode20280;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -5,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SinglyLinkedListTest {
-    private SinglyLinkedList<String> list;
+class DoublyLinkedListTest {
+    private DoublyLinkedList<String> list;
 
     @BeforeEach
     void setUp() {
-        list = new SinglyLinkedList<>();
+        list = new DoublyLinkedList<>();
     }
 
     @Test
@@ -55,6 +56,26 @@ class SinglyLinkedListTest {
         }
     }
 
+    @Test void testFirst() {
+        assertNull(list.first());
+        list.addFirst("C");
+        list.addFirst("B");
+        list.addFirst("A");
+        assertEquals("A", list.first());
+        list.addFirst("F");
+        assertEquals("F", list.first());
+    }
+
+    @Test void testLast() {
+        assertNull(list.last());
+        list.addFirst("C");
+        list.addFirst("B");
+        list.addFirst("A");
+        assertEquals("C", list.last());
+        list.addLast("F");
+        assertEquals("F", list.last());
+    }
+
     @Test
     void testGetAtIndex() {
         try {
@@ -86,6 +107,7 @@ class SinglyLinkedListTest {
         list.removeFirst();
         assertEquals("[A]", list.toString());
         list.removeFirst();
+        assertEquals(0, list.size());
         assertEquals("[]", list.toString());
     }
 
@@ -133,21 +155,6 @@ class SinglyLinkedListTest {
         assertEquals("[D]", list.toString());
         list.remove(0);
         assertEquals("[]", list.toString());
-    }
-
-    @Test void testReverse() {
-        try {
-            list.reverse();
-            fail("List is empty!");
-        } catch (Exception ignored) {
-            // test passed
-        }
-        list.addFirst("A");
-        list.addFirst("B");
-        list.addFirst("C");
-        assertEquals("[C, B, A]", list.toString());
-        list.reverse();
-        assertEquals("[A, B, C]", list.toString());
     }
 
 }

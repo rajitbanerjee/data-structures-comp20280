@@ -188,6 +188,7 @@ public class DoublyLinkedList<E> implements List<E> {
      */
     @Override
     public E get(int i) throws NoSuchElementException {
+        E ans = null;
         int index = 0; // temporary index used for list traversal
         Iterator<E> itr = iterator();
         if (isEmpty()) {
@@ -195,12 +196,13 @@ public class DoublyLinkedList<E> implements List<E> {
         }
         while (itr.hasNext()) {
             if (index == i) {
-                return itr.next();
+                ans = itr.next();
+                break;
             }
             itr.next();
             index++;
         }
-        return null;
+        return ans;
     }
 
     /**
@@ -312,8 +314,6 @@ public class DoublyLinkedList<E> implements List<E> {
             throw new NoSuchElementException();
         } else if (i == 0) {
             removeFirst();
-        } else if (i == size - 1) {
-            removeLast();
         } else {
             Node<E> temp = header.getNext(); //temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
