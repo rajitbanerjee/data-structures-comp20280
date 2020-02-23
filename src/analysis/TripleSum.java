@@ -58,7 +58,7 @@ public class TripleSum {
         final long t2 = System.nanoTime();
         long elapsed = (t2 - t1) / 1000;
 
-        System.out.println("count = " + count);
-        System.out.println("Time taken = " + elapsed + " nanoseconds");
+        System.out.println("Number of triples summing to 0 =  " + count);
+        System.out.println("Time taken for computation = " + elapsed + " nanoseconds");
     }
 }
