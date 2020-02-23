@@ -6,6 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for DoublyLinkedList.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class DoublyLinkedListTest {
     private DoublyLinkedList<String> list;
 
@@ -56,7 +61,8 @@ class DoublyLinkedListTest {
         }
     }
 
-    @Test void testFirst() {
+    @Test
+    void testFirst() {
         assertNull(list.first());
         list.addFirst("C");
         list.addFirst("B");
@@ -66,7 +72,8 @@ class DoublyLinkedListTest {
         assertEquals("F", list.first());
     }
 
-    @Test void testLast() {
+    @Test
+    void testLast() {
         assertNull(list.last());
         list.addFirst("C");
         list.addFirst("B");

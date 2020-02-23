@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for recursion/Fibonacci.java
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class FibonacciTest {
     @Test
     void testFibonacci() {

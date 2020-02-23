@@ -287,6 +287,18 @@ public class SinglyLinkedList<E> implements List<E> {
         }
     }
 
+//    /**
+//     * Recursively prints the list in reverse.
+//     */
+//    public Node<E> recrev() {
+//        if (head == null || head.getNext() == null) {
+//            return null;
+//        }
+//        Node<E> temp = recrev()
+//
+//    }
+
+
     /**
      * Gives the String implementation of the list.
      *
@@ -339,6 +351,11 @@ public class SinglyLinkedList<E> implements List<E> {
         ll.addFirst(5);
         ll.add(3, 2);
         System.out.println(ll);
+
+//        System.out.print("Reversed Recursively: ");
+//        ll.printReverse(ll.head);
+//        System.out.println();
+
         ll.addFirst(-100);
         ll.addLast(+100);
         System.out.println(ll);

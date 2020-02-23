@@ -3,10 +3,13 @@ package projectCode20280;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.security.spec.ECField;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for ArrayQueue.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class ArrayQueueTest {
     private Queue<String> queue;
 
@@ -29,7 +32,8 @@ class ArrayQueueTest {
         assertEquals("[A, B]", queue.toString());
     }
 
-    @Test void testOverflow() {
+    @Test
+    void testOverflow() {
         queue = new ArrayQueue<>(3);
         queue.enqueue("A");
         queue.enqueue("A");

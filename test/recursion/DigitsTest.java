@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for recursion/Digits.java
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class DigitsTest {
     @Test
     void testSumDigits() {

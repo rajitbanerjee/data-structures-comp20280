@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for recursion/Palindrome.java
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class PalindromeTest {
     @Test
     void testSingleWord() {

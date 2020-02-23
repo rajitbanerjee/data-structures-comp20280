@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for LinkedDeque.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class LinkedDequeTest {
     private Deque<String> deque;
 

@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for ArrayStack.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class ArrayStackTest {
     private ArrayStack<String> stack;
 

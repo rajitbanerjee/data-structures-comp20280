@@ -4,6 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for recursion/Collatz.java
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class CollatzTest {
     @Test
     void testCollatz() {
@@ -12,7 +17,7 @@ class CollatzTest {
         assertEquals(1, Collatz.sequence(871));
         // check integers till 2^16
         // recursion call stack overflows with 2^17
-        for (int i = 1; i <= (int)(Math.pow(2, 16)); i++) {
+        for (int i = 1; i <= (int) (Math.pow(2, 16)); i++) {
             assertEquals(1, Collatz.sequence(i));
         }
     }

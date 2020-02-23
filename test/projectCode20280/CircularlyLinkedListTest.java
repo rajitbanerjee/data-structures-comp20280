@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for CircularlyLinkedList.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class CircularlyLinkedListTest {
     private CircularlyLinkedList<String> list;
 
@@ -128,7 +133,8 @@ class CircularlyLinkedListTest {
         assertEquals("[]", list.toString());
     }
 
-    @Test void testRotate() {
+    @Test
+    void testRotate() {
         list.addFirst("A");
         list.addFirst("B");
         list.addFirst("C");

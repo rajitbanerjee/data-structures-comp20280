@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for LinkedCircularQueue.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class LinkedCircularQueueTest {
     private LinkedCircularQueue<String> queue;
 

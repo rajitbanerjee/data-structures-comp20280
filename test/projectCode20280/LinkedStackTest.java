@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for LinkedStack.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class LinkedStackTest {
     private LinkedStack<String> stack;
 
@@ -54,7 +59,8 @@ class LinkedStackTest {
         assertEquals("[B, A]", stack.toString());
     }
 
-    @Test void testReverse() {
+    @Test
+    void testReverse() {
         stack.push("A");
         stack.push("B");
         stack.push("C");

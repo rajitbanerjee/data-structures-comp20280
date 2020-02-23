@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for BoundedStack.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class BoundedStackTest {
     private BoundedStack<String> stack;
 

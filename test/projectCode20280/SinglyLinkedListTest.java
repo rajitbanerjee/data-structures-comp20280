@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for SinglyLinkedList.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class SinglyLinkedListTest {
     private SinglyLinkedList<String> list;
 
@@ -128,7 +133,8 @@ class SinglyLinkedListTest {
         assertEquals("[]", list.toString());
     }
 
-    @Test void testReverse() {
+    @Test
+    void testReverse() {
         try {
             list.reverse();
             fail("List is empty!");
@@ -141,6 +147,11 @@ class SinglyLinkedListTest {
         assertEquals("[C, B, A]", list.toString());
         list.reverse();
         assertEquals("[A, B, C]", list.toString());
+    }
+
+    @Test
+    void testRecursiveReverse() {
+
     }
 
 }
