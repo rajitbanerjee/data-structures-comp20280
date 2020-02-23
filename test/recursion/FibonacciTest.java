@@ -7,6 +7,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class FibonacciTest {
     @Test
     void testFibonacci() {
+        try {
+            Fibonacci.number(0);
+            Fibonacci.number(-1);
+            fail("Invalid input!");
+        } catch (Exception ignored) {
+            // test passed
+        }
         assertEquals(0, Fibonacci.number(1));
         assertEquals(1, Fibonacci.number(2));
         assertEquals(1, Fibonacci.number(3));
