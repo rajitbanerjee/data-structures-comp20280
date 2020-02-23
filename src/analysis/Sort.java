@@ -17,6 +17,18 @@ public class Sort {
         }
     }
 
+    // recursive bubble sort algorithm
+    public static void recursiveBubble(int[] arr, int size) {
+        if (size > 1) {
+            for (int j = 0; j < size - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j + 1, j);
+                }
+            }
+            recursiveBubble(arr, size - 1);
+        }
+    }
+
     // selection sort algorithm
     public static void selection(int[] arr) {
         int min_index;
