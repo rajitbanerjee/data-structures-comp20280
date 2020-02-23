@@ -89,17 +89,15 @@ public class SinglyLinkedList<E> implements List<E> {
     @Override
     public void addLast(E e) {
         Node<E> newest = new Node<>(e, null);
-        Node<E> temp = head; // temporary Node for list traversal
         if (isEmpty()) {
             head = new Node<>(e, head);
         } else {
-            while (temp != null) {
+            for (Node<E> temp = head; temp != null; temp = temp.getNext()) {
                 if (temp.getNext() == null) {
                     // make the current last Node point to the newly added last Node
                     temp.setNext(newest);
                     break;
                 }
-                temp = temp.getNext();
             }
         }
         size++;
@@ -114,8 +112,8 @@ public class SinglyLinkedList<E> implements List<E> {
      */
     @Override
     public void add(int i, E e) throws RuntimeException {
-        if (i > size) {
-            throw new RuntimeException("Specified index is greater than List size!");
+        if (i < 0 || i > size) {
+            throw new RuntimeException("Specified index is out of bounds!");
         } else if (i == 0) {
             addFirst(e);
         } else if (i == size) {
@@ -287,17 +285,51 @@ public class SinglyLinkedList<E> implements List<E> {
         }
     }
 
-//    /**
-//     * Recursively prints the list in reverse.
-//     */
-//    public Node<E> recrev() {
-//        if (head == null || head.getNext() == null) {
-//            return null;
-//        }
-//        Node<E> temp = recrev()
-//
-//    }
+    /**
+     * Recursively reverse the list.
+     */
+    public void recursiveReverse() {
+        head = rev(head);
+    }
 
+    /**
+     * Helper function to recursively reverse a list.
+     *
+     * @param start original head Node
+     * @return new head Node of the reversed list
+     */
+    private Node<E> rev(Node<E> start) {
+        if (start == null || start.getNext() == null) {
+            return start;
+        }
+        Node<E> newStart = rev(start.getNext());
+        start.getNext().setNext(start);
+        start.setNext(null);
+        return newStart;
+    }
+
+    /**
+     * Recursively copies a list.
+     */
+    public SinglyLinkedList<E> recursiveCopy() {
+        return copy(head, new SinglyLinkedList<>());
+    }
+
+    /**
+     * Helper function to recursively copy a list.
+     *
+     * @param start the original start Node
+     * @param copyList list to store the copy of original list
+     * @return a copy of the original list
+     */
+    private SinglyLinkedList<E> copy(Node<E> start, SinglyLinkedList<E> copyList) {
+        if (start == null) {
+            return copyList;
+        } else {
+            copyList.addLast(start.getElement());
+            return copy(start.getNext(), copyList);
+        }
+    }
 
     /**
      * Gives the String implementation of the list.

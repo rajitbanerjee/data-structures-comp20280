@@ -135,8 +135,8 @@ public class DoublyLinkedList<E> implements List<E> {
      */
     @Override
     public void add(int i, E e) throws RuntimeException {
-        if (i > size) {
-            throw new RuntimeException("Specified index is greater than List size!");
+        if (i < 0 || i > size) {
+            throw new RuntimeException("Specified index is out of bounds!");
         } else if (i == 0) {
             addFirst(e);
         } else if (i == size) {

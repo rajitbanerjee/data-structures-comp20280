@@ -151,7 +151,20 @@ class SinglyLinkedListTest {
 
     @Test
     void testRecursiveReverse() {
+        list.addFirst("A");
+        list.addFirst("B");
+        list.addFirst("C");
+        assertEquals("[C, B, A]", list.toString());
+        list.recursiveReverse();
+        assertEquals("[A, B, C]", list.toString());
 
+    }
+
+    @Test void testRecursiveCopy() {
+        list.addFirst("A");
+        list.addFirst("B");
+        list.addFirst("C");
+        assertEquals("[C, B, A]", list.recursiveCopy().toString());
     }
 
 }
