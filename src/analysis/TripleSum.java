@@ -1,0 +1,64 @@
+package analysis;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class TripleSum {
+    private static final int ARRAY_SIZE = 8;
+
+    /**
+     * Returns the number of triples in the array that sum to 0.
+     *
+     * @param arr the array of integers
+     * @return the number of triples that sum to exactly 0
+     * @throws IllegalArgumentException if array contains duplicates
+     */
+    public static int count(long[] arr) throws IllegalArgumentException {
+        Arrays.sort(arr);
+        if (hasDuplicates(arr))
+            throw new IllegalArgumentException();
+        int count = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                if (Arrays.binarySearch(arr, -(arr[i] + arr[j])) > j) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    // returns true if the sorted array a[] contains any duplicated integers
+
+    /**
+     * Checks if a sorted array contains duplicate numbers.
+     *
+     * @param arr sorted integer array
+     * @return {@code true} if given array contains duplicates
+     */
+    private static boolean hasDuplicates(long[] arr) {
+        for (int i = 0; i < arr.length - 1; i++)
+            if (arr[i] == arr[i + 1])
+                return true;
+        return false;
+    }
+
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc = new Scanner(new File("src/analysis/triple_sum_ints.txt"));
+        long[] arr = new long[ARRAY_SIZE];
+        int x = 0;
+        while (sc.hasNextLong()) {
+            arr[x++] = sc.nextLong();
+        }
+        System.out.println(Arrays.toString(arr));
+        final long t1 = System.nanoTime();
+        int count = count(arr);
+        final long t2 = System.nanoTime();
+        long elapsed = (t2 - t1) / 1000;
+
+        System.out.println("count = " + count);
+        System.out.println("Time taken = " + elapsed + " nanoseconds");
+    }
+}
