@@ -347,6 +347,43 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         return sb.toString();
     }
 
+    // Algorithm to count left external nodes
+    public int countLeftExternalNodes() {
+        int count = 0;
+        if (isEmpty() || size == 1) {
+            return 0;
+        } else {
+            for (Position<E> p : positions()) {
+                Node<E> node = validate(p);
+                if (isExternal(p) && node.getParent().getLeft() == node) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    // Algorithm to count descendants
+    public int countDescendants(Position<E> p) {
+        Node<E> node = validate(p);
+        if (node == null) {
+            return 0;
+        } else {
+            // exclude node itself from the count
+            return countSubtree(node) - 1;
+        }
+    }
+
+    // Count all nodes in subtree including first node
+    public int countSubtree(Node<E> node) {
+        if (node == null) {
+            return 0;
+        } else {
+            return 1 + countDescendants(node.getLeft()) +
+                    countDescendants(node.getRight());
+        }
+    }
+
     public static void main(String[] args) {
         LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
 
