@@ -30,4 +30,5 @@ public interface BinaryTree<E> extends Tree<E> {
      * @throws IllegalArgumentException if p is not a valid Position for this tree
      */
     Position<E> sibling(Position<E> p) throws IllegalArgumentException;
+
 }

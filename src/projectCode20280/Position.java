@@ -13,4 +13,5 @@ public interface Position<E> {
      * @throws IllegalStateException if position no longer valid
      */
     E getElement() throws IllegalStateException;
+
 }
