@@ -42,35 +42,68 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     public HeapPriorityQueue(K[] keys, V[] values);
 
     // protected utilities
-    protected int parent(int j);
+    protected int parent(int j) {
+        return (j - 1) / 2;
+    }
 
-    protected int left(int j);
+    protected int left(int j) {
+        return 2 * j + 1;
+    }
 
-    protected int right(int j);
+    protected int right(int j) {
+        return 2 * j + 2;
+    }
 
-    protected boolean hasLeft(int j);
+    protected boolean hasLeft(int j) {
+        return heap.size() > left(j);
+    }
 
-    protected boolean hasRight(int j);
+    protected boolean hasRight(int j) {
+        return heap.size() > right(j);
+    }
 
     /**
      * Exchanges the entries at indices i and j of the array list.
      */
-    protected void swap(int i, int j);
+    protected void swap(int i, int j) {
+        Entry<K, V> temp = heap.get(i);
+        heap.set(i, heap.get(j));
+        heap.set(j, temp);
+    }
 
     /**
      * Moves the entry at index j higher, if necessary, to restore the heap property.
      */
-    protected void upheap(int j);
+    protected void upheap(int j) {
+        while (j != 0 && compare(heap.get(j), heap.get(parent(j))) < 0) {
+            swap(j, parent(j));
+            j = parent(j);
+        }
+    }
 
     /**
      * Moves the entry at index j lower, if necessary, to restore the heap property.
      */
-    protected void downheap(int j);
+    protected void downheap(int j) {
+        int minChildIndex = -1;
+        while (hasLeft(j) && compare(heap.get(minChildIndex), heap.get(j)) < 0) {
+            if (hasRight(j)) {
+                minChildIndex = (compare(heap.get(left(j)), heap.get(right(j))) <= 0) ?
+                        left(j) : right(j);
+            } else {
+                minChildIndex = left(j);
+            }
+            swap(j, minChildIndex);
+            j = minChildIndex;
+        }
+    }
 
     /**
      * Performs a bottom-up construction of the heap in linear time.
      */
-    protected void heapify();
+    protected void heapify() {
+
+    }
 
     // public methods
 
