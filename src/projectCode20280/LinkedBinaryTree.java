@@ -2,6 +2,9 @@ package projectCode20280;
 
 /**
  * Concrete implementation of a binary tree using a node-based, linked structure.
+ *
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
  */
 public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTree<E> {
     /**
@@ -89,7 +92,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
      * Constructs an empty binary tree.
      */
     public LinkedBinaryTree() {
-    }      // constructs an empty binary tree
+    }
 
     // nonpublic utility
 
