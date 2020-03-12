@@ -11,6 +11,7 @@ import java.util.Comparator;
  */
 
 public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
+    protected ArrayList<Entry<K, V>> heap = new ArrayList<>();
 
     /**
      * Creates an empty priority queue based on the natural ordering of its keys.
@@ -89,7 +90,13 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
      * @return entry having a minimal key (or null if empty)
      */
     @Override
-    public Entry<K, V> min();
+    public Entry<K, V> min() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            return heap.get(0);
+        }
+    }
 
     /**
      * Inserts a key-value pair and return the entry created.
@@ -100,7 +107,13 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
      * @throws IllegalArgumentException if the key is unacceptable for this queue
      */
     @Override
-    public Entry<K, V> insert(K key, V value) throws IllegalArgumentException;
+    public Entry<K, V> insert(K key, V value) throws IllegalArgumentException {
+        checkKey(key);
+        Entry<K, V> newest = new PQEntry<>(key, value);
+        heap.add(newest);
+        upheap(heap.size() - 1);
+        return newest;
+    }
 
     /**
      * Removes and returns an entry with minimal key.
@@ -108,7 +121,16 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
      * @return the removed entry (or null if empty)
      */
     @Override
-    public Entry<K, V> removeMin();
+    public Entry<K, V> removeMin() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            Entry<K, V> removed = heap.get(0);
+            swap(0, heap.size() - 1);
+            downheap(0);
+            return removed;
+        }
+    }
 
     /**
      * Used for debugging purposes only.

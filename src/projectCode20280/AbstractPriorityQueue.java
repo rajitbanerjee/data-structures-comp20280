@@ -23,30 +23,30 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
      * a PriorityQueue implementation.
      */
     protected static class PQEntry<K, V> implements Entry<K, V> {
-        private K k;  // key
-        private V v;  // value
+        private K key;
+        private V value;
 
         public PQEntry(K key, V value) {
-            k = key;
-            v = value;
+            this.key = key;
+            this.value = value;
         }
 
         // methods of the Entry interface
         public K getKey() {
-            return k;
+            return key;
         }
 
         public V getValue() {
-            return v;
+            return value;
         }
 
         // utilities not exposed as part of the Entry interface
         protected void setKey(K key) {
-            k = key;
+            this.key = key;
         }
 
         protected void setValue(V value) {
-            v = value;
+            this.value = value;
         }
     } //----------- end of nested PQEntry class -----------
 
@@ -61,8 +61,8 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
      *
      * @param c comparator defining the order of keys in the priority queue
      */
-    protected AbstractPriorityQueue(Comparator<K> c) {
-        comp = c;
+    protected AbstractPriorityQueue(Comparator<K> comp) {
+        this.comp = comp;
     }
 
     /**
@@ -84,7 +84,8 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
      */
     protected boolean checkKey(K key) throws IllegalArgumentException {
         try {
-            return (comp.compare(key, key) == 0);  // see if key can be compared to itself
+            // see if key can be compared to itself
+            return (comp.compare(key, key) == 0);
         } catch (ClassCastException e) {
             throw new IllegalArgumentException("Incompatible key");
         }
