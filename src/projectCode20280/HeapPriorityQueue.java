@@ -34,14 +34,32 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
      * key-value pairs.  The two arrays given will be paired
      * element-by-element. They are presumed to have the same
      * length. (If not, entries will be created only up to the length of
-     * the shorter of the arrays)
+     * the shorter of the arrays).
      *
      * @param keys   an array of the initial keys for the priority queue
      * @param values an array of the initial values for the priority queue
      */
-    public HeapPriorityQueue(K[] keys, V[] values);
+    public HeapPriorityQueue(K[] keys, V[] values) {
+        super();
+        int i = 0;
+        while (i++ < Math.min(keys.length, values.length)) {
+            heap.add(new PQEntry<>(keys[i], values[i]));
+        }
+        heapify();
+    }
 
-    // protected utilities
+    /**
+     * Performs a bottom-up construction of the heap in linear time.
+     */
+    protected void heapify() {
+        int index = size() - 1;
+        while (index >= 0) {
+            downheap(index);
+            index--;
+        }
+
+    }
+
     protected int parent(int j) {
         return (j - 1) / 2;
     }
@@ -55,11 +73,11 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     }
 
     protected boolean hasLeft(int j) {
-        return heap.size() > left(j);
+        return size() > left(j);
     }
 
     protected boolean hasRight(int j) {
-        return heap.size() > right(j);
+        return size() > right(j);
     }
 
     /**
@@ -99,15 +117,6 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     }
 
     /**
-     * Performs a bottom-up construction of the heap in linear time.
-     */
-    protected void heapify() {
-
-    }
-
-    // public methods
-
-    /**
      * Returns the number of items in the priority queue.
      *
      * @return number of items
@@ -144,7 +153,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         checkKey(key);
         Entry<K, V> newest = new PQEntry<>(key, value);
         heap.add(newest);
-        upheap(heap.size() - 1);
+        upheap(size() - 1);
         return newest;
     }
 
@@ -159,22 +168,38 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
             return null;
         } else {
             Entry<K, V> removed = heap.get(0);
-            swap(0, heap.size() - 1);
+            swap(0, size() - 1);
             downheap(0);
             return removed;
         }
     }
 
     /**
+     * Gets the String representation of the heap.
+     *
+     * @return String representation of the heap
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[");
+        for (Entry<K, V> elem : heap) {
+            sb.append(elem.getValue()).append(", ");
+        }
+        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+        sb.append("]");
+        return sb.toString();
+    }
+
+    /**
      * Used for debugging purposes only.
      */
     private void sanityCheck() {
-        for (int j = 0; j < heap.size(); j++) {
+        for (int j = 0; j < size(); j++) {
             int left = left(j);
             int right = right(j);
-            if (left < heap.size() && compare(heap.get(left), heap.get(j)) < 0)
+            if (left < size() && compare(heap.get(left), heap.get(j)) < 0)
                 System.out.println("Invalid left child relationship");
-            if (right < heap.size() && compare(heap.get(right), heap.get(j)) < 0)
+            if (right < size() && compare(heap.get(right), heap.get(j)) < 0)
                 System.out.println("Invalid right child relationship");
         }
     }
