@@ -58,12 +58,7 @@ class ArrayQueueTest {
 
     @Test
     void testDequeue() {
-        try {
-            queue.dequeue();
-            fail("Queue is empty!");
-        } catch (Exception ignored) {
-            // test passed
-        }
+        assertNull(queue.dequeue());
         queue.enqueue("C");
         queue.enqueue("B");
         queue.enqueue("A");

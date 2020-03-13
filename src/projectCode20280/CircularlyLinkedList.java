@@ -1,7 +1,6 @@
 package projectCode20280;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * Implementation of a Circularly Linked List.
@@ -189,14 +188,13 @@ public class CircularlyLinkedList<E> implements List<E> {
     /**
      * Remove the first Node from the list.
      *
-     * @return the removed first element
-     * @throws NoSuchElementException if list is empty
+     * @return the removed first element, null if empty
      */
     @Override
-    public E removeFirst() throws NoSuchElementException {
+    public E removeFirst() {
         E removed;
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            return null;
         } else if (size == 1) {
             removed = tail.getElement();
             tail = null;
@@ -212,14 +210,13 @@ public class CircularlyLinkedList<E> implements List<E> {
     /**
      * Remove the last Node from the list.
      *
-     * @return the removed last element
-     * @throws NoSuchElementException if list is empty
+     * @return the removed last element, null if empty
      */
     @Override
-    public E removeLast() throws NoSuchElementException {
+    public E removeLast() {
         E removed;
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            return null;
         } else if (size == 1) {
             removed = tail.getElement();
             tail = null;
@@ -246,18 +243,17 @@ public class CircularlyLinkedList<E> implements List<E> {
      * Remove the element at index i of the list.
      *
      * @param i index from which the element needs to be removed
-     * @return the element that has been removed, null
-     * @throws NoSuchElementException if list is empty or specified index is out of bounds
+     * @return the element that has been removed, null if empty or out of bounds
      */
     @Override
-    public E remove(int i) throws NoSuchElementException {
-        E removed = null; // element to be removed
+    public E remove(int i)  {
         if (isEmpty() || i >= size) {
             // cannot remove element if list is empty or specified index is out of bounds
-            throw new NoSuchElementException();
+            return null;
         } else if (i == 0) {
-            removeFirst();
+            return removeFirst();
         } else {
+            E removed = null; // element to be removed
             Node<E> temp = tail.getNext(); //temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
@@ -267,8 +263,8 @@ public class CircularlyLinkedList<E> implements List<E> {
                     break;
                 }
             }
+            return removed;
         }
-        return removed;
     }
 
     /**

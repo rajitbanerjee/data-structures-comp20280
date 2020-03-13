@@ -64,12 +64,7 @@ class ArrayDequeTest {
 
     @Test
     void testRemoveFirst() {
-        try {
-            deque.removeFirst();
-            fail("Deque is empty!");
-        } catch (Exception ignored) {
-            // test passed
-        }
+        assertNull(deque.removeFirst());
         deque.addFirst("A");
         deque.addFirst("B");
         deque.removeFirst();
@@ -81,12 +76,7 @@ class ArrayDequeTest {
 
     @Test
     void testRemoveLast() {
-        try {
-            deque.removeLast();
-            fail("Deque is empty!");
-        } catch (Exception ignored) {
-            // test passed
-        }
+        assertNull(deque.removeLast());
         deque.addFirst("A");
         deque.addFirst("B");
         deque.addFirst("C");

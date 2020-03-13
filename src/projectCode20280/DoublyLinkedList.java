@@ -1,7 +1,6 @@
 package projectCode20280;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * Implementation of a Doubly Linked List.
@@ -257,63 +256,58 @@ public class DoublyLinkedList<E> implements List<E> {
     /**
      * Deletes the first Node of the list.
      *
-     * @return the removed first Node in the list
-     * @throws NoSuchElementException if list is empty
+     * @return the removed first Node in the list, null if empty
      */
     @Override
-    public E removeFirst() throws NoSuchElementException {
-        E removed;
+    public E removeFirst() {
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            return null;
         } else {
-            removed = header.getNext().getElement();
+            E removed = header.getNext().getElement();
             Node<E> newFirst = header.getNext().getNext();
             header.setNext(newFirst);
             newFirst.setPrev(header);
             size--;
+            return removed;
         }
-        return removed;
     }
 
     /**
      * Deletes the last Node of the list.
      *
      * @return the removed last Node in the list, null if empty
-     * @throws NoSuchElementException if list is empty
      */
     @Override
-    public E removeLast() throws NoSuchElementException {
-        E removed = null;
+    public E removeLast() {
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            return null;
         } else if (size == 1) {
-            removeFirst();
+            return removeFirst();
         } else {
-            removed = trailer.getPrev().getElement();
+            E removed = trailer.getPrev().getElement();
             Node<E> newLast = trailer.getPrev().getPrev();
             trailer.setPrev(newLast);
             newLast.setNext(trailer);
             size--;
+            return removed;
         }
-        return removed;
     }
 
     /**
      * Remove the element at index i of the list.
      *
      * @param i index from which the element needs to be removed
-     * @return the element that has been removed, null
-     * @throws NoSuchElementException if list is empty or specified index is out of bounds
+     * @return the element that has been removed, null is empty or index out of bounds
      */
     @Override
-    public E remove(int i) throws NoSuchElementException {
-        E removed = null; // element to be removed
+    public E remove(int i) {
         if (isEmpty() || i >= size) {
             // cannot remove element if list is empty or specified index is out of bounds
-            throw new NoSuchElementException();
+            return null;
         } else if (i == 0) {
-            removeFirst();
+            return removeFirst();
         } else {
+            E removed = null; // element to be removed
             Node<E> temp = header.getNext(); //temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
@@ -323,8 +317,8 @@ public class DoublyLinkedList<E> implements List<E> {
                     break;
                 }
             }
+            return removed;
         }
-        return removed;
     }
 
     /**

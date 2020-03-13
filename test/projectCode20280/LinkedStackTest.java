@@ -43,12 +43,7 @@ class LinkedStackTest {
 
     @Test
     void testPop() {
-        try {
-            stack.pop();
-            fail("Stack is empty!");
-        } catch (Exception ignored) {
-            // test passed
-        }
+        assertNull(stack.pop());
         stack.push("A");
         stack.pop();
         assertEquals("[]", stack.toString());

@@ -1,7 +1,5 @@
 package projectCode20280;
 
-import java.util.NoSuchElementException;
-
 /**
  * Implementation of an array based Queue.
  *
@@ -73,13 +71,12 @@ public class ArrayQueue<E> implements Queue<E> {
     /**
      * Remove front element of Queue.
      *
-     * @return the removed front element
-     * @throws NoSuchElementException if queue is empty
+     * @return the removed front element, null if empty
      */
     @Override
-    public E dequeue() throws NoSuchElementException {
+    public E dequeue() {
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            return null;
         } else {
             E removed = queue[front];
             queue[front] = null;

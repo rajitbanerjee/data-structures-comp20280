@@ -18,19 +18,14 @@ public class BracketChecker {
     public static boolean isValid(String in) {
         LinkedStack<Character> stack = new LinkedStack<>();
         for (char ch : in.toCharArray()) {
-            try {
-                // Push opening brackets to Stack
-                if (ch == '(' || ch == '{' || ch == '[') {
-                    stack.push(ch);
-                } else if (ch == ')' || ch == '}' || ch == ']') {
-                    // Closing brackets in expression must match with Stack's top element
-                    if (!isSameType(stack.pop(), ch)) {
-                        return false;
-                    }
+            // Push opening brackets to Stack
+            if (ch == '(' || ch == '{' || ch == '[') {
+                stack.push(ch);
+            } else if (ch == ')' || ch == '}' || ch == ']') {
+                // Closing brackets in expression must match with Stack's top element
+                if (stack.isEmpty() || !isSameType(stack.pop(), ch)) {
+                    return false;
                 }
-            } catch (NoSuchElementException e) {
-                // Element can't be popped since Stack is empty
-                return false;
             }
         }
         //  Stack must be empty after all the characters of the expression have been processed

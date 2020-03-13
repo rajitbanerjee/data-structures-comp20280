@@ -73,12 +73,7 @@ class SinglyLinkedListTest {
 
     @Test
     void testRemoveFirst() {
-        try {
-            list.removeFirst();
-            fail("List is empty!");
-        } catch (Exception ignored) {
-            // test passed
-        }
+        assertNull(list.removeFirst());
         list.addFirst("A");
         list.addFirst("B");
         list.removeFirst();
@@ -89,12 +84,7 @@ class SinglyLinkedListTest {
 
     @Test
     void testRemoveLast() {
-        try {
-            list.removeLast();
-            fail("List is empty!");
-        } catch (Exception ignored) {
-            // test passed
-        }
+        assertNull(list.removeLast());
         list.addFirst("A");
         list.addFirst("B");
         list.addFirst("C");
@@ -108,14 +98,8 @@ class SinglyLinkedListTest {
 
     @Test
     void testRemoveIndex() {
-        try {
-            list.remove(0);
-            list.addFirst("A");
-            list.remove(1);
-            fail("List index is out of bounds!");
-        } catch (Exception ignored) {
-            // test passed
-        }
+        assertNull(list.remove(0));
+        assertNull(list.remove(1));
         assertEquals("[]", list.toString());
         list.addFirst("A");
         list.addFirst("B");

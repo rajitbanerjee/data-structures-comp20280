@@ -1,7 +1,6 @@
 package projectCode20280;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 /**
  * Implementation of a Singly Linked List.
@@ -189,37 +188,34 @@ public class SinglyLinkedList<E> implements List<E> {
      * Removes the first element from the list.
      *
      * @return the removed first element
-     * @throws NoSuchElementException if list is empty
      */
     @Override
-    public E removeFirst() throws NoSuchElementException {
-        E removed;
+    public E removeFirst() {
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            return null;
         } else {
             // store first element in temp variable and remove the Node
-            removed = head.getElement();
+            E removed = head.getElement();
             head = head.getNext();
             size--;
+            return removed;
         }
-        return removed;
     }
 
     /**
      * Remove the last element from the list.
      *
      * @return the removed last element
-     * @throws NoSuchElementException if list is empty
      */
     @Override
-    public E removeLast() throws NoSuchElementException {
-        E removed = null; // element to be removed
+    public E removeLast() {
         Node<E> temp = head; // temporary Node for list traversal
         if (isEmpty()) {
-            throw new NoSuchElementException();
+            return null;
         } else if (size == 1) {
-            removeFirst();
+            return removeFirst();
         } else {
+            E removed = null; // element to be removed
             while (temp != null) {
                 if (temp.getNext().getNext() == null) { // temp is the 2nd last Node
                     removed = temp.getNext().getElement(); // last element is the one to remove
@@ -229,8 +225,8 @@ public class SinglyLinkedList<E> implements List<E> {
                 }
                 temp = temp.getNext();
             }
+            return removed;
         }
-        return removed;
     }
 
     /**
@@ -238,17 +234,16 @@ public class SinglyLinkedList<E> implements List<E> {
      *
      * @param i index from which the element needs to be removed
      * @return the element that has been removed, null
-     * @throws NoSuchElementException if list is empty or specified index is out of bounds
      */
     @Override
-    public E remove(int i) throws NoSuchElementException {
-        E removed = null; // element to be removed
+    public E remove(int i) {
         if (isEmpty() || i >= size) {
             // cannot remove element if list is empty or specified index is out of bounds
-            throw new NoSuchElementException();
+            return null;
         } else if (i == 0) {
-            removeFirst();
+            return removeFirst();
         } else {
+            E removed = null; // element to be removed
             Node<E> temp = head; // temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
@@ -258,8 +253,8 @@ public class SinglyLinkedList<E> implements List<E> {
                     break;
                 }
             }
+            return removed;
         }
-        return removed;
     }
 
     /**
@@ -318,7 +313,7 @@ public class SinglyLinkedList<E> implements List<E> {
     /**
      * Helper function to recursively copy a list.
      *
-     * @param start the original start Node
+     * @param start    the original start Node
      * @param copyList list to store the copy of original list
      * @return a copy of the original list
      */
