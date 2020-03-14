@@ -117,15 +117,15 @@ public class MultilevelList<E> {
     @Override
     public String toString() {
         if (head == null) return "[]";
-        StringBuilder list = new StringBuilder("[");
+        StringBuilder sb = new StringBuilder("[");
         Node<E> temp = head;
         while (temp != null) {
-            list.append(temp.getElement().toString()).append(", ");
+            sb.append(temp.getElement().toString()).append(", ");
             temp = temp.getNext();
         }
-        list = new StringBuilder(list.substring(0, list.length() - 2));
-        list.append("]");
-        return list.toString();
+        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+        sb.append("]");
+        return sb.toString();
     }
 
 }

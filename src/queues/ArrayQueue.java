@@ -110,13 +110,13 @@ public class ArrayQueue<E> implements Queue<E> {
     @Override
     public String toString() {
         if (isEmpty()) return "[]";
-        StringBuilder ans = new StringBuilder("[");
+        StringBuilder sb = new StringBuilder("[");
         for (int i = front; i < front + size; i++) {
-            ans.append(queue[i % CAPACITY]).append(", ");
+            sb.append(queue[i % CAPACITY]).append(", ");
         }
-        ans = new StringBuilder(ans.substring(0, ans.length() - 2));
-        ans.append("]");
-        return ans.toString();
+        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+        sb.append("]");
+        return sb.toString();
 
     }
 

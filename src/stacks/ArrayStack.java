@@ -104,13 +104,13 @@ public class ArrayStack<E> implements Stack<E> {
     @Override
     public String toString() {
         if (isEmpty()) return "[]";
-        StringBuilder ans = new StringBuilder("[");
+        StringBuilder sb = new StringBuilder("[");
         for (int i = top; i >= 0; i--) {
-            ans.append(stack[i]).append(", ");
+            sb.append(stack[i]).append(", ");
         }
-        ans = new StringBuilder(ans.substring(0, ans.length() - 2));
-        ans.append("]");
-        return ans.toString();
+        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+        sb.append("]");
+        return sb.toString();
     }
 
     public static void main(String[] args) {

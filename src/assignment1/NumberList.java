@@ -41,6 +41,6 @@ public class NumberList extends DoublyLinkedList<Integer> {
         NumberList list2 = new NumberList(num2);
 
         NumberList sum = add(list1, list2);
-        System.out.println(num1 + " + " + num2 + " = " + sum.toString());
+        System.out.println(num1 + " + " + num2 + " = " + sum);
     }
 }

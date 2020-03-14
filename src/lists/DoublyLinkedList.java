@@ -331,13 +331,13 @@ public class DoublyLinkedList<E> implements List<E> {
     @Override
     public String toString() {
         if (isEmpty()) return "[]";
-        StringBuilder list = new StringBuilder("[");
+        StringBuilder sb = new StringBuilder("[");
         for (E e : this) {
-            list.append(e.toString()).append(", ");
+            sb.append(e.toString()).append(", ");
         }
-        list = new StringBuilder(list.substring(0, list.length() - 2));
-        list.append("]");
-        return list.toString();
+        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+        sb.append("]");
+        return sb.toString();
     }
 
     public static void main(String[] args) {
