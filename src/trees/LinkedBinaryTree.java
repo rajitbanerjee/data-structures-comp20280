@@ -355,7 +355,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     // Algorithm to count left external nodes
     public int countLeftExternalNodes() {
         int count = 0;
-        if (isEmpty() || size == 1) {
+        if (isEmpty() || size() == 1) {
             return 0;
         } else {
             for (Position<E> p : positions()) {
@@ -389,6 +389,24 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         }
     }
 
+    public void flatten() {
+        if (isEmpty() || size() == 1) {
+            return;
+        }
+        Node<E> leftTail = root.getLeft();
+        while (leftTail.getLeft() != null) {
+            leftTail = leftTail.getLeft();
+        }
+        if (sibling(leftTail) == null) {
+            Node<E> parent = (Node<E>) parent(leftTail);
+            Node<E> rightChild = (Node<E>) addRight(parent, leftTail.getElement());
+        } else {
+            addRight(leftTail, sibling(leftTail).getElement());
+
+        }
+    }
+
+    /*
     public static void main(String[] args) {
         LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
 
@@ -399,5 +417,6 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         System.out.println("bt: " + bt.size() + " " + bt);
 
     }
-} 
+     */
 
+} 

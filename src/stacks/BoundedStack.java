@@ -12,23 +12,23 @@ import projectCode20280.Stack;
 
 public class BoundedStack<E> implements Stack<E> {
     private SinglyLinkedList<E> stack;
-    private static int MAX_SIZE = 1000; // default maximum stack size
+    private int capacity;
 
     /**
      * Creates a new Stack bounded by the specified capacity.
      *
-     * @param maxSize user defined Stack capacity
+     * @param capacity user defined Stack capacity
      */
-    BoundedStack(int maxSize) {
+    BoundedStack(int capacity) {
         stack = new SinglyLinkedList<>();
-        BoundedStack.MAX_SIZE = maxSize;
+        this.capacity = capacity;
     }
 
     /**
      * By default, a stack is bounded by 1000 elements.
      */
     BoundedStack() {
-        this(MAX_SIZE);
+        this(1000);
     }
 
     /**
@@ -59,7 +59,7 @@ public class BoundedStack<E> implements Stack<E> {
      */
     @Override
     public void push(E e) throws IllegalStateException {
-        if (size() == MAX_SIZE) {
+        if (size() == capacity) {
             throw new IllegalStateException("Stack is full!");
         } else {
             stack.addFirst(e);
@@ -103,6 +103,7 @@ public class BoundedStack<E> implements Stack<E> {
         stack.reverse();
     }
 
+    /*
     public static void main(String[] args) {
         BoundedStack<Integer> stk = new BoundedStack<>(10);
         for (int i = 1; i <= 10; i++) {
@@ -124,5 +125,6 @@ public class BoundedStack<E> implements Stack<E> {
             e.printStackTrace();
         }
     }
+     */
 
 }

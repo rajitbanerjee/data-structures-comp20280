@@ -10,7 +10,7 @@ import projectCode20280.Stack;
  */
 
 public class ArrayStack<E> implements Stack<E> {
-    private static int CAPACITY = 1000; //default array capacity
+    private int capacity;
     private E[] stack;
     private int top;
 
@@ -23,14 +23,14 @@ public class ArrayStack<E> implements Stack<E> {
     public ArrayStack(int capacity) {
         stack = (E[]) new Object[capacity];
         top = -1; // no initial stack members
-        ArrayStack.CAPACITY = capacity; // change the default stack capacity
+        this.capacity = capacity; // change the default stack capacity
     }
 
     /**
-     * Construct array based stack with default maximum size.
+     * Construct array based stack with default maximum size 1000.
      */
     ArrayStack() {
-        this(CAPACITY);
+        this(1000);
     }
 
     /**
@@ -61,7 +61,7 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public void push(E e) throws IllegalStateException {
-        if (size() == CAPACITY) {
+        if (size() == capacity) {
             throw new IllegalStateException("Stack is full!");
         } else {
             stack[++top] = e;
@@ -113,6 +113,7 @@ public class ArrayStack<E> implements Stack<E> {
         return sb.toString();
     }
 
+    /*
     public static void main(String[] args) {
         ArrayStack<Integer> stk = new ArrayStack<>();
         for (int i = 1; i <= 10; i++) {
@@ -125,5 +126,6 @@ public class ArrayStack<E> implements Stack<E> {
         stk.push(200);
         System.out.println(stk);
     }
+     */
 
 }

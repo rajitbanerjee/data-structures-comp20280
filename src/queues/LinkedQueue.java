@@ -74,7 +74,7 @@ public class LinkedQueue<E> implements Queue<E> {
         return queue.toString();
     }
 
-    // main method to run basic tests
+    /*
     public static void main(String[] args) {
         LinkedQueue<Integer> q = new LinkedQueue<>();
         for (int i = 0; i < 10; i++) {
@@ -92,5 +92,6 @@ public class LinkedQueue<E> implements Queue<E> {
         q.enqueue(12);
         System.out.println(q);
     }
+     */
 
 }

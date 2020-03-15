@@ -205,5 +205,5 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
                 System.out.println("Invalid right child relationship");
         }
     }
-}
 
+}

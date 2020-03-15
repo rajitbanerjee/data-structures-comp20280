@@ -10,7 +10,7 @@ import projectCode20280.Queue;
  */
 
 public class ArrayQueue<E> implements Queue<E> {
-    private static int CAPACITY = 1000; //default array capacity
+    private int capacity; 
     private E[] queue;
     private int front;
     private int size;
@@ -24,14 +24,14 @@ public class ArrayQueue<E> implements Queue<E> {
     ArrayQueue(int capacity) {
         front = size = 0;
         queue = (E[]) new Object[capacity];
-        ArrayQueue.CAPACITY = capacity;
+        this.capacity = capacity;
     }
 
     /**
-     * Constructs a Queue with default capacity.
+     * Constructs a Queue with default capacity 1000.
      */
     ArrayQueue() {
-        this(CAPACITY);
+        this(1000);
     }
 
     /**
@@ -62,10 +62,10 @@ public class ArrayQueue<E> implements Queue<E> {
      */
     @Override
     public void enqueue(E e) throws IllegalStateException {
-        if (size == CAPACITY) {
+        if (size == capacity) {
             throw new IllegalStateException("Queue is full!");
         } else {
-            int rear = (front + size++) % CAPACITY; //circular array wraps around
+            int rear = (front + size++) % capacity; //circular array wraps around
             queue[rear] = e;
         }
     }
@@ -82,7 +82,7 @@ public class ArrayQueue<E> implements Queue<E> {
         } else {
             E removed = queue[front];
             queue[front] = null;
-            front = (front + 1) % CAPACITY; // front index wraps around
+            front = (front + 1) % capacity; // front index wraps around
             size--;
             return removed;
         }
@@ -112,7 +112,7 @@ public class ArrayQueue<E> implements Queue<E> {
         if (isEmpty()) return "[]";
         StringBuilder sb = new StringBuilder("[");
         for (int i = front; i < front + size; i++) {
-            sb.append(queue[i % CAPACITY]).append(", ");
+            sb.append(queue[i % capacity]).append(", ");
         }
         sb = new StringBuilder(sb.substring(0, sb.length() - 2));
         sb.append("]");
@@ -120,6 +120,7 @@ public class ArrayQueue<E> implements Queue<E> {
 
     }
 
+    /*
     public static void main(String[] args) {
         ArrayQueue<Integer> q = new ArrayQueue<>(10);
         for (int i = 0; i < 10; i++) {
@@ -137,5 +138,6 @@ public class ArrayQueue<E> implements Queue<E> {
         q.enqueue(12);
         System.out.println(q);
     }
+     */
 
 }

@@ -35,12 +35,4 @@ public class NumberList extends DoublyLinkedList<Integer> {
         return answer;
     }
 
-    public static void main(String[] args) {
-        int num1 = 99, num2 = 99;
-        NumberList list1 = new NumberList(num1);
-        NumberList list2 = new NumberList(num2);
-
-        NumberList sum = add(list1, list2);
-        System.out.println(num1 + " + " + num2 + " = " + sum);
-    }
 }

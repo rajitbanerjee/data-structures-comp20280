@@ -295,6 +295,7 @@ public class CircularlyLinkedList<E> implements List<E> {
         return sb.toString();
     }
 
+    /*
     public static void main(String[] args) {
         // TEST 1: Given in skeleton code
         System.out.println("\nTEST 1 from given GitHub code:");
@@ -360,5 +361,6 @@ public class CircularlyLinkedList<E> implements List<E> {
         System.out.println(ll);
 
     }
+     */
 
 }

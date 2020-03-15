@@ -50,6 +50,7 @@ class ArrayQueueTest {
 
     @Test
     void testFirst() {
+        assertNull(queue.first());
         queue.enqueue("C");
         queue.enqueue("B");
         queue.enqueue("A");

@@ -7,16 +7,17 @@ import projectCode20280.Queue;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Tests for LinkedQueue.
+ * Tests for TwoStackQueue.
  *
  * @author Rajit Banerjee, 18202817
  */
-class LinkedQueueTest {
+class TwoStackQueueTest {
     private Queue<String> queue;
+    private String out;
 
     @BeforeEach
     void setUp() {
-        queue = new LinkedQueue<>();
+        queue = new TwoStackQueue<>();
     }
 
     @Test
@@ -28,9 +29,11 @@ class LinkedQueueTest {
     @Test
     void testEnqueue() {
         queue.enqueue("A");
-        assertEquals("[A]", queue.toString());
+        out = "Enqueue stack: [A]\nDequeue stack: []\n";
+        assertEquals(out, queue.toString());
         queue.enqueue("B");
-        assertEquals("[A, B]", queue.toString());
+        out = "Enqueue stack: [B, A]\nDequeue stack: []\n";
+        assertEquals(out, queue.toString());
     }
 
     @Test
@@ -50,11 +53,14 @@ class LinkedQueueTest {
         queue.enqueue("C");
         queue.enqueue("B");
         queue.enqueue("A");
-        assertEquals("[C, B, A]", queue.toString());
+        out = "Enqueue stack: [A, B, C]\nDequeue stack: []\n";
+        assertEquals(out, queue.toString());
         queue.dequeue();
-        assertEquals("[B, A]", queue.toString());
+        out = "Enqueue stack: []\nDequeue stack: [B, A]\n";
+        assertEquals(out, queue.toString());
         queue.dequeue();
-        assertEquals("[A]", queue.toString());
+        out = "Enqueue stack: []\nDequeue stack: [A]\n";
+        assertEquals(out, queue.toString());
     }
 
 }

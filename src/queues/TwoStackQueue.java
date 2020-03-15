@@ -99,21 +99,4 @@ public class TwoStackQueue<E> implements Queue<E> {
                 "\nDequeue stack: " + dequeueStack.toString() + "\n";
     }
 
-    // main method to run basic tests
-    public static void main(String[] args) {
-        TwoStackQueue<Integer> q = new TwoStackQueue<>();
-        for (int i = 1; i < 6; i++) {
-            q.enqueue(i);
-        }
-        System.out.println(q);
-        q.dequeue();
-        System.out.println(q);
-        q.dequeue();
-        System.out.println(q);
-        q.enqueue(6);
-        System.out.println(q);
-        q.enqueue(7);
-        System.out.println(q);
-    }
-
 }

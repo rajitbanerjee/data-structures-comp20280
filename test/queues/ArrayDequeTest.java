@@ -32,6 +32,14 @@ class ArrayDequeTest {
         assertEquals("[A]", deque.toString());
         deque.addFirst("B");
         assertEquals("[B, A]", deque.toString());
+        try {
+            Deque<String> testDeque = new ArrayDeque<>(1);
+            testDeque.addFirst("A");
+            testDeque.addFirst("B");
+            fail("Deque capacity cannot be exceeded!");
+        } catch (Exception ignored) {
+            // test passed
+        }
     }
 
     @Test
@@ -40,6 +48,14 @@ class ArrayDequeTest {
         assertEquals("[A]", deque.toString());
         deque.addLast("B");
         assertEquals("[A, B]", deque.toString());
+        try {
+            Deque<String> testDeque = new ArrayDeque<>(1);
+            testDeque.addLast("A");
+            testDeque.addLast("B");
+            fail("Deque capacity cannot be exceeded!");
+        } catch (Exception ignored) {
+            // test passed
+        }
     }
 
     @Test

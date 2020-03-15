@@ -10,7 +10,7 @@ import projectCode20280.Deque;
  */
 
 public class ArrayDeque<E> implements Deque<E> {
-    private static int CAPACITY = 1000; //default array capacity
+    private int capacity;
     private E[] deque;
     private int front;
     private int rear;
@@ -25,14 +25,14 @@ public class ArrayDeque<E> implements Deque<E> {
     ArrayDeque(int capacity) {
         front = rear = size = 0;
         deque = (E[]) new Object[capacity];
-        ArrayDeque.CAPACITY = capacity;
+        this.capacity = capacity;
     }
 
     /**
-     * Constructs a Queue with default capacity.
+     * Constructs a Queue with default capacity 1000.
      */
     ArrayDeque() {
-        this(CAPACITY);
+        this(1000);
     }
 
     /**
@@ -91,10 +91,10 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public void addFirst(E e) throws IllegalStateException {
-        if (size == CAPACITY) {
+        if (size == capacity) {
             throw new IllegalStateException("Deque is full!");
         } else {
-            front = Math.floorMod(rear - size++, CAPACITY); //circular array wraps around
+            front = Math.floorMod(rear - size++, capacity); //circular array wraps around
             deque[front] = e;
         }
     }
@@ -107,10 +107,10 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public void addLast(E e) throws IllegalStateException {
-        if (size == CAPACITY) {
+        if (size == capacity) {
             throw new IllegalStateException("Deque is full!");
         } else {
-            rear = (front + size++) % CAPACITY; //circular array wraps around
+            rear = (front + size++) % capacity; //circular array wraps around
             deque[rear] = e;
         }
     }
@@ -127,7 +127,7 @@ public class ArrayDeque<E> implements Deque<E> {
         } else {
             E removed = deque[front];
             deque[front] = null;
-            front = (front + 1) % CAPACITY; // front index wraps around
+            front = (front + 1) % capacity; // front index wraps around
             size--;
             return removed;
         }
@@ -145,7 +145,7 @@ public class ArrayDeque<E> implements Deque<E> {
         } else {
             E removed = deque[rear];
             deque[rear] = null;
-            rear = Math.floorMod(rear - 1, CAPACITY); // front index wraps around
+            rear = Math.floorMod(rear - 1, capacity); // front index wraps around
             size--;
             return removed;
         }
@@ -161,13 +161,14 @@ public class ArrayDeque<E> implements Deque<E> {
         if (isEmpty()) return "[]";
         StringBuilder sb = new StringBuilder("[");
         for (int i = front; i < front + size; i++) {
-            sb.append(deque[i % CAPACITY]).append(", ");
+            sb.append(deque[i % capacity]).append(", ");
         }
         sb = new StringBuilder(sb.substring(0, sb.length() - 2));
         sb.append("]");
         return sb.toString();
     }
 
+    /*
     public static void main(String[] args) {
         ArrayDeque<Integer> dq = new ArrayDeque<>();
         dq.addFirst(0);
@@ -182,5 +183,6 @@ public class ArrayDeque<E> implements Deque<E> {
         dq.removeLast();
         System.out.println(dq);
     }
+     */
 
 }

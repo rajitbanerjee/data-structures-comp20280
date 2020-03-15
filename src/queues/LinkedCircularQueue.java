@@ -15,8 +15,6 @@ import projectCode20280.Queue;
  */
 
 public class LinkedCircularQueue<E> implements Queue<E> {
-
-    // implement a LinkedQueue using DLL as base
     private CircularlyLinkedList<E> queue = new CircularlyLinkedList<>();
 
     /**
@@ -88,7 +86,7 @@ public class LinkedCircularQueue<E> implements Queue<E> {
         return queue.toString();
     }
 
-    // main method to run basic tests
+    /*
     public static void main(String[] args) {
         LinkedCircularQueue<Integer> q = new LinkedCircularQueue<>();
         for (int i = 0; i < 10; i++) {
@@ -108,5 +106,6 @@ public class LinkedCircularQueue<E> implements Queue<E> {
         q.enqueue(12);
         System.out.println(q);
     }
+     */
 
 }

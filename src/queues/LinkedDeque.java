@@ -11,7 +11,6 @@ import lists.DoublyLinkedList;
  */
 
 public class LinkedDeque<E> implements Deque<E> {
-    // Implement deque with dq as base
     private DoublyLinkedList<E> deque = new DoublyLinkedList<>();
 
     /**
@@ -103,6 +102,7 @@ public class LinkedDeque<E> implements Deque<E> {
         return deque.toString();
     }
 
+    /*
     public static void main(String[] args) {
         LinkedDeque<Integer> dq = new LinkedDeque<>();
         dq.addFirst(0);
@@ -117,5 +117,6 @@ public class LinkedDeque<E> implements Deque<E> {
         dq.removeLast();
         System.out.println(dq);
     }
+     */
 
 }
