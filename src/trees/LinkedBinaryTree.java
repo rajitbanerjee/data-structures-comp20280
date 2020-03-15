@@ -78,18 +78,8 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         return new Node<>(e, parent, left, right);
     }
 
-    // LinkedBinaryTree instance variables
-    /**
-     * The root of the binary tree
-     */
     protected Node<E> root = null;
-
-    /**
-     * The number of nodes in the binary tree
-     */
     private int size = 0;
-
-    // constructor
 
     /**
      * Constructs an empty binary tree.
@@ -97,7 +87,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     public LinkedBinaryTree() {
     }
 
-    // nonpublic utility
+    // non-public utility
 
     /**
      * Verifies that a Position belongs to the appropriate class, and is
@@ -121,17 +111,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         return node;
     }
 
-    // accessor methods (not already implemented in AbstractBinaryTree)
-
-    /**
-     * Returns the number of nodes in the tree.
-     *
-     * @return number of nodes in the tree
-     */
-    @Override
-    public int size() {
-        return size;
-    }
+    // Accessor methods (not already implemented in AbstractBinaryTree) ------------
 
     /**
      * Returns the root Position of the tree (or null if tree is empty).
@@ -154,6 +134,16 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     public Position<E> parent(Position<E> p) throws IllegalArgumentException {
         Node<E> node = validate(p);
         return node.getParent();
+    }
+
+    /**
+     * Returns the number of nodes in the tree.
+     *
+     * @return number of nodes in the tree
+     */
+    @Override
+    public int size() {
+        return size;
     }
 
     /**
@@ -182,7 +172,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         return node.getRight();
     }
 
-    // update methods supported by this class
+    // update methods supported by this class ----------------------------------
 
     /**
      * Places element e at the root of an empty tree and returns its new Position.
@@ -352,6 +342,8 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         return sb.toString();
     }
 
+    // Extra functionality for lab and assignment questions ----------------
+
     // Algorithm to count left external nodes
     public int countLeftExternalNodes() {
         int count = 0;
@@ -380,29 +372,21 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     }
 
     // Count all nodes in subtree including first node
-    public int countSubtree(Node<E> node) {
+    public int countSubtree(Position<E> node) {
         if (node == null) {
             return 0;
         } else {
-            return 1 + countDescendants(node.getLeft()) +
-                    countDescendants(node.getRight());
+            return 1 + countDescendants(left(node)) +
+                    countDescendants(right(node));
         }
     }
 
-    public void flatten() {
-        if (isEmpty() || size() == 1) {
+    public void flatten(Position<E> root) {
+        if (root == null || isExternal(root)) {
             return;
         }
-        Node<E> leftTail = root.getLeft();
-        while (leftTail.getLeft() != null) {
-            leftTail = leftTail.getLeft();
-        }
-        if (sibling(leftTail) == null) {
-            Node<E> parent = (Node<E>) parent(leftTail);
-            Node<E> rightChild = (Node<E>) addRight(parent, leftTail.getElement());
-        } else {
-            addRight(leftTail, sibling(leftTail).getElement());
-
+        if (left(root) != null) {
+            flatten(left(root));
         }
     }
 

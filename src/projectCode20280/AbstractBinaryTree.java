@@ -7,11 +7,15 @@ import java.util.ArrayList;
  * An abstract base class providing some functionality of the BinaryTree interface.
  * <p>
  * The following five methods remain abstract, and must be implemented
- * by a concrete subclass: size, root, parent, left, right.
+ * by a concrete subclass:
+ * From Tree: root, parent, size
+ * From BinaryTree: left, right
  */
 public abstract class AbstractBinaryTree<E> extends AbstractTree<E> implements BinaryTree<E> {
     /**
      * Returns the Position of p's sibling (or null if no sibling exists).
+     * <p>
+     * Implement the method declared in BinaryTree.
      *
      * @param p A valid Position within the tree
      * @return the Position of the sibling (or null if no sibling exists)
@@ -35,6 +39,8 @@ public abstract class AbstractBinaryTree<E> extends AbstractTree<E> implements B
 
     /**
      * Returns the number of children of Position p.
+     * <p>
+     * Override existing implementation in AbstractTree for efficiency.
      *
      * @param p A valid Position within the tree
      * @return number of children of Position p
