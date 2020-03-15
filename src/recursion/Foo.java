@@ -9,7 +9,4 @@ public class Foo {
         System.out.print(x % 10);
     }
 
-    public static void main(String[] args) {
-        foo(2468);
-    }
 }
