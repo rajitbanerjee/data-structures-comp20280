@@ -74,8 +74,8 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     /**
      * Factory function to create a new node storing element e.
      */
-    protected Node<E> createNode(E e, Node<E> parent, Node<E> left, Node<E> right) {
-        return new Node<>(e, parent, left, right);
+    protected Node<E> createNode(E e, Node<E> parent) {
+        return new Node<>(e, parent, null, null);
     }
 
     protected Node<E> root = null;
@@ -185,21 +185,26 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         if (!isEmpty()) {
             throw new IllegalStateException("Tree needs to be empty to add new root!");
         }
-        root = createNode(e, null, null, null);
+        root = createNode(e, null);
         size = 1;
         return root;
     }
 
+    /**
+     * Insert an element into the tree in proper BST order.
+     *
+     * @param e element to be inserted
+     */
     public void insert(E e) {
         //recursively add from root
         root = addRecursive(root, e);
         ++size;
     }
 
-    //recursively add Nodes to binary tree in proper position
+    // Recursively add Nodes to binary tree in proper position
     private Node<E> addRecursive(Node<E> p, E e) {
         if (p == null) {
-            return createNode(e, null, null, null);
+            return createNode(e, null);
         } else {
             if (e.compareTo(p.getElement()) < 0) {
                 p.setLeft(addRecursive(p.getLeft(), e));
@@ -224,7 +229,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         if (parent.getLeft() != null) {
             throw new IllegalArgumentException("p already has a left child!");
         }
-        Node<E> leftChild = createNode(e, parent, null, null);
+        Node<E> leftChild = createNode(e, parent);
         parent.setLeft(leftChild);
         size++;
         return leftChild;
@@ -244,7 +249,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         if (parent.getRight() != null) {
             throw new IllegalArgumentException("p already has a right child!");
         }
-        Node<E> rightChild = createNode(e, parent, null, null);
+        Node<E> rightChild = createNode(e, parent);
         parent.setRight(rightChild);
         size++;
         return rightChild;
@@ -362,35 +367,50 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
 
     // Algorithm to count descendants
     public int countDescendants(Position<E> p) {
-        Node<E> node = validate(p);
-        if (node == null) {
+        if (p == null) {
             return 0;
         } else {
             // exclude node itself from the count
-            return countSubtree(node) - 1;
+            return countSubtree(p) - 1;
         }
     }
 
     // Count all nodes in subtree including first node
-    public int countSubtree(Position<E> node) {
-        if (node == null) {
+    public int countSubtree(Position<E> p) {
+        if (p == null) {
             return 0;
         } else {
-            return 1 + countDescendants(left(node)) +
-                    countDescendants(right(node));
+            return 1 + countDescendants(left(p)) +
+                    countDescendants(right(p));
         }
     }
 
-    public void flatten(Position<E> root) {
+    // Algorithm to flatten a binary tree into a linked list
+    public void flatten(Node<E> root) {
         if (root == null || isExternal(root)) {
             return;
         }
-        if (left(root) != null) {
-            flatten(left(root));
+        if (root.getLeft() != null) {
+            flatten(root.getLeft());
+
+            // temporarily store the original right child of the root
+            Node<E> originalRight = root.getRight();
+            // move the root's left child to it's new right child
+            root.setRight(root.getLeft());
+            root.setLeft(null);
+
+            // find the rightmost end of the root's right child
+            Node<E> insertPosition = root.getRight();
+            while (insertPosition.getRight() != null) {
+                insertPosition = insertPosition.getRight();
+            }
+            // set the rightmost end's right child to be the original right child
+            insertPosition.setRight(originalRight);
         }
+        flatten(root.getRight());
     }
 
-    /*
+
     public static void main(String[] args) {
         LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
 
@@ -400,7 +420,18 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         }
         System.out.println("bt: " + bt.size() + " " + bt);
 
+        // test flatten
+        LinkedBinaryTree<Integer> tree = new LinkedBinaryTree<>();
+        Position<Integer> root = tree.addRoot(1);
+        Position<Integer> rootLeft = tree.addLeft(root, 2);
+        Position<Integer> rootRight = tree.addRight(root, 5);
+        tree.addLeft(rootLeft, 3);
+        tree.addRight(rootLeft, 4);
+        tree.addRight(rootRight, 6);
+
+        System.out.println("in-order: " + tree);
+        tree.flatten(tree.root);
+        System.out.println("flat: " + tree);
     }
-     */
 
 } 
