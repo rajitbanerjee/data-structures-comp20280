@@ -385,32 +385,6 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         }
     }
 
-    // Algorithm to flatten a binary tree into a linked list
-    public void flatten(Node<E> root) {
-        if (root == null || isExternal(root)) {
-            return;
-        }
-        if (root.getLeft() != null) {
-            flatten(root.getLeft());
-
-            // temporarily store the original right child of the root
-            Node<E> originalRight = root.getRight();
-            // move the root's left child to it's new right child
-            root.setRight(root.getLeft());
-            root.setLeft(null);
-
-            // find the rightmost end of the root's right child
-            Node<E> insertPosition = root.getRight();
-            while (insertPosition.getRight() != null) {
-                insertPosition = insertPosition.getRight();
-            }
-            // set the rightmost end's right child to be the original right child
-            insertPosition.setRight(originalRight);
-        }
-        flatten(root.getRight());
-    }
-
-
     public static void main(String[] args) {
         LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
 
@@ -419,19 +393,6 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
             bt.insert(i);
         }
         System.out.println("bt: " + bt.size() + " " + bt);
-
-        // test flatten
-        LinkedBinaryTree<Integer> tree = new LinkedBinaryTree<>();
-        Position<Integer> root = tree.addRoot(1);
-        Position<Integer> rootLeft = tree.addLeft(root, 2);
-        Position<Integer> rootRight = tree.addRight(root, 5);
-        tree.addLeft(rootLeft, 3);
-        tree.addRight(rootLeft, 4);
-        tree.addRight(rootRight, 6);
-
-        System.out.println("in-order: " + tree);
-        tree.flatten(tree.root);
-        System.out.println("flat: " + tree);
     }
 
 } 
