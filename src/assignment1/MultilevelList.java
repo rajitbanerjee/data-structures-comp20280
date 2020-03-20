@@ -1,13 +1,12 @@
 package assignment1;
 
 /**
+ * Assignment 1, Question 3.
  * Implementation of an algorithm to flatten
  * a multi-level linked list.
  *
  * @author Rajit Banerjee, 18202817
- * @author Aonghus Lawlor
  */
-
 public class MultilevelList<E> {
     protected static class Node<E> {
         private E element;

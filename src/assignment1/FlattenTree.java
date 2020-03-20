@@ -3,6 +3,12 @@ package assignment1;
 import projectCode20280.Position;
 import trees.LinkedBinaryTree;
 
+/**
+ * Assignment 1, Question 4.
+ * FlattenTree class adds the flatten function to a LinkedBinaryTree.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 public class FlattenTree<E extends Comparable<E>> extends LinkedBinaryTree<E> {
     /**
      * Algorithm to flatten a binary tree into a linked list.
