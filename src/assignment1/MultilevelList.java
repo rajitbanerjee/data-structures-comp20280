@@ -9,7 +9,6 @@ package assignment1;
  */
 
 public class MultilevelList<E> {
-
     protected static class Node<E> {
         private E element;
         private Node<E> next;

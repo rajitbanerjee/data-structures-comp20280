@@ -1,14 +1,10 @@
 package assignment1;
 
-/**
- * Implementation of an algorithm to flatten
- * a multi-level linked list.
- *
- * @author Rajit Banerjee, 18202817
- * @author Aonghus Lawlor
- */
+import org.junit.jupiter.api.Test;
 
-public class FlattenList {
+import static org.junit.jupiter.api.Assertions.*;
+
+class MultilevelListTest {
 
     // Create a sample multilevel linked list
     public static MultilevelList<Integer> makeMultilevel() {
@@ -31,10 +27,13 @@ public class FlattenList {
         return list1;
     }
 
-    public static void main(String[] args) {
+    @Test
+    void testFlatten() {
         MultilevelList<Integer> list = makeMultilevel();
+        assertEquals("[9, 8, 4, 7, 13]", list.toString());
         list.flatten(list.head);
-        System.out.println(list.toString());
+        assertEquals("[9, 8, 4, 7, 13, 5, 12, 3, 16, 21, 10, 14, 23, 41, 9, 34, 30]",
+                list.toString());
     }
 
 }
