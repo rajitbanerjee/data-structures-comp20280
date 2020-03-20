@@ -1,6 +1,8 @@
 package assignment1;
 
 import lists.SinglyLinkedList;
+import projectCode20280.PriorityQueue;
+import trees.UnsortedListPQ;
 
 /**
  * Assignment 1, Question 5.
@@ -9,8 +11,15 @@ import lists.SinglyLinkedList;
  * @author Rajit Banerjee, 18202817
  */
 public class PQSort<E> {
-    private void onUnsortedList(SinglyLinkedList<E> list) {
-
-
+    public void sort(SinglyLinkedList<E> list) {
+        PriorityQueue<E, E> pq = new UnsortedListPQ<>();
+        while (!list.isEmpty()) {
+            E element = list.removeFirst();
+            pq.insert(element, element);
+        }
+        while (!pq.isEmpty()) {
+            E element = pq.removeMin().getKey();
+            list.addLast(element);
+        }
     }
 }

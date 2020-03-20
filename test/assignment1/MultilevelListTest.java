@@ -36,4 +36,12 @@ class MultilevelListTest {
                 list.toString());
     }
 
+    @Test
+    void testEmptyList() {
+        Integer[] arr = {};
+        MultilevelList<Integer> list = new MultilevelList<>(arr);
+        list.flatten(list.head);
+        assertEquals("[]", list.toString());
+    }
+
 }

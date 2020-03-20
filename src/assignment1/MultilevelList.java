@@ -29,10 +29,6 @@ public class MultilevelList<E> {
             return element;
         }
 
-        public void setElement(E element) {
-            this.element = element;
-        }
-
         Node<E> getNext() {
             return next;
         }
