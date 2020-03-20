@@ -17,5 +17,5 @@ public interface Entry<K, V> {
      * @return the entry's value
      */
     V getValue();
-}
 
+}

@@ -1,6 +1,5 @@
 package projectCode20280;
 
-
 /**
  * Interface for the priority queue ADT.
  */
@@ -43,5 +42,5 @@ public interface PriorityQueue<K, V> {
      * @return the removed entry (or null if empty)
      */
     Entry<K, V> removeMin();
-}
 
+}

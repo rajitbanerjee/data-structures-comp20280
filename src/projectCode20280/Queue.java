@@ -35,4 +35,5 @@ public interface Queue<E> {
 	 * @return element removed (or null if empty)
 	 */
 	E dequeue();
+
 }

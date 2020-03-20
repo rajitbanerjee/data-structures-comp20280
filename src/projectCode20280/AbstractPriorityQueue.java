@@ -1,6 +1,5 @@
 package projectCode20280;
 
-
 import java.util.Comparator;
 
 /**
@@ -59,7 +58,7 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
     /**
      * Creates an empty priority queue using the given comparator to order keys.
      *
-     * @param c comparator defining the order of keys in the priority queue
+     * @param comp comparator defining the order of keys in the priority queue
      */
     protected AbstractPriorityQueue(Comparator<K> comp) {
         this.comp = comp;
@@ -100,4 +99,5 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
     public boolean isEmpty() {
         return size() == 0;
     }
+
 }

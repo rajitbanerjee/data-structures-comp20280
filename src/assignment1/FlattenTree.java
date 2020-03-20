@@ -39,4 +39,5 @@ public class FlattenTree<E extends Comparable<E>> extends LinkedBinaryTree<E> {
         }
         flatten(root.getRight());
     }
+    
 }

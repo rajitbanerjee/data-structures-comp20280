@@ -1,7 +1,6 @@
 package projectCode20280;
 
 public interface Deque<E> {
-
 	/**
 	 * Returns the number of elements in the deque.
 	 * 
@@ -57,4 +56,5 @@ public interface Deque<E> {
 	 * @return element removed (or null if empty)
 	 */
 	E removeLast();
+
 }

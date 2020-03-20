@@ -1,7 +1,6 @@
 package projectCode20280;
 
 public interface Stack<E> {
-
 	/**
 	 * Returns the number of elements in the stack.
 	 * 
@@ -36,4 +35,5 @@ public interface Stack<E> {
 	 * @return element removed (or null if empty)
 	 */
 	E pop();
+
 }
