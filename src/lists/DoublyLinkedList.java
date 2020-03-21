@@ -324,6 +324,29 @@ public class DoublyLinkedList<E> implements List<E> {
     }
 
     /**
+     * Recursively copies a list.
+     */
+    public DoublyLinkedList<E> recursiveCopy() {
+        return copy(header.getNext(), new DoublyLinkedList<>());
+    }
+
+    /**
+     * Helper function to recursively copy a list.
+     *
+     * @param start    the original start Node
+     * @param copyList list to store the copy of original list
+     * @return a copy of the original list
+     */
+    private DoublyLinkedList<E> copy(Node<E> start, DoublyLinkedList<E> copyList) {
+        if (start == trailer) {
+            return copyList;
+        } else {
+            copyList.addLast(start.getElement());
+            return copy(start.getNext(), copyList);
+        }
+    }
+
+    /**
      * Gives the String implementation of the list.
      *
      * @return the String containing the comma-separated list elements

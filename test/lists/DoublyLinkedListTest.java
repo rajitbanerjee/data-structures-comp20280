@@ -142,4 +142,11 @@ class DoublyLinkedListTest {
         assertEquals("[]", list.toString());
     }
 
+    @Test void testRecursiveCopy() {
+        list.addFirst("A");
+        list.addFirst("B");
+        list.addFirst("C");
+        assertEquals("[C, B, A]", list.recursiveCopy().toString());
+    }
+
 }
