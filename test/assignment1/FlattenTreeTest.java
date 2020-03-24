@@ -3,7 +3,7 @@ package assignment1;
 import org.junit.jupiter.api.Test;
 import projectCode20280.Position;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FlattenTreeTest {
     @Test

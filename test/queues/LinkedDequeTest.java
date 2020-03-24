@@ -3,7 +3,6 @@ package queues;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import projectCode20280.Deque;
-import queues.LinkedDeque;
 
 import static org.junit.jupiter.api.Assertions.*;
 

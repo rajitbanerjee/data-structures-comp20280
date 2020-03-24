@@ -1,7 +1,7 @@
 package queues;
 
-import projectCode20280.Deque;
 import lists.DoublyLinkedList;
+import projectCode20280.Deque;
 
 /**
  * Implementation of a linked list based Deque.

@@ -1,6 +1,5 @@
 package lists;
 
-import lists.SinglyLinkedList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -145,7 +144,8 @@ class SinglyLinkedListTest {
 
     }
 
-    @Test void testRecursiveCopy() {
+    @Test
+    void testRecursiveCopy() {
         list.addFirst("A");
         list.addFirst("B");
         list.addFirst("C");

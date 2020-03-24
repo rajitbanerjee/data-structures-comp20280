@@ -10,74 +10,6 @@ import projectCode20280.Position;
  * @author Aonghus Lawlor
  */
 public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTree<E> {
-    /**
-     * Nested static class for a binary tree node.
-     */
-    protected static class Node<E> implements Position<E> {
-        private E element;
-        private Node<E> parent;
-        private Node<E> left;
-        private Node<E> right;
-
-        /**
-         * Constructor
-         */
-        public Node(E element, Node<E> parent, Node<E> left, Node<E> right) {
-            setElement(element);
-            setParent(parent);
-            setLeft(left);
-            setRight(right);
-        }
-
-        /**
-         * Returns the element stored at this position.
-         *
-         * @return the stored element
-         * @throws IllegalStateException if position no longer valid
-         */
-        @Override
-        public E getElement() throws IllegalStateException {
-            return element;
-        }
-
-        // Other getter methods
-        public Node<E> getParent() {
-            return parent;
-        }
-
-        public Node<E> getLeft() {
-            return left;
-        }
-
-        public Node<E> getRight() {
-            return right;
-        }
-
-        // Setter methods
-        public void setElement(E element) {
-            this.element = element;
-        }
-
-        public void setParent(Node<E> parent) {
-            this.parent = parent;
-        }
-
-        public void setLeft(Node<E> left) {
-            this.left = left;
-        }
-
-        public void setRight(Node<E> right) {
-            this.right = right;
-        }
-    }
-
-    /**
-     * Factory function to create a new node storing element e.
-     */
-    protected Node<E> createNode(E e, Node<E> parent) {
-        return new Node<>(e, parent, null, null);
-    }
-
     protected Node<E> root = null;
     private int size = 0;
 
@@ -85,6 +17,23 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
      * Constructs an empty binary tree.
      */
     public LinkedBinaryTree() {
+    }
+
+    public static void main(String[] args) {
+        LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
+
+        int[] arr = {12, 25, 31, 58, 36, 42, 90, 62, 75};
+        for (int i : arr) {
+            bt.insert(i);
+        }
+        System.out.println("bt: " + bt.size() + " " + bt);
+    }
+
+    /**
+     * Factory function to create a new node storing element e.
+     */
+    protected Node<E> createNode(E e, Node<E> parent) {
+        return new Node<>(e, parent, null, null);
     }
 
     // non-public utility
@@ -385,14 +334,65 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         }
     }
 
-    public static void main(String[] args) {
-        LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
+    /**
+     * Nested static class for a binary tree node.
+     */
+    protected static class Node<E> implements Position<E> {
+        private E element;
+        private Node<E> parent;
+        private Node<E> left;
+        private Node<E> right;
 
-        int[] arr = {12, 25, 31, 58, 36, 42, 90, 62, 75};
-        for (int i : arr) {
-            bt.insert(i);
+        /**
+         * Constructor
+         */
+        public Node(E element, Node<E> parent, Node<E> left, Node<E> right) {
+            setElement(element);
+            setParent(parent);
+            setLeft(left);
+            setRight(right);
         }
-        System.out.println("bt: " + bt.size() + " " + bt);
+
+        /**
+         * Returns the element stored at this position.
+         *
+         * @return the stored element
+         * @throws IllegalStateException if position no longer valid
+         */
+        @Override
+        public E getElement() throws IllegalStateException {
+            return element;
+        }
+
+        // Setter methods
+        public void setElement(E element) {
+            this.element = element;
+        }
+
+        // Other getter methods
+        public Node<E> getParent() {
+            return parent;
+        }
+
+        public void setParent(Node<E> parent) {
+            this.parent = parent;
+        }
+
+        public Node<E> getLeft() {
+            return left;
+        }
+
+        public void setLeft(Node<E> left) {
+            this.left = left;
+        }
+
+        public Node<E> getRight() {
+            return right;
+        }
+
+        public void setRight(Node<E> right) {
+            this.right = right;
+        }
     }
 
 } 

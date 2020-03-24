@@ -10,7 +10,7 @@ import projectCode20280.Queue;
  */
 
 public class ArrayQueue<E> implements Queue<E> {
-    private int capacity; 
+    private int capacity;
     private E[] queue;
     private int front;
     private int size;

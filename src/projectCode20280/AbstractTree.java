@@ -3,8 +3,8 @@ package projectCode20280;
 import queues.LinkedQueue;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * An abstract base class providing some functionality of the Tree interface.
@@ -139,24 +139,6 @@ public abstract class AbstractTree<E> implements Tree<E> {
 
     //---------- support for various iterations of a tree ----------
 
-    //---------------- nested ElementIterator class ----------------
-    /* This class adapts the iteration produced by positions() to return elements. */
-    private class ElementIterator implements Iterator<E> {
-        Iterator<Position<E>> posIterator = positions().iterator();
-
-        public boolean hasNext() {
-            return posIterator.hasNext();
-        }
-
-        public E next() {
-            return posIterator.next().getElement();
-        } // return element!
-
-        public void remove() {
-            posIterator.remove();
-        }
-    }
-
     /**
      * Returns an iterator of the elements stored in the tree.
      *
@@ -258,6 +240,24 @@ public abstract class AbstractTree<E> implements Tree<E> {
             }
         }
         return snapshot;
+    }
+
+    //---------------- nested ElementIterator class ----------------
+    /* This class adapts the iteration produced by positions() to return elements. */
+    private class ElementIterator implements Iterator<E> {
+        Iterator<Position<E>> posIterator = positions().iterator();
+
+        public boolean hasNext() {
+            return posIterator.hasNext();
+        }
+
+        public E next() {
+            return posIterator.next().getElement();
+        } // return element!
+
+        public void remove() {
+            posIterator.remove();
+        }
     }
 
 }

@@ -1,7 +1,5 @@
-
 package lists;
 
-import lists.DoublyLinkedList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +48,10 @@ class DoublyLinkedListTest {
             list.add(1, "B");
             list.add(1, "D");
             list.add(4, "E");
-            assertEquals("[A, D, B, C, E]", list.toString());
+            list.add(1, "X");
+            list.add(5, "Y");
+            list.add(7, "Z");
+            assertEquals("[A, X, D, B, C, Y, E, Z]", list.toString());
         } catch (Exception e) {
             fail("Add at given index not working.");
         }
@@ -93,6 +94,17 @@ class DoublyLinkedListTest {
         assertEquals("B", list.get(0));
         assertEquals("A", list.get(1));
         assertEquals("C", list.get(2));
+    }
+
+    @Test
+    void testSetAtIndex() {
+        list.addLast("A");
+        list.addLast("B");
+        list.addLast("X");
+        list.addLast("D");
+        assertEquals("[A, B, X, D]", list.toString());
+        list.set(2, "C");
+        assertEquals("[A, B, C, D]", list.toString());
     }
 
     @Test
@@ -142,7 +154,8 @@ class DoublyLinkedListTest {
         assertEquals("[]", list.toString());
     }
 
-    @Test void testRecursiveCopy() {
+    @Test
+    void testRecursiveCopy() {
         list.addFirst("A");
         list.addFirst("B");
         list.addFirst("C");

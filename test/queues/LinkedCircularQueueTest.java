@@ -2,7 +2,6 @@ package queues;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import queues.LinkedCircularQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 

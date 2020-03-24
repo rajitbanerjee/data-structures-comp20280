@@ -13,43 +13,6 @@ import java.util.Iterator;
 
 public class CircularlyLinkedList<E> implements List<E> {
 
-    // Constituent Node of CircularlyLinkedList
-    private static class Node<E> {
-        private E element; // element stored in the Node
-        private Node<E> next; // reference to the next Node in the list
-
-        /**
-         * Creates a new node with given element and next node reference.
-         *
-         * @param element the element that will compose the list
-         * @param next    reference to the next Node
-         */
-        Node(E element, Node<E> next) {
-            this.element = element;
-            this.next = next;
-        }
-
-        // Accessor for element
-        E getElement() {
-            return element;
-        }
-
-        // Accessor for next Node<E>
-        Node<E> getNext() {
-            return next;
-        }
-
-        // Mutator for element
-//        public void setElement(E element) {
-//            this.element = element;
-//        }
-
-        // Mutator for next Node<E>
-        void setNext(Node<E> next) {
-            this.next = next;
-        }
-    }
-
     private Node<E> tail = null; // reference to the last Node of the list
     private int size = 0; // size tracker
 
@@ -143,25 +106,6 @@ public class CircularlyLinkedList<E> implements List<E> {
         return new ListIterator();
     }
 
-    // Inner class whose instance is returned by the iterator() method
-    private class ListIterator implements Iterator<E> {
-        Node<E> temp = tail;
-        int index = 0;
-
-        @Override
-        public boolean hasNext() {
-            return index != size; // checks if one loop of the CLL is complete
-        }
-
-        @Override
-        public E next() {
-            E ans = temp.getNext().getElement();
-            temp = temp.getNext();
-            index++;
-            return ans;
-        }
-    }
-
     /**
      * Returns the element at index i of the List.
      *
@@ -248,7 +192,7 @@ public class CircularlyLinkedList<E> implements List<E> {
      * @return the element that has been removed, null if empty or out of bounds
      */
     @Override
-    public E remove(int i)  {
+    public E remove(int i) {
         if (isEmpty() || i >= size) {
             // cannot remove element if list is empty or specified index is out of bounds
             return null;
@@ -293,6 +237,62 @@ public class CircularlyLinkedList<E> implements List<E> {
         sb = new StringBuilder(sb.substring(0, sb.length() - 2));
         sb.append("]");
         return sb.toString();
+    }
+
+    // Constituent Node of CircularlyLinkedList
+    private static class Node<E> {
+        private E element; // element stored in the Node
+        private Node<E> next; // reference to the next Node in the list
+
+        /**
+         * Creates a new node with given element and next node reference.
+         *
+         * @param element the element that will compose the list
+         * @param next    reference to the next Node
+         */
+        Node(E element, Node<E> next) {
+            this.element = element;
+            this.next = next;
+        }
+
+        // Accessor for element
+        E getElement() {
+            return element;
+        }
+
+        // Accessor for next Node<E>
+        Node<E> getNext() {
+            return next;
+        }
+
+        // Mutator for element
+//        public void setElement(E element) {
+//            this.element = element;
+//        }
+
+        // Mutator for next Node<E>
+        void setNext(Node<E> next) {
+            this.next = next;
+        }
+    }
+
+    // Inner class whose instance is returned by the iterator() method
+    private class ListIterator implements Iterator<E> {
+        Node<E> temp = tail;
+        int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return index != size; // checks if one loop of the CLL is complete
+        }
+
+        @Override
+        public E next() {
+            E ans = temp.getNext().getElement();
+            temp = temp.getNext();
+            index++;
+            return ans;
+        }
     }
 
     /*

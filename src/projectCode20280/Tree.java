@@ -1,6 +1,7 @@
 package projectCode20280;
 
 import java.util.Iterator;
+
 /**
  * An interface for a tree where nodes can have an arbitrary number of children.
  */

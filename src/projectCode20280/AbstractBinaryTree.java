@@ -1,7 +1,7 @@
 package projectCode20280;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An abstract base class providing some functionality of the BinaryTree interface.

@@ -1,9 +1,9 @@
 package stacks;
 
 import org.junit.jupiter.api.Test;
-import stacks.BracketChecker;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Tests for BracketChecker.
