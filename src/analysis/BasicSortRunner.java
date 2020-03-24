@@ -1,17 +1,17 @@
 package analysis;
 
 /**
- * Compares the performance of iterative vs recursive Bubble Sort.
+ * Tests some basic sorting algorithms in the Sort class.
  * Performs a timing analysis for arrays of various sizes.
  *
  * @author Rajit Banerjee, 18202817
  */
-public class BubbleSortRunner {
+public class BasicSortRunner {
     private static int[] array_sizes = {10, 15, 100, 1000, 10000};
 
-    // Run tests for iterative and recursive bubble sort
+    // Run tests for bubble sort, selection sort, and insertion sort
     public static void main(String[] args) throws Exception {
-        String[] sortTypes = {"bubble_sort", "recursive_bubble_sort"};
+        String[] sortTypes = {"bubble_sort", "selection_sort", "insertion_sort"};
         TestRunner.run(sortTypes, array_sizes);
     }
 

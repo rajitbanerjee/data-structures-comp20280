@@ -16,6 +16,7 @@ public class TripleSum {
 
     /**
      * Returns the number of triples in the array that sum to 0.
+     * Complexity: O(n^2 log n)
      *
      * @param arr the array of integers
      * @return the number of triples that sum to exactly 0
@@ -59,10 +60,9 @@ public class TripleSum {
             arr[x++] = sc.nextLong();
         }
         System.out.println(Arrays.toString(arr));
-        final long t1 = System.nanoTime();
+        final long startTime = System.nanoTime();
         int count = count(arr);
-        final long t2 = System.nanoTime();
-        long elapsed = (t2 - t1) / 1000;
+        final long elapsed = System.nanoTime() - startTime;
 
         System.out.println("Number of triples summing to 0 =  " + count);
         System.out.println("Time taken for computation = " + elapsed + " nanoseconds");
