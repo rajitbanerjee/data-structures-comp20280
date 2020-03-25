@@ -5,6 +5,13 @@ import projectCode20280.Position;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Assignment 1, Question 4
+ * Test for in-place flattening of a binary tree into
+ * a linked list.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class FlattenTreeTest {
     @Test
     void testFlatten() {

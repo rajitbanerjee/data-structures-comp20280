@@ -18,7 +18,7 @@ class FibonacciTest {
             Fibonacci.number(-1);
             fail("Invalid input!");
         } catch (Exception ignored) {
-            // test passed
+            // Test passed
         }
         assertEquals(0, Fibonacci.number(1));
         assertEquals(1, Fibonacci.number(2));
@@ -29,4 +29,5 @@ class FibonacciTest {
         assertEquals(8, Fibonacci.number(7));
         assertEquals(13, Fibonacci.number(8));
     }
+
 }

@@ -1,5 +1,10 @@
 package recursion;
 
+/**
+ * Palindrome string checker using recursion.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 public class Palindrome {
     // Function to clean the input String and call the helper function
     public static boolean isPalindrome(String input) {
@@ -20,4 +25,5 @@ public class Palindrome {
         return input.charAt(0) == input.charAt(input.length() - 1) &&
                 check(input.substring(1, input.length() - 1));
     }
+
 }

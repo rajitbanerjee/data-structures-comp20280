@@ -8,7 +8,6 @@ import projectCode20280.Stack;
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
-
 public class ArrayStack<E> implements Stack<E> {
     private int capacity;
     private E[] stack;
@@ -112,20 +111,5 @@ public class ArrayStack<E> implements Stack<E> {
         sb.append("]");
         return sb.toString();
     }
-
-    /*
-    public static void main(String[] args) {
-        ArrayStack<Integer> stk = new ArrayStack<>();
-        for (int i = 1; i <= 10; i++) {
-            stk.push(i);
-        }
-        System.out.println(stk);
-        stk.pop();
-        System.out.println(stk);
-        stk.pop();
-        stk.push(200);
-        System.out.println(stk);
-    }
-     */
 
 }

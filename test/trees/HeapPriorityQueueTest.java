@@ -6,6 +6,11 @@ import projectCode20280.Entry;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for HeapPriorityQueue.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class HeapPriorityQueueTest {
     private HeapPriorityQueue<Integer, Integer> heap;
 
@@ -20,11 +25,6 @@ class HeapPriorityQueueTest {
         Integer[] values = {5, 4, 3, 2, 1};
         heap = new HeapPriorityQueue<>(keys, values);
         assertEquals("[1, 2, 3, 5, 4]", heap.toString());
-//        try {
-//            heap.sanityCheck();
-//        } catch (Exception e) {
-//            fail("Heap invariant not maintained!");
-//        }
     }
 
     @Test
@@ -41,7 +41,7 @@ class HeapPriorityQueueTest {
     }
 
     @Test
-    void isEmpty() {
+    void testIsEmpty() {
         assertTrue(heap.isEmpty());
         heap.insert(1, 1);
         heap.insert(2, 2);
@@ -50,7 +50,7 @@ class HeapPriorityQueueTest {
     }
 
     @Test
-    void min() {
+    void testMin() {
         assertNull(heap.min());
         testBottomUpConstructor();
         heap.insert(0, 0);
@@ -59,7 +59,7 @@ class HeapPriorityQueueTest {
     }
 
     @Test
-    void insert() {
+    void testInsert() {
         heap.insert(1, 1);
         heap.insert(2, 2);
         heap.insert(3, 3);
@@ -70,7 +70,7 @@ class HeapPriorityQueueTest {
     }
 
     @Test
-    void removeMin() {
+    void testRemoveMin() {
         assertNull(heap.removeMin());
         testBottomUpConstructor();
         heap.insert(0, 0);

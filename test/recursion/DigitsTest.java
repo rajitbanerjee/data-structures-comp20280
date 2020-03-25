@@ -15,4 +15,5 @@ class DigitsTest {
         assertEquals(4, Digits.sum(121));
         assertEquals(15, Digits.sum(54321));
     }
+
 }

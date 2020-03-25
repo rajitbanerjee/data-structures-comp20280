@@ -13,7 +13,6 @@ import projectCode20280.Queue;
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
-
 public class LinkedCircularQueue<E> implements Queue<E> {
     private CircularlyLinkedList<E> queue = new CircularlyLinkedList<>();
 
@@ -85,27 +84,5 @@ public class LinkedCircularQueue<E> implements Queue<E> {
     public String toString() {
         return queue.toString();
     }
-
-    /*
-    public static void main(String[] args) {
-        LinkedCircularQueue<Integer> q = new LinkedCircularQueue<>();
-        for (int i = 0; i < 10; i++) {
-            q.enqueue(i);
-        }
-        System.out.println(q);
-        q.dequeue();
-        System.out.println(q);
-        q.dequeue();
-        System.out.println(q);
-        q.enqueue(10);
-        System.out.println(q);
-        q.rotate();
-        System.out.println(q);
-        q.enqueue(11);
-        System.out.println(q);
-        q.enqueue(12);
-        System.out.println(q);
-    }
-     */
 
 }

@@ -67,4 +67,5 @@ public class TripleSum {
         System.out.println("Number of triples summing to 0 =  " + count);
         System.out.println("Time taken for computation = " + elapsed + " nanoseconds");
     }
+
 }

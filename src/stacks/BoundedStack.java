@@ -9,7 +9,6 @@ import projectCode20280.Stack;
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
-
 public class BoundedStack<E> implements Stack<E> {
     private SinglyLinkedList<E> stack;
     private int capacity;
@@ -102,29 +101,5 @@ public class BoundedStack<E> implements Stack<E> {
     public void reverse() {
         stack.reverse();
     }
-
-    /*
-    public static void main(String[] args) {
-        BoundedStack<Integer> stk = new BoundedStack<>(10);
-        for (int i = 1; i <= 10; i++) {
-            stk.push(i);
-        }
-        System.out.println(stk);
-        stk.pop();
-        System.out.println(stk);
-        stk.pop();
-        stk.push(200);
-        System.out.println(stk);
-        stk.reverse();
-        System.out.println("Reversed: " + stk);
-        try {
-            stk.push(200);
-            stk.push(300);
-            System.out.println("Error: Stack is bounded, overflow has occurred!");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-     */
 
 }

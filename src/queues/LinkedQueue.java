@@ -74,24 +74,4 @@ public class LinkedQueue<E> implements Queue<E> {
         return queue.toString();
     }
 
-    /*
-    public static void main(String[] args) {
-        LinkedQueue<Integer> q = new LinkedQueue<>();
-        for (int i = 0; i < 10; i++) {
-            q.enqueue(i);
-        }
-        System.out.println(q);
-        q.dequeue();
-        System.out.println(q);
-        q.dequeue();
-        System.out.println(q);
-        q.enqueue(10);
-        System.out.println(q);
-        q.enqueue(11);
-        System.out.println(q);
-        q.enqueue(12);
-        System.out.println(q);
-    }
-     */
-
 }

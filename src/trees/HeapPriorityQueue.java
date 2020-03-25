@@ -11,6 +11,7 @@ import java.util.Comparator;
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
+ * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
 public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     protected DoublyLinkedList<Entry<K, V>> heap = new DoublyLinkedList<>();
@@ -196,19 +197,5 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         sb.append("]");
         return sb.toString();
     }
-
-//    /**
-//     * Used for debugging purposes only.
-//     */
-//    public void sanityCheck() throws IllegalStateException {
-//        for (int j = 0; j < size(); j++) {
-//            int left = left(j);
-//            int right = right(j);
-//            if (left < size() && compare(heap.get(left), heap.get(j)) < 0)
-//                throw new IllegalStateException("Invalid left child relationship");
-//            if (right < size() && compare(heap.get(right), heap.get(j)) < 0)
-//                throw new IllegalStateException("Invalid right child relationship");
-//        }
-//    }
 
 }

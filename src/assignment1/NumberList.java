@@ -9,7 +9,9 @@ import lists.DoublyLinkedList;
  * @author Rajit Banerjee, 18202817
  */
 public class NumberList extends DoublyLinkedList<Integer> {
-
+    /**
+     * Empty NumberList constructor.
+     */
     public NumberList() {
     }
 

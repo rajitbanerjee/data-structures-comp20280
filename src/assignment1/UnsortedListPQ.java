@@ -67,9 +67,6 @@ public class UnsortedListPQ<K, V> extends AbstractPriorityQueue<K, V> {
      * @return integer value of the index of minimum key element
      */
     public int minIndex() {
-        if (list.isEmpty()) {
-            return -1;
-        }
         int min = 0;
         for (int i = 0; i < list.size(); i++) {
             Entry<K, V> current = list.get(i);
@@ -77,7 +74,6 @@ public class UnsortedListPQ<K, V> extends AbstractPriorityQueue<K, V> {
             if (compare(current, smallest) < 0) {
                 min = i;
             }
-
         }
         return min;
     }
@@ -96,6 +92,22 @@ public class UnsortedListPQ<K, V> extends AbstractPriorityQueue<K, V> {
         Entry<K, V> minimum = list.get(smallest);
         list.remove(smallest);
         return minimum;
+    }
+
+    /**
+     * Gets the String representation of the heap.
+     *
+     * @return String representation of the heap
+     */
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[");
+        for (Entry<K, V> elem : list) {
+            sb.append(elem.getValue()).append(", ");
+        }
+        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+        sb.append("]");
+        return sb.toString();
     }
 
 }

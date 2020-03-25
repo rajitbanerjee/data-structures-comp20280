@@ -7,8 +7,8 @@ import projectCode20280.Queue;
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
+ * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
-
 public class ArrayQueue<E> implements Queue<E> {
     private int capacity;
     private E[] queue;
@@ -119,25 +119,5 @@ public class ArrayQueue<E> implements Queue<E> {
         return sb.toString();
 
     }
-
-    /*
-    public static void main(String[] args) {
-        ArrayQueue<Integer> q = new ArrayQueue<>(10);
-        for (int i = 0; i < 10; i++) {
-            q.enqueue(i);
-        }
-        System.out.println(q);
-        q.dequeue();
-        System.out.println(q);
-        q.dequeue();
-        System.out.println(q);
-        q.enqueue(10);
-        System.out.println(q);
-        q.enqueue(11);
-        System.out.println(q);
-        q.enqueue(12);
-        System.out.println(q);
-    }
-     */
 
 }

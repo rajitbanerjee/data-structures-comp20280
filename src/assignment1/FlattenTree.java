@@ -16,28 +16,20 @@ public class FlattenTree<E extends Comparable<E>> extends LinkedBinaryTree<E> {
      * @param rootPosition the root Position of the tree to be flattened
      */
     public void flatten(Position<E> rootPosition) {
-        Node<E> root = validate(rootPosition);
-        if (root == null || isExternal(root)) {
-            return;
-        }
-        if (root.getLeft() != null) {
-            flatten(root.getLeft());
-
-            // temporarily store the original right child of the root
-            LinkedBinaryTree.Node<E> originalRight = root.getRight();
-            // move the root's left child to it's new right child
-            root.setRight(root.getLeft());
-            root.setLeft(null);
-
-            // find the rightmost end of the root's right child
-            LinkedBinaryTree.Node<E> insertPosition = root.getRight();
-            while (insertPosition.getRight() != null) {
-                insertPosition = insertPosition.getRight();
+        if (rootPosition != null) {
+            Node<E> root = validate(rootPosition);
+            flatten(root.getRight());
+            if (root.getLeft() != null) {
+                flatten(root.getLeft());
+                Node<E> temp = root.getLeft();
+                while (temp.getRight() != null) {
+                    temp = temp.getRight();
+                }
+                temp.setRight(root.getRight());
+                root.setRight(root.getLeft());
+                root.setLeft(null);
             }
-            // set the rightmost end's right child to be the original right child
-            insertPosition.setRight(originalRight);
         }
-        flatten(root.getRight());
     }
 
 }

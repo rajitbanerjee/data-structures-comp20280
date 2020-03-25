@@ -4,8 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Assignment 1, Question 3
+ * Test for in-place flattening of a multilevel list into
+ * a linked list.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class MultilevelListTest {
-
     // Create a sample multilevel linked list
     public static MultilevelList<Integer> makeMultilevel() {
         MultilevelList<Integer> list1 = new MultilevelList<>(new Integer[]{9, 8, 4, 7, 13});

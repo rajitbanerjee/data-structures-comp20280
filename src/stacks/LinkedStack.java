@@ -9,7 +9,6 @@ import projectCode20280.Stack;
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
-
 public class LinkedStack<E> implements Stack<E> {
     private SinglyLinkedList<E> stack = new SinglyLinkedList<>();
 
@@ -79,22 +78,5 @@ public class LinkedStack<E> implements Stack<E> {
     public void reverse() {
         stack.reverse();
     }
-
-    /*
-    public static void main(String[] args) {
-        LinkedStack<Integer> stk = new LinkedStack<>();
-        for (int i = 1; i <= 10; i++) {
-            stk.push(i);
-        }
-        System.out.println(stk);
-        stk.pop();
-        System.out.println(stk);
-        stk.pop();
-        stk.push(200);
-        System.out.println(stk);
-        stk.reverse();
-        System.out.println("Reversed: " + stk);
-    }
-    */
 
 }

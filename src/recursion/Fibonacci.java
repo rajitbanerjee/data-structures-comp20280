@@ -1,5 +1,10 @@
 package recursion;
 
+/**
+ * Fibonacci sequence using recursion.
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 public class Fibonacci {
     private static int[] memo = new int[100];
 
@@ -21,4 +26,5 @@ public class Fibonacci {
         }
         return memo[n];
     }
+
 }

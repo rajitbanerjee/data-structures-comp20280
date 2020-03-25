@@ -102,21 +102,4 @@ public class LinkedDeque<E> implements Deque<E> {
         return deque.toString();
     }
 
-    /*
-    public static void main(String[] args) {
-        LinkedDeque<Integer> dq = new LinkedDeque<>();
-        dq.addFirst(0);
-        dq.addFirst(1);
-        dq.addFirst(2);
-        dq.addLast(-1);
-        System.out.println(dq);
-
-        dq.removeFirst();
-        System.out.println(dq);
-
-        dq.removeLast();
-        System.out.println(dq);
-    }
-     */
-
 }

@@ -8,14 +8,23 @@ package assignment1;
  * @author Rajit Banerjee, 18202817
  */
 public class MultilevelList<E> {
-    // Reference to the first Node of a list
     protected Node<E> head;
 
+    /**
+     * Copy array elements into a MultilevelList.
+     *
+     * @param array whose elements are to be copied
+     */
     public MultilevelList(E[] array) {
         head = makeList(array);
     }
 
-    // Create a linked list from an array
+    /**
+     * Create a linked list from an array.
+     *
+     * @param array to be used to create a MultilevelList
+     * @return head Node of the new MultilevelList
+     */
     public Node<E> makeList(E[] array) {
         Node<E> start = null;
         for (int i = array.length - 1; i >= 0; i--) {
@@ -24,7 +33,12 @@ public class MultilevelList<E> {
         return start;
     }
 
-    // Insert a child Node at a particular index of a list
+    /**
+     * Insert a child Node at a particular index of a list.
+     *
+     * @param index at which a child is to be inserted
+     * @param list  child list to be inserted
+     */
     public void insertChild(int index, MultilevelList<E> list) {
         Node<E> temp = head;
         int i = 0;
@@ -37,6 +51,11 @@ public class MultilevelList<E> {
         }
     }
 
+    /**
+     * Flatten the multilevel list into a singly linked list.
+     *
+     * @param head first Node of the list to be flattened
+     */
     public void flatten(Node<E> head) {
         if (head == null) {
             return;
@@ -81,6 +100,7 @@ public class MultilevelList<E> {
         return sb.toString();
     }
 
+    // Constituent Node of a MultilevelList
     protected static class Node<E> {
         private E element;
         private Node<E> next;

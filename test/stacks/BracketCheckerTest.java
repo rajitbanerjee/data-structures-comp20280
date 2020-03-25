@@ -29,12 +29,12 @@ class BracketCheckerTest {
     @Test
     void testInvalidBrackets() {
         String[] inputs = {
-                "[]]()()", // not correct
-                "a{b(c]d}e", // not correct; ] doesn't ← match
-                "a[b{c}d]e}", // not correct; nothing ← matches final }
-                "a{b(c) ", // not correct; Nothing ← matches opening {
-                "][]][][[]][]][][[[", // not correct
-                "(((abc))((d)))))", // not correct}
+                "[]]()()", // Not correct
+                "a{b(c]d}e", // Not correct; ] doesn't ← match
+                "a[b{c}d]e}", // Not correct; nothing ← matches final }
+                "a{b(c) ", // Not correct; Nothing ← matches opening {
+                "][]][][[]][]][][[[", // Not correct
+                "(((abc))((d)))))", // Not correct}
         };
         for (String expression : inputs) {
             assertFalse(BracketChecker.isValid(expression));

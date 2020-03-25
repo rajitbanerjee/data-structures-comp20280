@@ -5,8 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Assignment 1, Question 2
+ * Test for adding two NumberLists
+ *
+ * @author Rajit Banerjee, 18202817
+ */
 class NumberListTest {
-
     private NumberList list1;
     private NumberList list2;
 

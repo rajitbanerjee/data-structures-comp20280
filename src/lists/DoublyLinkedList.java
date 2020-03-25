@@ -9,10 +9,10 @@ import java.util.Iterator;
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
+ * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
 
 public class DoublyLinkedList<E> implements List<E> {
-
     // Sentinel Nodes
     private Node<E> header = new Node<>(null, null, null);
     private Node<E> trailer = new Node<>(null, null, header);
@@ -105,10 +105,10 @@ public class DoublyLinkedList<E> implements List<E> {
         } else if (i == size) {
             addLast(e);
         } else {
-            Node<E> temp = header.getNext(); // temporary Node for list traversal
+            Node<E> temp = header.getNext(); // Temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i) {
-                    // insert Node when index is found
+                    // Insert Node when index is found
                     addBetween(e, temp.getPrev(), temp);
                     break;
                 }
@@ -151,7 +151,7 @@ public class DoublyLinkedList<E> implements List<E> {
     @Override
     public E get(int i) {
         E ans = null;
-        int index = 0; // temporary index used for list traversal
+        int index = 0; // Temporary index used for list traversal
         Iterator<E> itr = iterator();
         if (isEmpty()) {
             return null;
@@ -175,10 +175,10 @@ public class DoublyLinkedList<E> implements List<E> {
      */
     public void set(int i, E element) {
         if (!isEmpty()) {
-            Node<E> temp = header.getNext(); // temporary Node for list traversal
+            Node<E> temp = header.getNext(); // Temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i) {
-                    // replace Node when index is found
+                    // Replace Node when index is found
                     temp.setElement(element);
                     break;
                 }
@@ -245,17 +245,17 @@ public class DoublyLinkedList<E> implements List<E> {
     @Override
     public E remove(int i) {
         if (isEmpty() || i >= size) {
-            // cannot remove element if list is empty or specified index is out of bounds
+            // Cannot remove element if list is empty or specified index is out of bounds
             return null;
         } else if (i == 0) {
             return removeFirst();
         } else {
-            E removed = null; // element to be removed
-            Node<E> temp = header.getNext(); //temporary Node for list traversal
+            E removed = null; // Element to be removed
+            Node<E> temp = header.getNext(); // Temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
-                    removed = temp.getNext().getElement(); // element to be removed
-                    temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
+                    removed = temp.getNext().getElement(); // Element to be removed
+                    temp.setNext(temp.getNext().getNext()); // Destroy pointer to Node to be removed
                     size--;
                     break;
                 }
@@ -306,9 +306,9 @@ public class DoublyLinkedList<E> implements List<E> {
 
     // Constituent Node of DoublyLinkedList
     private static class Node<E> {
-        private E element; // element stored in the Node
-        private Node<E> next; // reference to next Node in the list
-        private Node<E> prev; // reference to previous Node in the List
+        private E element; // Element stored in the Node
+        private Node<E> next; // Reference to next Node in the list
+        private Node<E> prev; // Reference to previous Node in the List
 
         /**
          * Creates a new node with given element and next node reference.
@@ -393,62 +393,5 @@ public class DoublyLinkedList<E> implements List<E> {
         }
         */
     }
-
-    /*
-    public static void main(String[] args) {
-        // TEST 1: Given in skeleton code
-        System.out.println("\nTEST 1 from given GitHub code:");
-        DoublyLinkedList<Integer> dll = new DoublyLinkedList<>();
-        dll.addFirst(0);
-        dll.addFirst(1);
-        dll.addFirst(2);
-        dll.addLast(-1);
-        System.out.println(dll);
-
-        dll.removeFirst();
-        System.out.println(dll);
-
-        dll.removeLast();
-        System.out.println(dll);
-
-        for (Integer e : dll) {
-            System.out.println("value: " + e);
-        }
-
-        // TEST 2: Given in practical 1
-        System.out.println("\nTEST 2 from Practical 1:");
-        DoublyLinkedList<Integer> ll = new DoublyLinkedList<>();
-        //LinkedList<Integer> ll = new LinkedList<Integer>();
-        ll.addFirst(0);
-        ll.addFirst(1);
-        ll.addFirst(3);
-        ll.addFirst(4);
-        ll.addFirst(5);
-        ll.add(3, 2);
-        System.out.println(ll);
-        ll.addFirst(-100);
-        ll.addLast(+100);
-        System.out.println(ll);
-        ll.removeFirst();
-        ll.removeLast();
-        System.out.println(ll);
-        // Removes the item in the specified index ll.remove(2); System.out.println(ll);
-        ll.removeFirst();
-        System.out.println(ll);
-        ll.removeLast();
-        System.out.println(ll);
-        ll.removeFirst();
-        System.out.println(ll);
-        ll.addFirst(9999);
-        ll.addFirst(8888);
-        ll.addFirst(7777);
-
-        System.out.println(ll);
-        System.out.println(ll.get(0));
-        System.out.println(ll.get(1));
-        System.out.println(ll.get(2));
-        System.out.println(ll);
-    }
-     */
 
 }

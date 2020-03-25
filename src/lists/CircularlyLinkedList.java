@@ -9,10 +9,9 @@ import java.util.Iterator;
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
+ * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
-
 public class CircularlyLinkedList<E> implements List<E> {
-
     private Node<E> tail = null; // reference to the last Node of the list
     private int size = 0; // size tracker
 
@@ -42,11 +41,11 @@ public class CircularlyLinkedList<E> implements List<E> {
     @Override
     public void addFirst(E e) {
         if (isEmpty()) {
-            // create tail Node and link to itself
+            // Create tail Node and link to itself
             tail = new Node<>(e, null);
             tail.setNext(tail);
         } else {
-            // create new Node to follow the tail
+            // Create new Node to follow the tail
             Node<E> newest = new Node<>(e, tail.getNext());
             tail.setNext(newest);
         }
@@ -60,9 +59,7 @@ public class CircularlyLinkedList<E> implements List<E> {
      */
     @Override
     public void addLast(E e) {
-        // add element to the front of the list
         addFirst(e);
-        // change the tail to be the newly added Node in the front
         rotate();
     }
 
@@ -82,11 +79,11 @@ public class CircularlyLinkedList<E> implements List<E> {
         } else if (i == size) {
             addLast(e);
         } else {
-            Node<E> newest = new Node<>(e, null); // create Node to be inserted
-            Node<E> temp = tail.getNext(); // temporary Node for list traversal
+            Node<E> newest = new Node<>(e, null); // Create Node to be inserted
+            Node<E> temp = tail.getNext(); // Temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
-                    // insert new Node at required index i
+                    // Insert new Node at required index i
                     newest.setNext(temp.getNext());
                     temp.setNext(newest);
                     break;
@@ -115,7 +112,7 @@ public class CircularlyLinkedList<E> implements List<E> {
     @Override
     public E get(int i) {
         E ans = null;
-        int index = 0; // temporary index used for list traversal
+        int index = 0; // Temporary index used for list traversal
         Iterator<E> itr = iterator();
         if (isEmpty()) {
             return null;
@@ -170,15 +167,15 @@ public class CircularlyLinkedList<E> implements List<E> {
         } else {
             Node<E> temp = tail.getNext();
             removed = tail.getElement();
-            int i = 0; // temporary index for loop control
+            int i = 0; // Temporary index for loop control
             while (i < size - 1) {
-                // traverse the list until the 2nd last Node is reached
+                // Traverse the list until the 2nd last Node is reached
                 i++;
                 temp = temp.getNext();
             }
-            // make the 2nd last Node link to the first Node after the former tail
+            // Make the 2nd last Node link to the first Node after the former tail
             temp.setNext(tail.getNext());
-            // update the tail Node
+            // Update the tail Node
             tail = temp;
             size--;
         }
@@ -194,17 +191,17 @@ public class CircularlyLinkedList<E> implements List<E> {
     @Override
     public E remove(int i) {
         if (isEmpty() || i >= size) {
-            // cannot remove element if list is empty or specified index is out of bounds
+            // Cannot remove element if list is empty or specified index is out of bounds
             return null;
         } else if (i == 0) {
             return removeFirst();
         } else {
-            E removed = null; // element to be removed
-            Node<E> temp = tail.getNext(); //temporary Node for list traversal
+            E removed = null; // Element to be removed
+            Node<E> temp = tail.getNext(); // Temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
-                    removed = temp.getNext().getElement(); // element to be removed
-                    temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
+                    removed = temp.getNext().getElement(); // Element to be removed
+                    temp.setNext(temp.getNext().getNext()); // Destroy pointer to Node to be removed
                     size--;
                     break;
                 }
@@ -241,8 +238,8 @@ public class CircularlyLinkedList<E> implements List<E> {
 
     // Constituent Node of CircularlyLinkedList
     private static class Node<E> {
-        private E element; // element stored in the Node
-        private Node<E> next; // reference to the next Node in the list
+        private E element; // Element stored in the Node
+        private Node<E> next; // Reference to the next Node in the list
 
         /**
          * Creates a new node with given element and next node reference.
@@ -265,11 +262,6 @@ public class CircularlyLinkedList<E> implements List<E> {
             return next;
         }
 
-        // Mutator for element
-//        public void setElement(E element) {
-//            this.element = element;
-//        }
-
         // Mutator for next Node<E>
         void setNext(Node<E> next) {
             this.next = next;
@@ -283,7 +275,7 @@ public class CircularlyLinkedList<E> implements List<E> {
 
         @Override
         public boolean hasNext() {
-            return index != size; // checks if one loop of the CLL is complete
+            return index != size;
         }
 
         @Override
@@ -294,73 +286,5 @@ public class CircularlyLinkedList<E> implements List<E> {
             return ans;
         }
     }
-
-    /*
-    public static void main(String[] args) {
-        // TEST 1: Given in skeleton code
-        System.out.println("\nTEST 1 from given GitHub code:");
-        CircularlyLinkedList<Integer> cll = new CircularlyLinkedList<>();
-        for (int i = 10; i < 20; ++i) {
-            cll.addLast(i);
-        }
-
-        System.out.println(cll);
-
-        cll.removeFirst();
-        System.out.println(cll);
-
-        cll.removeLast();
-
-        cll.rotate();
-        System.out.println(cll);
-
-        cll.removeFirst();
-        cll.rotate();
-        System.out.println(cll);
-
-        cll.removeLast();
-        cll.rotate();
-        System.out.println(cll);
-
-        for (Integer e : cll) {
-            System.out.println("value: " + e);
-        }
-
-        // TEST 2: Given in practical 1
-        System.out.println("\nTEST 2 from Practical 1:");
-        CircularlyLinkedList<Integer> ll = new CircularlyLinkedList<>();
-        //LinkedList<Integer> ll = new LinkedList<Integer>();
-        ll.addFirst(0);
-        ll.addFirst(1);
-        ll.addFirst(3);
-        ll.addFirst(4);
-        ll.addFirst(5);
-        ll.add(3, 2);
-        System.out.println(ll);
-        ll.addFirst(-100);
-        ll.addLast(+100);
-        System.out.println(ll);
-        ll.removeFirst();
-        ll.removeLast();
-        System.out.println(ll);
-        // Removes the item in the specified index ll.remove(2); System.out.println(ll);
-        ll.removeFirst();
-        System.out.println(ll);
-        ll.removeLast();
-        System.out.println(ll);
-        ll.removeFirst();
-        System.out.println(ll);
-        ll.addFirst(9999);
-        ll.addFirst(8888);
-        ll.addFirst(7777);
-
-        System.out.println(ll);
-        System.out.println(ll.get(0));
-        System.out.println(ll.get(1));
-        System.out.println(ll.get(2));
-        System.out.println(ll);
-
-    }
-     */
 
 }

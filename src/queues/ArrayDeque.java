@@ -7,8 +7,8 @@ import projectCode20280.Deque;
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
+ * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
-
 public class ArrayDeque<E> implements Deque<E> {
     private int capacity;
     private E[] deque;
@@ -167,22 +167,5 @@ public class ArrayDeque<E> implements Deque<E> {
         sb.append("]");
         return sb.toString();
     }
-
-    /*
-    public static void main(String[] args) {
-        ArrayDeque<Integer> dq = new ArrayDeque<>();
-        dq.addFirst(0);
-        dq.addFirst(1);
-        dq.addFirst(2);
-        dq.addLast(-1);
-        System.out.println(dq);
-
-        dq.removeFirst();
-        System.out.println(dq);
-
-        dq.removeLast();
-        System.out.println(dq);
-    }
-     */
 
 }

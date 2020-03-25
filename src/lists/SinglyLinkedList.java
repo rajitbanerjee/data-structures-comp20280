@@ -10,12 +10,12 @@ import java.util.Iterator;
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
+ * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
 
 public class SinglyLinkedList<E> implements List<E> {
-
-    private Node<E> head = null; // reference to first Node of the list
-    private int size = 0; // keeps track of the size of the list
+    private Node<E> head = null;
+    private int size = 0;
 
     /**
      * Returns the current number of elements in the list.
@@ -59,7 +59,7 @@ public class SinglyLinkedList<E> implements List<E> {
             Node<E> newest = new Node<>(e, null);
             for (Node<E> temp = head; temp != null; temp = temp.getNext()) {
                 if (temp.getNext() == null) {
-                    // make the current last Node point to the newly added last Node
+                    // Make the current last Node point to the newly added last Node
                     temp.setNext(newest);
                     break;
                 }
@@ -84,11 +84,11 @@ public class SinglyLinkedList<E> implements List<E> {
         } else if (i == size) {
             addLast(e);
         } else {
-            Node<E> newest = new Node<>(e, null); // create Node to be inserted
-            Node<E> temp = head; // temporary Node for list traversal
+            Node<E> newest = new Node<>(e, null); // Create Node to be inserted
+            Node<E> temp = head; // Temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
-                    // insert new Node at required index i
+                    // Insert new Node at required index i
                     newest.setNext(temp.getNext());
                     temp.setNext(newest);
                     break;
@@ -117,7 +117,7 @@ public class SinglyLinkedList<E> implements List<E> {
     @Override
     public E get(int i) {
         E ans = null;
-        int index = 0; // temporary index used for list traversal
+        int index = 0; // Temporary index used for list traversal
         Iterator<E> itr = iterator();
         if (isEmpty()) {
             return null;
@@ -143,7 +143,7 @@ public class SinglyLinkedList<E> implements List<E> {
         if (isEmpty()) {
             return null;
         } else {
-            // store first element in temp variable and remove the Node
+            // Store first element in temp variable and remove the Node
             E removed = head.getElement();
             head = head.getNext();
             size--;
@@ -163,12 +163,12 @@ public class SinglyLinkedList<E> implements List<E> {
         } else if (size == 1) {
             return removeFirst();
         } else {
-            E removed = null; // element to be removed
-            Node<E> temp = head; // temporary Node for list traversal
+            E removed = null; // Element to be removed
+            Node<E> temp = head; // Temporary Node for list traversal
             while (temp != null) {
-                if (temp.getNext().getNext() == null) { // temp is the 2nd last Node
-                    removed = temp.getNext().getElement(); // last element is the one to remove
-                    temp.setNext(null); // nullify the reference to the last Node
+                if (temp.getNext().getNext() == null) {
+                    removed = temp.getNext().getElement(); // Last element is the one to remove
+                    temp.setNext(null); // Nullify the reference to the last Node
                     size--;
                     break;
                 }
@@ -187,17 +187,17 @@ public class SinglyLinkedList<E> implements List<E> {
     @Override
     public E remove(int i) {
         if (isEmpty() || i >= size) {
-            // cannot remove element if list is empty or specified index is out of bounds
+            // Cannot remove element if list is empty or specified index is out of bounds
             return null;
         } else if (i == 0) {
             return removeFirst();
         } else {
-            E removed = null; // element to be removed
-            Node<E> temp = head; // temporary Node for list traversal
+            E removed = null; // Element to be removed
+            Node<E> temp = head; // Temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
                 if (index == i - 1) {
-                    removed = temp.getNext().getElement(); // element to be removed
-                    temp.setNext(temp.getNext().getNext()); // destroy pointer to Node to be removed
+                    removed = temp.getNext().getElement(); // Element to be removed
+                    temp.setNext(temp.getNext().getNext()); // Destroy pointer to Node to be removed
                     size--;
                     break;
                 }
@@ -217,12 +217,12 @@ public class SinglyLinkedList<E> implements List<E> {
         } else {
             ArrayStack<E> stack = new ArrayStack<>(size);
             for (E elem : this) {
-                // add list elements to Stack
+                // Add list elements to Stack
                 stack.push(elem);
             }
             Node<E> temp = head;
             while (temp != null) {
-                // reverse list order using LIFO concept
+                // Reverse list order using LIFO concept
                 temp.setElement(stack.pop());
                 temp = temp.getNext();
             }
@@ -294,8 +294,8 @@ public class SinglyLinkedList<E> implements List<E> {
 
     // Constituent Node of SinglyLinkedList
     private static class Node<E> {
-        private E element; // element stored in the Node
-        private Node<E> next; // reference to the next Node in the list
+        private E element; // Element stored in the Node
+        private Node<E> next; // Reference to the next Node in the list
 
         /**
          * Creates a new node with given element and next node reference.
@@ -345,74 +345,5 @@ public class SinglyLinkedList<E> implements List<E> {
             return ans;
         }
     }
-
-    /*
-    public static void main(String[] args) {
-        // TEST 1: Given in skeleton code
-        System.out.println("\nTEST 1 from given GitHub code:");
-        String[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
-        SinglyLinkedList<String> sll = new SinglyLinkedList<>();
-        for (String s : alphabet) {
-            sll.addFirst(s);
-            sll.addLast(s);
-        }
-        System.out.println(sll.toString());
-
-        sll.removeFirst();
-        System.out.println(sll.toString());
-
-        sll.removeLast();
-        System.out.println(sll.toString());
-
-        sll.remove(2);
-        System.out.println(sll.toString());
-
-        for (String s : sll) {
-            System.out.print(s + ", ");
-        }
-
-        // TEST 2: Given in practical 1
-        System.out.println("\nTEST 2 from Practical 1:");
-        SinglyLinkedList<Integer> ll = new SinglyLinkedList<>();
-        ll.addFirst(0);
-        ll.addFirst(1);
-        ll.addFirst(3);
-        ll.addFirst(4);
-        ll.addFirst(5);
-        ll.add(3, 2);
-        System.out.println(ll);
-
-//        System.out.print("Reversed Recursively: ");
-//        ll.printReverse(ll.head);
-//        System.out.println();
-
-        ll.addFirst(-100);
-        ll.addLast(+100);
-        System.out.println(ll);
-        ll.removeFirst();
-        ll.removeLast();
-        System.out.println(ll);
-        // Removes the item in the specified index ll.remove(2); System.out.println(ll);
-        ll.removeFirst();
-        System.out.println(ll);
-        ll.removeLast();
-        System.out.println(ll);
-        ll.removeFirst();
-        System.out.println(ll);
-        ll.addFirst(9999);
-        ll.addFirst(8888);
-        ll.addFirst(7777);
-
-        System.out.println(ll);
-        System.out.println(ll.get(0));
-        System.out.println(ll.get(1));
-        System.out.println(ll.get(2));
-        System.out.println(ll);
-        //check reverse method
-        ll.reverse();
-        System.out.println("Reversed list: " + ll);
-    }
-     */
 
 }

@@ -8,6 +8,7 @@ import projectCode20280.Position;
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
+ * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
 public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTree<E> {
     protected Node<E> root = null;
@@ -36,7 +37,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         return new Node<>(e, parent, null, null);
     }
 
-    // non-public utility
+    // Non-public utility
 
     /**
      * Verifies that a Position belongs to the appropriate class, and is
@@ -121,7 +122,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         return node.getRight();
     }
 
-    // update methods supported by this class ----------------------------------
+    // Update methods supported by this class ----------------------------------
 
     /**
      * Places element e at the root of an empty tree and returns its new Position.
@@ -319,7 +320,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         if (p == null) {
             return 0;
         } else {
-            // exclude node itself from the count
+            // Exclude node itself from the count
             return countSubtree(p) - 1;
         }
     }
@@ -395,4 +396,4 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         }
     }
 
-} 
+}
