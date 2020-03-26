@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
  * @author Rajit Banerjee, 18202817
  */
 public class PQSort {
+    // Compare the performance of heap sort and PQ sort using unsorted list
     public static void main(String[] args) {
         int sizeOfList = 500;
         System.out.println("List Size\tHeap Sort\tPQ Sort");
@@ -47,6 +48,7 @@ public class PQSort {
      *
      * @param list to be sorted
      * @param pq   PriorityQueue to be used for the PQSort
+     * @return the time taken (in nanoseconds) to perform the sort
      */
     public static <E extends Comparable<E>> long sort(DoublyLinkedList<E> list,
                                                       PriorityQueue<E, ?> pq) {
