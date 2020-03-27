@@ -7,7 +7,7 @@ import projectCode20280.Entry;
 import java.util.Comparator;
 
 /**
- * An implementation of a priority queue using an array-based heap.
+ * An implementation of a priority queue using a linked-based/array-based heap.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor

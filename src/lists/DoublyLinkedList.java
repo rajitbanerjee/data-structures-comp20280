@@ -12,7 +12,7 @@ import java.util.Iterator;
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
 
-public class DoublyLinkedList<E> implements List<E> {
+public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     // Sentinel Nodes
     private Node<E> header = new Node<>(null, null, null);
     private Node<E> trailer = new Node<>(null, null, header);

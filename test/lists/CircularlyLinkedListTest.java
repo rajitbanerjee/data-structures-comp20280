@@ -130,4 +130,75 @@ class CircularlyLinkedListTest {
         assertEquals("[B, A, D, C]", list.toString());
     }
 
+    @Test
+    void lab1Tests() {
+        // TEST 1: Given in skeleton code
+        String[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+        CircularlyLinkedList<String> cll = new CircularlyLinkedList<>();
+        for (String s : alphabet) {
+            cll.addFirst(s);
+            cll.addLast(s);
+        }
+        assertEquals("[Z, Y, X, W, V, U, T, S, R, Q, P, O, " +
+                "N, M, L, K, J, I, H, G, F, E, D, C, B, A, A, B, C, " +
+                "D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, " +
+                "U, V, W, X, Y, Z]", cll.toString());
+
+        cll.removeFirst();
+        assertEquals("[Y, X, W, V, U, T, S, R, Q, P, O, N, M, " +
+                "L, K, J, I, H, G, F, E, D, C, B, A, A, B, C, D, E, F, " +
+                "G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, " +
+                "Y, Z]", cll.toString());
+
+        cll.removeLast();
+        assertEquals("[Y, X, W, V, U, T, S, R, Q, P, O, N, M, L, " +
+                "K, J, I, H, G, F, E, D, C, B, A, A, B, C, D, E, F, G, H, " +
+                "I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y]", cll.toString());
+
+        cll.remove(2);
+        assertEquals("[Y, X, V, U, T, S, R, Q, P, O, N, M, L, K, J, " +
+                "I, H, G, F, E, D, C, B, A, A, B, C, D, E, F, G, H, I, J, " +
+                "K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y]", cll.toString());
+
+        int i = 0;
+        for (String s : cll) {
+            assertEquals(cll.get(i), s);
+            i++;
+        }
+
+        // TEST 2: Given in practical 1
+        CircularlyLinkedList<Integer> ll = new CircularlyLinkedList<>();
+        ll.addFirst(0);
+        ll.addFirst(1);
+        ll.addFirst(3);
+        ll.addFirst(4);
+        ll.addFirst(5);
+        ll.add(3, 2);
+        assertEquals("[5, 4, 3, 2, 1, 0]", ll.toString());
+
+        ll.addFirst(-100);
+        ll.addLast(+100);
+        assertEquals("[-100, 5, 4, 3, 2, 1, 0, 100]", ll.toString());
+        ll.removeFirst();
+        ll.removeLast();
+        assertEquals("[5, 4, 3, 2, 1, 0]", ll.toString());
+        // Removes the item in the specified index ll.remove(2); System.out.println(ll);
+        ll.removeFirst();
+        assertEquals("[4, 3, 2, 1, 0]", ll.toString());
+        ll.removeLast();
+        assertEquals("[4, 3, 2, 1]", ll.toString());
+        ll.removeFirst();
+        assertEquals("[3, 2, 1]", ll.toString());
+        ll.addFirst(9999);
+        ll.addFirst(8888);
+        ll.addFirst(7777);
+
+        assertEquals("[7777, 8888, 9999, 3, 2, 1]", ll.toString());
+        assertEquals(7777, ll.get(0));
+        assertEquals(8888, ll.get(1));
+        assertEquals(9999, ll.get(2));
+        assertEquals("[7777, 8888, 9999, 3, 2, 1]", ll.toString());
+    }
+
 }
