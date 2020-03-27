@@ -94,7 +94,9 @@ public class TwoStackQueue<E> implements Queue<E> {
      */
     @Override
     public String toString() {
-        if (isEmpty()) return "[]";
+        if (isEmpty()) {
+            return "[]";
+        }
         return "Enqueue stack: " + enqueueStack.toString() +
                 "\nDequeue stack: " + dequeueStack.toString() + "\n";
     }

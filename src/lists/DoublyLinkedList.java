@@ -294,7 +294,9 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
      */
     @Override
     public String toString() {
-        if (isEmpty()) return "[]";
+        if (isEmpty()) {
+            return "[]";
+        }
         StringBuilder sb = new StringBuilder("[");
         for (E e : this) {
             sb.append(e.toString()).append(", ");

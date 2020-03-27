@@ -65,7 +65,7 @@ public class ArrayQueue<E> implements Queue<E> {
         if (size == capacity) {
             throw new IllegalStateException("Queue is full!");
         } else {
-            int rear = (front + size++) % capacity; //circular array wraps around
+            int rear = (front + size++) % capacity; // Circular array wraps around
             queue[rear] = e;
         }
     }
@@ -82,7 +82,7 @@ public class ArrayQueue<E> implements Queue<E> {
         } else {
             E removed = queue[front];
             queue[front] = null;
-            front = (front + 1) % capacity; // front index wraps around
+            front = (front + 1) % capacity; // Front index wraps around
             size--;
             return removed;
         }
@@ -109,7 +109,9 @@ public class ArrayQueue<E> implements Queue<E> {
      */
     @Override
     public String toString() {
-        if (isEmpty()) return "[]";
+        if (isEmpty()) {
+            return "[]";
+        }
         StringBuilder sb = new StringBuilder("[");
         for (int i = front; i < front + size; i++) {
             sb.append(queue[i % capacity]).append(", ");

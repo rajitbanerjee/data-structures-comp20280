@@ -94,7 +94,7 @@ public class ArrayDeque<E> implements Deque<E> {
         if (size == capacity) {
             throw new IllegalStateException("Deque is full!");
         } else {
-            front = Math.floorMod(rear - size++, capacity); //circular array wraps around
+            front = Math.floorMod(rear - size++, capacity); // Circular array wraps around
             deque[front] = e;
         }
     }
@@ -110,7 +110,7 @@ public class ArrayDeque<E> implements Deque<E> {
         if (size == capacity) {
             throw new IllegalStateException("Deque is full!");
         } else {
-            rear = (front + size++) % capacity; //circular array wraps around
+            rear = (front + size++) % capacity; // Circular array wraps around
             deque[rear] = e;
         }
     }
@@ -127,7 +127,7 @@ public class ArrayDeque<E> implements Deque<E> {
         } else {
             E removed = deque[front];
             deque[front] = null;
-            front = (front + 1) % capacity; // front index wraps around
+            front = (front + 1) % capacity; // Front index wraps around
             size--;
             return removed;
         }
@@ -145,7 +145,7 @@ public class ArrayDeque<E> implements Deque<E> {
         } else {
             E removed = deque[rear];
             deque[rear] = null;
-            rear = Math.floorMod(rear - 1, capacity); // front index wraps around
+            rear = Math.floorMod(rear - 1, capacity); // Rear index wraps around
             size--;
             return removed;
         }
@@ -158,7 +158,9 @@ public class ArrayDeque<E> implements Deque<E> {
      */
     @Override
     public String toString() {
-        if (isEmpty()) return "[]";
+        if (isEmpty()) {
+            return "[]";
+        }
         StringBuilder sb = new StringBuilder("[");
         for (int i = front; i < front + size; i++) {
             sb.append(deque[i % capacity]).append(", ");

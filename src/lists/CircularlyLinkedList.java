@@ -11,9 +11,9 @@ import java.util.Iterator;
  * @author Aonghus Lawlor
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
-public class CircularlyLinkedList<E> implements List<E> {
-    private Node<E> tail = null; // reference to the last Node of the list
-    private int size = 0; // size tracker
+public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
+    private Node<E> tail = null;
+    private int size = 0;
 
     /**
      * Returns the current number of elements in the list.
@@ -226,7 +226,9 @@ public class CircularlyLinkedList<E> implements List<E> {
      */
     @Override
     public String toString() {
-        if (isEmpty()) return "[]";
+        if (isEmpty()) {
+            return "[]";
+        }
         StringBuilder sb = new StringBuilder("[");
         for (E e : this) {
             sb.append(e.toString()).append(", ");

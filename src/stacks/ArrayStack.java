@@ -21,8 +21,8 @@ public class ArrayStack<E> implements Stack<E> {
     @SuppressWarnings({"unchecked"})
     public ArrayStack(int capacity) {
         stack = (E[]) new Object[capacity];
-        top = -1; // no initial stack members
-        this.capacity = capacity; // change the default stack capacity
+        top = -1;
+        this.capacity = capacity;
     }
 
     /**
@@ -102,7 +102,9 @@ public class ArrayStack<E> implements Stack<E> {
      */
     @Override
     public String toString() {
-        if (isEmpty()) return "[]";
+        if (isEmpty()) {
+            return "[]";
+        }
         StringBuilder sb = new StringBuilder("[");
         for (int i = top; i >= 0; i--) {
             sb.append(stack[i]).append(", ");

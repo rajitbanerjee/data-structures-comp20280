@@ -73,10 +73,21 @@ public class LinkedStack<E> implements Stack<E> {
     }
 
     /**
-     * Reverses order of Stack elements.
+     * Reverses order of Stack elements, using two additional Stacks.
      */
     public void reverse() {
-        stack.reverse();
+        LinkedStack<E> helper1 = new LinkedStack<>();
+        LinkedStack<E> helper2 = new LinkedStack<>();
+        int size = size();
+        for (int i = 0; i < size; i++) {
+            helper1.push(this.pop());
+        }
+        for (int i = 0; i < size; i++) {
+            helper2.push(helper1.pop());
+        }
+        for (int i = 0; i < size; i++) {
+            this.push(helper2.pop());
+        }
     }
 
 }
