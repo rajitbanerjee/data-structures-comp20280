@@ -60,6 +60,7 @@ class ArrayQueueTest {
 
     @Test
     void testDequeue() {
+        assertEquals("[]", queue.toString());
         assertNull(queue.dequeue());
         queue.enqueue("C");
         queue.enqueue("B");

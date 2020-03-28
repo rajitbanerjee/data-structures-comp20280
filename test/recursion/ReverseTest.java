@@ -13,7 +13,7 @@ class ReverseTest {
     @Test
     void testReverse() {
         Integer[] A = {1, 2, 3, 4, 5};
-        Reverse.reverseArray(A, 0, A.length - 1);
+        Reverse.reverseArray(A);
         int temp = 5;
         for (int num : A) {
             assertEquals(temp, num);

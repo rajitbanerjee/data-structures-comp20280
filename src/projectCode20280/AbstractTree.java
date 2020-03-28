@@ -143,7 +143,6 @@ public abstract class AbstractTree<E> implements Tree<E> {
 
     /**
      * Returns an iterator of the elements stored in the tree.
-     * Note: different implementation in
      *
      * @return iterator of the tree's elements
      */

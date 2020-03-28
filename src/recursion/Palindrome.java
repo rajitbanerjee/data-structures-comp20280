@@ -21,9 +21,10 @@ public class Palindrome {
     private static boolean check(String input) {
         if (input.length() <= 1) {
             return true;
+        } else {
+            return input.charAt(0) == input.charAt(input.length() - 1) &&
+                    check(input.substring(1, input.length() - 1));
         }
-        return input.charAt(0) == input.charAt(input.length() - 1) &&
-                check(input.substring(1, input.length() - 1));
     }
 
 }

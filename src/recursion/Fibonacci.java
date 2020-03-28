@@ -18,8 +18,7 @@ public class Fibonacci {
     public static int number(int n) throws IllegalArgumentException {
         if (n <= 0) {
             throw new IllegalArgumentException();
-        }
-        if (n <= 2) {
+        } else if (n <= 2) {
             memo[n] = n - 1;
         } else if (memo[n] == 0) {
             memo[n] = number(n - 1) + number(n - 2);
