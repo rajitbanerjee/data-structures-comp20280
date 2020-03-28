@@ -37,8 +37,6 @@ public class TripleSum {
         return count;
     }
 
-    // returns true if the sorted array a[] contains any duplicated integers
-
     /**
      * Checks if a sorted array contains duplicate numbers.
      *

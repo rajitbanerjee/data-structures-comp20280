@@ -52,6 +52,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
 
     /**
      * Returns the number of children of Position p.
+     * Note: efficient implementation in LinkedBinaryTree
      *
      * @param p A valid Position within the tree
      * @return number of children of Position p
@@ -68,6 +69,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
 
     /**
      * Returns the number of nodes in the tree.
+     * Note: efficient implementation in LinkedBinaryTree
      *
      * @return number of nodes in the tree
      */
@@ -111,7 +113,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
      * <p>
      * Note: This implementation works, but runs in O(n^2) worst-case time.
      */
-    private int heightBad() {
+    public int heightBad() {
         int h = 0;
         for (Position<E> p : positions()) {
             if (isExternal(p)) {
@@ -141,6 +143,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
 
     /**
      * Returns an iterator of the elements stored in the tree.
+     * Note: different implementation in
      *
      * @return iterator of the tree's elements
      */
@@ -151,6 +154,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
 
     /**
      * Returns an iterable collection of the positions of the tree.
+     * Note: inorder implementation in AbstractBinaryTree
      *
      * @return iterable collection of the tree's positions
      */
@@ -222,7 +226,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
      *
      * @return iterable collection of the tree's positions in breadth-first order
      */
-    public Iterable<Position<E>> breadthfirst() {
+    public Iterable<Position<E>> breadthFirst() {
         List<Position<E>> snapshot = new ArrayList<>();
         if (!isEmpty()) {
             Queue<Position<E>> fringe = new LinkedQueue<>();

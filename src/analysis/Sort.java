@@ -85,22 +85,6 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
     }
 
     /**
-     * Check if given array is not sorted yet.
-     *
-     * @param a   array to be checked
-     * @param <E> generic type of array items
-     * @return {@code true} if array is not sorted
-     */
-    public static <E extends Comparable<E>> boolean isNotSorted(E[] a) {
-        for (int i = 0; i < a.length - 1; i++) {
-            if (a[i] == null || a[i].compareTo(a[i + 1]) > 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Apply InsertionSort on the given array.
      *
      * @param arr array to be sorted
@@ -134,6 +118,22 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
     }
 
     /**
+     * Check if given array is not sorted yet.
+     *
+     * @param a   array to be checked
+     * @param <E> generic type of array items
+     * @return {@code true} if array is not sorted
+     */
+    public static <E extends Comparable<E>> boolean isNotSorted(E[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            if (a[i] == null || a[i].compareTo(a[i + 1]) > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Display a given array on the command line.
      *
      * @param arr array to be displayed
@@ -152,13 +152,11 @@ public class Sort<E extends Comparable<E>> implements Callable<E[]> {
      * Invokes a particular type of sort in the class.
      *
      * @return the sorted array
-     * @throws IllegalAccessException    may be caused due to issue in reflection
-     * @throws IllegalArgumentException  may be caused due to issue in reflection
-     * @throws InvocationTargetException may be caused due to issue in reflection
+     * @throws InvocationTargetException if method to be invoked throws underlying exception
+     * @throws IllegalAccessException    if method to be invoked is not defined
      */
     @Override
-    public E[] call() throws IllegalAccessException,
-            IllegalArgumentException, InvocationTargetException {
+    public E[] call() throws InvocationTargetException, IllegalAccessException {
         sort.invoke(null, (Object) arr);
         return arr;
     }

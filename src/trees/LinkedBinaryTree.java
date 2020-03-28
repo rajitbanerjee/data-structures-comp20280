@@ -11,7 +11,7 @@ import projectCode20280.Position;
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
 public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTree<E> {
-    protected Node<E> root = null;
+    private Node<E> root = null;
     private int size = 0;
 
     /**
@@ -19,25 +19,6 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
      */
     public LinkedBinaryTree() {
     }
-
-    public static void main(String[] args) {
-        LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
-
-        int[] arr = {12, 25, 31, 58, 36, 42, 90, 62, 75};
-        for (int i : arr) {
-            bt.insert(i);
-        }
-        System.out.println("bt: " + bt.size() + " " + bt);
-    }
-
-    /**
-     * Factory function to create a new node storing element e.
-     */
-    protected Node<E> createNode(E e, Node<E> parent) {
-        return new Node<>(e, parent, null, null);
-    }
-
-    // Non-public utility
 
     /**
      * Verifies that a Position belongs to the appropriate class, and is
@@ -59,6 +40,13 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
             throw new IllegalArgumentException("p is no longer in the tree");
         }
         return node;
+    }
+
+    /**
+     * Factory function to create a new node storing element e.
+     */
+    protected Node<E> createNode(E e, Node<E> parent) {
+        return new Node<>(e, parent, null, null);
     }
 
     // Accessor methods (not already implemented in AbstractBinaryTree) ------------
@@ -141,31 +129,6 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     }
 
     /**
-     * Insert an element into the tree in proper BST order.
-     *
-     * @param e element to be inserted
-     */
-    public void insert(E e) {
-        //recursively add from root
-        root = addRecursive(root, e);
-        ++size;
-    }
-
-    // Recursively add Nodes to binary tree in proper position
-    private Node<E> addRecursive(Node<E> p, E e) {
-        if (p == null) {
-            return createNode(e, null);
-        } else {
-            if (e.compareTo(p.getElement()) < 0) {
-                p.setLeft(addRecursive(p.getLeft(), e));
-            } else {
-                p.setRight(addRecursive(p.getRight(), e));
-            }
-            return p;
-        }
-    }
-
-    /**
      * Creates a new left child of Position p storing element e and returns its Position.
      *
      * @param p the Position to the left of which the new element is inserted
@@ -206,6 +169,31 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     }
 
     /**
+     * Insert an element into the tree in proper BST order.
+     *
+     * @param e element to be inserted
+     */
+    public void insert(E e) {
+        // Recursively add from root
+        root = addRecursive(root, e);
+        ++size;
+    }
+
+    // Recursively add Nodes to binary tree in proper position
+    private Node<E> addRecursive(Node<E> p, E e) {
+        if (p == null) {
+            return createNode(e, null);
+        } else {
+            if (e.compareTo(p.getElement()) < 0) {
+                p.setLeft(addRecursive(p.getLeft(), e));
+            } else {
+                p.setRight(addRecursive(p.getRight(), e));
+            }
+            return p;
+        }
+    }
+
+    /**
      * Replaces the element at Position p with element e and returns the replaced element.
      *
      * @param p the relevant Position
@@ -221,33 +209,33 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     }
 
     /**
-     * Attaches trees t1 and t2, respectively, as the left and right subtree of the
-     * leaf Position p. As a side effect, t1 and t2 are set to empty trees.
+     * Attaches trees leftTree and rightTree, respectively, as the left and right subtree of the
+     * leaf Position p. As a side effect, leftTree and rightTree are set to empty trees.
      *
-     * @param p  a leaf of the tree
-     * @param t1 an independent tree whose structure becomes the left child of p
-     * @param t2 an independent tree whose structure becomes the right child of p
+     * @param p         a leaf of the tree
+     * @param leftTree  an independent tree whose structure becomes the left child of p
+     * @param rightTree an independent tree whose structure becomes the right child of p
      * @throws IllegalArgumentException if p is not a valid Position for this tree
      * @throws IllegalArgumentException if p is not a leaf
      */
-    public void attach(Position<E> p, LinkedBinaryTree<E> t1,
-                       LinkedBinaryTree<E> t2) throws IllegalArgumentException {
+    public void attach(Position<E> p, LinkedBinaryTree<E> leftTree,
+                       LinkedBinaryTree<E> rightTree) throws IllegalArgumentException {
         Node<E> node = validate(p);
         if (isInternal(p)) {
             throw new IllegalArgumentException("p must be a leaf!");
         }
-        size += t1.size() + t2.size();
-        if (!t1.isEmpty()) {
-            node.setLeft(t1.root);
-            t1.root.setParent(node);
-            t1.root = null;
-            t1.size = 0;
+        size += leftTree.size() + rightTree.size();
+        if (!leftTree.isEmpty()) {
+            node.setLeft(leftTree.root);
+            leftTree.root.setParent(node);
+            leftTree.root = null;
+            leftTree.size = 0;
         }
-        if (!t2.isEmpty()) {
-            node.setRight(t2.root);
-            t2.root.setParent(node);
-            t2.root = null;
-            t2.size = 0;
+        if (!rightTree.isEmpty()) {
+            node.setRight(rightTree.root);
+            rightTree.root.setParent(node);
+            rightTree.root = null;
+            rightTree.size = 0;
         }
     }
 
@@ -268,7 +256,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         if (child != null) {
             child.setParent(node.getParent());
         }
-        if (root == node) {
+        if (node == root) {
             root = child;
         } else {
             Node<E> parent = node.getParent();
@@ -287,51 +275,67 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         return removed;
     }
 
+    /**
+     * Gets the String representation of the binary tree.
+     *
+     * @return String representation of the binary tree.
+     */
+    @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("[");
-        for (Position<E> p : positions()) {
-            sb.append(p.getElement()).append(", ");
-        }
-        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
-        sb.append("]");
-        return sb.toString();
+        return positions().toString();
     }
 
     // Extra functionality for lab and assignment questions ----------------
 
-    // Algorithm to count left external nodes
-    public int countLeftExternalNodes() {
+
+    /**
+     * Algorithm to count left external nodes.
+     *
+     * @return the number of left external nodes in the tree.
+     * @throws IllegalArgumentException if any Position in the tree is invalid
+     */
+    public int countLeftExternalNodes() throws IllegalArgumentException {
         int count = 0;
         if (isEmpty() || size() == 1) {
             return 0;
         } else {
             for (Position<E> p : positions()) {
-                Node<E> node = validate(p);
-                if (isExternal(p) && node.getParent().getLeft() == node) {
-                    count++;
+                try {
+                    Node<E> node = validate(p);
+                    Node<E> parent = validate(parent(p));
+                    Node<E> leftChild = validate(left(parent));
+                    if (isExternal(p) && node == leftChild) {
+                        count++;
+                    }
+                } catch (Exception ignored) {
+                    // Test passed
                 }
             }
         }
         return count;
     }
 
-    // Algorithm to count descendants
+
+    /**
+     * Counts the descendants of a given Position.
+     *
+     * @param p the Position whose descendants are to be counted.
+     * @return the number of descendants of the given position.
+     */
     public int countDescendants(Position<E> p) {
-        if (p == null) {
+        if (isEmpty() || size == 1) {
             return 0;
         } else {
-            // Exclude node itself from the count
-            return countSubtree(p) - 1;
+            return count(p) - 1;
         }
     }
 
     // Count all nodes in subtree including first node
-    public int countSubtree(Position<E> p) {
+    private int count(Position<E> p) {
         if (p == null) {
             return 0;
         } else {
-            return 1 + countDescendants(left(p)) +
-                    countDescendants(right(p));
+            return 1 + count(left(p)) + count(right(p));
         }
     }
 
@@ -358,10 +362,9 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
          * Returns the element stored at this position.
          *
          * @return the stored element
-         * @throws IllegalStateException if position no longer valid
          */
         @Override
-        public E getElement() throws IllegalStateException {
+        public E getElement() {
             return element;
         }
 
@@ -393,6 +396,16 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
 
         public void setRight(Node<E> right) {
             this.right = right;
+        }
+
+        /**
+         * Returns a string representation of the object.
+         *
+         * @return a string representation of the object.
+         */
+        @Override
+        public String toString() {
+            return element.toString();
         }
     }
 
