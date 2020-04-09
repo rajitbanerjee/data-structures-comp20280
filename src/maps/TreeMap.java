@@ -1,9 +1,10 @@
-package projectCode20280;
+package maps;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import projectCode20280.AbstractSortedMap;
+import projectCode20280.Entry;
+import projectCode20280.Position;
+import trees.LinkedBinaryTree;
+
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -14,7 +15,7 @@ import java.util.stream.Collectors;
 public class TreeMap<K extends Comparable<K>, V> extends AbstractSortedMap<K, V> {
 
 	// We reuse the LinkedBinaryTree class. A limitation here is that we only use the key.
-	protected LinkedBinaryTree<K> tree = new LinkedBinaryTree<K>();
+	protected LinkedBinaryTree<Entry<K, V>> tree = new LinkedBinaryTree<>();
 
 	/** Constructs an empty map using the natural ordering of keys. */
 	public TreeMap() {
@@ -290,18 +291,18 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractSortedMap<K, V>
 	}
 
 	public static void main(String[] args) {
-		TreeMap<Integer, Integer> treeMap = new TreeMap<Integer, Integer>();
-		
+		TreeMap<Integer, Integer> treeMap = new TreeMap<>();
+
 		Random rnd = new Random();
 		int n = 16;
 		java.util.List<Integer> rands = rnd.ints(1, 1000).limit(n).distinct().boxed().collect(Collectors.toList());
 
-		for(Integer i : rands) {
+		for (Integer i : rands) {
 			treeMap.put(i, i);
 		}
-		
+
 		System.out.println("tree entries: " + treeMap.entrySet());
-		
+
 		treeMap.remove(rands.get(1));
 
 		System.out.println("tree entries after removal: " + treeMap.entrySet());

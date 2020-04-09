@@ -1,7 +1,7 @@
-package projectCode20280;
+package maps;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import projectCode20280.AbstractHashMap;
+import projectCode20280.Entry;
 
 /*
  * Map implementation using hash table with separate chaining.
@@ -85,14 +85,14 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 	
 	public static void main(String[] args) {
 		//HashMap<Integer, String> m = new HashMap<Integer, String>();
-		ChainHashMap<Integer, String> m = new ChainHashMap<Integer, String>();
+		ChainHashMap<Integer, String> m = new ChainHashMap<>();
 		m.put(1, "One");
 		m.put(10, "Ten");
 		m.put(11, "Eleven");
 		m.put(20, "Twenty");
-		
+
 		System.out.println("m: " + m);
-		
+
 		m.remove(11);
 		System.out.println("m: " + m);
 	}

@@ -1,6 +1,5 @@
 package projectCode20280;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -109,14 +108,14 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
      */
     private int hashValue(K key) {
         // TODO
-    	return 0;
+        return 0;
     }
 
     /**
      * Updates the size of the hash table and rehashes all entries.
      */
     private void resize(int newCap) {
-    	// TODO
+        // TODO
     }
 
     // protected abstract methods to be implemented by subclasses

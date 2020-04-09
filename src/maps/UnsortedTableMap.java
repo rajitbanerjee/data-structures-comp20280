@@ -1,4 +1,7 @@
-package projectCode20280;
+package maps;
+
+import projectCode20280.AbstractMap;
+import projectCode20280.Entry;
 
 import java.util.ArrayList;
 import java.util.Iterator;
