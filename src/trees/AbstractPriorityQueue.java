@@ -1,4 +1,7 @@
-package projectCode20280;
+package trees;
+
+import projectCode20280.Entry;
+import projectCode20280.PriorityQueue;
 
 import java.util.Comparator;
 

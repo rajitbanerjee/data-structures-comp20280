@@ -1,8 +1,8 @@
 package assignment1;
 
 import lists.DoublyLinkedList;
-import projectCode20280.AbstractPriorityQueue;
 import projectCode20280.Entry;
+import trees.AbstractPriorityQueue;
 
 /**
  * Assignment 1, Question 5.

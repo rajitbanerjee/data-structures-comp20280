@@ -1,5 +1,8 @@
-package projectCode20280;
+package trees;
 
+import projectCode20280.Position;
+import projectCode20280.Queue;
+import projectCode20280.Tree;
 import queues.LinkedQueue;
 
 import java.util.ArrayList;

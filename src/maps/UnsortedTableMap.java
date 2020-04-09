@@ -1,6 +1,5 @@
 package maps;
 
-import projectCode20280.AbstractMap;
 import projectCode20280.Entry;
 
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import java.util.NoSuchElementException;
 /**
  * An implementation of a map using an unsorted table.
  */
-
 public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
     /**
      * Underlying storage for the map of entries.
@@ -29,6 +27,11 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
      * Returns the index of an entry with equal key, or -1 if none found.
      */
     private int findIndex(K key) {
+        for (int i = 0; i < size(); i++) {
+            if (table.get(i).getKey().equals(key)) {
+                return i;
+            }
+        }
         return -1;
     }
 
@@ -53,8 +56,12 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
      */
     @Override
     public V get(K key) {
-        //TODO
-        return null;
+        int index = findIndex(key);
+        if (index != -1) {
+            return table.get(index).getValue();
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -69,8 +76,13 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
      */
     @Override
     public V put(K key, V value) {
-        // TODO
-        return null;
+        int index = findIndex(key);
+        if (index != -1) {
+            return table.get(index).setValue(value);
+        } else {
+            table.add(new MapEntry<>(key, value));
+            return null;
+        }
     }
 
     /**
@@ -83,8 +95,17 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
      */
     @Override
     public V remove(K key) {
-        // TODO
-        return null;
+        int index = findIndex(key);
+        if (index == -1) {
+            return null;
+        } else {
+            V removed = table.get(index).getValue();
+            if (index != size() - 1) {
+                table.set(index, table.get(size() - 1));
+            }
+            table.remove(size() - 1);
+            return removed;
+        }
     }
 
     /**
@@ -113,14 +134,14 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
         }
 
         public Entry<K, V> next() {
-			if (j == table.size())
-				throw new NoSuchElementException("No further entries");
-			return table.get(j++);
-		}
+            if (j == table.size())
+                throw new NoSuchElementException("No further entries");
+            return table.get(j++);
+        }
 
-		public void remove() {
-			throw new UnsupportedOperationException("remove not supported");
-		}
-	} // ----------- end of nested EntryIterator class -----------
+        public void remove() {
+            throw new UnsupportedOperationException("remove not supported");
+        }
+    } // ----------- end of nested EntryIterator class -----------
 
 }

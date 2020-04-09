@@ -1,7 +1,6 @@
 package trees;
 
 import lists.DoublyLinkedList;
-import projectCode20280.AbstractPriorityQueue;
 import projectCode20280.Entry;
 
 import java.util.Comparator;

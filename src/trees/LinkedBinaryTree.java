@@ -1,6 +1,5 @@
 package trees;
 
-import projectCode20280.AbstractBinaryTree;
 import projectCode20280.Position;
 
 /**

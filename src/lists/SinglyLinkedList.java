@@ -12,7 +12,6 @@ import java.util.Iterator;
  * @author Aonghus Lawlor
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
-
 public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     private Node<E> head = null;
     private int size = 0;

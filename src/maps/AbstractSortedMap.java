@@ -1,4 +1,8 @@
-package projectCode20280;
+package maps;
+
+import projectCode20280.Entry;
+import projectCode20280.SortedMap;
+import trees.DefaultComparator;
 
 import java.util.Comparator;
 
