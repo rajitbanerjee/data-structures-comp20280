@@ -7,6 +7,12 @@ import java.util.Comparator;
 
 /**
  * An implementation of a priority queue using a linked-based/array-based heap.
+ * <p>
+ * 1. Implements PriorityQueue ADT: size(), insert(K key, V value), min(), removeMin()
+ * 2. isEmpty() from PriorityQueue ADT is already implemented in AbstractPriorityQueue.
+ * 3. Additional public method: toString()
+ * 4. Allows bottom-up heap construction from provided key-value pair arrays, or regular construction
+ * using up-heap bubbling.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
@@ -32,7 +38,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     }
 
     /**
-     * Creates a priority queue initialized with the respective
+     * Creates a priority queue initialised with the respective
      * key-value pairs.  The two arrays given will be paired
      * element-by-element. They are presumed to have the same
      * length. (If not, entries will be created only up to the length of
@@ -119,20 +125,6 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     }
 
     /**
-     * Returns (but does not remove) an entry with minimal key.
-     *
-     * @return entry having a minimal key (or null if empty)
-     */
-    @Override
-    public Entry<K, V> min() {
-        if (isEmpty()) {
-            return null;
-        } else {
-            return heap.get(0);
-        }
-    }
-
-    /**
      * Inserts a key-value pair and return the entry created.
      *
      * @param key   the key of the new entry
@@ -161,6 +153,45 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
             swap(j, parent);
             j = parent;
         }
+    }
+
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        System.out.println("Test 1: Bottom-up construction");
+        Integer[] keys = {5, 4, 3, 2, 1};
+        Integer[] values = {5, 4, 3, 2, 1};
+        HeapPriorityQueue<Integer, Integer> heap = new HeapPriorityQueue<>(keys, values);
+        System.out.println("Insert 5, 4, 3, 2, 1: ");
+        System.out.println(heap);
+
+        System.out.println("\nMin (key, value): " + heap.min());
+        System.out.println("After removeMin(): ");
+        heap.removeMin();
+        System.out.println(heap);
+
+        System.out.println("\nMin (key, value): " + heap.min());
+        System.out.println("After removeMin(): ");
+        heap.removeMin();
+        System.out.println(heap);
+
+        System.out.println("\nTest 2: Up-heap bubbling insertion");
+        heap = new HeapPriorityQueue<>();
+        heap.insert(1, 1);
+        heap.insert(2, 2);
+        heap.insert(3, 3);
+        heap.insert(0, 0);
+        System.out.println("Insert 1, 2, 3, 0: ");
+        System.out.println(heap);
+
+        System.out.println("\nMin (key, value): " + heap.min());
+        System.out.println("After removeMin(): ");
+        heap.removeMin();
+        System.out.println(heap);
+
+        System.out.println("\nMin (key, value): " + heap.min());
+        System.out.println("After removeMin(): ");
+        heap.removeMin();
+        System.out.println(heap);
     }
 
     /**
@@ -195,6 +226,20 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         sb = new StringBuilder(sb.substring(0, sb.length() - 2));
         sb.append("]");
         return sb.toString();
+    }
+
+    /**
+     * Returns (but does not remove) an entry with minimal key.
+     *
+     * @return entry having a minimal key (or null if empty)
+     */
+    @Override
+    public Entry<K, V> min() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            return heap.get(0);
+        }
     }
 
 }

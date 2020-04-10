@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 /*
  * Map implementation using hash table with separate chaining.
+ *
  */
 
 public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
@@ -104,6 +105,16 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
         return temp;
     }
 
+    /**
+     * Gets the String for the hash map.
+     *
+     * @return String for the hash map
+     */
+    @Override
+    public String toString() {
+        return entrySet().toString();
+    }
+
     // Main method to perform basic tests
     public static void main(String[] args) {
         Map<Integer, String> m = new ChainHashMap<>();
@@ -116,16 +127,6 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
 
         m.remove(11);
         System.out.println("m: " + m);
-    }
-
-    /**
-     * Gets the String for the hash map.
-     *
-     * @return String for the hash map
-     */
-    @Override
-    public String toString() {
-        return entrySet().toString();
     }
 
 }

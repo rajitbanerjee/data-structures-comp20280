@@ -110,7 +110,6 @@ class LinkedBinaryTreeTest {
         t2.addRight(root, 6);
         assertEquals("[4, 5, 6]", t2.toString());
 
-
         try {
             root = tree.addRoot(0);
             tree.addLeft(root, 1);
@@ -203,9 +202,15 @@ class LinkedBinaryTreeTest {
     void testHeight() {
         Position<Integer> root = tree.addRoot(0);
         assertEquals(0, tree.heightBad());
-        assertEquals(0, tree.height(tree.root()));
+        assertEquals(0, tree.height(root));
         tree.addLeft(root, 1);
         assertEquals(1, tree.height(root));
+        Position<Integer> right = tree.addRight(root, 2);
+        assertEquals(1, tree.height(root));
+        tree.addLeft(right, 3);
+        assertEquals(2, tree.height(root));
+        tree.addRight(right, 4);
+        assertEquals(2, tree.height(root));
     }
 
     @Test

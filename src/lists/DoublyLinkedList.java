@@ -6,6 +6,11 @@ import java.util.Iterator;
 
 /**
  * Implementation of a Doubly Linked List.
+ * <p>
+ * 1. Implements List ADT functions: size(), isEmpty(), get(int i), add(int i, E e), addFirst(E e),
+ * addLast(E e), remove(int i), removeFirst(), E removeLast(), Iterator<E> iterator()
+ * 2. Additional public methods: first(), last(), set(int i, E e), recursiveCopy(), toString()
+ * 3. Contains an inner Node class to represent list nodes.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
@@ -18,13 +23,11 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     // Size tracker
     private int size = 0;
 
-    public DoublyLinkedList() {
-        header.setNext(trailer);
-    }
-
     /**
      * Fills the DoublyLinkedList with elements contained in
      * a java.util.List object.
+     * <p>
+     * Used in Assignment 1, Question 5 (PQSort).
      *
      * @param list whose elements are to be used
      */
@@ -32,6 +35,68 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         for (E element : list) {
             addLast(element);
         }
+    }
+
+    public DoublyLinkedList() {
+        header.setNext(trailer);
+    }
+
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        // TEST 1: Given in skeleton code
+        System.out.println("\nTEST 1 from given GitHub code:");
+        DoublyLinkedList<Integer> dll = new DoublyLinkedList<>();
+        dll.addFirst(0);
+        dll.addFirst(1);
+        dll.addFirst(2);
+        dll.addLast(-1);
+        System.out.println("Initial list: ");
+        System.out.println(dll);
+
+        dll.removeFirst();
+        System.out.println("After removeFirst(): ");
+        System.out.println(dll);
+
+        dll.removeLast();
+        System.out.println("After removeLast(): ");
+        System.out.println(dll);
+
+        System.out.println("All elements: ");
+        for (Integer e : dll) {
+            System.out.println("value: " + e);
+        }
+
+        // TEST 2: Given in practical 1
+        System.out.println("\n\nTEST 2 from Practical 1:");
+        DoublyLinkedList<Integer> ll = new DoublyLinkedList<>();
+        ll.addFirst(0);
+        ll.addFirst(1);
+        ll.addFirst(3);
+        ll.addFirst(4);
+        ll.addFirst(5);
+        ll.add(3, 2);
+        System.out.println(ll);
+        ll.addFirst(-100);
+        ll.addLast(+100);
+        System.out.println(ll);
+        ll.removeFirst();
+        ll.removeLast();
+        System.out.println(ll);
+        ll.removeFirst();
+        System.out.println(ll);
+        ll.removeLast();
+        System.out.println(ll);
+        ll.removeFirst();
+        System.out.println(ll);
+        ll.addFirst(9999);
+        ll.addFirst(8888);
+        ll.addFirst(7777);
+
+        System.out.println(ll);
+        System.out.println(ll.get(0));
+        System.out.println(ll.get(1));
+        System.out.println(ll.get(2));
+        System.out.println(ll);
     }
 
     /**
@@ -69,23 +134,28 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     /**
-     * Insert a Node at the front of the list.
+     * Returns the element at index i of the List.
      *
-     * @param e Node element to be inserted
+     * @param i the index of the list which contains required element
+     * @return the element at index i
      */
     @Override
-    public void addFirst(E e) {
-        addBetween(e, header, header.getNext());
-    }
-
-    /**
-     * Insert a Node at the end of the list.
-     *
-     * @param e Node element to be inserted
-     */
-    @Override
-    public void addLast(E e) {
-        addBetween(e, trailer.getPrev(), trailer);
+    public E get(int i) {
+        E ans = null;
+        int index = 0; // Temporary index used for list traversal
+        Iterator<E> itr = iterator();
+        if (isEmpty()) {
+            return null;
+        }
+        while (itr.hasNext()) {
+            if (index == i) {
+                ans = itr.next();
+                break;
+            }
+            itr.next();
+            index++;
+        }
+        return ans;
     }
 
     /**
@@ -116,83 +186,51 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     /**
-     * Gets the first element of the list.
+     * Insert a Node at the front of the list.
      *
-     * @return the element at the first Node of the list, null if empty
-     */
-    public E first() {
-        if (isEmpty()) {
-            return null;
-        } else {
-            return header.getNext().getElement();
-        }
-    }
-
-    /**
-     * Gets the last element of the list.
-     *
-     * @return the element at the last Node of the list, null if empty
-     */
-    public E last() {
-        if (isEmpty()) {
-            return null;
-        } else {
-            return trailer.getPrev().getElement();
-        }
-    }
-
-    /**
-     * Returns the element at index i of the List.
-     *
-     * @param i the index of the list which contains required element
-     * @return the element at index i
+     * @param e Node element to be inserted
      */
     @Override
-    public E get(int i) {
-        E ans = null;
-        int index = 0; // Temporary index used for list traversal
-        Iterator<E> itr = iterator();
-        if (isEmpty()) {
-            return null;
-        }
-        while (itr.hasNext()) {
-            if (index == i) {
-                ans = itr.next();
-                break;
-            }
-            itr.next();
-            index++;
-        }
-        return ans;
+    public void addFirst(E e) {
+        addBetween(e, header, header.getNext());
     }
 
     /**
-     * Replaces the element at a certain index with the new given element.
+     * Insert a Node at the end of the list.
      *
-     * @param i       index at which element is to be replaced
-     * @param element new element to replace the existing element
+     * @param e Node element to be inserted
      */
-    public void set(int i, E element) {
-        if (!isEmpty()) {
+    @Override
+    public void addLast(E e) {
+        addBetween(e, trailer.getPrev(), trailer);
+    }
+
+    /**
+     * Remove the element at index i of the list.
+     *
+     * @param i index from which the element needs to be removed
+     * @return the element that has been removed, null is empty or index out of bounds
+     */
+    @Override
+    public E remove(int i) {
+        if (isEmpty() || i >= size) {
+            // Cannot remove element if list is empty or specified index is out of bounds
+            return null;
+        } else if (i == 0) {
+            return removeFirst();
+        } else {
+            E removed = null; // Element to be removed
             Node<E> temp = header.getNext(); // Temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
-                if (index == i) {
-                    // Replace Node when index is found
-                    temp.setElement(element);
+                if (index == i - 1) {
+                    removed = temp.getNext().getElement(); // Element to be removed
+                    temp.setNext(temp.getNext().getNext()); // Destroy pointer to Node to be removed
+                    size--;
                     break;
                 }
             }
+            return removed;
         }
-    }
-
-    /**
-     * Returns a new ListIterator object.
-     *
-     * @return instance of ListIterator class
-     */
-    @Override
-    public Iterator<E> iterator() {
-        return new ListIterator();
     }
 
     /**
@@ -236,47 +274,61 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     /**
-     * Remove the element at index i of the list.
+     * Returns a new ListIterator object.
      *
-     * @param i index from which the element needs to be removed
-     * @return the element that has been removed, null is empty or index out of bounds
+     * @return instance of ListIterator class
      */
     @Override
-    public E remove(int i) {
-        if (isEmpty() || i >= size) {
-            // Cannot remove element if list is empty or specified index is out of bounds
-            return null;
-        } else if (i == 0) {
-            return removeFirst();
-        } else {
-            E removed = null; // Element to be removed
+    public Iterator<E> iterator() {
+        return new ListIterator();
+    }
+
+    /**
+     * Replaces the element at a certain index with the new given element.
+     *
+     * @param i index at which element is to be replaced
+     * @param e new element to replace the existing element
+     */
+    public void set(int i, E e) {
+        if (!isEmpty()) {
             Node<E> temp = header.getNext(); // Temporary Node for list traversal
             for (int index = 0; index < size; index++, temp = temp.getNext()) {
-                if (index == i - 1) {
-                    removed = temp.getNext().getElement(); // Element to be removed
-                    temp.setNext(temp.getNext().getNext()); // Destroy pointer to Node to be removed
-                    size--;
+                if (index == i) {
+                    // Replace Node when index is found
+                    temp.setElement(e);
                     break;
                 }
             }
-            return removed;
         }
     }
 
     /**
-     * Recursively copies a list.
+     * Gets the first element of the list.
+     *
+     * @return the element at the first Node of the list, null if empty
      */
-    public DoublyLinkedList<E> recursiveCopy() {
-        return copy(header.getNext(), new DoublyLinkedList<>());
+    public E first() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            return header.getNext().getElement();
+        }
     }
 
     /**
-     * Helper function to recursively copy a list.
+     * Gets the last element of the list.
      *
-     * @param start    the original start Node
-     * @param copyList list to store the copy of original list
-     * @return a copy of the original list
+     * @return the element at the last Node of the list, null if empty
      */
+    public E last() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            return trailer.getPrev().getElement();
+        }
+    }
+
+    // Helper function to recursively copy a list
     private DoublyLinkedList<E> copy(Node<E> start, DoublyLinkedList<E> copyList) {
         if (start == trailer) {
             return copyList;
@@ -287,22 +339,10 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     /**
-     * Gives the String implementation of the list.
-     *
-     * @return the String containing the comma-separated list elements
+     * Recursively copies a list.
      */
-    @Override
-    public String toString() {
-        if (isEmpty()) {
-            return "[]";
-        }
-        StringBuilder sb = new StringBuilder("[");
-        for (E e : this) {
-            sb.append(e.toString()).append(", ");
-        }
-        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
-        sb.append("]");
-        return sb.toString();
+    public DoublyLinkedList<E> recursiveCopy() {
+        return copy(header.getNext(), new DoublyLinkedList<>());
     }
 
     // Constituent Node of DoublyLinkedList
@@ -355,6 +395,25 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         }
     }
 
+    /**
+     * Gives the String implementation of the list.
+     *
+     * @return the String containing the comma-separated list elements
+     */
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder("[");
+        for (E e : this) {
+            sb.append(e.toString()).append(", ");
+        }
+        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+        sb.append("]");
+        return sb.toString();
+    }
+
     // Inner class whose instance is returned by the iterator() method
     private class ListIterator implements Iterator<E> {
         Node<E> temp = header.getNext();
@@ -372,27 +431,6 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
             nextIndex++;
             return ans;
         }
-
-        /*
-        public boolean hasPrevious() {
-            return temp != header;
-        }
-
-        public E previous() {
-            E ans = temp.getElement();
-            temp = temp.getPrev();
-            nextIndex--;
-            return ans;
-        }
-
-        public int nextIndex() {
-            return nextIndex;
-        }
-
-        public int previousIndex() {
-            return nextIndex - 1;
-        }
-        */
     }
 
 }

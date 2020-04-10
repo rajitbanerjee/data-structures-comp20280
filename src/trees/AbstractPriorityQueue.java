@@ -15,17 +15,56 @@ import java.util.Comparator;
  * protected method, compare(a, b), that makes use of the comparator.
  * 3) It provides a boolean checkKey method that verifies that a given key
  * is appropriate for use with the comparator
- * 4) It provides an isEmpty implementation based upon the abstract size() method.
+ * 4) It provides an isEmpty implementation based on the abstract size() method.
  */
 public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V> {
     //---------------- nested PQEntry class ----------------
+    /**
+     * A concrete implementation of the Entry interface to be used within
+     * a PriorityQueue implementation.
+     */
+    protected static class PQEntry<K, V> implements Entry<K, V> {
+        private K key;
+        private V value;
+
+        public PQEntry(K key, V value) {
+            setKey(key);
+            setValue(value);
+        }
+
+        // methods of the Entry interface
+        public K getKey() {
+            return key;
+        }
+
+        // utilities not exposed as part of the Entry interface
+        protected void setKey(K key) {
+            this.key = key;
+        }
+
+        public V getValue() {
+            return value;
+        }
+
+        protected void setValue(V value) {
+            this.value = value;
+        }
+
+        /**
+         * Returns a String representation of the object
+         *
+         * @return a String representation of the object
+         */
+        @Override
+        public String toString() {
+            return "(" + key.toString() + ", " + value.toString() + ")";
+        }
+    } //----------- end of nested PQEntry class -----------
 
     /**
      * The comparator defining the ordering of keys in the priority queue.
      */
     private Comparator<K> comp;
-
-    // instance variable for an AbstractPriorityQueue
 
     /**
      * Creates an empty priority queue using the given comparator to order keys.
@@ -71,47 +110,5 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
     public boolean isEmpty() {
         return size() == 0;
     }
-
-    /**
-     * A concrete implementation of the Entry interface to be used within
-     * a PriorityQueue implementation.
-     */
-    protected static class PQEntry<K, V> implements Entry<K, V> {
-        private K key;
-        private V value;
-
-        public PQEntry(K key, V value) {
-            setKey(key);
-            setValue(value);
-        }
-
-        // methods of the Entry interface
-        public K getKey() {
-            return key;
-        }
-
-        // utilities not exposed as part of the Entry interface
-        protected void setKey(K key) {
-            this.key = key;
-        }
-
-        public V getValue() {
-            return value;
-        }
-
-        protected void setValue(V value) {
-            this.value = value;
-        }
-
-        /**
-         * Returns a String representation of the object
-         *
-         * @return a String representation of the object
-         */
-        @Override
-        public String toString() {
-            return "(" + key.toString() + ", " + value.toString() + ")";
-        }
-    } //----------- end of nested PQEntry class -----------
 
 }

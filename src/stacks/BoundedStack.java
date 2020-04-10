@@ -5,6 +5,9 @@ import projectCode20280.Stack;
 
 /**
  * Implementation of a linked list based Bounded Stack.
+ * <p>
+ * 1. Implements Stack ADT functions: size(), isEmpty(), push(E e), top(), pop()
+ * 2. Additional public methods: reverse(), toString()
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
@@ -100,6 +103,43 @@ public class BoundedStack<E> implements Stack<E> {
      */
     public void reverse() {
         stack.reverse();
+    }
+
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        BoundedStack<Integer> stk = new BoundedStack<>();
+        System.out.println("Initially: Stack is " + stk + ", size() = " +
+                stk.size() + ", isEmpty() = " + stk.isEmpty());
+
+        stk.push(10);
+        System.out.println("\nAfter push:");
+        System.out.println(stk);
+
+        stk.push(20);
+        System.out.println("\nAfter push:");
+        System.out.println(stk);
+
+        stk.push(30);
+        System.out.println("\nAfter push:");
+        System.out.println(stk);
+
+        System.out.println("\nTop: " + stk.top());
+        System.out.println("Stack is empty = " + stk.isEmpty());
+
+        stk.reverse();
+        System.out.println("\nAfter reverse:");
+        System.out.println(stk);
+
+        System.out.println("\nTop: " + stk.top());
+        System.out.println("Stack is empty = " + stk.isEmpty());
+
+        System.out.println("\nPopped element: " + stk.pop());
+        System.out.println("After pop:");
+        System.out.println(stk);
+
+        System.out.println("\nPopped element: " + stk.pop());
+        System.out.println("After pop:");
+        System.out.println(stk);
     }
 
 }

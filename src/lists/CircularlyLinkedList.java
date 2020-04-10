@@ -6,6 +6,11 @@ import java.util.Iterator;
 
 /**
  * Implementation of a Circularly Linked List.
+ * <p>
+ * 1. Implements List ADT functions: size(), isEmpty(), get(int i), add(int i, E e), addFirst(E e),
+ * addLast(E e), remove(int i), removeFirst(), E removeLast(), Iterator<E> iterator()
+ * 2. Additional public methods: rotate(), toString()
+ * 3. Contains an inner Node class to represent list nodes.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
@@ -15,119 +20,7 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
     private Node<E> tail = null;
     private int size = 0;
 
-    /**
-     * Returns the current number of elements in the list.
-     */
-    @Override
-    public int size() {
-        return size;
-    }
-
-    /**
-     * Checks if the list is empty.
-     *
-     * @return {@code true} if list if empty, else {@code false}
-     */
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    /**
-     * Insert a Node to the beginning of the list.
-     *
-     * @param e Node element to be inserted
-     */
-    @Override
-    public void addFirst(E e) {
-        if (isEmpty()) {
-            // Create tail Node and link to itself
-            tail = new Node<>(e, null);
-            tail.setNext(tail);
-        } else {
-            // Create new Node to follow the tail
-            Node<E> newest = new Node<>(e, tail.getNext());
-            tail.setNext(newest);
-        }
-        size++;
-    }
-
-    /**
-     * Insert a Node to the end of the list.
-     *
-     * @param e Node element to be inserted
-     */
-    @Override
-    public void addLast(E e) {
-        addFirst(e);
-        rotate();
-    }
-
-    /**
-     * Inserts an element e at index i of the list.
-     *
-     * @param i index at which to insert the element e
-     * @param e the element to be inserted at given index
-     * @throws RuntimeException if specified list index is out of bounds
-     */
-    @Override
-    public void add(int i, E e) throws RuntimeException {
-        if (i < 0 || i > size) {
-            throw new RuntimeException("Specified index is out of bounds!");
-        } else if (i == 0) {
-            addFirst(e);
-        } else if (i == size) {
-            addLast(e);
-        } else {
-            Node<E> newest = new Node<>(e, null); // Create Node to be inserted
-            Node<E> temp = tail.getNext(); // Temporary Node for list traversal
-            for (int index = 0; index < size; index++, temp = temp.getNext()) {
-                if (index == i - 1) {
-                    // Insert new Node at required index i
-                    newest.setNext(temp.getNext());
-                    temp.setNext(newest);
-                    break;
-                }
-            }
-            size++;
-        }
-    }
-
-    /**
-     * Returns a new ListIterator object.
-     *
-     * @return instance of ListIterator class
-     */
-    @Override
-    public Iterator<E> iterator() {
-        return new ListIterator();
-    }
-
-    /**
-     * Returns the element at index i of the List.
-     *
-     * @param i the index of the list which contains required element
-     * @return the element at index i
-     */
-    @Override
-    public E get(int i) {
-        E ans = null;
-        int index = 0; // Temporary index used for list traversal
-        Iterator<E> itr = iterator();
-        if (isEmpty()) {
-            return null;
-        }
-        while (itr.hasNext()) {
-            if (index == i) {
-                ans = itr.next();
-                break;
-            }
-            itr.next();
-            index++;
-        }
-        return ans;
-    }
-
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
         // TEST 1: Given in skeleton code
         System.out.println("\nTEST 1 from given GitHub code:");
@@ -149,7 +42,6 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         cll.rotate();
         System.out.println("After rotate():");
         System.out.println(cll);
-
 
         cll.removeFirst();
         cll.rotate();
@@ -200,24 +92,106 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     /**
-     * Remove the first Node from the list.
-     *
-     * @return the removed first element, null if empty
+     * Returns the current number of elements in the list.
      */
     @Override
-    public E removeFirst() {
-        E removed;
+    public int size() {
+        return size;
+    }
+
+    /**
+     * Checks if the list is empty.
+     *
+     * @return {@code true} if list if empty, else {@code false}
+     */
+    @Override
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    /**
+     * Returns the element at index i of the List.
+     *
+     * @param i the index of the list which contains required element
+     * @return the element at index i
+     */
+    @Override
+    public E get(int i) {
+        E ans = null;
+        int index = 0; // Temporary index used for list traversal
+        Iterator<E> itr = iterator();
         if (isEmpty()) {
             return null;
-        } else if (size == 1) {
-            removed = tail.getElement();
-            tail = null;
-        } else {
-            removed = tail.getNext().getElement();
-            tail.setNext(tail.getNext().getNext());
         }
-        size--;
-        return removed;
+        while (itr.hasNext()) {
+            if (index == i) {
+                ans = itr.next();
+                break;
+            }
+            itr.next();
+            index++;
+        }
+        return ans;
+    }
+
+    /**
+     * Inserts an element e at index i of the list.
+     *
+     * @param i index at which to insert the element e
+     * @param e the element to be inserted at given index
+     * @throws RuntimeException if specified list index is out of bounds
+     */
+    @Override
+    public void add(int i, E e) throws RuntimeException {
+        if (i < 0 || i > size) {
+            throw new RuntimeException("Specified index is out of bounds!");
+        } else if (i == 0) {
+            addFirst(e);
+        } else if (i == size) {
+            addLast(e);
+        } else {
+            Node<E> newest = new Node<>(e, null); // Create Node to be inserted
+            Node<E> temp = tail.getNext(); // Temporary Node for list traversal
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
+                if (index == i - 1) {
+                    // Insert new Node at required index i
+                    newest.setNext(temp.getNext());
+                    temp.setNext(newest);
+                    break;
+                }
+            }
+            size++;
+        }
+    }
+
+    /**
+     * Insert a Node to the beginning of the list.
+     *
+     * @param e Node element to be inserted
+     */
+    @Override
+    public void addFirst(E e) {
+        if (isEmpty()) {
+            // Create tail Node and link to itself
+            tail = new Node<>(e, null);
+            tail.setNext(tail);
+        } else {
+            // Create new Node to follow the tail
+            Node<E> newest = new Node<>(e, tail.getNext());
+            tail.setNext(newest);
+        }
+        size++;
+    }
+
+    /**
+     * Insert a Node to the end of the list.
+     *
+     * @param e Node element to be inserted
+     */
+    @Override
+    public void addLast(E e) {
+        addFirst(e);
+        rotate();
     }
 
     /**
@@ -246,6 +220,65 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
             }
             return removed;
         }
+    }
+
+    /**
+     * Remove the first Node from the list.
+     *
+     * @return the removed first element, null if empty
+     */
+    @Override
+    public E removeFirst() {
+        E removed;
+        if (isEmpty()) {
+            return null;
+        } else if (size == 1) {
+            removed = tail.getElement();
+            tail = null;
+        } else {
+            removed = tail.getNext().getElement();
+            tail.setNext(tail.getNext().getNext());
+        }
+        size--;
+        return removed;
+    }
+
+    /**
+     * Remove the last Node from the list.
+     *
+     * @return the removed last element, null if empty
+     */
+    @Override
+    public E removeLast() {
+        if (isEmpty()) {
+            return null;
+        } else if (size == 1) {
+            return removeFirst();
+        } else {
+            E removed = null; // Element to be removed
+            Node<E> temp = tail.getNext(); // Temporary Node for list traversal
+            while (temp != tail) {
+                if (temp.getNext() == tail) {
+                    removed = tail.getElement(); // Last element is the one to remove
+                    temp.setNext(tail.getNext()); // Nullify the reference to the last Node
+                    tail = temp;
+                    size--;
+                    break;
+                }
+                temp = temp.getNext();
+            }
+            return removed;
+        }
+    }
+
+    /**
+     * Returns a new ListIterator object.
+     *
+     * @return instance of ListIterator class
+     */
+    @Override
+    public Iterator<E> iterator() {
+        return new ListIterator();
     }
 
     /**
@@ -324,34 +357,6 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
             temp = temp.getNext();
             index++;
             return ans;
-        }
-    }
-
-    /**
-     * Remove the last Node from the list.
-     *
-     * @return the removed last element, null if empty
-     */
-    @Override
-    public E removeLast() {
-        if (isEmpty()) {
-            return null;
-        } else if (size == 1) {
-            return removeFirst();
-        } else {
-            E removed = null; // Element to be removed
-            Node<E> temp = tail.getNext(); // Temporary Node for list traversal
-            while (temp != tail) {
-                if (temp.getNext() == tail) {
-                    removed = tail.getElement(); // Last element is the one to remove
-                    temp.setNext(tail.getNext()); // Nullify the reference to the last Node
-                    tail = temp;
-                    size--;
-                    break;
-                }
-                temp = temp.getNext();
-            }
-            return removed;
         }
     }
 

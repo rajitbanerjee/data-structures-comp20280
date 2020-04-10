@@ -4,6 +4,14 @@ import projectCode20280.Position;
 
 /**
  * Concrete implementation of a binary tree using a node-based, linked structure.
+ * <p>
+ * 1. Implements previously abstract methods from AbstractTree (from Tree ADT): root, parent, size
+ * 2. Implements previously abstract methods from AbstractBinaryTree (from BinaryTree ADT): left, right
+ * 3. Other methods in Tree ADT and BinaryTree ADT are implemented in AbstractTree and AbstractBinaryTree.
+ * 4. Allows level order (using constructor), direct and BST order construction of the tree.
+ * 5. Additional public methods: addRoot, addLeft, addRight, insert, set, attach, remove, toString,
+ * countLeftExternalNodes, countDescendants
+ * 6. Contains an inner Node class which represents a tree node.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
@@ -14,9 +22,81 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     private int size = 0;
 
     /**
+     * Constructs a binary tree from in level order from a given array.
+     */
+    public LinkedBinaryTree(E[] arr) {
+        root = createLevelOrder(arr, null, 0);
+    }
+
+    /**
      * Constructs an empty binary tree.
      */
     public LinkedBinaryTree() {
+    }
+
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        System.out.println("Test 1: Direct construction");
+        LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
+        Position<Integer> root = bt.addRoot(12);
+        Position<Integer> p1 = bt.addLeft(root, 25);
+        bt.addRight(p1, 36);
+        Position<Integer> p2 = bt.addRight(root, 31);
+        bt.addRight(p2, 90);
+        Position<Integer> p3 = bt.addLeft(p1, 58);
+        bt.addRight(p3, 75);
+        Position<Integer> p4 = bt.addLeft(p3, 62);
+        Position<Integer> p5 = bt.addLeft(p2, 42);
+
+        System.out.println("bt size: " + bt.size());
+        System.out.println("bt inorder(): " + bt.inorder());
+        System.out.println("bt preorder(): " + bt.preorder());
+        System.out.println("bt postorder(): " + bt.postorder());
+
+        System.out.println("bt height: " + bt.height(root));
+        System.out.println("bt depth root: " + bt.depth(root));
+        System.out.println("bt depth 62: " + bt.depth(p4));
+        System.out.println("bt depth 42: " + bt.depth(p5));
+
+        System.out.println("\nTest 2: Level order construction");
+        Integer[] arr = {12, 25, 31, 58, 36, 42, 90, 62, 75};
+        bt = new LinkedBinaryTree<>(arr);
+        System.out.println("bt size: " + bt.size());
+        System.out.println("bt inorder(): " + bt.inorder());
+        System.out.println("bt preorder(): " + bt.preorder());
+        System.out.println("bt postorder(): " + bt.postorder());
+
+        System.out.println("bt height: " + bt.height(bt.root()));
+        System.out.println("bt depth root: " + bt.depth(bt.root()));
+
+
+        System.out.println("\nTest 3: BST order construction");
+        bt = new LinkedBinaryTree<>();
+        int[] a = {12, 25, 31, 58, 36, 42, 90, 62, 75};
+        for (int i : a) {
+            bt.insert(i);
+        }
+        System.out.println("bt size: " + bt.size());
+        System.out.println("bt (default inorder): " + bt);
+        System.out.println("bt inorder(): " + bt.inorder());
+        System.out.println("bt preorder(): " + bt.preorder());
+        System.out.println("bt postorder(): " + bt.postorder());
+
+        System.out.println("Root: " + bt.root());
+        System.out.println("bt depth root: " + bt.depth(bt.root()));
+    }
+
+    // Helper for level order tree construction
+    private Node<E> createLevelOrder(E[] arr, Node<E> parent, int i) {
+        if (i < arr.length) {
+            Node<E> newest = createNode(arr[i], parent);
+            newest.setLeft(createLevelOrder(arr, newest.getLeft(), 2 * i + 1));
+            newest.setRight(createLevelOrder(arr, newest.getRight(), 2 * i + 2));
+            size++;
+            return newest;
+        } else {
+            return parent;
+        }
     }
 
     /**
@@ -286,7 +366,6 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
 
     // Extra functionality for lab and assignment questions ----------------
 
-
     /**
      * Algorithm to count left external nodes.
      *
@@ -313,7 +392,6 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         }
         return count;
     }
-
 
     /**
      * Counts the descendants of a given Position.
