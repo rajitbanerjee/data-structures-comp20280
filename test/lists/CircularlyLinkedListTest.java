@@ -88,6 +88,7 @@ class CircularlyLinkedListTest {
         list.addFirst("A");
         list.addFirst("B");
         list.addFirst("C");
+        assertEquals("[C, B, A]", list.toString());
         list.removeLast();
         assertEquals("[C, B]", list.toString());
         list.removeLast();

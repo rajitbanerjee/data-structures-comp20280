@@ -128,6 +128,77 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         return ans;
     }
 
+    public static void main(String[] args) {
+        // TEST 1: Given in skeleton code
+        System.out.println("\nTEST 1 from given GitHub code:");
+        CircularlyLinkedList<Integer> cll = new CircularlyLinkedList<>();
+        for (int i = 10; i < 20; ++i) {
+            cll.addLast(i);
+        }
+        System.out.println("After adding 10-19: ");
+        System.out.println(cll);
+
+        cll.removeFirst();
+        System.out.println("After removeFirst():");
+        System.out.println(cll);
+
+        cll.removeLast();
+        System.out.println("After removeLast():");
+        System.out.println(cll);
+
+        cll.rotate();
+        System.out.println("After rotate():");
+        System.out.println(cll);
+
+
+        cll.removeFirst();
+        cll.rotate();
+        System.out.println("After removeFirst(), then rotate():");
+        System.out.println(cll);
+
+        cll.removeLast();
+        cll.rotate();
+        System.out.println("After removeLast(), then rotate():");
+        System.out.println(cll);
+
+        System.out.println("All elements:");
+        for (Integer e : cll) {
+            System.out.println("value: " + e);
+        }
+
+        // TEST 2: Given in practical 1
+        System.out.println("\nTEST 2 from Practical 1:");
+        CircularlyLinkedList<Integer> ll = new CircularlyLinkedList<>();
+        ll.addFirst(0);
+        ll.addFirst(1);
+        ll.addFirst(3);
+        ll.addFirst(4);
+        ll.addFirst(5);
+        ll.add(3, 2);
+        System.out.println(ll);
+        ll.addFirst(-100);
+        ll.addLast(+100);
+        System.out.println(ll);
+        ll.removeFirst();
+        ll.removeLast();
+        System.out.println(ll);
+        ll.removeFirst();
+        System.out.println(ll);
+        ll.removeLast();
+        System.out.println(ll);
+        ll.removeFirst();
+        System.out.println(ll);
+        ll.addFirst(9999);
+        ll.addFirst(8888);
+        ll.addFirst(7777);
+
+        System.out.println(ll);
+        System.out.println(ll.get(0));
+        System.out.println(ll.get(1));
+        System.out.println(ll.get(2));
+        System.out.println(ll);
+    }
+
     /**
      * Remove the first Node from the list.
      *
@@ -141,44 +212,11 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
         } else if (size == 1) {
             removed = tail.getElement();
             tail = null;
-            size--;
         } else {
             removed = tail.getNext().getElement();
             tail.setNext(tail.getNext().getNext());
-            size--;
         }
-        return removed;
-    }
-
-    /**
-     * Remove the last Node from the list.
-     *
-     * @return the removed last element, null if empty
-     */
-    @Override
-    public E removeLast() {
-        E removed;
-        if (isEmpty()) {
-            return null;
-        } else if (size == 1) {
-            removed = tail.getElement();
-            tail = null;
-            size--;
-        } else {
-            Node<E> temp = tail.getNext();
-            removed = tail.getElement();
-            int i = 0; // Temporary index for loop control
-            while (i < size - 1) {
-                // Traverse the list until the 2nd last Node is reached
-                i++;
-                temp = temp.getNext();
-            }
-            // Make the 2nd last Node link to the first Node after the former tail
-            temp.setNext(tail.getNext());
-            // Update the tail Node
-            tail = temp;
-            size--;
-        }
+        size--;
         return removed;
     }
 
@@ -286,6 +324,34 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
             temp = temp.getNext();
             index++;
             return ans;
+        }
+    }
+
+    /**
+     * Remove the last Node from the list.
+     *
+     * @return the removed last element, null if empty
+     */
+    @Override
+    public E removeLast() {
+        if (isEmpty()) {
+            return null;
+        } else if (size == 1) {
+            return removeFirst();
+        } else {
+            E removed = null; // Element to be removed
+            Node<E> temp = tail.getNext(); // Temporary Node for list traversal
+            while (temp != tail) {
+                if (temp.getNext() == tail) {
+                    removed = tail.getElement(); // Last element is the one to remove
+                    temp.setNext(tail.getNext()); // Nullify the reference to the last Node
+                    tail = temp;
+                    size--;
+                    break;
+                }
+                temp = temp.getNext();
+            }
+            return removed;
         }
     }
 
