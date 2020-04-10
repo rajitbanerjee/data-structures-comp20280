@@ -35,6 +35,36 @@ public class ArrayStack<E> implements Stack<E> {
         this(1000);
     }
 
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        Stack<Integer> stk = new ArrayStack<>();
+        System.out.println("Initially: Stack is " + stk + ", size() = " +
+                stk.size() + ", isEmpty() = " + stk.isEmpty());
+
+        stk.push(10);
+        System.out.println("\nAfter push:");
+        System.out.println(stk);
+
+        stk.push(20);
+        System.out.println("\nAfter push:");
+        System.out.println(stk);
+
+        stk.push(30);
+        System.out.println("\nAfter push:");
+        System.out.println(stk);
+
+        System.out.println("\nTop: " + stk.top());
+        System.out.println("Stack is empty = " + stk.isEmpty());
+
+        System.out.println("\nPopped element: " + stk.pop());
+        System.out.println("After pop:");
+        System.out.println(stk);
+
+        System.out.println("\nPopped element: " + stk.pop());
+        System.out.println("After pop:");
+        System.out.println(stk);
+    }
+
     /**
      * Gets the current number of Stack elements.
      *
@@ -115,36 +145,6 @@ public class ArrayStack<E> implements Stack<E> {
         sb = new StringBuilder(sb.substring(0, sb.length() - 2));
         sb.append("]");
         return sb.toString();
-    }
-
-    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
-    public static void main(String[] args) {
-        Stack<Integer> stk = new ArrayStack<>();
-        System.out.println("Initially: Stack is " + stk + ", size() = " +
-                stk.size() + ", isEmpty() = " + stk.isEmpty());
-
-        stk.push(10);
-        System.out.println("\nAfter push:");
-        System.out.println(stk);
-
-        stk.push(20);
-        System.out.println("\nAfter push:");
-        System.out.println(stk);
-
-        stk.push(30);
-        System.out.println("\nAfter push:");
-        System.out.println(stk);
-
-        System.out.println("\nTop: " + stk.top());
-        System.out.println("Stack is empty = " + stk.isEmpty());
-
-        System.out.println("\nPopped element: " + stk.pop());
-        System.out.println("After pop:");
-        System.out.println(stk);
-
-        System.out.println("\nPopped element: " + stk.pop());
-        System.out.println("After pop:");
-        System.out.println(stk);
     }
 
 }

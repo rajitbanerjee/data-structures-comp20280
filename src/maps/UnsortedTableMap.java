@@ -1,6 +1,7 @@
 package maps;
 
 import projectCode20280.Entry;
+import projectCode20280.Map;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,6 +9,13 @@ import java.util.NoSuchElementException;
 
 /**
  * An implementation of a map using an unsorted table.
+ * <p>
+ * 1. Implements Map ADT functions: size(), get(k), put(k, v), remove(k), entrySet()
+ * 2. Additional public method: toString()
+ *
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
+ * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
 public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
     /**
@@ -21,11 +29,39 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
     public UnsortedTableMap() {
     }
 
+    // Main method to perform basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        Map<Integer, String> m = new UnsortedTableMap<>();
+        m.put(1, "One");
+        m.put(10, "Ten");
+        m.put(11, "Eleven");
+        m.put(20, "Twenty");
+
+        System.out.println("Initial map:");
+        System.out.println("Map: " + m);
+        System.out.println("Keys: " + m.keySet());
+        System.out.println("Values: " + m.values());
+
+        System.out.println("\nget(1): " + m.get(1));
+        System.out.println("get(10): " + m.get(10));
+        System.out.println("get(11): " + m.get(11));
+        System.out.println("get(20): " + m.get(20));
+
+        System.out.println("\nAfter remove(11):");
+        m.remove(11);
+        System.out.println("Map: " + m);
+        System.out.println("Keys: " + m.keySet());
+        System.out.println("Values: " + m.values());
+
+        System.out.println("\nget(1): " + m.get(1));
+        System.out.println("get(10): " + m.get(10));
+        System.out.println("get(11): " + m.get(11));
+        System.out.println("get(20): " + m.get(20));
+    }
+
     // private utility
 
-    /**
-     * Returns the index of an entry with equal key, or -1 if none found.
-     */
+    // Returns the index of an entry with equal key, or -1 if none found.
     private int findIndex(K key) {
         for (int i = 0; i < size(); i++) {
             if (table.get(i).getKey().equals(key)) {

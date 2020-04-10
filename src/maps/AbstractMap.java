@@ -26,6 +26,31 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
         return size() == 0;
     }
 
+    // Provides support for keySet() and values() methods, based on
+    // the entrySet() method that must be provided by subclasses
+
+    /**
+     * Returns an iterable collection of the keys contained in the map.
+     *
+     * @return iterable collection of the map's keys
+     */
+    @Override
+    public Iterable<K> keySet() {
+        return new KeyIterable();
+    }
+
+    /**
+     * Returns an iterable collection of the values contained in the map. Note that
+     * the same value will be given multiple times in the result if it is associated
+     * with multiple keys.
+     *
+     * @return iterable collection of the map's values
+     */
+    @Override
+    public Iterable<V> values() {
+        return new ValueIterable();
+    }
+
     // ---------------- nested MapEntry class ----------------
 
     /**
@@ -64,42 +89,30 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
         /**
          * Returns string representation (for debugging only)
          */
+        @Override
         public String toString() {
             return "<" + k + ", " + v + ">";
         }
 
     } // ----------- end of nested MapEntry class -----------
 
-
-    // Provides support for keySet() and values() methods, based on
-    // the entrySet() method that must be provided by subclasses
-
-    /**
-     * Returns an iterable collection of the keys contained in the map.
-     *
-     * @return iterable collection of the map's keys
-     */
-    @Override
-    public Iterable<K> keySet() {
-        return new KeyIterable();
-    }
-
-    /**
-     * Returns an iterable collection of the values contained in the map. Note that
-     * the same value will be given multiple times in the result if it is associated
-     * with multiple keys.
-     *
-     * @return iterable collection of the map's values
-     */
-    @Override
-    public Iterable<V> values() {
-        return new ValueIterable();
-    }
-
     // ---------------- nested KeyIterable class ----------------
     private class KeyIterable implements Iterable<K> {
+        KeyIterator itr = new KeyIterator();
+
         public Iterator<K> iterator() {
-            return new KeyIterator();
+            return itr;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder("[");
+            while (itr.hasNext()) {
+                sb.append(itr.next()).append(", ");
+            }
+            sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+            sb.append("]");
+            return sb.toString();
         }
     } // ----------- end of nested KeyIterable class -----------
 
@@ -122,8 +135,21 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
 
     // ---------------- nested ValueIterable class ----------------
     private class ValueIterable implements Iterable<V> {
+        ValueIterator itr = new ValueIterator();
+
         public Iterator<V> iterator() {
-            return new ValueIterator();
+            return itr;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder("[");
+            while (itr.hasNext()) {
+                sb.append(itr.next()).append(", ");
+            }
+            sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+            sb.append("]");
+            return sb.toString();
         }
     } // ----------- end of nested ValueIterable class -----------
 

@@ -37,6 +37,36 @@ public class ArrayQueue<E> implements Queue<E> {
         this(1000);
     }
 
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        Queue<Integer> queue = new ArrayQueue<>();
+        System.out.println("Initially: Queue is " + queue + ", size() = " +
+                queue.size() + ", isEmpty() = " + queue.isEmpty());
+
+        queue.enqueue(10);
+        System.out.println("\nAfter enqueue:");
+        System.out.println(queue);
+
+        queue.enqueue(20);
+        System.out.println("\nAfter enqueue:");
+        System.out.println(queue);
+
+        queue.enqueue(30);
+        System.out.println("\nAfter enqueue:");
+        System.out.println(queue);
+
+        System.out.println("\nFirst: " + queue.first());
+        System.out.println("Queue is empty = " + queue.isEmpty());
+
+        System.out.println("\nDequeue element: " + queue.dequeue());
+        System.out.println("After dequeue:");
+        System.out.println(queue);
+
+        System.out.println("\nDequeue element: " + queue.dequeue());
+        System.out.println("After dequeue:");
+        System.out.println(queue);
+    }
+
     /**
      * Returns the current number of elements in the Queue.
      *
@@ -73,34 +103,18 @@ public class ArrayQueue<E> implements Queue<E> {
         }
     }
 
-    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
-    public static void main(String[] args) {
-        Queue<Integer> queue = new ArrayQueue<>();
-        System.out.println("Initially: Queue is " + queue + ", size() = " +
-                queue.size() + ", isEmpty() = " + queue.isEmpty());
-
-        queue.enqueue(10);
-        System.out.println("\nAfter enqueue:");
-        System.out.println(queue);
-
-        queue.enqueue(20);
-        System.out.println("\nAfter enqueue:");
-        System.out.println(queue);
-
-        queue.enqueue(30);
-        System.out.println("\nAfter enqueue:");
-        System.out.println(queue);
-
-        System.out.println("\nFirst: " + queue.first());
-        System.out.println("Queue is empty = " + queue.isEmpty());
-
-        System.out.println("\nDequeue element: " + queue.dequeue());
-        System.out.println("After dequeue:");
-        System.out.println(queue);
-
-        System.out.println("\nDequeue element: " + queue.dequeue());
-        System.out.println("After dequeue:");
-        System.out.println(queue);
+    /**
+     * Return (but not remove) the element at front of Queue.
+     *
+     * @return the front element of the Queue, null if empty
+     */
+    @Override
+    public E first() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            return queue[front];
+        }
     }
 
     /**
@@ -138,21 +152,6 @@ public class ArrayQueue<E> implements Queue<E> {
         sb = new StringBuilder(sb.substring(0, sb.length() - 2));
         sb.append("]");
         return sb.toString();
-
-    }
-
-    /**
-     * Return (but not remove) the element at front of Queue.
-     *
-     * @return the front element of the Queue, null if empty
-     */
-    @Override
-    public E first() {
-        if (isEmpty()) {
-            return null;
-        } else {
-            return queue[front];
-        }
     }
 
 }

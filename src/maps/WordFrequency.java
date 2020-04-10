@@ -8,6 +8,13 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Maps the words in a file with the frequency of occurrence.
+ * Reports the top 10 most frequent words.
+ *
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
+ */
 public class WordFrequency {
     // Store words in a ChainHashMap, with values = word frequency
     public static void main(String[] args) throws FileNotFoundException {

@@ -284,25 +284,6 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     /**
-     * Replaces the element at a certain index with the new given element.
-     *
-     * @param i index at which element is to be replaced
-     * @param e new element to replace the existing element
-     */
-    public void set(int i, E e) {
-        if (!isEmpty()) {
-            Node<E> temp = header.getNext(); // Temporary Node for list traversal
-            for (int index = 0; index < size; index++, temp = temp.getNext()) {
-                if (index == i) {
-                    // Replace Node when index is found
-                    temp.setElement(e);
-                    break;
-                }
-            }
-        }
-    }
-
-    /**
      * Gets the first element of the list.
      *
      * @return the element at the first Node of the list, null if empty
@@ -328,6 +309,32 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         }
     }
 
+    /**
+     * Replaces the element at a certain index with the new given element.
+     *
+     * @param i index at which element is to be replaced
+     * @param e new element to replace the existing element
+     */
+    public void set(int i, E e) {
+        if (!isEmpty()) {
+            Node<E> temp = header.getNext(); // Temporary Node for list traversal
+            for (int index = 0; index < size; index++, temp = temp.getNext()) {
+                if (index == i) {
+                    // Replace Node when index is found
+                    temp.setElement(e);
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * Recursively copies a list.
+     */
+    public DoublyLinkedList<E> recursiveCopy() {
+        return copy(header.getNext(), new DoublyLinkedList<>());
+    }
+
     // Helper function to recursively copy a list
     private DoublyLinkedList<E> copy(Node<E> start, DoublyLinkedList<E> copyList) {
         if (start == trailer) {
@@ -339,10 +346,22 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     /**
-     * Recursively copies a list.
+     * Gives the String implementation of the list.
+     *
+     * @return the String containing the comma-separated list elements
      */
-    public DoublyLinkedList<E> recursiveCopy() {
-        return copy(header.getNext(), new DoublyLinkedList<>());
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder("[");
+        for (E e : this) {
+            sb.append(e.toString()).append(", ");
+        }
+        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+        sb.append("]");
+        return sb.toString();
     }
 
     // Constituent Node of DoublyLinkedList
@@ -393,25 +412,6 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         void setPrev(Node<E> prev) {
             this.prev = prev;
         }
-    }
-
-    /**
-     * Gives the String implementation of the list.
-     *
-     * @return the String containing the comma-separated list elements
-     */
-    @Override
-    public String toString() {
-        if (isEmpty()) {
-            return "[]";
-        }
-        StringBuilder sb = new StringBuilder("[");
-        for (E e : this) {
-            sb.append(e.toString()).append(", ");
-        }
-        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
-        sb.append("]");
-        return sb.toString();
     }
 
     // Inner class whose instance is returned by the iterator() method

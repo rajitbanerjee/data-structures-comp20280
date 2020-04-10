@@ -15,6 +15,43 @@ import projectCode20280.Stack;
 public class LinkedStack<E> implements Stack<E> {
     private SinglyLinkedList<E> stack = new SinglyLinkedList<>();
 
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        LinkedStack<Integer> stk = new LinkedStack<>();
+        System.out.println("Initially: Stack is " + stk + ", size() = " +
+                stk.size() + ", isEmpty() = " + stk.isEmpty());
+
+        stk.push(10);
+        System.out.println("\nAfter push:");
+        System.out.println(stk);
+
+        stk.push(20);
+        System.out.println("\nAfter push:");
+        System.out.println(stk);
+
+        stk.push(30);
+        System.out.println("\nAfter push:");
+        System.out.println(stk);
+
+        System.out.println("\nTop: " + stk.top());
+        System.out.println("Stack is empty = " + stk.isEmpty());
+
+        stk.reverse();
+        System.out.println("\nAfter reverse:");
+        System.out.println(stk);
+
+        System.out.println("\nTop: " + stk.top());
+        System.out.println("Stack is empty = " + stk.isEmpty());
+
+        System.out.println("\nPopped element: " + stk.pop());
+        System.out.println("After pop:");
+        System.out.println(stk);
+
+        System.out.println("\nPopped element: " + stk.pop());
+        System.out.println("After pop:");
+        System.out.println(stk);
+    }
+
     /**
      * Gets the current number of Stack elements.
      *
@@ -91,43 +128,6 @@ public class LinkedStack<E> implements Stack<E> {
         for (int i = 0; i < size; i++) {
             this.push(helper2.pop());
         }
-    }
-
-    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
-    public static void main(String[] args) {
-        LinkedStack<Integer> stk = new LinkedStack<>();
-        System.out.println("Initially: Stack is " + stk + ", size() = " +
-                stk.size() + ", isEmpty() = " + stk.isEmpty());
-
-        stk.push(10);
-        System.out.println("\nAfter push:");
-        System.out.println(stk);
-
-        stk.push(20);
-        System.out.println("\nAfter push:");
-        System.out.println(stk);
-
-        stk.push(30);
-        System.out.println("\nAfter push:");
-        System.out.println(stk);
-
-        System.out.println("\nTop: " + stk.top());
-        System.out.println("Stack is empty = " + stk.isEmpty());
-
-        stk.reverse();
-        System.out.println("\nAfter reverse:");
-        System.out.println(stk);
-
-        System.out.println("\nTop: " + stk.top());
-        System.out.println("Stack is empty = " + stk.isEmpty());
-
-        System.out.println("\nPopped element: " + stk.pop());
-        System.out.println("After pop:");
-        System.out.println(stk);
-
-        System.out.println("\nPopped element: " + stk.pop());
-        System.out.println("After pop:");
-        System.out.println(stk);
     }
 
 }

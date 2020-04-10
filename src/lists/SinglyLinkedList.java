@@ -337,6 +337,25 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         return copy(head, new SinglyLinkedList<>());
     }
 
+    /**
+     * Gives the String implementation of the list.
+     *
+     * @return the String containing the comma-separated list elements
+     */
+    @Override
+    public String toString() {
+        if (isEmpty()) {
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder("[");
+        for (E e : this) {
+            sb.append(e.toString()).append(", ");
+        }
+        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
+        sb.append("]");
+        return sb.toString();
+    }
+
     // Constituent Node of SinglyLinkedList
     private static class Node<E> {
         private E element; // Element stored in the Node
@@ -372,25 +391,6 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         void setNext(Node<E> next) {
             this.next = next;
         }
-    }
-
-    /**
-     * Gives the String implementation of the list.
-     *
-     * @return the String containing the comma-separated list elements
-     */
-    @Override
-    public String toString() {
-        if (isEmpty()) {
-            return "[]";
-        }
-        StringBuilder sb = new StringBuilder("[");
-        for (E e : this) {
-            sb.append(e.toString()).append(", ");
-        }
-        sb = new StringBuilder(sb.substring(0, sb.length() - 2));
-        sb.append("]");
-        return sb.toString();
     }
 
     // Inner class whose instance is returned by the iterator() method

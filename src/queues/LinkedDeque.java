@@ -17,6 +17,31 @@ import projectCode20280.Deque;
 public class LinkedDeque<E> implements Deque<E> {
     private DoublyLinkedList<E> deque = new DoublyLinkedList<>();
 
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        Deque<Integer> dq = new LinkedDeque<>();
+        dq.addFirst(0);
+        dq.addFirst(1);
+        dq.addFirst(2);
+        dq.addLast(-1);
+        System.out.println("Initial deque: ");
+        System.out.println(dq);
+
+        System.out.println("First: " + dq.first());
+        System.out.println("Last: " + dq.last());
+
+        dq.removeFirst();
+        System.out.println("After removeFirst(): ");
+        System.out.println(dq);
+
+        dq.removeLast();
+        System.out.println("After removeLast(): ");
+        System.out.println(dq);
+
+        System.out.println("First: " + dq.first());
+        System.out.println("Last: " + dq.last());
+    }
+
     /**
      * Returns the number of elements in the deque.
      *
@@ -104,31 +129,6 @@ public class LinkedDeque<E> implements Deque<E> {
      */
     public String toString() {
         return deque.toString();
-    }
-
-    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
-    public static void main(String[] args) {
-        Deque<Integer> dq = new LinkedDeque<>();
-        dq.addFirst(0);
-        dq.addFirst(1);
-        dq.addFirst(2);
-        dq.addLast(-1);
-        System.out.println("Initial deque: ");
-        System.out.println(dq);
-
-        System.out.println("First: " + dq.first());
-        System.out.println("Last: " + dq.last());
-
-        dq.removeFirst();
-        System.out.println("After removeFirst(): ");
-        System.out.println(dq);
-
-        dq.removeLast();
-        System.out.println("After removeLast(): ");
-        System.out.println(dq);
-
-        System.out.println("First: " + dq.first());
-        System.out.println("Last: " + dq.last());
     }
 
 }

@@ -5,9 +5,17 @@ import projectCode20280.Map;
 
 import java.util.ArrayList;
 
-/*
+/**
  * Map implementation using hash table with separate chaining.
+ * 1. Implements Map ADT function: entrySet()
+ * 2. Implements AbstractHashMap abstract functions: createTable(), bucketGet(h, k),
+ * bucketPut(h, k, v), bucketRemove(h, k) to be used for AbstractHashMap functions: get, remove, put
+ * 3. Other Map ADT functions: size, isEmpty: already implemented in AbstractHashMap.
+ * 4. Additional public method: toString()
  *
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
+ * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
 
 public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
@@ -19,6 +27,37 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
      */
     public ChainHashMap() {
         super();
+    }
+
+    // Main method to perform basic tests (proper JUnit tests are in 'test' directory)
+    // Further applications of ChainHashMap in WordFrequency.java, Collisions.java
+    public static void main(String[] args) {
+        Map<Integer, String> m = new ChainHashMap<>();
+        m.put(1, "One");
+        m.put(10, "Ten");
+        m.put(11, "Eleven");
+        m.put(20, "Twenty");
+
+        System.out.println("Initial map:");
+        System.out.println("Map: " + m);
+        System.out.println("Keys: " + m.keySet());
+        System.out.println("Values: " + m.values());
+
+        System.out.println("\nget(1): " + m.get(1));
+        System.out.println("get(10): " + m.get(10));
+        System.out.println("get(11): " + m.get(11));
+        System.out.println("get(20): " + m.get(20));
+
+        System.out.println("\nAfter remove(11):");
+        m.remove(11);
+        System.out.println("Map: " + m);
+        System.out.println("Keys: " + m.keySet());
+        System.out.println("Values: " + m.values());
+
+        System.out.println("\nget(1): " + m.get(1));
+        System.out.println("get(10): " + m.get(10));
+        System.out.println("get(11): " + m.get(11));
+        System.out.println("get(20): " + m.get(20));
     }
 
     /**
@@ -113,20 +152,6 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
     @Override
     public String toString() {
         return entrySet().toString();
-    }
-
-    // Main method to perform basic tests
-    public static void main(String[] args) {
-        Map<Integer, String> m = new ChainHashMap<>();
-        m.put(1, "One");
-        m.put(10, "Ten");
-        m.put(11, "Eleven");
-        m.put(20, "Twenty");
-
-        System.out.println("m: " + m);
-
-        m.remove(11);
-        System.out.println("m: " + m);
     }
 
 }

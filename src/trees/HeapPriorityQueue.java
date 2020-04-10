@@ -55,6 +55,45 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         heapify();
     }
 
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        System.out.println("Test 1: Bottom-up construction");
+        Integer[] keys = {5, 4, 3, 2, 1};
+        Integer[] values = {5, 4, 3, 2, 1};
+        HeapPriorityQueue<Integer, Integer> heap = new HeapPriorityQueue<>(keys, values);
+        System.out.println("Insert 5, 4, 3, 2, 1: ");
+        System.out.println(heap);
+
+        System.out.println("\nMin (key, value): " + heap.min());
+        System.out.println("After removeMin(): ");
+        heap.removeMin();
+        System.out.println(heap);
+
+        System.out.println("\nMin (key, value): " + heap.min());
+        System.out.println("After removeMin(): ");
+        heap.removeMin();
+        System.out.println(heap);
+
+        System.out.println("\nTest 2: Up-heap bubbling insertion");
+        heap = new HeapPriorityQueue<>();
+        heap.insert(1, 1);
+        heap.insert(2, 2);
+        heap.insert(3, 3);
+        heap.insert(0, 0);
+        System.out.println("Insert 1, 2, 3, 0: ");
+        System.out.println(heap);
+
+        System.out.println("\nMin (key, value): " + heap.min());
+        System.out.println("After removeMin(): ");
+        heap.removeMin();
+        System.out.println(heap);
+
+        System.out.println("\nMin (key, value): " + heap.min());
+        System.out.println("After removeMin(): ");
+        heap.removeMin();
+        System.out.println(heap);
+    }
+
     /**
      * Performs a bottom-up construction of the heap in linear time.
      */
@@ -153,45 +192,6 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
             swap(j, parent);
             j = parent;
         }
-    }
-
-    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
-    public static void main(String[] args) {
-        System.out.println("Test 1: Bottom-up construction");
-        Integer[] keys = {5, 4, 3, 2, 1};
-        Integer[] values = {5, 4, 3, 2, 1};
-        HeapPriorityQueue<Integer, Integer> heap = new HeapPriorityQueue<>(keys, values);
-        System.out.println("Insert 5, 4, 3, 2, 1: ");
-        System.out.println(heap);
-
-        System.out.println("\nMin (key, value): " + heap.min());
-        System.out.println("After removeMin(): ");
-        heap.removeMin();
-        System.out.println(heap);
-
-        System.out.println("\nMin (key, value): " + heap.min());
-        System.out.println("After removeMin(): ");
-        heap.removeMin();
-        System.out.println(heap);
-
-        System.out.println("\nTest 2: Up-heap bubbling insertion");
-        heap = new HeapPriorityQueue<>();
-        heap.insert(1, 1);
-        heap.insert(2, 2);
-        heap.insert(3, 3);
-        heap.insert(0, 0);
-        System.out.println("Insert 1, 2, 3, 0: ");
-        System.out.println(heap);
-
-        System.out.println("\nMin (key, value): " + heap.min());
-        System.out.println("After removeMin(): ");
-        heap.removeMin();
-        System.out.println(heap);
-
-        System.out.println("\nMin (key, value): " + heap.min());
-        System.out.println("After removeMin(): ");
-        heap.removeMin();
-        System.out.println(heap);
     }
 
     /**

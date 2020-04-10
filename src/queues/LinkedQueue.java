@@ -17,6 +17,36 @@ public class LinkedQueue<E> implements Queue<E> {
     // implement a LinkedQueue using DLL as base
     private DoublyLinkedList<E> queue = new DoublyLinkedList<>();
 
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        Queue<Integer> queue = new LinkedQueue<>();
+        System.out.println("Initially: Queue is " + queue + ", size() = " +
+                queue.size() + ", isEmpty() = " + queue.isEmpty());
+
+        queue.enqueue(10);
+        System.out.println("\nAfter enqueue:");
+        System.out.println(queue);
+
+        queue.enqueue(20);
+        System.out.println("\nAfter enqueue:");
+        System.out.println(queue);
+
+        queue.enqueue(30);
+        System.out.println("\nAfter enqueue:");
+        System.out.println(queue);
+
+        System.out.println("\nFirst: " + queue.first());
+        System.out.println("Queue is empty = " + queue.isEmpty());
+
+        System.out.println("\nDequeue element: " + queue.dequeue());
+        System.out.println("After dequeue:");
+        System.out.println(queue);
+
+        System.out.println("\nDequeue element: " + queue.dequeue());
+        System.out.println("After dequeue:");
+        System.out.println(queue);
+    }
+
     /**
      * Finds number of Queue elements.
      *
@@ -75,36 +105,6 @@ public class LinkedQueue<E> implements Queue<E> {
     @Override
     public String toString() {
         return queue.toString();
-    }
-
-    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
-    public static void main(String[] args) {
-        Queue<Integer> queue = new LinkedQueue<>();
-        System.out.println("Initially: Queue is " + queue + ", size() = " +
-                queue.size() + ", isEmpty() = " + queue.isEmpty());
-
-        queue.enqueue(10);
-        System.out.println("\nAfter enqueue:");
-        System.out.println(queue);
-
-        queue.enqueue(20);
-        System.out.println("\nAfter enqueue:");
-        System.out.println(queue);
-
-        queue.enqueue(30);
-        System.out.println("\nAfter enqueue:");
-        System.out.println(queue);
-
-        System.out.println("\nFirst: " + queue.first());
-        System.out.println("Queue is empty = " + queue.isEmpty());
-
-        System.out.println("\nDequeue element: " + queue.dequeue());
-        System.out.println("After dequeue:");
-        System.out.println(queue);
-
-        System.out.println("\nDequeue element: " + queue.dequeue());
-        System.out.println("After dequeue:");
-        System.out.println(queue);
     }
 
 }

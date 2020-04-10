@@ -9,6 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Computes the number of collisions using different hash functions, before
+ * applying the compression algorithm.
+ *
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
+ */
 public class Collisions {
     // Main method to run basic tests
     public static void main(String[] args) throws FileNotFoundException {
