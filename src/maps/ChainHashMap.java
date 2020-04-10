@@ -20,20 +20,6 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
         super();
     }
 
-    // Main method to perform basic tests
-    public static void main(String[] args) {
-        Map<Integer, String> m = new ChainHashMap<>();
-        m.put(1, "One");
-        m.put(10, "Ten");
-        m.put(11, "Eleven");
-        m.put(20, "Twenty");
-
-        System.out.println("m: " + m);
-
-        m.remove(11);
-        System.out.println("m: " + m);
-    }
-
     /**
      * Creates an empty table having length equal to current capacity.
      */
@@ -118,6 +104,25 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
         return temp;
     }
 
+    // Main method to perform basic tests
+    public static void main(String[] args) {
+        Map<Integer, String> m = new ChainHashMap<>();
+        m.put(1, "One");
+        m.put(10, "Ten");
+        m.put(11, "Eleven");
+        m.put(20, "Twenty");
+
+        System.out.println("m: " + m);
+
+        m.remove(11);
+        System.out.println("m: " + m);
+    }
+
+    /**
+     * Gets the String for the hash map.
+     *
+     * @return String for the hash map
+     */
     @Override
     public String toString() {
         return entrySet().toString();
