@@ -1,5 +1,8 @@
 package maps;
 
+import projectCode20280.Entry;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -107,15 +110,23 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
      * Hash function applying MAD method to default hash code.
      */
     private int hashValue(K key) {
-        // TODO
-        return 0;
+        return (int) ((Math.abs(key.hashCode() * scale + shift) % prime) % capacity);
     }
 
     /**
      * Updates the size of the hash table and rehashes all entries.
      */
     private void resize(int newCap) {
-        // TODO
+        ArrayList<Entry<K, V>> temp = new ArrayList<>(n);
+        for (Entry<K, V> element : entrySet()) {
+            temp.add(element);
+        }
+        capacity = newCap;
+        createTable();
+        n = 0;
+        for (Entry<K, V> element : temp) {
+            put(element.getKey(), element.getValue());
+        }
     }
 
     // protected abstract methods to be implemented by subclasses
@@ -155,4 +166,5 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
      * @return previous value associated with k (or null, if no such entry)
      */
     protected abstract V bucketRemove(int h, K k);
+
 }
