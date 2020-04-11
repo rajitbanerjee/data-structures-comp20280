@@ -6,14 +6,14 @@ import projectCode20280.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Tests for ChainHashMap.
+ * Tests for UnsortedTableMap.
  *
  * @author Rajit Banerjee, 18202817
  */
-class ChainHashMapTest {
+class UnsortedTableMapTest {
     @Test
     void testBasic() {
-        Map<Integer, Character> map = new ChainHashMap<>();
+        Map<Integer, Character> map = new UnsortedTableMap<>();
         assertTrue(map.isEmpty());
         assertNull(map.put(5, 'A'));
         assertNull(map.put(7, 'B'));

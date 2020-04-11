@@ -28,6 +28,7 @@ public class WordFrequency {
                 map.put(word, map.get(word) + 1);
             }
         }
+        sc.close();
 
         // Display the top 10 most frequent words
         ArrayList<Entry<String, Integer>> values = new ArrayList<>();

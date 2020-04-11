@@ -57,6 +57,7 @@ public class TripleSum {
         while (sc.hasNextLong()) {
             arr[x++] = sc.nextLong();
         }
+        sc.close();
         System.out.println(Arrays.toString(arr));
         final long startTime = System.nanoTime();
         int count = count(arr);

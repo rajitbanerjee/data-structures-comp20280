@@ -64,6 +64,7 @@ public class Collisions {
             list.add(word);
             map.put(hash, list);
         }
+        sc.close();
 
         int ans = 0;
         for (Entry<Integer, List<String>> entry : map.entrySet()) {
