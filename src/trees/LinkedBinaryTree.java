@@ -6,23 +6,31 @@ import projectCode20280.Position;
  * Concrete implementation of a binary tree using a node-based, linked structure.
  * <p>
  * 1. Implements previously abstract methods from AbstractTree (from Tree ADT): root, parent, size
+ * <p>
  * 2. Implements previously abstract methods from AbstractBinaryTree (from BinaryTree ADT): left, right
+ * <p>
  * 3. Other methods in Tree ADT and BinaryTree ADT are implemented in AbstractTree and AbstractBinaryTree.
+ * <p>
  * 4. Allows level order (using constructor), direct and BST order construction of the tree.
+ * <p>
  * 5. Additional public methods: addRoot, addLeft, addRight, insert, set, attach, remove, toString,
  * countLeftExternalNodes, countDescendants
+ * <p>
  * 6. Contains an inner Node class which represents a tree node.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
+
 public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTree<E> {
     private Node<E> root = null;
     private int size = 0;
 
     /**
      * Constructs a binary tree from in level order from a given array.
+     *
+     * @param arr to be used for level order construction
      */
     public LinkedBinaryTree(E[] arr) {
         root = createLevelOrder(arr, null, 0);
@@ -36,7 +44,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
-        System.out.println("Test 1: Direct construction");
+        System.out.println("TEST 1, direct construction:");
         LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
         Position<Integer> root = bt.addRoot(12);
         Position<Integer> p1 = bt.addLeft(root, 25);
@@ -58,7 +66,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         System.out.println("bt depth 62: " + bt.depth(p4));
         System.out.println("bt depth 42: " + bt.depth(p5));
 
-        System.out.println("\nTest 2: Level order construction");
+        System.out.println("\nTEST 2, level order construction:");
         Integer[] arr = {12, 25, 31, 58, 36, 42, 90, 62, 75};
         bt = new LinkedBinaryTree<>(arr);
         System.out.println("bt size: " + bt.size());
@@ -70,7 +78,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         System.out.println("bt depth root: " + bt.depth(bt.root()));
 
 
-        System.out.println("\nTest 3: BST order construction");
+        System.out.println("\nTEST 3, sorted order construction:");
         bt = new LinkedBinaryTree<>();
         int[] a = {12, 25, 31, 58, 36, 42, 90, 62, 75};
         for (int i : a) {
@@ -248,7 +256,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     }
 
     /**
-     * Insert an element into the tree in proper BST order.
+     * Insert an element into the tree in sorted order.
      *
      * @param e element to be inserted
      */
@@ -426,7 +434,12 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         private Node<E> right;
 
         /**
-         * Constructor
+         * Constructor.
+         *
+         * @param element Node element
+         * @param parent  Parent node
+         * @param left    Left child node
+         * @param right   Right child node
          */
         public Node(E element, Node<E> parent, Node<E> left, Node<E> right) {
             setElement(element);
@@ -482,7 +495,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
          */
         @Override
         public String toString() {
-            return element.toString();
+            return element == null ? "null" : element.toString();
         }
     }
 

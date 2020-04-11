@@ -9,20 +9,24 @@ import java.util.Comparator;
 /**
  * An abstract base class to ease the implementation of the SortedMap interface.
  * <p>
- * The base class provides four means of support: 1) It defines a PQEntry class
- * as a concrete implementation of the entry interface 2) It provides an
- * instance variable for a general Comparator and protected methods, compare(a,
- * b), that can compare either two entries or two keys using the comparator. 3)
- * It provides a boolean checkKey method that verifies that a given key is
- * appropriate for use with the comparator
+ * 1. It provides an instance variable for a general Comparator to be used to
+ * construct an AbstractSortedMap.
+ * <p>
+ * 2. Multiple compare(a, b) methods that can compare either two entries or two
+ * keys using the comparator.
+ * <p>
+ * 3. It provides a boolean checkKey method that verifies that a given key is
+ * appropriate for use with the comparator.
  */
-public abstract class AbstractSortedMap<K, V> extends AbstractMap<K, V> implements SortedMap<K, V> {
+
+public abstract class AbstractSortedMap<K extends Comparable<K>, V>
+        extends AbstractMap<K, V> implements SortedMap<K, V> {
 
     // instance variable for an AbstractSortedMap
     /**
      * The comparator defining the ordering of keys in the map.
      */
-    private Comparator<K> comp;
+    private final Comparator<K> comp;
 
     /**
      * Initializes the comparator for the map.
@@ -34,10 +38,10 @@ public abstract class AbstractSortedMap<K, V> extends AbstractMap<K, V> implemen
     }
 
     /**
-     * Initializes the map with a default comparator.
+     * Initializes the map with a default comparator (natural ordering).
      */
     protected AbstractSortedMap() {
-        this(new DefaultComparator<>()); // default comparator uses natural ordering
+        this(new DefaultComparator<>());
     }
 
     /**
@@ -78,4 +82,5 @@ public abstract class AbstractSortedMap<K, V> extends AbstractMap<K, V> implemen
             throw new IllegalArgumentException("Incompatible key");
         }
     }
+
 }

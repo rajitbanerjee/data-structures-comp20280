@@ -9,11 +9,15 @@ import java.util.Iterator;
  * An abstract base class to ease the implementation of the Map interface.
  * <p>
  * The base class provides three means of support:
+ * <p>
  * 1) It provides an isEmpty implementation based upon the abstract size() method.
+ * <p>
  * 2) It defines a protected MapEntry class as a concrete implementation of the entry interface
+ * <p>
  * 3) It provides implementations of the keySet and values methods, based on
  * use of a presumed implementation of the entrySet method.
  */
+
 public abstract class AbstractMap<K, V> implements Map<K, V> {
 
     /**
@@ -87,13 +91,17 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
         }
 
         /**
-         * Returns string representation (for debugging only)
+         * Returns string representation (for debugging only).
          */
         @Override
         public String toString() {
             return "<" + k + ", " + v + ">";
         }
 
+        @Override
+        public int compareTo(Entry<K, V> e) {
+            return 0;
+        }
     } // ----------- end of nested MapEntry class -----------
 
     // ---------------- nested KeyIterable class ----------------
@@ -118,7 +126,7 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
 
     // ---------------- nested KeyIterator class ----------------
     private class KeyIterator implements Iterator<K> {
-        private Iterator<Entry<K, V>> entries = entrySet().iterator(); // reuse entrySet
+        private final Iterator<Entry<K, V>> entries = entrySet().iterator(); // reuse entrySet
 
         public boolean hasNext() {
             return entries.hasNext();
@@ -155,7 +163,7 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
 
     // ---------------- nested ValueIterator class ----------------
     private class ValueIterator implements Iterator<V> {
-        private Iterator<Entry<K, V>> entries = entrySet().iterator(); // reuse entrySet
+        private final Iterator<Entry<K, V>> entries = entrySet().iterator(); // reuse entrySet
 
         public boolean hasNext() {
             return entries.hasNext();

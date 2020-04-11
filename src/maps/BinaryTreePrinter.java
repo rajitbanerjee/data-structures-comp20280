@@ -9,19 +9,21 @@ import java.util.List;
 
 /**
  * A class to print a text representation of a Binary Tree.
+ * <p>
  * Inspired by: https://github.com/billvanyo/tree_printer
  *
  * @author Aonghus Lawlor aonghus.lawlor@ucd.ie
+ * @author Rajit Banerjee, 18202817
  */
+
 public class BinaryTreePrinter<N> {
+    private final BinaryTree<N> tree;
 
-    private boolean squareBranches = false;
-    private boolean lrAgnostic = false;
-    private int hspace = 2;
-    //private int tspace = 1;
-
-    private BinaryTree<N> tree;
-
+    /**
+     * Construct a printer object for the given binary tree.
+     *
+     * @param tree the BinaryTree to be printed
+     */
     public BinaryTreePrinter(BinaryTree<N> tree) {
         this.tree = tree;
     }
@@ -38,20 +40,15 @@ public class BinaryTreePrinter<N> {
         return String.join("", Collections.nCopies(n, " "));
     }
 
-    public static void main(String[] args) {
-
-    }
-
-    public String print() {
+    /**
+     * Gets the String representation of the Binary Tree's keys only.
+     *
+     * @return String representation of the Binary Tree
+     */
+    @Override
+    public String toString() {
         List<TreeLine> treeLines = buildTreeLines(tree.root());
-        return printTreeLines(treeLines);
-
-        //return tree.toString();
-    }
-
-    private String printTreeLines(List<TreeLine> treeLines) {
-        StringBuilder sb = new StringBuilder();
-
+        StringBuilder sb = new StringBuilder("\n");
         if (treeLines.size() > 0) {
             int minLeftOffset = minLeftOffset(treeLines);
             int maxRightOffset = maxRightOffset(treeLines);
@@ -65,13 +62,17 @@ public class BinaryTreePrinter<N> {
         return sb.toString();
     }
 
+    // Store and return the lines of the tree in level order
     private List<TreeLine> buildTreeLines(Position<N> root) {
         if (root == null)
             return Collections.emptyList();
         else {
-            String rootLabel = root.toString();//getLabel.apply(root);
-            //List<TreeLine> leftTreeLines = buildTreeLines(getLeft.apply(root));
-            //List<TreeLine> rightTreeLines = buildTreeLines(getRight.apply(root));
+            String rootLabel = root.toString();
+            // Display only the keys of the binary tree entries
+            if (!rootLabel.equals("null")) {
+                int comma = rootLabel.indexOf(',');
+                rootLabel = rootLabel.substring(1, comma);
+            }
             List<TreeLine> leftTreeLines = buildTreeLines(tree.left(root));
             List<TreeLine> rightTreeLines = buildTreeLines(tree.right(root));
 
@@ -80,26 +81,25 @@ public class BinaryTreePrinter<N> {
             int minCount = Math.min(leftCount, rightCount);
             int maxCount = Math.max(leftCount, rightCount);
 
-            // The left and right subtree print representations have jagged edges, and we
-            // essentially we have to
-            // figure out how close together we can bring the left and right roots so that
-            // the edges just meet on
-            // some line. Then we add hspace, and round up to next odd number.
+            /*  The left and right subtree print representations have jagged edges, and
+                essentially we have to figure out how close together we can bring the left and right
+                roots so that the edges just meet on
+                some line. Then we add hspace, and round up to next odd number.
+             */
             int maxRootSpacing = 0;
             for (int i = 0; i < minCount; i++) {
                 int spacing = leftTreeLines.get(i).rightOffset - rightTreeLines.get(i).leftOffset;
                 if (spacing > maxRootSpacing)
                     maxRootSpacing = spacing;
             }
+            int hspace = 2;
             int rootSpacing = maxRootSpacing + hspace;
             if (rootSpacing % 2 == 0)
                 rootSpacing++;
             // rootSpacing is now the number of spaces between the roots of the two subtrees
-
             List<TreeLine> allTreeLines = new ArrayList<>();
 
             // add the root and the two branches leading to the subtrees
-
             allTreeLines.add(new TreeLine(rootLabel, -(rootLabel.length() - 1) / 2,
                     rootLabel.length() / 2));
 
@@ -107,6 +107,8 @@ public class BinaryTreePrinter<N> {
             int leftTreeAdjust = 0;
             int rightTreeAdjust = 0;
 
+            boolean squareBranches = true;
+            boolean lrAgnostic = false;
             if (leftTreeLines.isEmpty()) {
                 if (!rightTreeLines.isEmpty()) {
                     // there's a right subtree only
@@ -160,9 +162,7 @@ public class BinaryTreePrinter<N> {
                 }
             }
 
-            // now add joined lines of subtrees, with appropriate number of separating
-            // spaces, and adjusting offsets
-
+            // Add joined lines of subtrees, with appropriate number of separating spaces, and adjusting offsets
             for (int i = 0; i < maxCount; i++) {
                 TreeLine leftLine, rightLine;
                 if (i >= leftTreeLines.size()) {
@@ -193,6 +193,7 @@ public class BinaryTreePrinter<N> {
         }
     }
 
+    // Inner class to represent a line in the tree
     private static class TreeLine {
         String line;
         int leftOffset;
