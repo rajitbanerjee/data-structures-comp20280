@@ -16,4 +16,10 @@ public class Collatz {
         }
     }
 
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        System.out.println("Collatz(5): " + sequence(5));
+        System.out.println("Collatz(100): " + sequence(100));
+    }
+
 }

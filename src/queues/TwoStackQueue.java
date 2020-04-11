@@ -14,6 +14,28 @@ public class TwoStackQueue<E> implements Queue<E> {
     LinkedStack<E> enqueueStack = new LinkedStack<>();
     LinkedStack<E> dequeueStack = new LinkedStack<>();
 
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        TwoStackQueue<Integer> q = new TwoStackQueue<>();
+        for (int i = 1; i < 6; i++) {
+            q.enqueue(i);
+        }
+        System.out.println("After enqueue 1-5:");
+        System.out.println(q);
+        q.dequeue();
+        System.out.println("After dequeue:");
+        System.out.println(q);
+        q.dequeue();
+        System.out.println("After dequeue:");
+        System.out.println(q);
+        q.enqueue(6);
+        System.out.println("After enqueue 6:");
+        System.out.println(q);
+        q.enqueue(7);
+        System.out.println("After enqueue 7:");
+        System.out.println(q);
+    }
+
     /**
      * Returns the number of elements in the queue.
      *

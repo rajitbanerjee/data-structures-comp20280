@@ -26,4 +26,18 @@ public class Fibonacci {
         return memo[n];
     }
 
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        System.out.println("Fibonacci(1): " + number(1));
+        System.out.println("Fibonacci(2): " + number(2));
+        System.out.println("Fibonacci(3): " + number(3));
+        System.out.println("Fibonacci(4): " + number(4));
+        System.out.println("Fibonacci(5): " + number(5));
+        System.out.println("Fibonacci(6): " + number(6));
+        System.out.println("Fibonacci(7): " + number(7));
+        System.out.println("Fibonacci(8): " + number(8));
+        System.out.println("Fibonacci(9): " + number(9));
+        System.out.println("Fibonacci(10): " + number(10));
+    }
+
 }

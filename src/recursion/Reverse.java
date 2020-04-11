@@ -1,5 +1,7 @@
 package recursion;
 
+import java.util.Arrays;
+
 /**
  * Reverse an array using recursion.
  *
@@ -24,6 +26,14 @@ public class Reverse {
         Object temp = A[i];
         A[i] = A[j];
         A[j] = temp;
+    }
+
+    // Main method to run basic tests (proper JUnit tests are in /test directory
+    public static void main(String[] args) {
+        Integer[] A = {1, 2, 3, 4, 5};
+        System.out.println("Original array: " + Arrays.toString(A));
+        Reverse.reverseArray(A);
+        System.out.println("Reversed array: " + Arrays.toString(A));
     }
 
 }

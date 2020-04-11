@@ -30,17 +30,28 @@ public class BracketChecker {
         return stack.isEmpty();
     }
 
-    /**
-     * Checks if two brackets are of the same type e.g. (), {}, []
-     *
-     * @param ch1 first bracket
-     * @param ch2 second bracket
-     * @return {@code true} if brackets are of same type, {@code false} otherwise
-     */
+    // Checks if two brackets are of the same type e.g. (), {}, []
     private static boolean isSameType(char ch1, char ch2) {
         return (ch1 == '(' && ch2 == ')') ||
                 (ch1 == '{' && ch2 == '}') ||
                 (ch1 == '[' && ch2 == ']');
+    }
+
+    // Main method to run basic tests (proper JUnit tests are in 'test' directory)
+    public static void main(String[] args) {
+        String[] inputs = {"[]]()()", // not correct
+                "c[d]", // correct
+                "a{b[c]d}e", // correct
+                "a{b(c]d}e", // not correct; ] doesn't ← match
+                "a[b{c}d]e}", // not correct; nothing ← matches final }
+                "a{b(c) ", // not correct; Nothing ← matches opening {
+                "][]][][[]][]][][[[", // not correct
+                "(((abc))((d)))))", // not correct
+        };
+        for (String input : inputs) {
+            boolean isBalanced = BracketChecker.isValid(input);
+            System.out.println("isBalanced " + (isBalanced ? "\tyes!\t" : "\tno!\t\t") + input);
+        }
     }
 
 }
