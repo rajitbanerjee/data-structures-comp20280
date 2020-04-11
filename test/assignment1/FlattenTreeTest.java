@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author Rajit Banerjee, 18202817
  */
+
 class FlattenTreeTest {
     @Test
     void testFlatten() {

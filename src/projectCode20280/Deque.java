@@ -1,5 +1,12 @@
 package projectCode20280;
 
+/**
+ * Deque ADT interface.
+ *
+ * @param <E> generic type of elements
+ * @author Aonghus Lawlor
+ */
+
 public interface Deque<E> {
     /**
      * Returns the number of elements in the deque.

@@ -7,14 +7,16 @@ import projectCode20280.Stack;
  * Implementation of a linked list based Bounded Stack.
  * <p>
  * 1. Implements Stack ADT functions: size(), isEmpty(), push(E e), top(), pop()
+ * <p>
  * 2. Additional public methods: reverse(), toString()
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
+
 public class BoundedStack<E> implements Stack<E> {
-    private SinglyLinkedList<E> stack;
-    private int capacity;
+    private final SinglyLinkedList<E> stack;
+    private final int capacity;
 
     /**
      * Creates a new Stack bounded by the specified capacity.

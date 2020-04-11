@@ -13,10 +13,12 @@ import java.util.List;
  * An abstract base class providing some functionality of the Tree interface.
  * <p>
  * The following three methods remain abstract, and must be
- * implemented by a concrete subclass: root, parent, children. Other
- * methods implemented in this class may be overridden to provide a
+ * implemented by a concrete subclass: root, parent, children.
+ * <p>
+ * Other methods implemented in this class may be overridden to provide a
  * more direct and efficient implementation.
  */
+
 public abstract class AbstractTree<E> implements Tree<E> {
     /**
      * Returns true if Position p has one or more children.

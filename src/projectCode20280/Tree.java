@@ -3,8 +3,12 @@ package projectCode20280;
 import java.util.Iterator;
 
 /**
- * An interface for a tree where nodes can have an arbitrary number of children.
+ * Tree ADT: nodes can have an arbitrary number of children.
+ *
+ * @param <E> generic type of elements
+ * @author Aonghus Lawlor aonghus.lawlor@ucd.ie
  */
+
 public interface Tree<E> extends Iterable<E> {
     /**
      * Returns the root Position of the tree (or null if tree is empty).

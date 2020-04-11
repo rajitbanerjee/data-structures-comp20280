@@ -6,6 +6,7 @@ package stacks;
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
+
 public class BracketChecker {
     /**
      * Checks if an expression's brackets are valid.

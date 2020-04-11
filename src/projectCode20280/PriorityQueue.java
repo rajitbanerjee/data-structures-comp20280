@@ -1,8 +1,13 @@
 package projectCode20280;
 
 /**
- * Interface for the priority queue ADT.
+ * Priority Queue ADT.
+ *
+ * @param <K> generic type of entry key
+ * @param <V> generic type of entry value
+ * @author Aonghus Lawlor
  */
+
 public interface PriorityQueue<K, V> {
 
     /**

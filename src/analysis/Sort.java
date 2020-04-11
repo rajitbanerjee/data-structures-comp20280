@@ -11,9 +11,10 @@ import java.util.concurrent.Callable;
  * @param <E> generic type of items to be sorted
  * @author Rajit Banerjee, 18202817
  */
+
 public class Sort<E extends Comparable<E>> implements Callable<E[]> {
-    private Method sort;
-    private E[] arr;
+    private final Method sort;
+    private final E[] arr;
 
     /**
      * Initialise new sort, use reflection to get the declared method

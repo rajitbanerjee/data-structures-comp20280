@@ -7,10 +7,14 @@ import java.util.ArrayList;
 
 /**
  * Map implementation using hash table with separate chaining.
+ * <p>
  * 1. Implements Map ADT function: entrySet()
+ * <p>
  * 2. Implements AbstractHashMap abstract functions: createTable(), bucketGet(h, k),
  * bucketPut(h, k, v), bucketRemove(h, k) to be used for AbstractHashMap functions: get, remove, put
+ * <p>
  * 3. Other Map ADT functions: size, isEmpty: already implemented in AbstractHashMap.
+ * <p>
  * 4. Additional public method: toString()
  *
  * @author Rajit Banerjee, 18202817

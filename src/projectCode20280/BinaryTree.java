@@ -1,8 +1,12 @@
 package projectCode20280;
 
 /**
- * An interface for a binary tree, in which each node has at most two children.
+ * Binary Tree ADT.
+ *
+ * @param <E> generic type of elements
+ * @author Aonghus Lawlor
  */
+
 public interface BinaryTree<E> extends Tree<E> {
     /**
      * Returns the Position of p's left child (or null if no child exists).

@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author Rajit Banerjee, 18202817
  */
+
 class DigitsTest {
     @Test
     void testSumDigits() {

@@ -6,15 +6,17 @@ import projectCode20280.Queue;
  * Implementation of an array based Queue.
  * <p>
  * 1. Implements Queue ADT functions: size(), isEmpty(), enqueue(E e), first(), dequeue()
+ * <p>
  * 2. Additional public method: toString()
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
+
 public class ArrayQueue<E> implements Queue<E> {
-    private int capacity;
-    private E[] queue;
+    private final int capacity;
+    private final E[] queue;
     private int front;
     private int size;
 

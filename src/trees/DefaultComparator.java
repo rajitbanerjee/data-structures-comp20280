@@ -5,6 +5,7 @@ import java.util.Comparator;
 /**
  * Comparator based on the compareTo method of a Comparable element type.
  */
+
 public class DefaultComparator<E> implements Comparator<E> {
 
     /**

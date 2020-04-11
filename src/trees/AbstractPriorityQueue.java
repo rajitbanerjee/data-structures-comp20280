@@ -10,19 +10,23 @@ import java.util.Comparator;
  * <p>
  * The base class provides four means of support:
  * 1) It defines a PQEntry class as a concrete implementation of the
- * entry interface
+ * entry interface.
+ * <p>
  * 2) It provides an instance variable for a general Comparator and a
  * protected method, compare(a, b), that makes use of the comparator.
+ * <p>
  * 3) It provides a boolean checkKey method that verifies that a given key
- * is appropriate for use with the comparator
+ * is appropriate for use with the comparator.
+ * <p>
  * 4) It provides an isEmpty implementation based on the abstract size() method.
  */
+
 public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V> {
 
     /**
      * The comparator defining the ordering of keys in the priority queue.
      */
-    private Comparator<K> comp;
+    private final Comparator<K> comp;
 
     /**
      * Creates an empty priority queue using the given comparator to order keys.
@@ -110,6 +114,11 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
         @Override
         public String toString() {
             return "(" + key.toString() + ", " + value.toString() + ")";
+        }
+
+        @Override
+        public int compareTo(Entry<K, V> o) {
+            return 0;
         }
     } //----------- end of nested PQEntry class -----------
 

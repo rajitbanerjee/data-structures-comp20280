@@ -1,10 +1,15 @@
 package projectCode20280;
 
+
 /**
  * An interface for a position which is an abstraction for the
- * location at which a single element is stored in a positional
- * container.
+ * * location at which a single element is stored in a positional
+ * * container.
+ *
+ * @param <E> generic type of position element
+ * @author Aonghus Lawlor
  */
+
 public interface Position<E> {
     /**
      * Returns the element stored at this position.

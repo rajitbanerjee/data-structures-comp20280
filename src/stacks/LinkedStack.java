@@ -7,13 +7,15 @@ import projectCode20280.Stack;
  * Implementation of a linked list based Stack.
  * <p>
  * 1. Implements Stack ADT functions: size(), isEmpty(), push(E e), top(), pop()
+ * <p>
  * 2. Additional public methods: reverse(), toString()
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
+
 public class LinkedStack<E> implements Stack<E> {
-    private SinglyLinkedList<E> stack = new SinglyLinkedList<>();
+    private final SinglyLinkedList<E> stack = new SinglyLinkedList<>();
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {

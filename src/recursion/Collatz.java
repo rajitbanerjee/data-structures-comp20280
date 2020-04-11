@@ -5,6 +5,7 @@ package recursion;
  *
  * @author Rajit Banerjee, 18202817
  */
+
 public class Collatz {
     public static int sequence(int n) {
         if (n == 1) {

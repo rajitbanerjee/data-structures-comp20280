@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author Rajit Banerjee, 18202817
  */
+
 class LinkedBinaryTreeTest {
     private LinkedBinaryTree<Integer> tree;
 

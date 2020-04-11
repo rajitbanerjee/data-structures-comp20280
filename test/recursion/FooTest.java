@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  *
  * @author Rajit Banerjee, 18202817
  */
+
 class FooTest {
     private static final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private static final PrintStream originalOut = System.out;

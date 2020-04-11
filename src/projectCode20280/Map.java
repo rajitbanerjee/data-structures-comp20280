@@ -1,9 +1,14 @@
 package projectCode20280;
 
 /**
- * An interface for an associative map which binds a key uniquely to a value.
+ * Map ADT interface for an associative map which binds a key uniquely to a value.
  * This interface is a simplified version of java.util.Map.
+ *
+ * @param <K> generic type of entry key
+ * @param <V> generic type of entry value
+ * @author Aonghus Lawlor
  */
+
 public interface Map<K, V> {
 
     /**

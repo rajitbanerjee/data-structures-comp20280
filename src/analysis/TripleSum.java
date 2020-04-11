@@ -11,6 +11,7 @@ import java.util.Scanner;
  * @author Rajit Banerjee, 18202817
  * Reference: Algorithms by Sedgewick and Wayne.
  */
+
 public class TripleSum {
     private static final int ARRAY_SIZE = 8;
 

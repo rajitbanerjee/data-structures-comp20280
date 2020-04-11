@@ -1,7 +1,7 @@
 package projectCode20280;
 
 /**
- * A map with additional support for keys from a total ordering.
+ * SortedMap ADT with additional support for keys from a total ordering.
  * <p>
  * The total ordering is the natural ordering of keys, by default, or it can be
  * defined by providing an optional Comparator.
@@ -9,9 +9,13 @@ package projectCode20280;
  * All iterations will be in sorted order relative to the keys, and additional
  * methods provide for non-exact searches. This interface is a simple variant
  * that blends features of java.util.SortedMap and java.util.NavigableMap.
+ *
+ * @param <K> generic type of entry key (must be Comparable to allow sorting)
+ * @param <V> generic type of entry value
+ * @author Aonghus Lawlor
  */
 
-public interface SortedMap<K, V> extends Map<K, V> {
+public interface SortedMap<K extends Comparable<K>, V> extends Map<K, V> {
 
     /**
      * Returns the entry having the least key (or null if map is empty).

@@ -5,6 +5,7 @@ package recursion;
  *
  * @author Rajit Banerjee, 18202817
  */
+
 public class Digits {
     public static int sum(int number) {
         if (number == 0) {

@@ -9,6 +9,7 @@ import trees.LinkedBinaryTree;
  *
  * @author Rajit Banerjee, 18202817
  */
+
 public class FlattenTree<E extends Comparable<E>> extends LinkedBinaryTree<E> {
     /**
      * Algorithm to flatten a binary tree into a linked list.

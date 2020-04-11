@@ -7,15 +7,17 @@ import projectCode20280.Deque;
  * <p>
  * 1. Implements Deque ADT functions: size(), isEmpty(), first(), last(),
  * addFirst(), addLast(), removeFirst(), removeLast()
+ * <p>
  * 2. Additional public method: toString()
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
+
 public class ArrayDeque<E> implements Deque<E> {
-    private int capacity;
-    private E[] deque;
+    private final int capacity;
+    private final E[] deque;
     private int front;
     private int rear;
     private int size;

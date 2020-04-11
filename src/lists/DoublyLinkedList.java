@@ -9,18 +9,19 @@ import java.util.Iterator;
  * <p>
  * 1. Implements List ADT functions: size(), isEmpty(), get(int i), add(int i, E e), addFirst(E e),
  * addLast(E e), remove(int i), removeFirst(), E removeLast(), Iterator<E> iterator()
+ * <p>
  * 2. Additional public methods: first(), last(), set(int i, E e), recursiveCopy(), toString()
+ * <p>
  * 3. Contains an inner Node class to represent list nodes.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
+
 public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
-    // Sentinel Nodes
-    private Node<E> header = new Node<>(null, null, null);
-    private Node<E> trailer = new Node<>(null, null, header);
-    // Size tracker
+    private final Node<E> header = new Node<>(null, null, null);
+    private final Node<E> trailer = new Node<>(null, null, header);
     private int size = 0;
 
     /**
@@ -44,7 +45,7 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
         // TEST 1: Given in skeleton code
-        System.out.println("\nTEST 1 from given GitHub code:");
+        System.out.println("\nTEST 1, from skeleton code:");
         DoublyLinkedList<Integer> dll = new DoublyLinkedList<>();
         dll.addFirst(0);
         dll.addFirst(1);
@@ -67,7 +68,7 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         }
 
         // TEST 2: Given in practical 1
-        System.out.println("\n\nTEST 2 from Practical 1:");
+        System.out.println("\n\nTEST 2, from Practical 1:");
         DoublyLinkedList<Integer> ll = new DoublyLinkedList<>();
         ll.addFirst(0);
         ll.addFirst(1);

@@ -16,6 +16,7 @@ import java.util.Scanner;
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
+
 public class Collisions {
     // Main method to run basic tests
     public static void main(String[] args) throws FileNotFoundException {

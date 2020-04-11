@@ -5,8 +5,9 @@ package recursion;
  *
  * @author Rajit Banerjee, 18202817
  */
+
 public class Fibonacci {
-    private static int[] memo = new int[100];
+    private static final int[] memo = new int[100];
 
     /**
      * Fast nth Fibonacci using memoisation.

@@ -15,6 +15,7 @@ import java.util.Scanner;
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
+
 public class WordFrequency {
     // Store words in a ChainHashMap, with values = word frequency
     public static void main(String[] args) throws FileNotFoundException {

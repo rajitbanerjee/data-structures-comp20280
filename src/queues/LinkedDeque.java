@@ -8,6 +8,7 @@ import projectCode20280.Deque;
  * <p>
  * 1. Implements Deque ADT functions: size(), isEmpty(), first(), last(), addFirst(),
  * addLast(), removeFirst(), removeLast()
+ * <p>
  * 2. Additional public method: toString()
  *
  * @author Rajit Banerjee, 18202817
@@ -15,7 +16,7 @@ import projectCode20280.Deque;
  */
 
 public class LinkedDeque<E> implements Deque<E> {
-    private DoublyLinkedList<E> deque = new DoublyLinkedList<>();
+    private final DoublyLinkedList<E> deque = new DoublyLinkedList<>();
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {

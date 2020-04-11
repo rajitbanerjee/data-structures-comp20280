@@ -1,5 +1,12 @@
 package projectCode20280;
 
+/**
+ * Queue ADT interface.
+ *
+ * @param <E> generic type of elements
+ * @author Aonghus Lawlor aonghus.lawlor@ucd.ie
+ */
+
 public interface Queue<E> {
     /**
      * Returns the number of elements in the queue.

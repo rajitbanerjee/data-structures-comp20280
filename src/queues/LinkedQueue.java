@@ -7,6 +7,7 @@ import projectCode20280.Queue;
  * Implementation of a linked list based Queue.
  * <p>
  * 1. Implements Queue ADT functions: size(), isEmpty(), enqueue(E e), first(), dequeue()
+ * <p>
  * 2. Additional public method: toString()
  *
  * @author Rajit Banerjee, 18202817
@@ -15,7 +16,7 @@ import projectCode20280.Queue;
 
 public class LinkedQueue<E> implements Queue<E> {
     // implement a LinkedQueue using DLL as base
-    private DoublyLinkedList<E> queue = new DoublyLinkedList<>();
+    private final DoublyLinkedList<E> queue = new DoublyLinkedList<>();
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {

@@ -2,8 +2,13 @@ package projectCode20280;
 
 /**
  * Interface for a key-value pair.
+ *
+ * @param <K> generic type of entry key
+ * @param <V> generic type of entry value
+ * @author Aonghus Lawlor
  */
-public interface Entry<K, V> {
+
+public interface Entry<K, V> extends Comparable<Entry<K, V>> {
     /**
      * Returns the key stored in this entry.
      *

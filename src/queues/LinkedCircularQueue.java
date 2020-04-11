@@ -13,8 +13,9 @@ import projectCode20280.Queue;
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
+
 public class LinkedCircularQueue<E> implements Queue<E> {
-    private CircularlyLinkedList<E> queue = new CircularlyLinkedList<>();
+    private final CircularlyLinkedList<E> queue = new CircularlyLinkedList<>();
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {

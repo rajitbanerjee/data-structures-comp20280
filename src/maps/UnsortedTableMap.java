@@ -11,17 +11,19 @@ import java.util.NoSuchElementException;
  * An implementation of a map using an unsorted table.
  * <p>
  * 1. Implements Map ADT functions: size(), get(k), put(k, v), remove(k), entrySet()
+ * <p>
  * 2. Additional public method: toString()
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
+
 public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
     /**
      * Underlying storage for the map of entries.
      */
-    private ArrayList<MapEntry<K, V>> table = new ArrayList<>();
+    private final ArrayList<MapEntry<K, V>> table = new ArrayList<>();
 
     /**
      * Constructs an initially empty map.

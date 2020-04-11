@@ -10,7 +10,9 @@ import java.util.Random;
  * tables with MAD compression.
  * <p>
  * The base class provides the following means of support:
+ * <p>
  * 1) Support for calculating hash values with MAD compression
+ * <p>
  * 2) Support for resizing table when load factor reaches 1/2
  * <p>
  * Subclass is responsible for providing abstract methods:
@@ -19,11 +21,13 @@ import java.util.Random;
  * and for accurately maintaining the protected member, n,
  * to reflect changes within bucketPut and bucketRemove.
  */
+
 public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
+    private final int prime;                   // prime factor
+    private final long scale;
+    private final long shift;           // the shift and scaling factors
     protected int n = 0;                 // number of entries in the dictionary
     protected int capacity;              // length of the table
-    private int prime;                   // prime factor
-    private long scale, shift;           // the shift and scaling factors
 
     /**
      * Creates a hash table with the given capacity and prime factor.

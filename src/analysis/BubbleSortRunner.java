@@ -6,8 +6,9 @@ package analysis;
  *
  * @author Rajit Banerjee, 18202817
  */
+
 public class BubbleSortRunner {
-    private static int[] array_sizes = {10, 15, 100, 1000, 10000};
+    private static final int[] array_sizes = {10, 15, 100, 1000, 10000};
 
     // Run tests for iterative and recursive bubble sort
     public static void main(String[] args) throws Exception {

@@ -9,8 +9,11 @@ import java.util.Comparator;
  * An implementation of a priority queue using a linked-based/array-based heap.
  * <p>
  * 1. Implements PriorityQueue ADT: size(), insert(K key, V value), min(), removeMin()
+ * <p>
  * 2. isEmpty() from PriorityQueue ADT is already implemented in AbstractPriorityQueue.
+ * <p>
  * 3. Additional public method: toString()
+ * <p>
  * 4. Allows bottom-up heap construction from provided key-value pair arrays, or regular construction
  * using up-heap bubbling.
  *
@@ -18,6 +21,7 @@ import java.util.Comparator;
  * @author Aonghus Lawlor
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
+
 public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     protected DoublyLinkedList<Entry<K, V>> heap = new DoublyLinkedList<>();
 
@@ -57,7 +61,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
-        System.out.println("Test 1: Bottom-up construction");
+        System.out.println("TEST 1, bottom-up construction:");
         Integer[] keys = {5, 4, 3, 2, 1};
         Integer[] values = {5, 4, 3, 2, 1};
         HeapPriorityQueue<Integer, Integer> heap = new HeapPriorityQueue<>(keys, values);
@@ -74,7 +78,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         heap.removeMin();
         System.out.println(heap);
 
-        System.out.println("\nTest 2: Up-heap bubbling insertion");
+        System.out.println("\nTEST 2, up-heap bubbling insertion:");
         heap = new HeapPriorityQueue<>();
         heap.insert(1, 1);
         heap.insert(2, 2);

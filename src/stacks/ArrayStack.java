@@ -6,14 +6,16 @@ import projectCode20280.Stack;
  * Implementation of an array based Stack.
  * <p>
  * 1. Implements Stack ADT functions: size(), isEmpty(), push(E e), top(), pop()
+ * <p>
  * 2. Additional public method: toString()
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  */
+
 public class ArrayStack<E> implements Stack<E> {
-    private int capacity;
-    private E[] stack;
+    private final int capacity;
+    private final E[] stack;
     private int top;
 
     /**

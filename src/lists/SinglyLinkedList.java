@@ -10,13 +10,16 @@ import java.util.Iterator;
  * <p>
  * 1. Implements List ADT functions: size(), isEmpty(), get(int i), add(int i, E e), addFirst(E e),
  * addLast(E e), remove(int i), removeFirst(), E removeLast(), Iterator<E> iterator()
+ * <p>
  * 2. Additional public methods: reverse() - using Stack, recursiveReverse(), recursiveCopy(), toString()
+ * <p>
  * 3. Contains an inner Node class to represent list nodes.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
+
 public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     private Node<E> head = null;
     private int size = 0;
@@ -24,7 +27,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
         // TEST 1: Given in skeleton code
-        System.out.println("\nTEST 1 from given GitHub code:");
+        System.out.println("\nTEST 1, from skeleton code:");
         String[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
         SinglyLinkedList<String> sll = new SinglyLinkedList<>();
@@ -53,7 +56,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         }
 
         // TEST 2: Given in practical 1
-        System.out.println("\n\nTEST 2 from Practical 1:");
+        System.out.println("\n\nTEST 2, from Practical 1:");
         SinglyLinkedList<Integer> ll = new SinglyLinkedList<>();
         ll.addFirst(0);
         ll.addFirst(1);

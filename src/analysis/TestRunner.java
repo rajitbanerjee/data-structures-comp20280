@@ -11,9 +11,10 @@ import java.util.Scanner;
  *
  * @author Rajit Banerjee, 18202817
  */
+
 public class TestRunner {
+    private static final ArrayList<Integer[]> random_arrays = new ArrayList<>();
     static Scanner sc = new Scanner(System.in);
-    private static ArrayList<Integer[]> random_arrays = new ArrayList<>();
 
     /**
      * Display user options and perform tasks according to choice

@@ -1,5 +1,12 @@
 package projectCode20280;
 
+/**
+ * Stack ADT interface.
+ *
+ * @param <E> generic type of elements
+ * @author Aonghus Lawlor aonghus.lawlor@ucd.ie
+ */
+
 public interface Stack<E> {
     /**
      * Returns the number of elements in the stack.
