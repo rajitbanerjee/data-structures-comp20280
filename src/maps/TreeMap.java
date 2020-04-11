@@ -306,7 +306,7 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractSortedMap<K, V>
     }
 
     /**
-     * This exists for debugging only
+     * This exists for debugging only.
      */
     private void dumpRecurse(Position<Entry<K, V>> p, int depth) {
         String indent = (depth == 0 ? "" : String.format("%" + (2 * depth) + "s", ""));
