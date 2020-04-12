@@ -44,9 +44,9 @@ class HeapPriorityQueueTest {
                 limit(n).distinct().boxed().collect(Collectors.toList());
         for (Integer i : rands) {
             heap.insert(i, i);
+            // Max heap should also satisfy heap invariant
+            assertTrue(heap.sanityCheck());
         }
-        // Max heap should also satisfy heap invariant
-        assertTrue(heap.sanityCheck());
     }
 
     @Test
@@ -61,7 +61,7 @@ class HeapPriorityQueueTest {
     @Test
     void testMin() {
         assertNull(heap.min());
-        testBottomUpConstructor();
+        testBottomUpConstructor(); // Insert elements
         heap.insert(0, 0);
         Entry<Integer, Integer> entry = heap.min();
         assertEquals("<0, 0>", entry.toString());
@@ -75,22 +75,18 @@ class HeapPriorityQueueTest {
                 limit(n).distinct().boxed().collect(Collectors.toList());
         for (Integer i : rands) {
             heap.insert(i, i);
+            // Heap invariant should be satisfied after insert
+            assertTrue(heap.sanityCheck());
         }
-        // Heap invariant should be satisfied after insert
-        assertTrue(heap.sanityCheck());
     }
 
     @Test
     void testRemoveMin() {
-        assertNull(heap.removeMin());
-        testBottomUpConstructor();
-        heap.insert(0, 0);
-        assertTrue(heap.sanityCheck());
-        assertEquals("[0, 2, 1, 5, 4, 3]", heap.toString());
-        Entry<Integer, Integer> entry = heap.removeMin();
-        assertEquals("<0, 0>", entry.toString());
-        assertTrue(heap.sanityCheck());
-        assertEquals("[1, 2, 3, 5, 4]", heap.toString());
+        testInsert(); // Insert elements
+        while (!heap.isEmpty()) {
+            heap.removeMin();
+            assertTrue(heap.sanityCheck());
+        }
     }
 
 }
