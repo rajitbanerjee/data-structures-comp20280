@@ -181,13 +181,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
         return snapshot;
     }
 
-    /**
-     * Adds positions of the subtree rooted at Position p to the given
-     * snapshot using a preorder traversal
-     *
-     * @param p        Position serving as the root of a subtree
-     * @param snapshot a list to which results are appended
-     */
+    // Adds positions of the subtree rooted at p to the given snapshot using a preorder traversal
     private void preorderSubtree(Position<E> p, List<Position<E>> snapshot) {
         // for preorder, we add position p before exploring subtrees
         snapshot.add(p);
@@ -210,13 +204,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
         return snapshot;
     }
 
-    /**
-     * Adds positions of the subtree rooted at Position p to the given
-     * snapshot using a postorder traversal
-     *
-     * @param p        Position serving as the root of a subtree
-     * @param snapshot a list to which results are appended
-     */
+    // Adds positions of the subtree rooted at p to the given snapshot using a postorder traversal
     private void postorderSubtree(Position<E> p, List<Position<E>> snapshot) {
         for (Position<E> c : children(p)) {
             postorderSubtree(c, snapshot);
@@ -251,7 +239,10 @@ public abstract class AbstractTree<E> implements Tree<E> {
     }
 
     //---------------- nested ElementIterator class ----------------
-    /* This class adapts the iteration produced by positions() to return elements. */
+
+    /**
+     * This class adapts the iteration produced by positions() to return elements.
+     */
     private class ElementIterator implements Iterator<E> {
         Iterator<Position<E>> posIterator = positions().iterator();
 
@@ -261,7 +252,7 @@ public abstract class AbstractTree<E> implements Tree<E> {
 
         public E next() {
             return posIterator.next().getElement();
-        } // return element!
+        }
 
         public void remove() {
             posIterator.remove();

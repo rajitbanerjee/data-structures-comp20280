@@ -128,6 +128,7 @@ public class LinkedDeque<E> implements Deque<E> {
      *
      * @return String representation of the deque
      */
+    @Override
     public String toString() {
         return deque.toString();
     }

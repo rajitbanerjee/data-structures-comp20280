@@ -8,7 +8,7 @@ import java.util.Comparator;
 /**
  * An implementation of a priority queue using a linked-based/array-based heap.
  * <p>
- * 1. Implements PriorityQueue ADT: size(), insert(K key, V value), min(), removeMin()
+ * 1. Implements PriorityQueue ADT: size(), insert(k, v), min(), removeMin()
  * <p>
  * 2. isEmpty() from PriorityQueue ADT is already implemented in AbstractPriorityQueue.
  * <p>
@@ -98,9 +98,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         System.out.println(heap);
     }
 
-    /**
-     * Performs a bottom-up construction of the heap in linear time.
-     */
+    // Performs a bottom-up construction of the heap in linear time.
     protected void heapify() {
         int index = parent(size() - 1);
         while (index >= 0) {
@@ -129,9 +127,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         return size() > right(j);
     }
 
-    /**
-     * Moves the entry at index j lower, if necessary, to restore the heap property.
-     */
+    // Moves the entry at index j lower, if necessary, to restore the heap property.
     protected void downheap(int j) {
         int minChildIndex;
         while (hasLeft(j)) {
@@ -148,9 +144,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         }
     }
 
-    /**
-     * Exchanges the entries at indices i and j of the array list.
-     */
+    // Exchanges the entries at indices i and j of the array list.
     protected void swap(int i, int j) {
         Entry<K, V> temp = heap.get(i);
         heap.set(i, heap.get(j));
@@ -184,9 +178,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         return newest;
     }
 
-    /**
-     * Moves the entry at index j higher, if necessary, to restore the heap property.
-     */
+    // Moves the entry at index j higher, if necessary, to restore the heap property.
     protected void upheap(int j) {
         while (j != 0) {
             int parent = parent(j);
@@ -195,6 +187,20 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
             }
             swap(j, parent);
             j = parent;
+        }
+    }
+
+    /**
+     * Returns (but does not remove) an entry with minimal key.
+     *
+     * @return entry having a minimal key (or null if empty)
+     */
+    @Override
+    public Entry<K, V> min() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            return heap.get(0);
         }
     }
 
@@ -230,20 +236,6 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         sb = new StringBuilder(sb.substring(0, sb.length() - 2));
         sb.append("]");
         return sb.toString();
-    }
-
-    /**
-     * Returns (but does not remove) an entry with minimal key.
-     *
-     * @return entry having a minimal key (or null if empty)
-     */
-    @Override
-    public Entry<K, V> min() {
-        if (isEmpty()) {
-            return null;
-        } else {
-            return heap.get(0);
-        }
     }
 
 }

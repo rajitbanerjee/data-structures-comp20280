@@ -129,9 +129,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         return node;
     }
 
-    /**
-     * Factory function to create a new node storing element e.
-     */
+    // Factory function to create a new node storing element e
     protected Node<E> createNode(E e, Node<E> parent) {
         return new Node<>(e, parent, null, null);
     }
@@ -372,7 +370,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         return positions().toString();
     }
 
-    // Extra functionality for lab and assignment questions ----------------
+    // Extra functionality for lab questions ----------------
 
     /**
      * Algorithm to count left external nodes.
@@ -394,7 +392,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
                         count++;
                     }
                 } catch (Exception ignored) {
-                    // Test passed
+                    // Position not valid
                 }
             }
         }
@@ -488,13 +486,9 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
             this.right = right;
         }
 
-        /**
-         * Returns a string representation of the object.
-         *
-         * @return a string representation of the object.
-         */
         @Override
         public String toString() {
+            // "null" printing required in TreeMap.java when using BinaryTreePrinter
             return element == null ? "null" : element.toString();
         }
     }

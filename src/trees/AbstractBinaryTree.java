@@ -98,10 +98,10 @@ public abstract class AbstractBinaryTree<E> extends AbstractTree<E> implements B
 
     /**
      * Returns an iterable collection of positions of the tree,
-     * reported in inorder.
+     * reported using inorder traversal.
      *
      * @return iterable collection of the tree's positions reported
-     * in inorder
+     * using inorder traversal
      */
     public Iterable<Position<E>> inorder() {
         List<Position<E>> snapshot = new ArrayList<>();
@@ -112,13 +112,7 @@ public abstract class AbstractBinaryTree<E> extends AbstractTree<E> implements B
         return snapshot;
     }
 
-    /**
-     * Adds positions of the subtree rooted at Position p to the given
-     * snapshot using an inorder traversal.
-     *
-     * @param p        Position serving as the root of a subtree
-     * @param snapshot a list to which results are appended
-     */
+    // Adds positions of the subtree rooted at p to the given snapshot
     private void inorderSubtree(Position<E> p, List<Position<E>> snapshot) {
         if (left(p) != null) {
             inorderSubtree(left(p), snapshot);

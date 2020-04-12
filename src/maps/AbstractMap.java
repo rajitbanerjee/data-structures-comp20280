@@ -12,10 +12,10 @@ import java.util.Iterator;
  * <p>
  * 1) It provides an isEmpty implementation based upon the abstract size() method.
  * <p>
- * 2) It defines a protected MapEntry class as a concrete implementation of the entry interface
+ * 2) It defines a protected MapEntry class as a concrete implementation of the entry interface.
  * <p>
- * 3) It provides implementations of the keySet and values methods, based on
- * use of a presumed implementation of the entrySet method.
+ * 3) It provides implementations of the keySet() and values() methods, based on
+ * use of a presumed implementation of the entrySet() method.
  */
 
 public abstract class AbstractMap<K, V> implements Map<K, V> {
@@ -30,8 +30,8 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
         return size() == 0;
     }
 
-    // Provides support for keySet() and values() methods, based on
-    // the entrySet() method that must be provided by subclasses
+    /* Provides support for keySet() and values() methods, based on
+    the entrySet() method that must be provided by subclasses. */
 
     /**
      * Returns an iterable collection of the keys contained in the map.
@@ -70,16 +70,16 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
             v = value;
         }
 
-        // public methods of the Entry interface
+        @Override
         public K getKey() {
             return k;
         }
 
-        // utilities not exposed as part of the Entry interface
         protected void setKey(K key) {
             k = key;
         }
 
+        @Override
         public V getValue() {
             return v;
         }
@@ -90,9 +90,6 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
             return old;
         }
 
-        /**
-         * Returns string representation (for debugging only).
-         */
         @Override
         public String toString() {
             return "<" + k + ", " + v + ">";
@@ -108,6 +105,7 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
     private class KeyIterable implements Iterable<K> {
         KeyIterator itr = new KeyIterator();
 
+        @Override
         public Iterator<K> iterator() {
             return itr;
         }
@@ -128,14 +126,17 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
     private class KeyIterator implements Iterator<K> {
         private final Iterator<Entry<K, V>> entries = entrySet().iterator(); // reuse entrySet
 
+        @Override
         public boolean hasNext() {
             return entries.hasNext();
         }
 
+        @Override
         public K next() {
             return entries.next().getKey();
         } // return key!
 
+        @Override
         public void remove() {
             throw new UnsupportedOperationException("remove not supported");
         }
@@ -145,6 +146,7 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
     private class ValueIterable implements Iterable<V> {
         ValueIterator itr = new ValueIterator();
 
+        @Override
         public Iterator<V> iterator() {
             return itr;
         }
@@ -165,14 +167,17 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
     private class ValueIterator implements Iterator<V> {
         private final Iterator<Entry<K, V>> entries = entrySet().iterator(); // reuse entrySet
 
+        @Override
         public boolean hasNext() {
             return entries.hasNext();
         }
 
+        @Override
         public V next() {
             return entries.next().getValue();
-        } // return value!
+        }
 
+        @Override
         public void remove() {
             throw new UnsupportedOperationException("remove not supported");
         }

@@ -22,7 +22,6 @@ import java.util.Comparator;
 public abstract class AbstractSortedMap<K extends Comparable<K>, V>
         extends AbstractMap<K, V> implements SortedMap<K, V> {
 
-    // instance variable for an AbstractSortedMap
     /**
      * The comparator defining the ordering of keys in the map.
      */

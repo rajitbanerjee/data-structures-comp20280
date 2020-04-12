@@ -16,6 +16,7 @@ public class DefaultComparator<E> implements Comparator<E> {
      * <tt>a</tt> is greater than <tt>b</tt>
      */
     @SuppressWarnings({"unchecked"})
+    @Override
     public int compare(E a, E b) throws ClassCastException {
         return ((Comparable<E>) a).compareTo(b);
     }

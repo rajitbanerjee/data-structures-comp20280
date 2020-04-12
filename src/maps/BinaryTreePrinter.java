@@ -193,7 +193,9 @@ public class BinaryTreePrinter<N> {
         }
     }
 
-    // Inner class to represent a line in the tree
+    /**
+     * Inner class to represent a line in the tree.
+     */
     private static class TreeLine {
         String line;
         int leftOffset;

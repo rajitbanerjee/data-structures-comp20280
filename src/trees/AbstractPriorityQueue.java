@@ -23,9 +23,7 @@ import java.util.Comparator;
 
 public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V> {
 
-    /**
-     * The comparator defining the ordering of keys in the priority queue.
-     */
+    // The comparator defining the ordering of keys in the priority queue.
     private final Comparator<K> comp;
 
     /**
@@ -88,16 +86,16 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
             setValue(value);
         }
 
-        // methods of the Entry interface
+        @Override
         public K getKey() {
             return key;
         }
 
-        // utilities not exposed as part of the Entry interface
         protected void setKey(K key) {
             this.key = key;
         }
 
+        @Override
         public V getValue() {
             return value;
         }
@@ -106,11 +104,6 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
             this.value = value;
         }
 
-        /**
-         * Returns a String representation of the object
-         *
-         * @return a String representation of the object
-         */
         @Override
         public String toString() {
             return "(" + key.toString() + ", " + value.toString() + ")";

@@ -103,7 +103,7 @@ public class MultilevelList<E> {
 
     // Constituent Node of a MultilevelList
     protected static class Node<E> {
-        private E element;
+        private final E element;
         private Node<E> next;
         private Node<E> child;
 

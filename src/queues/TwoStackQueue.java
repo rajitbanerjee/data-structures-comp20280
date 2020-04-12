@@ -66,9 +66,7 @@ public class TwoStackQueue<E> implements Queue<E> {
         enqueueStack.push(e);
     }
 
-    /**
-     * Move all elements from the enqueue stack to dequeue stack
-     */
+    // Move all elements from the enqueue stack to dequeue stack
     private void moveElements() {
         while (!enqueueStack.isEmpty()) {
             dequeueStack.push(enqueueStack.pop());

@@ -23,11 +23,11 @@ import java.util.Random;
  */
 
 public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
-    private final int prime;                   // prime factor
-    private final long scale;
-    private final long shift;           // the shift and scaling factors
-    protected int n = 0;                 // number of entries in the dictionary
-    protected int capacity;              // length of the table
+    private final int prime; // prime factor
+    private final long scale; // the scaling factor
+    private final long shift; // the shift factor
+    protected int n = 0; // number of entries in the dictionary
+    protected int capacity; // length of the table
 
     /**
      * Creates a hash table with the given capacity and prime factor.
@@ -42,17 +42,17 @@ public abstract class AbstractHashMap<K, V> extends AbstractMap<K, V> {
     }
 
     /**
-     * Creates a hash table with given capacity and prime factor 109345121.
+     * Creates a hash table with given capacity and default prime factor 109345121.
      */
     public AbstractHashMap(int cap) {
-        this(cap, 109345121); // default prime
+        this(cap, 109345121);
     }
 
     /**
-     * Creates a hash table with capacity 17 and prime factor 109345121.
+     * Creates a hash table with default capacity 17 and prime factor 109345121.
      */
     public AbstractHashMap() {
-        this(17); // default capacity
+        this(17);
     }
 
     // public methods

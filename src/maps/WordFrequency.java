@@ -17,10 +17,11 @@ import java.util.Scanner;
  */
 
 public class WordFrequency {
-    // Store words in a ChainHashMap, with values = word frequency
+    // Main method to perform basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) throws FileNotFoundException {
         Map<String, Integer> map = new ChainHashMap<>();
         Scanner sc = new Scanner(new File("src/maps/sample_text.txt")).useDelimiter("[^a-zA-Z]+");
+        // Store words in a ChainHashMap, with key=word, value=frequency
         while (sc.hasNext()) {
             String word = sc.next().toLowerCase();
             if (map.get(word) == null) {

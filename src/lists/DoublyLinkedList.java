@@ -44,7 +44,6 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
-        // TEST 1: Given in skeleton code
         System.out.println("\nTEST 1, from skeleton code:");
         DoublyLinkedList<Integer> dll = new DoublyLinkedList<>();
         dll.addFirst(0);
@@ -67,7 +66,6 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
             System.out.println("value: " + e);
         }
 
-        // TEST 2: Given in practical 1
         System.out.println("\n\nTEST 2, from Practical 1:");
         DoublyLinkedList<Integer> ll = new DoublyLinkedList<>();
         ll.addFirst(0);

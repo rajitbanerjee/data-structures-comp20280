@@ -25,7 +25,6 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
-        // TEST 1: Given in skeleton code
         System.out.println("\nTEST 1, from skeleton code:");
         CircularlyLinkedList<Integer> cll = new CircularlyLinkedList<>();
         for (int i = 10; i < 20; ++i) {
@@ -61,7 +60,6 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
             System.out.println("value: " + e);
         }
 
-        // TEST 2: Given in practical 1
         System.out.println("\nTEST 2 from Practical 1:");
         CircularlyLinkedList<Integer> ll = new CircularlyLinkedList<>();
         ll.addFirst(0);
@@ -314,7 +312,7 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 
     // Constituent Node of CircularlyLinkedList
     private static class Node<E> {
-        private E element; // Element stored in the Node
+        private final E element; // Element stored in the Node
         private Node<E> next; // Reference to the next Node in the list
 
         /**
