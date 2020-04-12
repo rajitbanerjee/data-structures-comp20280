@@ -37,7 +37,7 @@ class UnsortedListPQTest {
         testInsert();
         pq.insert(0, 0);
         Entry<Integer, Integer> entry = pq.min();
-        assertEquals("(0, 0)", entry.toString());
+        assertEquals("<0, 0>", entry.toString());
     }
 
     @Test
@@ -55,7 +55,7 @@ class UnsortedListPQTest {
         testInsert();
         assertEquals("[1, 2, 3, 0]", pq.toString());
         Entry<Integer, Integer> entry = pq.removeMin();
-        assertEquals("(0, 0)", entry.toString());
+        assertEquals("<0, 0>", entry.toString());
         assertEquals("[1, 2, 3]", pq.toString());
     }
 

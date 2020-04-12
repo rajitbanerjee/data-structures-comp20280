@@ -2,6 +2,8 @@ package trees;
 
 import projectCode20280.Position;
 
+import java.util.ArrayList;
+
 /**
  * Concrete implementation of a binary tree using a node-based, linked structure.
  * <p>
@@ -33,6 +35,15 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
      * @param arr to be used for level order construction
      */
     public LinkedBinaryTree(E[] arr) {
+        root = createLevelOrder(arr, null, 0);
+    }
+
+    /**
+     * Constructs a binary tree from in level order from a given ArrayList.
+     *
+     * @param arr to be used for level order construction
+     */
+    public LinkedBinaryTree(ArrayList<E> arr) {
         root = createLevelOrder(arr, null, 0);
     }
 
@@ -94,10 +105,23 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         System.out.println("bt depth root: " + bt.depth(bt.root()));
     }
 
-    // Helper for level order tree construction
+    // Helper for level order tree construction from an array
     private Node<E> createLevelOrder(E[] arr, Node<E> parent, int i) {
         if (i < arr.length) {
             Node<E> newest = createNode(arr[i], parent);
+            newest.setLeft(createLevelOrder(arr, newest.getLeft(), 2 * i + 1));
+            newest.setRight(createLevelOrder(arr, newest.getRight(), 2 * i + 2));
+            size++;
+            return newest;
+        } else {
+            return parent;
+        }
+    }
+
+    // Helper for level order tree construction from ArrayList
+    private Node<E> createLevelOrder(ArrayList<E> arr, Node<E> parent, int i) {
+        if (i < arr.size()) {
+            Node<E> newest = createNode(arr.get(i), parent);
             newest.setLeft(createLevelOrder(arr, newest.getLeft(), 2 * i + 1));
             newest.setRight(createLevelOrder(arr, newest.getRight(), 2 * i + 2));
             size++;

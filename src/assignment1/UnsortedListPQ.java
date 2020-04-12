@@ -1,12 +1,13 @@
 package assignment1;
 
-import lists.DoublyLinkedList;
 import projectCode20280.Entry;
 import trees.AbstractPriorityQueue;
 
+import java.util.ArrayList;
+
 /**
  * Assignment 1, Question 5.
- * Implement a PriorityQueue using an unsorted DoublyLinkedList.
+ * Implement a PriorityQueue using an unsorted list.
  *
  * @param <K> generic type of PQ entry keys
  * @param <V> generic type of PQ entry values
@@ -14,7 +15,7 @@ import trees.AbstractPriorityQueue;
  */
 
 public class UnsortedListPQ<K, V> extends AbstractPriorityQueue<K, V> {
-    protected DoublyLinkedList<Entry<K, V>> list = new DoublyLinkedList<>();
+    protected ArrayList<Entry<K, V>> list = new ArrayList<>();
 
     /**
      * Returns the number of items in the priority queue.
@@ -38,7 +39,7 @@ public class UnsortedListPQ<K, V> extends AbstractPriorityQueue<K, V> {
     public Entry<K, V> insert(K key, V value) throws IllegalArgumentException {
         checkKey(key);
         Entry<K, V> newest = new PQEntry<>(key, value);
-        list.addLast(newest);
+        list.add(newest);
         return newest;
     }
 
@@ -57,26 +58,8 @@ public class UnsortedListPQ<K, V> extends AbstractPriorityQueue<K, V> {
             if (compare(current, smallest) < 0) {
                 smallest = current;
             }
-
         }
         return smallest;
-    }
-
-    /**
-     * Returns the index of the minimum key element in the PriorityQueue.
-     *
-     * @return integer value of the index of minimum key element
-     */
-    public int minIndex() {
-        int min = 0;
-        for (int i = 0; i < list.size(); i++) {
-            Entry<K, V> current = list.get(i);
-            Entry<K, V> smallest = list.get(min);
-            if (compare(current, smallest) < 0) {
-                min = i;
-            }
-        }
-        return min;
     }
 
     /**
@@ -89,9 +72,8 @@ public class UnsortedListPQ<K, V> extends AbstractPriorityQueue<K, V> {
         if (list.isEmpty()) {
             return null;
         }
-        int smallest = minIndex();
-        Entry<K, V> minimum = list.get(smallest);
-        list.remove(smallest);
+        Entry<K, V> minimum = min();
+        list.remove(minimum);
         return minimum;
     }
 
@@ -104,7 +86,7 @@ public class UnsortedListPQ<K, V> extends AbstractPriorityQueue<K, V> {
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
         for (Entry<K, V> elem : list) {
-            sb.append(elem.getValue()).append(", ");
+            sb.append(elem.getKey()).append(", ");
         }
         sb = new StringBuilder(sb.substring(0, sb.length() - 2));
         sb.append("]");

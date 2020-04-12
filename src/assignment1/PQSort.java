@@ -1,9 +1,9 @@
 package assignment1;
 
-import lists.DoublyLinkedList;
 import projectCode20280.PriorityQueue;
 import trees.HeapPriorityQueue;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -24,8 +24,8 @@ public class PQSort {
         for (int i = 0; i < 20; i++) {
             List<Integer> randomInts = new Random().ints(0, Integer.MAX_VALUE).
                     limit(sizeOfList).boxed().collect(Collectors.toCollection(LinkedList::new));
-            DoublyLinkedList<Integer> list1 = new DoublyLinkedList<>(randomInts);
-            DoublyLinkedList<Integer> list2 = new DoublyLinkedList<>(randomInts);
+            ArrayList<Integer> list1 = new ArrayList<>(randomInts);
+            ArrayList<Integer> list2 = new ArrayList<>(randomInts);
 
             long heapSortTime = PQSort.sort(list1, new HeapPriorityQueue<>());
             long unsortedListPQSortTime = PQSort.sort(list2, new UnsortedListPQ<>());
@@ -51,8 +51,7 @@ public class PQSort {
      * @param pq   PriorityQueue to be used for the PQSort
      * @return the time taken (in nanoseconds) to perform the sort
      */
-    public static <E extends Comparable<E>> long sort(DoublyLinkedList<E> list,
-                                                      PriorityQueue<E, ?> pq) {
+    public static <E extends Comparable<E>> long sort(ArrayList<E> list, PriorityQueue<E, ?> pq) {
         long startTime = System.nanoTime();
         while (!list.isEmpty()) {
             E element = list.remove(0);
@@ -60,7 +59,7 @@ public class PQSort {
         }
         while (!pq.isEmpty()) {
             E element = pq.removeMin().getKey();
-            list.addLast(element);
+            list.add(element);
         }
         return System.nanoTime() - startTime;
     }
@@ -72,7 +71,7 @@ public class PQSort {
      * @param <E>  generic type of list items
      * @return {@code true} if the list is sorted
      */
-    public static <E extends Comparable<E>> boolean isSorted(DoublyLinkedList<E> list) {
+    public static <E extends Comparable<E>> boolean isSorted(ArrayList<E> list) {
         for (int i = 0; i < list.size() - 1; i++) {
             if (list.get(i) == null || list.get(i).compareTo(list.get(i + 1)) > 0) {
                 return false;

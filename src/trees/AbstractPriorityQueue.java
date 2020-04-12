@@ -106,7 +106,7 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
 
         @Override
         public String toString() {
-            return "(" + key.toString() + ", " + value.toString() + ")";
+            return "<" + key + ", " + value + ">";
         }
 
         @Override

@@ -4,6 +4,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import projectCode20280.Entry;
 
+import java.util.Random;
+import java.util.stream.Collectors;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -25,20 +28,25 @@ class HeapPriorityQueueTest {
         Integer[] keys = {5, 4, 3, 2, 1};
         Integer[] values = {5, 4, 3, 2, 1};
         heap = new HeapPriorityQueue<>(keys, values);
+        assertTrue(heap.sanityCheck());
         assertEquals("[1, 2, 3, 5, 4]", heap.toString());
     }
 
     @Test
     void testMaxHeapConstructor() {
         heap = new HeapPriorityQueue<>((o1, o2) -> {
-            // negate the comparison to create max heap (max element at root)
+            // Negate the comparison to create max heap (max element at root)
             return -o1.compareTo(o2);
         });
-        heap.insert(1, 1);
-        heap.insert(2, 2);
-        heap.insert(3, 3);
-        heap.insert(4, 4);
-        assertEquals("[4, 3, 2, 1]", heap.toString());
+        Random rnd = new Random();
+        int n = 32;
+        java.util.List<Integer> rands = rnd.ints(1, 1000).
+                limit(n).distinct().boxed().collect(Collectors.toList());
+        for (Integer i : rands) {
+            heap.insert(i, i);
+        }
+        // Max heap should also satisfy heap invariant
+        assertTrue(heap.sanityCheck());
     }
 
     @Test
@@ -56,18 +64,20 @@ class HeapPriorityQueueTest {
         testBottomUpConstructor();
         heap.insert(0, 0);
         Entry<Integer, Integer> entry = heap.min();
-        assertEquals("(0, 0)", entry.toString());
+        assertEquals("<0, 0>", entry.toString());
     }
 
     @Test
     void testInsert() {
-        heap.insert(1, 1);
-        heap.insert(2, 2);
-        heap.insert(3, 3);
-        heap.insert(0, 0);
-        assertEquals("[0, 1, 3, 2]", heap.toString());
-        heap.insert(0, 0);
-        assertEquals("[0, 0, 3, 2, 1]", heap.toString());
+        Random rnd = new Random();
+        int n = 32;
+        java.util.List<Integer> rands = rnd.ints(1, 1000).
+                limit(n).distinct().boxed().collect(Collectors.toList());
+        for (Integer i : rands) {
+            heap.insert(i, i);
+        }
+        // Heap invariant should be satisfied after insert
+        assertTrue(heap.sanityCheck());
     }
 
     @Test
@@ -75,9 +85,11 @@ class HeapPriorityQueueTest {
         assertNull(heap.removeMin());
         testBottomUpConstructor();
         heap.insert(0, 0);
+        assertTrue(heap.sanityCheck());
         assertEquals("[0, 2, 1, 5, 4, 3]", heap.toString());
         Entry<Integer, Integer> entry = heap.removeMin();
-        assertEquals("(0, 0)", entry.toString());
+        assertEquals("<0, 0>", entry.toString());
+        assertTrue(heap.sanityCheck());
         assertEquals("[1, 2, 3, 5, 4]", heap.toString());
     }
 

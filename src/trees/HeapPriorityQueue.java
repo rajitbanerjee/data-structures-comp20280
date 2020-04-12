@@ -1,12 +1,15 @@
 package trees;
 
-import lists.DoublyLinkedList;
+import maps.BinaryTreePrinter;
 import projectCode20280.Entry;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
- * An implementation of a priority queue using a linked-based/array-based heap.
+ * An implementation of a priority queue using an array-based heap.
  * <p>
  * 1. Implements PriorityQueue ADT: size(), insert(k, v), min(), removeMin()
  * <p>
@@ -23,7 +26,7 @@ import java.util.Comparator;
  */
 
 public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
-    protected DoublyLinkedList<Entry<K, V>> heap = new DoublyLinkedList<>();
+    protected ArrayList<Entry<K, V>> heap = new ArrayList<>();
 
     /**
      * Creates an empty priority queue based on the natural ordering of its keys.
@@ -54,7 +57,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     public HeapPriorityQueue(K[] keys, V[] values) {
         super();
         for (int i = 0; i < Math.min(keys.length, values.length); i++) {
-            heap.addLast(new PQEntry<>(keys[i], values[i]));
+            heap.add(new PQEntry<>(keys[i], values[i]));
         }
         heapify();
     }
@@ -62,40 +65,72 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
         System.out.println("TEST 1, bottom-up construction:");
-        Integer[] keys = {5, 4, 3, 2, 1};
-        Integer[] values = {5, 4, 3, 2, 1};
-        HeapPriorityQueue<Integer, Integer> heap = new HeapPriorityQueue<>(keys, values);
-        System.out.println("Insert 5, 4, 3, 2, 1: ");
-        System.out.println(heap);
+        Integer[] keys = {6, 7, 8, 12, 10, 11, 25, 21, 17, 19, 18};
+        HeapPriorityQueue<Integer, Integer> heap = new HeapPriorityQueue<>(keys, keys);
+        System.out.println("After insert 6, 7, 8, 12, 10, 11, 25, 21, 17, 19, 18: ");
+        System.out.println("Heap keys: " + heap);
+        System.out.println(heap.toStringTree());
 
         System.out.println("\nMin (key, value): " + heap.min());
         System.out.println("After removeMin(): ");
         heap.removeMin();
-        System.out.println(heap);
+        System.out.println("Heap keys: " + heap);
+        System.out.println(heap.toStringTree());
 
         System.out.println("\nMin (key, value): " + heap.min());
         System.out.println("After removeMin(): ");
         heap.removeMin();
-        System.out.println(heap);
+        System.out.println("Heap keys: " + heap);
+        System.out.println(heap.toStringTree());
 
         System.out.println("\nTEST 2, up-heap bubbling insertion:");
         heap = new HeapPriorityQueue<>();
-        heap.insert(1, 1);
-        heap.insert(2, 2);
-        heap.insert(3, 3);
-        heap.insert(0, 0);
-        System.out.println("Insert 1, 2, 3, 0: ");
-        System.out.println(heap);
+        Random rnd = new Random();
+        int n = 20;
+        java.util.List<Integer> rands = rnd.ints(1, 1000).
+                limit(n).distinct().boxed().collect(Collectors.toList());
+        for (Integer i : rands) {
+            heap.insert(i, i);
+        }
+        System.out.println("Insert random elements:");
+        System.out.println("Elements inserted: " + rands);
+        System.out.println("Heap keys: " + heap);
+        System.out.println(heap.toStringTree());
 
         System.out.println("\nMin (key, value): " + heap.min());
         System.out.println("After removeMin(): ");
         heap.removeMin();
-        System.out.println(heap);
+        System.out.println("Heap keys: " + heap);
+        System.out.println(heap.toStringTree());
 
         System.out.println("\nMin (key, value): " + heap.min());
         System.out.println("After removeMin(): ");
         heap.removeMin();
-        System.out.println(heap);
+        System.out.println("Heap keys: " + heap);
+        System.out.println(heap.toStringTree());
+
+        System.out.println("\nTEST 3, max heap using up-heap bubbling insertion:");
+        // Construct max heap
+        heap = new HeapPriorityQueue<>((o1, o2) -> -o1.compareTo(o2));
+        for (Integer i : rands) {
+            heap.insert(i, i);
+        }
+        System.out.println("Insert random elements:");
+        System.out.println("Elements inserted: " + rands);
+        System.out.println("Heap keys: " + heap);
+        System.out.println(heap.toStringTree());
+
+        System.out.println("\nMax (key, value): " + heap.min());
+        System.out.println("After removeMin() i.e. max: ");
+        heap.removeMin();
+        System.out.println("Heap keys: " + heap);
+        System.out.println(heap.toStringTree());
+
+        System.out.println("\nMax (key, value): " + heap.min());
+        System.out.println("After removeMin() i.e. max: ");
+        heap.removeMin();
+        System.out.println("Heap keys: " + heap);
+        System.out.println(heap.toStringTree());
     }
 
     // Performs a bottom-up construction of the heap in linear time.
@@ -173,7 +208,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     public Entry<K, V> insert(K key, V value) throws IllegalArgumentException {
         checkKey(key);
         Entry<K, V> newest = new PQEntry<>(key, value);
-        heap.addLast(newest);
+        heap.add(newest);
         upheap(size() - 1);
         return newest;
     }
@@ -231,11 +266,40 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
         for (Entry<K, V> elem : heap) {
-            sb.append(elem.getValue()).append(", ");
+            sb.append(elem.getKey()).append(", ");
         }
         sb = new StringBuilder(sb.substring(0, sb.length() - 2));
         sb.append("]");
         return sb.toString();
+    }
+
+    /**
+     * Displays the heap using BinaryTreePrinter.
+     *
+     * @return String representation of the tree heap
+     */
+    public String toStringTree() {
+        LinkedBinaryTree<Entry<K, V>> tree = new LinkedBinaryTree<>(heap);
+        BinaryTreePrinter<Entry<K, V>> btp = new BinaryTreePrinter<>(tree);
+        return btp.toString();
+    }
+
+    /**
+     * Returns true if heap invariant is satisfied.
+     * Used in JUnit tests: HeapPriorityQueueTest.java
+     */
+    public boolean sanityCheck() {
+        for (int j = 0; j < heap.size(); j++) {
+            int left = left(j);
+            int right = right(j);
+            if (left < heap.size() && compare(heap.get(left), heap.get(j)) < 0) {
+                return false;
+            }
+            if (right < heap.size() && compare(heap.get(right), heap.get(j)) < 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
