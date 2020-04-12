@@ -105,10 +105,6 @@ public class TreeMap<K extends Comparable<K>, V> extends AbstractSortedMap<K, V>
         return tree.right(p);
     }
 
-    protected Position<Entry<K, V>> sibling(Position<Entry<K, V>> p) {
-        return tree.sibling(p);
-    }
-
     protected boolean isRoot(Position<Entry<K, V>> p) {
         return tree.isRoot(p);
     }

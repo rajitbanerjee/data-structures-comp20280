@@ -33,8 +33,15 @@ public class Collisions {
                 collisions("", 0));
     }
 
-    // Count and return the number of collisions for a given hash function (before compression)
-    private static int collisions(String hashType, int value) throws FileNotFoundException {
+    /**
+     * Count and return the number of collisions for a given hash function (before compression).
+     *
+     * @param hashType the type of hash function to use
+     * @param value    constant required for hash function, if any
+     * @return the number of collisions for the given hash function
+     * @throws FileNotFoundException if text file containing words is not found
+     */
+    public static int collisions(String hashType, int value) throws FileNotFoundException {
         // Maps hash codes with the words having that hash code (all before compression)
         Map<Integer, List<String>> map = new ChainHashMap<>();
         Scanner sc = new Scanner(new File("src/maps/words.txt"));
