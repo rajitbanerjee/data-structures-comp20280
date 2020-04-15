@@ -69,7 +69,7 @@ public class BinaryTreePrinter<N> {
         else {
             String rootLabel = root.toString();
             // Display only the keys of the binary tree entries
-            if (!rootLabel.equals("null")) {
+            if (!rootLabel.equals("null") && rootLabel.startsWith("<") && rootLabel.endsWith(">")) {
                 int comma = rootLabel.indexOf(',');
                 rootLabel = rootLabel.substring(1, comma);
             }

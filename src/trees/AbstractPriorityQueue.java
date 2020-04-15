@@ -38,8 +38,9 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
     /**
      * Creates an empty priority queue based on the natural ordering of its keys.
      */
+    @SuppressWarnings("unchecked")
     protected AbstractPriorityQueue() {
-        this(new DefaultComparator<>());
+        this((k1, k2) -> ((Comparable<K>) k1).compareTo(k2));
     }
 
     /**
@@ -109,10 +110,6 @@ public abstract class AbstractPriorityQueue<K, V> implements PriorityQueue<K, V>
             return "<" + key + ", " + value + ">";
         }
 
-        @Override
-        public int compareTo(Entry<K, V> o) {
-            return 0;
-        }
     } //----------- end of nested PQEntry class -----------
 
 }

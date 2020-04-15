@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
 
-public class TreeMap<K extends Comparable<K>, V> extends AbstractSortedMap<K, V> {
+public class TreeMap<K, V> extends AbstractSortedMap<K, V> {
     // We reuse the LinkedBinaryTree class. A limitation here is that we only use the key.
     private final LinkedBinaryTree<Entry<K, V>> tree = new LinkedBinaryTree<>();
 

@@ -1,8 +1,10 @@
 package trees;
 
+import maps.BinaryTreePrinter;
 import projectCode20280.Position;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Concrete implementation of a binary tree using a node-based, linked structure.
@@ -25,7 +27,7 @@ import java.util.ArrayList;
  * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
  */
 
-public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTree<E> {
+public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
     private Node<E> root = null;
     private int size = 0;
 
@@ -67,6 +69,7 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         Position<Integer> p4 = bt.addLeft(p3, 62);
         Position<Integer> p5 = bt.addLeft(p2, 42);
 
+        System.out.println(bt.toStringTree());
         System.out.println("bt size: " + bt.size());
         System.out.println("bt inorder(): " + bt.inorder());
         System.out.println("bt preorder(): " + bt.preorder());
@@ -80,6 +83,8 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
         System.out.println("\nTEST 2, level order construction:");
         Integer[] arr = {12, 25, 31, 58, 36, 42, 90, 62, 75};
         bt = new LinkedBinaryTree<>(arr);
+        System.out.println("Given level order array: " + Arrays.toString(arr));
+        System.out.println(bt.toStringTree());
         System.out.println("bt size: " + bt.size());
         System.out.println("bt inorder(): " + bt.inorder());
         System.out.println("bt preorder(): " + bt.preorder());
@@ -91,17 +96,19 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
 
         System.out.println("\nTEST 3, sorted order construction:");
         bt = new LinkedBinaryTree<>();
-        int[] a = {12, 25, 31, 58, 36, 42, 90, 62, 75};
-        for (int i : a) {
+        for (Integer i : arr) {
             bt.insert(i);
         }
+        System.out.println("Given array: " + Arrays.toString(arr));
+        System.out.println("After insertion in sorted order:");
+        System.out.println(bt.toStringTree());
         System.out.println("bt size: " + bt.size());
         System.out.println("bt (default inorder): " + bt);
         System.out.println("bt inorder(): " + bt.inorder());
         System.out.println("bt preorder(): " + bt.preorder());
         System.out.println("bt postorder(): " + bt.postorder());
 
-        System.out.println("Root: " + bt.root());
+        System.out.println("bt root: " + bt.root());
         System.out.println("bt depth root: " + bt.depth(bt.root()));
     }
 
@@ -289,11 +296,12 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     }
 
     // Recursively add Nodes to binary tree in proper position
+    @SuppressWarnings("unchecked")
     private Node<E> addRecursive(Node<E> p, E e) {
         if (p == null) {
             return createNode(e, null);
         } else {
-            if (e.compareTo(p.getElement()) < 0) {
+            if (((Comparable<E>) e).compareTo(p.getElement()) < 0) {
                 p.setLeft(addRecursive(p.getLeft(), e));
             } else {
                 p.setRight(addRecursive(p.getRight(), e));
@@ -392,6 +400,16 @@ public class LinkedBinaryTree<E extends Comparable<E>> extends AbstractBinaryTre
     @Override
     public String toString() {
         return positions().toString();
+    }
+
+    /**
+     * Displays the heap using BinaryTreePrinter.
+     *
+     * @return String representation of the tree heap
+     */
+    public String toStringTree() {
+        BinaryTreePrinter<E> btp = new BinaryTreePrinter<>(this);
+        return btp.toString();
     }
 
     // Extra functionality for lab questions ----------------

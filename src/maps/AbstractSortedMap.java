@@ -2,7 +2,6 @@ package maps;
 
 import projectCode20280.Entry;
 import projectCode20280.SortedMap;
-import trees.DefaultComparator;
 
 import java.util.Comparator;
 
@@ -19,8 +18,8 @@ import java.util.Comparator;
  * appropriate for use with the comparator.
  */
 
-public abstract class AbstractSortedMap<K extends Comparable<K>, V>
-        extends AbstractMap<K, V> implements SortedMap<K, V> {
+public abstract class AbstractSortedMap<K, V> extends AbstractMap<K, V>
+        implements SortedMap<K, V> {
 
     /**
      * The comparator defining the ordering of keys in the map.
@@ -39,8 +38,9 @@ public abstract class AbstractSortedMap<K extends Comparable<K>, V>
     /**
      * Initializes the map with a default comparator (natural ordering).
      */
+    @SuppressWarnings("unchecked")
     protected AbstractSortedMap() {
-        this(new DefaultComparator<>());
+        this((k1, k2) -> ((Comparable<K>) k1).compareTo(k2));
     }
 
     /**

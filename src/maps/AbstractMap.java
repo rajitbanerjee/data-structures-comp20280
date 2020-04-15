@@ -95,10 +95,6 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
             return "<" + k + ", " + v + ">";
         }
 
-        @Override
-        public int compareTo(Entry<K, V> e) {
-            return 0;
-        }
     } // ----------- end of nested MapEntry class -----------
 
     // ---------------- nested KeyIterable class ----------------

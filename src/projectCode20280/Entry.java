@@ -8,7 +8,7 @@ package projectCode20280;
  * @author Aonghus Lawlor
  */
 
-public interface Entry<K, V> extends Comparable<Entry<K, V>> {
+public interface Entry<K, V> {
     /**
      * Returns the key stored in this entry.
      *
