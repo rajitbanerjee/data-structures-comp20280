@@ -5,6 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+/**
+ * Tests for TreeMap.
+ *
+ * @author Aonghus Lawlor
+ */
+
 class TreeMapTest2 {
 
     @Test
@@ -179,14 +185,15 @@ class TreeMapTest2 {
     @Test
     void testSubMap() {
         TreeMap<Integer, String> map = new TreeMap<>();
-        //java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
+//        java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
         Integer[] arr = new Integer[]{35, 26, 15, 24, 33, 4, 12, 1, 23, 21, 2, 5};
 
         for (Integer i : arr) {
             map.put(i, Integer.toString(i));
         }
 
-//		TODO assertEquals("[12, 15, 21, 23, 24, 26, 33]", map.subMap(12, 34).keySet().toString());
+        assertEquals("[<12, 12>, <15, 15>, <21, 21>, <23, 23>, <24, 24>, <26, 26>, <33, 33>]",
+                map.subMap(12, 34).toString());
     }
 
 }

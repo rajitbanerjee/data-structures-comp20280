@@ -6,6 +6,12 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Tests for ChainHashMap.
+ *
+ * @author Aonghus Lawlor
+ */
+
 class ChainHashMapTest2 {
 
     @Test

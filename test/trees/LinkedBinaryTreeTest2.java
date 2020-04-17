@@ -5,6 +5,12 @@ import projectCode20280.Position;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Tests for LinkedBinaryTree.
+ *
+ * @author Aonghus Lawlor
+ */
+
 class LinkedBinaryTreeTest2 {
 
     @Test
