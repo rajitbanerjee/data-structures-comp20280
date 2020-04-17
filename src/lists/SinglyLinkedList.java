@@ -11,7 +11,8 @@ import java.util.Iterator;
  * 1. Implements List ADT functions: size(), isEmpty(), get(int i), add(int i, E e), addFirst(E e),
  * addLast(E e), remove(int i), removeFirst(), E removeLast(), Iterator<E> iterator()
  * <p>
- * 2. Additional public methods: reverse() - using Stack, recursiveReverse(), recursiveCopy(), toString()
+ * 2. Additional public methods: first(), last(), reverse() - using Stack, recursiveReverse(),
+ * recursiveCopy(), toString()
  * <p>
  * 3. Contains an inner Node class to represent list nodes.
  *
@@ -280,15 +281,34 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         return new ListIterator();
     }
 
-    // Helper function to recursively reverse a list
-    private Node<E> rev(Node<E> start) {
-        if (start == null || start.getNext() == null) {
-            return start;
+    /**
+     * Gets the first element of the list.
+     *
+     * @return the element at the first Node of the list, null if empty
+     */
+    public E first() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            return head.getElement();
         }
-        Node<E> newStart = rev(start.getNext());
-        start.getNext().setNext(start);
-        start.setNext(null);
-        return newStart;
+    }
+
+    /**
+     * Gets the last element of the list.
+     *
+     * @return the element at the last Node of the list, null if empty
+     */
+    public E last() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            Node<E> temp = head; // Temporary Node for list traversal
+            while (temp.getNext() != null) {
+                temp = temp.getNext();
+            }
+            return temp.getElement();
+        }
     }
 
     /**
@@ -321,6 +341,24 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         head = rev(head);
     }
 
+    // Helper function to recursively reverse a list
+    private Node<E> rev(Node<E> start) {
+        if (start == null || start.getNext() == null) {
+            return start;
+        }
+        Node<E> newStart = rev(start.getNext());
+        start.getNext().setNext(start);
+        start.setNext(null);
+        return newStart;
+    }
+
+    /**
+     * Recursively copies a list.
+     */
+    public SinglyLinkedList<E> recursiveCopy() {
+        return copy(head, new SinglyLinkedList<>());
+    }
+
     // Helper function to recursively copy a list
     private SinglyLinkedList<E> copy(Node<E> start, SinglyLinkedList<E> copyList) {
         if (start == null) {
@@ -329,13 +367,6 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
             copyList.addLast(start.getElement());
             return copy(start.getNext(), copyList);
         }
-    }
-
-    /**
-     * Recursively copies a list.
-     */
-    public SinglyLinkedList<E> recursiveCopy() {
-        return copy(head, new SinglyLinkedList<>());
     }
 
     /**
