@@ -57,11 +57,13 @@ Open any test file, hover over any @Test annotation, and select 'Add JUnit 5 lib
 | | | [FlattenTree](./src/assignment1/FlattenTree.java) | [FlattenTreeTest](./test/assignment1/FlattenTreeTest.java)
 | | | [UnsortedListPQ](./src/assignment1/UnsortedListPQ.java) | [UnsortedListPQTest](./test/assignment1/UnsortedListPQTest.java)
 | | | [PQSort](./src/assignment1/PQSort.java) | [PQSortTest](./test/assignment1/PQSortTest.java)
-| 8 | [Hash Maps & Binary Search Trees](./src/maps) | [UnsortedTableMap](./src/maps/UnsortedTableMap.java) | [UnsortedTableMapTest](./test/maps/UnsortedTableMapTest.java)
+| 8 | [Hash Maps & Tree Maps](./src/maps) | [UnsortedTableMap](./src/maps/UnsortedTableMap.java) | [UnsortedTableMapTest](./test/maps/UnsortedTableMapTest.java)
 | | | [ChainHashMap](./src/maps/ChainHashMap.java) | [ChainHashMapTest](./test/maps/ChainHashMapTest.java), [ChainHashMapTest2](./test/maps/ChainHashMapTest2.java)
 | | | [WordFrequency](./src/maps/WordFrequency.java) | [WordsFrequencyTest](./test/maps/WordFrequencyTest.java)
 | | | [Collisions](./src/maps/Collisions.java) | [CollisionsTest](./test/maps/CollisionsTest.java)
 | | | [TreeMap](./src/maps/TreeMap.java) | [TreeMapTest](./test/maps/TreeMapTest.java), [TreeMapTest2](./test/maps/TreeMapTest2.java)
+| | | [AVLTreeMap](./src/maps/AVLTreeMap.java) | [AVLTreeMapTest](./test/maps/AVLTreeMapTest.java)
+| | | [SplayTreeMap](./src/maps/SplayTreeMap.java) | [SplayTreeMapTest](./test/maps/SplayTreeMapTest.java)
 
 ## Authors
 * [Rajit Banerjee](https://github.com/rajitbanerjee), 18202817

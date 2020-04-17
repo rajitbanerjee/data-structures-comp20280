@@ -5,6 +5,7 @@ import projectCode20280.Position;
 import trees.LinkedBinaryTree;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -35,6 +36,16 @@ public class TreeMap<K, V> extends AbstractSortedMap<K, V> {
      */
     public TreeMap() {
         super(); // the AbstractSortedMap constructor
+        tree.addRoot(null); // create a sentinel leaf as root
+    }
+
+    /**
+     * Constructs an empty map using given comparator
+     *
+     * @param comp custom Comparator
+     */
+    public TreeMap(Comparator<K> comp) {
+        super(comp); // the AbstractSortedMap constructor
         tree.addRoot(null); // create a sentinel leaf as root
     }
 
@@ -157,6 +168,25 @@ public class TreeMap<K, V> extends AbstractSortedMap<K, V> {
             temp = right(temp);
         }
         return parent(temp);
+    }
+
+    // TreeMap re-balancing hook that is called after an insertion.
+    protected void rebalanceInsert(Position<Entry<K, V>> p) {
+        // TODO
+    }
+
+    // TreeMap re-balancing hook that is called after a deletion.
+    protected void rebalanceDelete(Position<Entry<K, V>> p) {
+        // TODO
+    }
+
+    // TreeMap re-balancing hook that is called after a node access.
+    protected void rebalanceAccess(Position<Entry<K, V>> p) {
+        // TODO
+    }
+
+    protected void rotate(Position<Entry<K, V>> p) {
+        // TODO?
     }
 
     // Implement Map ADT functions
