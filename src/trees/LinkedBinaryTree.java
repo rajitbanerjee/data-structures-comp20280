@@ -1,7 +1,7 @@
 package trees;
 
+import interfaces.Position;
 import maps.BinaryTreePrinter;
-import projectCode20280.Position;
 
 import java.util.ArrayList;
 import java.util.Arrays;

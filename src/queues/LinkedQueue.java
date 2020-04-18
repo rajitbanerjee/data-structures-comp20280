@@ -1,7 +1,7 @@
 package queues;
 
+import interfaces.Queue;
 import lists.DoublyLinkedList;
-import projectCode20280.Queue;
 
 /**
  * Implementation of a linked list based Queue.

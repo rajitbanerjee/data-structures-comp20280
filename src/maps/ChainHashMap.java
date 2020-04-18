@@ -1,7 +1,7 @@
 package maps;
 
-import projectCode20280.Entry;
-import projectCode20280.Map;
+import interfaces.Entry;
+import interfaces.Map;
 
 import java.util.ArrayList;
 

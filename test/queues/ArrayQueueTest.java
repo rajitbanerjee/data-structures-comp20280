@@ -1,8 +1,8 @@
 package queues;
 
+import interfaces.Queue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import projectCode20280.Queue;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,7 +1,7 @@
 package maps;
 
-import projectCode20280.Entry;
-import projectCode20280.Position;
+import interfaces.Entry;
+import interfaces.Position;
 import trees.BalanceableBinaryTree;
 
 import java.util.Comparator;

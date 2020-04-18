@@ -1,8 +1,8 @@
 package trees;
 
-import projectCode20280.Position;
-import projectCode20280.Queue;
-import projectCode20280.Tree;
+import interfaces.Position;
+import interfaces.Queue;
+import interfaces.Tree;
 import queues.LinkedQueue;
 
 import java.util.ArrayList;

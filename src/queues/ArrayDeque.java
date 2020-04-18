@@ -1,6 +1,6 @@
 package queues;
 
-import projectCode20280.Deque;
+import interfaces.Deque;
 
 /**
  * Implementation of an array based Deque.

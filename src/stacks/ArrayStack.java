@@ -1,6 +1,6 @@
 package stacks;
 
-import projectCode20280.Stack;
+import interfaces.Stack;
 
 /**
  * Implementation of an array based Stack.

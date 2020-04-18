@@ -1,7 +1,7 @@
 package stacks;
 
+import interfaces.Stack;
 import lists.SinglyLinkedList;
-import projectCode20280.Stack;
 
 /**
  * Implementation of a linked list based Bounded Stack.

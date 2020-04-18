@@ -1,6 +1,6 @@
 package lists;
 
-import projectCode20280.List;
+import interfaces.List;
 
 import java.util.Iterator;
 

@@ -1,6 +1,6 @@
 package queues;
 
-import projectCode20280.Queue;
+import interfaces.Queue;
 import stacks.LinkedStack;
 
 /**

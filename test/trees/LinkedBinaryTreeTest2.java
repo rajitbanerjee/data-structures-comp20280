@@ -1,7 +1,7 @@
 package trees;
 
+import interfaces.Position;
 import org.junit.jupiter.api.Test;
-import projectCode20280.Position;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

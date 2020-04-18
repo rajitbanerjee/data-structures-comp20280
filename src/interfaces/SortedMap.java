@@ -1,4 +1,4 @@
-package projectCode20280;
+package interfaces;
 
 /**
  * SortedMap ADT with additional support for keys from a total ordering.

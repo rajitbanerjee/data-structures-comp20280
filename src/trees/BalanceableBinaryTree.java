@@ -1,7 +1,7 @@
 package trees;
 
-import projectCode20280.Entry;
-import projectCode20280.Position;
+import interfaces.Entry;
+import interfaces.Position;
 
 public class BalanceableBinaryTree<K, V> extends LinkedBinaryTree<Entry<K, V>> {
     // positional-based methods related to aux field

@@ -1,6 +1,6 @@
 package maps;
 
-import projectCode20280.Entry;
+import interfaces.Entry;
 
 import java.util.ArrayList;
 import java.util.Random;

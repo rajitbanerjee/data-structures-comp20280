@@ -1,4 +1,4 @@
-package projectCode20280;
+package interfaces;
 
 /**
  * Deque ADT interface.

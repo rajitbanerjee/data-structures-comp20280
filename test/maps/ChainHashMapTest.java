@@ -1,7 +1,7 @@
 package maps;
 
+import interfaces.Map;
 import org.junit.jupiter.api.Test;
-import projectCode20280.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 

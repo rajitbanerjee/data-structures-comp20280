@@ -1,4 +1,4 @@
-package projectCode20280;
+package interfaces;
 
 /**
  * Map ADT interface for an associative map which binds a key uniquely to a value.

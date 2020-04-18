@@ -1,6 +1,6 @@
 package assignment1;
 
-import projectCode20280.Position;
+import interfaces.Position;
 import trees.LinkedBinaryTree;
 
 /**

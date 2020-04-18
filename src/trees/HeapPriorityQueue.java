@@ -1,7 +1,7 @@
 package trees;
 
+import interfaces.Entry;
 import maps.BinaryTreePrinter;
-import projectCode20280.Entry;
 
 import java.util.ArrayList;
 import java.util.Comparator;

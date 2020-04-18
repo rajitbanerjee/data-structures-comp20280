@@ -1,6 +1,6 @@
 package assignment1;
 
-import projectCode20280.PriorityQueue;
+import interfaces.PriorityQueue;
 import trees.HeapPriorityQueue;
 
 import java.util.ArrayList;

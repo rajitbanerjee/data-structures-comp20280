@@ -1,4 +1,4 @@
-package projectCode20280;
+package interfaces;
 
 /**
  * Stack ADT interface.

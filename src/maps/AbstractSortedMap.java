@@ -1,7 +1,7 @@
 package maps;
 
-import projectCode20280.Entry;
-import projectCode20280.SortedMap;
+import interfaces.Entry;
+import interfaces.SortedMap;
 
 import java.util.Comparator;
 

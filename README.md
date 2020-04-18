@@ -25,7 +25,7 @@ Open any test file, hover over any @Test annotation, and select 'Add JUnit 5 lib
 ## Summary
 | # | Title | Solution | Test |  
 |---| ----- | -------- | ---------- |
-| 0 | [Interfaces](./src/projectCode20280) |-|-
+| 0 | [Interfaces](src/interfaces) |-|-
 | 1 | [Lists](./src/lists) | [SinglyLinkedList](./src/lists/SinglyLinkedList.java) | [SinglyLinkedListTest](./test/lists/SinglyLinkedListTest.java), [SinglyLinkedListTest2](./test/lists/SinglyLinkedListTest2.java) 
 | | | [DoublyLinkedList](./src/lists/DoublyLinkedList.java) | [DoublyLinkedListTest](./test/lists/DoublyLinkedListTest.java), [DoublyLinkedListTest2](./test/lists/DoublyLinkedListTest2.java) 
 | | | [CircularlyLinkedList](./src/lists/CircularlyLinkedList.java) | [CircularlyLinkedListTest](./test/lists/CircularlyLinkedListTest.java) 

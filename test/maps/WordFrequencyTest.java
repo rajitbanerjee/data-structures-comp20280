@@ -1,8 +1,8 @@
 package maps;
 
+import interfaces.Entry;
+import interfaces.Map;
 import org.junit.jupiter.api.Test;
-import projectCode20280.Entry;
-import projectCode20280.Map;
 
 import java.io.File;
 import java.io.FileNotFoundException;

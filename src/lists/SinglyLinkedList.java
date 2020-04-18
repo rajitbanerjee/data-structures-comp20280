@@ -1,6 +1,6 @@
 package lists;
 
-import projectCode20280.List;
+import interfaces.List;
 import stacks.ArrayStack;
 
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package projectCode20280;
+package interfaces;
 
 /**
  * Queue ADT interface.
