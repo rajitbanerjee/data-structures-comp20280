@@ -23,6 +23,9 @@ Open any test file, hover over any @Test annotation, and select 'Add JUnit 5 lib
 * Run the main() method of a class to see a basic implementation test.
 
 ## Summary
+Classes implemented in the repository are mentioned below.   
+Refer to the individual class descriptions for more information.
+
 | # | Title | Solution | Test |  
 |---| ----- | -------- | ---------- |
 | 0 | [Interfaces](src/interfaces) |-|-
