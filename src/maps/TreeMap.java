@@ -144,6 +144,10 @@ public class TreeMap<K, V> extends AbstractSortedMap<K, V> {
         tree.rotate(p);
     }
 
+    protected Position<Entry<K, V>> restructure(Position<Entry<K, V>> x) {
+        return tree.restructure(x);
+    }
+
     // Returns the position in p's subtree having the given key (or else the terminal leaf)
     protected Position<Entry<K, V>> treeSearch(Position<Entry<K, V>> p, K key) {
         if (isExternal(p)) {

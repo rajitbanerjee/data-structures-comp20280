@@ -2,7 +2,8 @@ package maps;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 /**
  * Tests for AVLTreeMap.
@@ -87,7 +88,6 @@ class AVLTreeMapTest {
         }
 
         assertEquals(12, map.ceilingEntry(11).getKey());
-
         assertEquals(2, map.ceilingEntry(2).getKey());
     }
 
@@ -134,7 +134,16 @@ class AVLTreeMapTest {
 
     @Test
     void testEntrySet() {
-        fail("Not yet implemented");
+        AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
+        //java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
+        Integer[] arr = new Integer[]{35, 26, 15, 24, 33, 4, 12, 1, 23, 21, 2, 5};
+
+        for (Integer i : arr) {
+            map.put(i, Integer.toString(i));
+        }
+
+        assertEquals("[<1, 1>, <2, 2>, <4, 4>, <5, 5>, <12, 12>, <15, 15>, <21, 21>, " +
+                "<23, 23>, <24, 24>, <26, 26>, <33, 33>, <35, 35>]", map.entrySet().toString());
     }
 
     @Test
@@ -146,7 +155,16 @@ class AVLTreeMapTest {
         for (Integer i : arr) {
             map.put(i, Integer.toString(i));
         }
-        assertEquals("", map.toString());
+        assertEquals("\n" +
+                "                               15                                 \n" +
+                "             ┌─────────────────┴─────────────────┐                \n" +
+                "             4                                   26               \n" +
+                "    ┌────────┴────────┐               ┌──────────┴──────────┐     \n" +
+                "    1                 12              23                    35    \n" +
+                " ┌──┴──┐            ┌─┴─┐       ┌─────┴─────┐            ┌──┴──┐  \n" +
+                "null   2            5  null     21          24           33   null\n" +
+                "    ┌──┴──┐      ┌──┴──┐     ┌──┴──┐     ┌──┴──┐      ┌──┴──┐     \n" +
+                "   null  null   null  null  null  null  null  null   null  null   \n", map.toString());
     }
 
     @Test

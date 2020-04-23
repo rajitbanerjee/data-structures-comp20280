@@ -69,18 +69,21 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         System.out.println("After insert 6, 7, 8, 12, 10, 11, 25, 21, 17, 19, 18: ");
         System.out.println("Heap keys: " + heap);
         System.out.println(heap.toStringTree());
+        System.out.println("Sanity check: " + (heap.sanityCheck() ? "passed" : "failed"));
 
         System.out.println("\nMin (key, value): " + heap.min());
         System.out.println("After removeMin(): ");
         heap.removeMin();
         System.out.println("Heap keys: " + heap);
         System.out.println(heap.toStringTree());
+        System.out.println("Sanity check: " + (heap.sanityCheck() ? "passed" : "failed"));
 
         System.out.println("\nMin (key, value): " + heap.min());
         System.out.println("After removeMin(): ");
         heap.removeMin();
         System.out.println("Heap keys: " + heap);
         System.out.println(heap.toStringTree());
+        System.out.println("Sanity check: " + (heap.sanityCheck() ? "passed" : "failed"));
 
         System.out.println("\nTEST 2, up-heap bubbling insertion:");
         heap = new HeapPriorityQueue<>();
@@ -95,18 +98,21 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         System.out.println("Elements inserted: " + rands);
         System.out.println("Heap keys: " + heap);
         System.out.println(heap.toStringTree());
+        System.out.println("Sanity check: " + (heap.sanityCheck() ? "passed" : "failed"));
 
         System.out.println("\nMin (key, value): " + heap.min());
         System.out.println("After removeMin(): ");
         heap.removeMin();
         System.out.println("Heap keys: " + heap);
         System.out.println(heap.toStringTree());
+        System.out.println("Sanity check: " + (heap.sanityCheck() ? "passed" : "failed"));
 
         System.out.println("\nMin (key, value): " + heap.min());
         System.out.println("After removeMin(): ");
         heap.removeMin();
         System.out.println("Heap keys: " + heap);
         System.out.println(heap.toStringTree());
+        System.out.println("Sanity check: " + (heap.sanityCheck() ? "passed" : "failed"));
 
         System.out.println("\nTEST 3, max heap using up-heap bubbling insertion:");
         // Construct max heap
@@ -118,18 +124,21 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
         System.out.println("Elements inserted: " + rands);
         System.out.println("Heap keys: " + heap);
         System.out.println(heap.toStringTree());
+        System.out.println("Sanity check: " + (heap.sanityCheck() ? "passed" : "failed"));
 
         System.out.println("\nMax (key, value): " + heap.min());
         System.out.println("After removeMin() i.e. max: ");
         heap.removeMin();
         System.out.println("Heap keys: " + heap);
         System.out.println(heap.toStringTree());
+        System.out.println("Sanity check: " + (heap.sanityCheck() ? "passed" : "failed"));
 
         System.out.println("\nMax (key, value): " + heap.min());
         System.out.println("After removeMin() i.e. max: ");
         heap.removeMin();
         System.out.println("Heap keys: " + heap);
         System.out.println(heap.toStringTree());
+        System.out.println("Sanity check: " + (heap.sanityCheck() ? "passed" : "failed"));
     }
 
     // Performs a bottom-up construction of the heap in linear time.

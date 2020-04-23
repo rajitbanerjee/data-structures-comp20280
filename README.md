@@ -26,7 +26,7 @@ Open any test file, hover over any @Test annotation, and select 'Add JUnit 5 lib
 Classes implemented in the repository are summarised below. Refer to the individual class descriptions for more
  information.  
 *Note:* The starred (*) solutions are the required data structures for the repository. The others were included
- either as helper classes, or solutions to practicals and assignments for the module.
+ either as helper classes, or as solutions to practicals and assignments for the module.
 
 | # | Title | Solution | Test |  
 |---| ----- | -------- | ---------- |
