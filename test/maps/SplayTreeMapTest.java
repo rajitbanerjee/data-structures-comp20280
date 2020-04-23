@@ -5,6 +5,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+/**
+ * Tests for SplayTreeMap.
+ *
+ * @author Aonghus Lawlor
+ * @author Rajit Banerjee, 18202817
+ */
+
 class SplayTreeMapTest {
 
     @Test

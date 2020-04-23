@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Tests for LinkedBinaryTree.
  *
  * @author Aonghus Lawlor
+ * @author Rajit Banerjee, 18202817
  */
 
 class LinkedBinaryTreeTest2 {
