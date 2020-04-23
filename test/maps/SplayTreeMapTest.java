@@ -2,7 +2,8 @@ package maps;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class SplayTreeMapTest {
 
@@ -128,7 +129,16 @@ class SplayTreeMapTest {
 
     @Test
     void testEntrySet() {
-        fail("Not yet implemented");
+        AVLTreeMap<Integer, String> map = new AVLTreeMap<>();
+        //java.util.TreeMap<Integer, String> map = new java.util.TreeMap<>();
+        Integer[] arr = new Integer[]{35, 26, 15, 24, 33, 4, 12, 1, 23, 21, 2, 5};
+
+        for (Integer i : arr) {
+            map.put(i, Integer.toString(i));
+        }
+
+        assertEquals("[<1, 1>, <2, 2>, <4, 4>, <5, 5>, <12, 12>, <15, 15>, <21, 21>, " +
+                "<23, 23>, <24, 24>, <26, 26>, <33, 33>, <35, 35>]", map.entrySet().toString());
     }
 
     @Test
@@ -140,7 +150,22 @@ class SplayTreeMapTest {
         for (Integer i : arr) {
             map.put(i, Integer.toString(i));
         }
-        assertEquals("", map.toString());
+        assertEquals("\n" +
+                "                      5                                      \n" +
+                "          ┌───────────┴───────────┐                          \n" +
+                "          2                       15                         \n" +
+                "    ┌─────┴─────┐           ┌─────┴─────┐                    \n" +
+                "    1           4           12          21                   \n" +
+                " ┌──┴──┐     ┌──┴──┐     ┌──┴──┐     ┌──┴──┐                 \n" +
+                "null  null  null  null  null  null  null   23                \n" +
+                "                                        ┌──┴──┐              \n" +
+                "                                       null   24             \n" +
+                "                                           ┌──┴──┐           \n" +
+                "                                          null   33          \n" +
+                "                                           ┌─────┴─────┐     \n" +
+                "                                           26          35    \n" +
+                "                                        ┌──┴──┐     ┌──┴──┐  \n" +
+                "                                       null  null  null  null\n", map.toString());
     }
 
     @Test

@@ -38,9 +38,8 @@ public class BalanceableBinaryTree<K, V> extends LinkedBinaryTree<Entry<K, V>> {
 
     // Override node factory function to produce a BSTNode (rather than a Node)
     @Override
-    protected Node<Entry<K, V>> createNode(Entry<K, V> e, Node<Entry<K, V>> parent, Node<Entry<K, V>> left,
-                                           Node<Entry<K, V>> right) {
-        return new BSTNode<>(e, parent, left, right);
+    protected Node<Entry<K, V>> createNode(Entry<K, V> e, Node<Entry<K, V>> parent) {
+        return new BSTNode<>(e, parent, null, null);
     }
 
     /**

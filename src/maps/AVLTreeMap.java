@@ -9,11 +9,12 @@ import java.util.Comparator;
 
 /**
  * An implementation of a sorted map using an AVL tree.
+ * <p>
  * All Map ADT and SortedMap ADT functions are inherited from TreeMap.
  * <p>
  * The purpose of this class is to override the template implementations of
- * rebalanceInsert and rebalanceDelete methods from TreeMap, to allow balancing
- * the binary tree after insertion and deletion operations.
+ * rebalanceInsert and rebalanceDelete methods from TreeMap, to balance the
+ * binary tree after node insertion and deletion operations.
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
