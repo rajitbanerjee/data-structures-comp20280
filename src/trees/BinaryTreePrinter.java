@@ -1,4 +1,4 @@
-package maps;
+package trees;
 
 import interfaces.BinaryTree;
 import interfaces.Position;

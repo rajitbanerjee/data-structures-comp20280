@@ -2,6 +2,7 @@ package maps;
 
 import interfaces.Entry;
 import interfaces.Position;
+import trees.BinaryTreePrinter;
 import trees.LinkedBinaryTree;
 
 import java.util.ArrayList;
