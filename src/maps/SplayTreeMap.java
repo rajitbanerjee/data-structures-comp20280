@@ -52,6 +52,19 @@ public class SplayTreeMap<K, V> extends TreeMap<K, V> {
         System.out.println(map);
 
         System.out.println("After removing " + map.remove(arr[0]) + ": " + map);
+
+        // Check if splay operation works for frequently accessed keys
+        System.out.println("Value at key 88: " + map.get(88));
+        System.out.println("After first search for key 88: " + map);
+
+        System.out.println("Value at key 65: " + map.get(65));
+        System.out.println("After first search for key 65: " + map);
+
+        System.out.println("Value at key 88: " + map.get(88));
+        System.out.println("After second search for key 88: " + map);
+
+        System.out.println("Value at key 65: " + map.get(65));
+        System.out.println("After second search for key 65: " + map);
     }
 
     // Re-balances the tree after node insertion
