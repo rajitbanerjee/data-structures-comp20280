@@ -3,12 +3,35 @@ package trees;
 import interfaces.Entry;
 import interfaces.Position;
 
+/**
+ * A special type of LinkedBinaryTree that supports rotate and restructure
+ * methods used to balance a binary tree.
+ *
+ * @param <K> generic type of tree entry keys
+ * @param <V> generic type of tree entry values
+ * @author Rajit Banerjee, 18202817
+ * @author Aonghus Lawlor
+ * Reference: Data Structures and Algorithms (Goodrich, Tamassia, Goldwasser)
+ */
+
 public class BalanceableBinaryTree<K, V> extends LinkedBinaryTree<Entry<K, V>> {
-    // positional-based methods related to aux field
+
+    /**
+     * Gets the given Position's auxiliary balancing information.
+     *
+     * @param p tree Position
+     * @return auxiliary balancing information of the given position
+     */
     public int getAux(Position<Entry<K, V>> p) {
         return ((BSTNode<Entry<K, V>>) p).getAux();
     }
 
+    /**
+     * Sets the given Position's auxiliary balancing information.
+     *
+     * @param p     tree Position
+     * @param value new auxiliary balancing information of the given position
+     */
     public void setAux(Position<Entry<K, V>> p, int value) {
         ((BSTNode<Entry<K, V>>) p).setAux(value);
     }
@@ -18,13 +41,6 @@ public class BalanceableBinaryTree<K, V> extends LinkedBinaryTree<Entry<K, V>> {
     protected Node<Entry<K, V>> createNode(Entry<K, V> e, Node<Entry<K, V>> parent, Node<Entry<K, V>> left,
                                            Node<Entry<K, V>> right) {
         return new BSTNode<>(e, parent, left, right);
-    }
-
-    /**
-     * Relinks a parent node with its oriented child node.
-     */
-    private void relink(Node<Entry<K, V>> parent, Node<Entry<K, V>> child, boolean makeLeftChild) {
-        // TODO
     }
 
     /**
@@ -40,9 +56,36 @@ public class BalanceableBinaryTree<K, V> extends LinkedBinaryTree<Entry<K, V>> {
      * </pre>
      * <p>
      * Caller should ensure that p is not the root.
+     *
+     * @param p the position to be rotated above its parent
      */
     public void rotate(Position<Entry<K, V>> p) {
-        // TODO
+        Node<Entry<K, V>> x = validate(p);
+        Node<Entry<K, V>> y = x.getParent();
+        Node<Entry<K, V>> z = y.getParent();
+        if (z == null) {
+            setRoot(x);
+            x.setParent(null);
+        } else {
+            relink(z, x, y == z.getLeft());
+        }
+        if (x == y.getLeft()) {
+            relink(y, x.getRight(), true);
+            relink(x, y, false);
+        } else {
+            relink(y, x.getLeft(), false);
+            relink(x, y, true);
+        }
+    }
+
+    // Re-links a parent node with its oriented child node.
+    private void relink(Node<Entry<K, V>> parent, Node<Entry<K, V>> child, boolean makeLeftChild) {
+        child.setParent(parent);
+        if (makeLeftChild) {
+            parent.setLeft(child);
+        } else {
+            parent.setRight(child);
+        }
     }
 
     /**
@@ -70,12 +113,22 @@ public class BalanceableBinaryTree<K, V> extends LinkedBinaryTree<Entry<K, V>> {
      *      / \     / \
      *     t0  t1  t2  t3
      * </pre>
-     * <p>
-     * Caller should ensure that x has a grandparent.
+     *
+     * @param x the Position in the tree that must have a grandparent
+     * @return the new root Position of the tree
      */
     public Position<Entry<K, V>> restructure(Position<Entry<K, V>> x) {
-        // TODO
-        return null;
+        Position<Entry<K, V>> y = parent(x);
+        Position<Entry<K, V>> z = parent(y);
+        boolean notMatching = (right(y) == x) != (right(z) == y);
+        if (notMatching) {
+            rotate(x);
+            rotate(x);
+            return x;
+        } else {
+            rotate(y);
+            return y;
+        }
     }
 
     // -------------- nested BSTNode class --------------

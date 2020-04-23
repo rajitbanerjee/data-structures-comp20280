@@ -164,6 +164,11 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
         return new Node<>(e, parent, left, right);
     }
 
+    // Modify the root of the tree (used in BalanceableBinaryTree)
+    protected void setRoot(Node<E> root) {
+        this.root = root;
+    }
+
     // Accessor methods (not already implemented in AbstractBinaryTree) ------------
 
     /**
