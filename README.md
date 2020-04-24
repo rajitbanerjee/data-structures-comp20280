@@ -59,19 +59,19 @@ Classes implemented in the repository are summarised below. Refer to the individ
 | | | [HeapPriorityQueue *](./src/trees/HeapPriorityQueue.java) | [HeapPriorityQueueTest](./test/trees/HeapPriorityQueueTest.java), [HeapPriorityQueueTest2](./test/trees/HeapPriorityQueueTest2.java)
 | | | [BalanceableBinaryTree](./src/trees/BalanceableBinaryTree.java) | - |
 | | | [BinaryTreePrinter](./src/trees/BinaryTreePrinter.java) | - |
-| 7 | [Assignment 1](./src/assignment1) | [NumberList](./src/assignment1/NumberList.java) | [NumberListTest](./test/assignment1/NumberListTest.java)
-| | | [MultilevelList](./src/assignment1/MultilevelList.java) | [MultilevelListTest](./test/assignment1/MultilevelListTest.java)
-| | | [FlattenTree](./src/assignment1/FlattenTree.java) | [FlattenTreeTest](./test/assignment1/FlattenTreeTest.java)
-| | | [UnsortedListPQ](./src/assignment1/UnsortedListPQ.java) | [UnsortedListPQTest](./test/assignment1/UnsortedListPQTest.java)
-| | | [PQSort](./src/assignment1/PQSort.java) | [PQSortTest](./test/assignment1/PQSortTest.java)
-| 8 | [Hash Map & Tree Maps](./src/maps) | [UnsortedTableMap *](./src/maps/UnsortedTableMap.java) | [UnsortedTableMapTest](./test/maps/UnsortedTableMapTest.java)
+| 7 | [Hash Map & Tree Maps](./src/maps) | [UnsortedTableMap *](./src/maps/UnsortedTableMap.java) | [UnsortedTableMapTest](./test/maps/UnsortedTableMapTest.java)
 | | | [ChainHashMap *](./src/maps/ChainHashMap.java) | [ChainHashMapTest](./test/maps/ChainHashMapTest.java), [ChainHashMapTest2](./test/maps/ChainHashMapTest2.java)
 | | | [WordFrequency](./src/maps/WordFrequency.java) | [WordsFrequencyTest](./test/maps/WordFrequencyTest.java)
 | | | [Collisions](./src/maps/Collisions.java) | [CollisionsTest](./test/maps/CollisionsTest.java)
 | | | [TreeMap *](./src/maps/TreeMap.java) | [TreeMapTest](./test/maps/TreeMapTest.java), [TreeMapTest2](./test/maps/TreeMapTest2.java)
 | | | [AVLTreeMap *](./src/maps/AVLTreeMap.java) | [AVLTreeMapTest](./test/maps/AVLTreeMapTest.java)
 | | | [SplayTreeMap *](./src/maps/SplayTreeMap.java) | [SplayTreeMapTest](./test/maps/SplayTreeMapTest.java)
-
+| 8 | [Assignment 1](./src/assignment1) | [NumberList](./src/assignment1/NumberList.java) | [NumberListTest](./test/assignment1/NumberListTest.java)
+| | | [MultilevelList](./src/assignment1/MultilevelList.java) | [MultilevelListTest](./test/assignment1/MultilevelListTest.java)
+| | | [FlattenTree](./src/assignment1/FlattenTree.java) | [FlattenTreeTest](./test/assignment1/FlattenTreeTest.java)
+| | | [UnsortedListPQ](./src/assignment1/UnsortedListPQ.java) | [UnsortedListPQTest](./test/assignment1/UnsortedListPQTest.java)
+| | | [PQSort](./src/assignment1/PQSort.java) | [PQSortTest](./test/assignment1/PQSortTest.java)
+| 9 | [Assignment 2](./src/assignment2) | [BTree](./src/assignment2/BTree.java) | [BTreeTest](./test/assignment2/BTreeTest.java)
 ## Authors
 * [Rajit Banerjee](https://github.com/rajitbanerjee), 18202817
 * [Dr. Aonghus Lawlor](https://github.com/aonghus), lecturer

@@ -20,6 +20,7 @@ import java.util.Arrays;
  * countLeftExternalNodes, countDescendants
  * <p>
  * 6. Contains an inner Node class which represents a tree node.
+ * (made public to allow access in assignment2.BTree)
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
@@ -471,7 +472,7 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
     /**
      * Nested static class for a binary tree node.
      */
-    protected static class Node<E> implements Position<E> {
+    public static class Node<E> implements Position<E> {
         private E element;
         private Node<E> parent;
         private Node<E> left;
