@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Assignment 2, Questions 1, 2, 3.
- * Tests for isSymmetrical(), mirror() and dist(p1, p2) in BTree.
+ * Tests for isSymmetrical(), mirror() and dist(e1, e2) in BTree.
  *
  * @author Rajit Banerjee, 18202817
  */

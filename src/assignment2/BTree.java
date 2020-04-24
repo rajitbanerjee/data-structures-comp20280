@@ -7,14 +7,14 @@ import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
- * Assignment 2.
+ * Assignment 2, Questions 1, 2, 3.
  * BTree adds the following methods to a LinkedBinaryTree:
  * <p>
  * 1. isSymmetrical() - Check if tree's structure has mirror symmetry.
  * <p>
- * 2. mirror()
+ * 2. mirror() - Converts the tree to its mirror image.
  * <p>
- * 3. dist(p1, p2)
+ * 3. dist(e1, e2) - Finds the path length between two tree nodes with the given elements.
  *
  * @author Rajit Banerjee, 18202817
  */
