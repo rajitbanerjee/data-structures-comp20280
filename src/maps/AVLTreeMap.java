@@ -91,9 +91,9 @@ public class AVLTreeMap<K, V> extends TreeMap<K, V> {
         return tree.getAux(p);
     }
 
-    // Returns whether a position has balance factor between -1 and 1 inclusive
+    // Returns whether a position has balance factor in [-1, 0, 1]
     protected boolean isBalanced(Position<Entry<K, V>> p) {
-        int balanceFactor = height(left(p)) - height(right(p));
+        int balanceFactor = height(right(p)) - height(left(p));
         return balanceFactor >= -1 && balanceFactor <= 1;
     }
 
