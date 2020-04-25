@@ -14,13 +14,12 @@ import java.util.Arrays;
  * <p>
  * 3. Other methods in Tree ADT and BinaryTree ADT are implemented in AbstractTree and AbstractBinaryTree.
  * <p>
- * 4. Allows level order (using constructor), direct and BST order construction of the tree.
+ * 4. Allows level order (createLevelOrder), direct and BST order construction of the tree.
  * <p>
  * 5. Additional public methods: addRoot, addLeft, addRight, insert, set, attach, remove, toString,
  * countLeftExternalNodes, countDescendants
  * <p>
  * 6. Contains an inner Node class which represents a tree node.
- * (made public to allow access in assignment2.BTree)
  *
  * @author Rajit Banerjee, 18202817
  * @author Aonghus Lawlor
@@ -30,24 +29,6 @@ import java.util.Arrays;
 public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
     private Node<E> root = null;
     private int size = 0;
-
-    /**
-     * Constructs a binary tree from in level order from a given array.
-     *
-     * @param arr to be used for level order construction
-     */
-    public LinkedBinaryTree(E[] arr) {
-        root = createLevelOrder(arr, null, 0);
-    }
-
-    /**
-     * Constructs a binary tree from in level order from a given ArrayList.
-     *
-     * @param arr to be used for level order construction
-     */
-    public LinkedBinaryTree(ArrayList<E> arr) {
-        root = createLevelOrder(arr, null, 0);
-    }
 
     /**
      * Constructs an empty binary tree.
@@ -82,7 +63,7 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 
         System.out.println("\nTEST 2, level order construction:");
         Integer[] arr = {12, 25, 31, 58, 36, 42, 90, 62, 75};
-        bt = new LinkedBinaryTree<>(arr);
+        bt.createLevelOrder(arr);
         System.out.println("Given level order array: " + Arrays.toString(arr));
         System.out.println(bt.toStringTree());
         System.out.println("bt size: " + bt.size());
@@ -110,32 +91,6 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 
         System.out.println("bt root: " + bt.root());
         System.out.println("bt depth root: " + bt.depth(bt.root()));
-    }
-
-    // Helper for level order tree construction from an array
-    private Node<E> createLevelOrder(E[] arr, Node<E> parent, int i) {
-        if (i < arr.length) {
-            Node<E> newest = createNode(arr[i], parent);
-            newest.setLeft(createLevelOrder(arr, newest.getLeft(), 2 * i + 1));
-            newest.setRight(createLevelOrder(arr, newest.getRight(), 2 * i + 2));
-            size++;
-            return newest;
-        } else {
-            return parent;
-        }
-    }
-
-    // Helper for level order tree construction from ArrayList
-    private Node<E> createLevelOrder(ArrayList<E> arr, Node<E> parent, int i) {
-        if (i < arr.size()) {
-            Node<E> newest = createNode(arr.get(i), parent);
-            newest.setLeft(createLevelOrder(arr, newest.getLeft(), 2 * i + 1));
-            newest.setRight(createLevelOrder(arr, newest.getRight(), 2 * i + 2));
-            size++;
-            return newest;
-        } else {
-            return parent;
-        }
     }
 
     /**
@@ -231,7 +186,51 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
         return node.getRight();
     }
 
-    // Update methods supported by this class ----------------------------------
+    // Update methods supported by this class ---------------------------------------
+
+    /**
+     * Fills a binary tree from in level order from a given array.
+     *
+     * @param arr to be used for level order construction
+     */
+    public void createLevelOrder(E[] arr) {
+        root = createLevelOrder(arr, null, 0);
+    }
+
+    /**
+     * Fills a binary tree from in level order from a given ArrayList.
+     *
+     * @param arr to be used for level order construction
+     */
+    public void createLevelOrder(ArrayList<E> arr) {
+        root = createLevelOrder(arr, null, 0);
+    }
+
+    // Helper for level order tree construction from an array
+    private Node<E> createLevelOrder(E[] arr, Node<E> parent, int i) {
+        if (i < arr.length) {
+            Node<E> newest = createNode(arr[i], parent);
+            newest.setLeft(createLevelOrder(arr, newest.getLeft(), 2 * i + 1));
+            newest.setRight(createLevelOrder(arr, newest.getRight(), 2 * i + 2));
+            size++;
+            return newest;
+        } else {
+            return parent;
+        }
+    }
+
+    // Helper for level order tree construction from ArrayList
+    private Node<E> createLevelOrder(ArrayList<E> arr, Node<E> parent, int i) {
+        if (i < arr.size()) {
+            Node<E> newest = createNode(arr.get(i), parent);
+            newest.setLeft(createLevelOrder(arr, newest.getLeft(), 2 * i + 1));
+            newest.setRight(createLevelOrder(arr, newest.getRight(), 2 * i + 2));
+            size++;
+            return newest;
+        } else {
+            return parent;
+        }
+    }
 
     /**
      * Places element e at the root of an empty tree and returns its new Position.
@@ -417,7 +416,7 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
         return btp.toString();
     }
 
-    // Extra functionality for lab questions ----------------
+    // Extra functionality for lab questions ------------------------------------------
 
     /**
      * Algorithm to count left external nodes.
@@ -471,6 +470,7 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 
     /**
      * Nested static class for a binary tree node.
+     * (Made public to allow access in assignment2.BTree)
      */
     public static class Node<E> implements Position<E> {
         private E element;
@@ -535,7 +535,7 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 
         @Override
         public String toString() {
-            // "null" printing required in TreeMap.java when using BinaryTreePrinter
+            // "null" printing required when using BinaryTreePrinter
             return element == null ? "null" : element.toString();
         }
     }

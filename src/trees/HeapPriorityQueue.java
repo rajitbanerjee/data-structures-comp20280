@@ -287,7 +287,8 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
      * @return String representation of the tree heap
      */
     public String toStringTree() {
-        LinkedBinaryTree<Entry<K, V>> tree = new LinkedBinaryTree<>(heap);
+        LinkedBinaryTree<Entry<K, V>> tree = new LinkedBinaryTree<>();
+        tree.createLevelOrder(heap);
         BinaryTreePrinter<Entry<K, V>> btp = new BinaryTreePrinter<>(tree);
         return btp.toString();
     }
