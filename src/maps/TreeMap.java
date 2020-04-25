@@ -51,6 +51,7 @@ public class TreeMap<K, V> extends AbstractSortedMap<K, V> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ TreeMap ~");
         TreeMap<Integer, Integer> treeMap = new TreeMap<>();
         Integer[] arr = {44, 17, 88, 8, 32, 65, 97, 28, 54, 82, 93, 21, 29, 76, 80};
         System.out.println("TEST 1, fixed tree entries:");

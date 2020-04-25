@@ -42,6 +42,7 @@ public class SplayTreeMap<K, V> extends TreeMap<K, V> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ SplayTreeMap ~");
         SplayTreeMap<Integer, Integer> map = new SplayTreeMap<>();
         Integer[] arr = {44, 17, 88, 8, 32, 65, 97, 28, 54, 82, 93, 21, 29, 76, 80};
         for (Integer i : arr) {

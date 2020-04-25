@@ -20,6 +20,7 @@ public class LinkedQueue<E> implements Queue<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ LinkedQueue ~");
         Queue<Integer> queue = new LinkedQueue<>();
         System.out.println("Initially: Queue is " + queue + ", size() = " +
                 queue.size() + ", isEmpty() = " + queue.isEmpty());

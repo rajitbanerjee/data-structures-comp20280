@@ -19,6 +19,7 @@ public class LinkedCircularQueue<E> implements Queue<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ LinkedCircularQueue ~");
         LinkedCircularQueue<Integer> queue = new LinkedCircularQueue<>();
         System.out.println("Initially: Queue is " + queue + ", size() = " +
                 queue.size() + ", isEmpty() = " + queue.isEmpty());

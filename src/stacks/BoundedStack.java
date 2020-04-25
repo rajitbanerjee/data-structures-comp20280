@@ -37,6 +37,7 @@ public class BoundedStack<E> implements Stack<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ BoundedStack ~");
         BoundedStack<Integer> stk = new BoundedStack<>();
         System.out.println("Initially: Stack is " + stk + ", size() = " +
                 stk.size() + ", isEmpty() = " + stk.isEmpty());

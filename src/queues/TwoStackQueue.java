@@ -16,6 +16,7 @@ public class TwoStackQueue<E> implements Queue<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ TwoStackQueue ~");
         TwoStackQueue<Integer> q = new TwoStackQueue<>();
         for (int i = 1; i < 6; i++) {
             q.enqueue(i);

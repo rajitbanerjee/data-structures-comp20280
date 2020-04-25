@@ -43,6 +43,7 @@ public class ArrayDeque<E> implements Deque<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ ArrayDeque ~");
         Deque<Integer> dq = new ArrayDeque<>();
         dq.addFirst(0);
         dq.addFirst(1);

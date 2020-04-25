@@ -19,6 +19,7 @@ public class LinkedStack<E> implements Stack<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ LinkedStack ~");
         LinkedStack<Integer> stk = new LinkedStack<>();
         System.out.println("Initially: Stack is " + stk + ", size() = " +
                 stk.size() + ", isEmpty() = " + stk.isEmpty());

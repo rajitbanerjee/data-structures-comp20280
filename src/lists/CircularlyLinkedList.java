@@ -25,6 +25,7 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ CircularlyLinkedList ~");
         System.out.println("\nTEST 1, from skeleton code:");
         CircularlyLinkedList<Integer> cll = new CircularlyLinkedList<>();
         for (int i = 10; i < 20; ++i) {

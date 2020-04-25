@@ -52,6 +52,7 @@ public class TripleSum {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
+        System.out.println("~ TripleSum ~");
         Scanner sc = new Scanner(new File("src/analysis/triple_sum_ints.txt"));
         long[] arr = new long[ARRAY_SIZE];
         int x = 0;

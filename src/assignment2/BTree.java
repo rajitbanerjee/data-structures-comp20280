@@ -23,6 +23,7 @@ public class BTree<E extends Comparable<E>> extends LinkedBinaryTree<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ Assignment 2: BTree ~");
         BTree<Integer> tree = new BTree<>();
         Random rnd = new Random();
         java.util.List<Integer> rands = rnd.ints(1, 1000).

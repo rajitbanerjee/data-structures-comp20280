@@ -23,8 +23,8 @@ import java.util.ArrayList;
  */
 
 public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
-    // a fixed capacity array of UnsortedTableMap that serve as buckets
-    private UnsortedTableMap<K, V>[] table; // initialised within createTable
+    // A fixed capacity array of UnsortedTableMap that serve as buckets
+    private UnsortedTableMap<K, V>[] table; // Initialised within createTable
 
     /**
      * Creates a hash table with capacity 17 and prime factor 109345121.
@@ -36,6 +36,7 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
     // Main method to perform basic tests (proper JUnit tests are in 'test' directory)
     // Further applications of ChainHashMap in WordFrequency.java, Collisions.java
     public static void main(String[] args) {
+        System.out.println("~ ChainHashMap ~");
         Map<Integer, String> m = new ChainHashMap<>();
         m.put(1, "One");
         m.put(10, "Ten");

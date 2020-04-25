@@ -21,6 +21,7 @@ public class Collisions {
     // Main method to perform basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) throws FileNotFoundException {
         // Compute the number of collisions using different hash functions (without compression)
+        System.out.println("~ Collisions ~");
         System.out.println("Collisions using polynomial accumulation (a = 41): " +
                 collisions("polynomial", 41));
         System.out.println("Collisions using polynomial accumulation (a = 17): " +

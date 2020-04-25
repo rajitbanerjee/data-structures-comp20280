@@ -10,6 +10,7 @@ package stacks;
 public class BracketChecker {
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ BracketChecker ~");
         String[] inputs = {"[]]()()", // not correct
                 "c[d]", // correct
                 "a{b[c]d}e", // correct

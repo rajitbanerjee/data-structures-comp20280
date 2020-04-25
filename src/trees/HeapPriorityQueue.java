@@ -63,6 +63,7 @@ public class HeapPriorityQueue<K, V> extends AbstractPriorityQueue<K, V> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ HeapPriorityQueue ~");
         System.out.println("TEST 1, bottom-up construction:");
         Integer[] keys = {6, 7, 8, 12, 10, 11, 25, 21, 17, 19, 18};
         HeapPriorityQueue<Integer, Integer> heap = new HeapPriorityQueue<>(keys, keys);

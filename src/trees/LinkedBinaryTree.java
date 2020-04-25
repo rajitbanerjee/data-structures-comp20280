@@ -38,6 +38,7 @@ public class LinkedBinaryTree<E> extends AbstractBinaryTree<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ LinkedBinaryTree ~");
         System.out.println("TEST 1, direct construction:");
         LinkedBinaryTree<Integer> bt = new LinkedBinaryTree<>();
         Position<Integer> root = bt.addRoot(12);

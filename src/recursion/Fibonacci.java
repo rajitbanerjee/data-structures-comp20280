@@ -29,6 +29,7 @@ public class Fibonacci {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ Fibonacci ~");
         System.out.println("Fibonacci(1): " + number(1));
         System.out.println("Fibonacci(2): " + number(2));
         System.out.println("Fibonacci(3): " + number(3));

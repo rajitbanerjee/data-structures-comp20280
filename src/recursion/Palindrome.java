@@ -30,6 +30,7 @@ public class Palindrome {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ Palindrome ~");
         String[] inputs = {"Step on no pets", "Top spot", "Was it a cat I saw?",
                 "eva, can I see bees in a cave?", "no lemon, no melon", "Hello", "Science"};
         for (String each : inputs) {

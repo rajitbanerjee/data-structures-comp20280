@@ -20,9 +20,7 @@ import java.util.NoSuchElementException;
  */
 
 public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
-    /**
-     * Underlying storage for the map of entries.
-     */
+    // Underlying storage for the map of entries.
     private final ArrayList<MapEntry<K, V>> table = new ArrayList<>();
 
     /**
@@ -33,6 +31,7 @@ public class UnsortedTableMap<K, V> extends AbstractMap<K, V> {
 
     // Main method to perform basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ UnsortedTableMap ~");
         Map<Integer, String> m = new UnsortedTableMap<>();
         m.put(1, "One");
         m.put(10, "Ten");

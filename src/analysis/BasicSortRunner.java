@@ -12,6 +12,7 @@ public class BasicSortRunner {
 
     // Run tests for bubble sort, selection sort, and insertion sort
     public static void main(String[] args) throws Exception {
+        System.out.println("~ BasicSortRunner: Bubble Sort, Selection Sort, Insertion Sort ~");
         String[] sortTypes = {"bubble_sort", "selection_sort", "insertion_sort"};
         TestRunner.run(sortTypes, array_sizes);
     }

@@ -41,6 +41,7 @@ public class ArrayQueue<E> implements Queue<E> {
 
     // Main method to run basic tests (proper JUnit tests are in 'test' directory)
     public static void main(String[] args) {
+        System.out.println("~ ArrayQueue ~");
         Queue<Integer> queue = new ArrayQueue<>();
         System.out.println("Initially: Queue is " + queue + ", size() = " +
                 queue.size() + ", isEmpty() = " + queue.isEmpty());
