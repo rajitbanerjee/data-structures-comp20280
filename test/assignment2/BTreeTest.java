@@ -19,7 +19,6 @@ class BTreeTest {
     @BeforeEach
     void setUp() {
         tree = new BTree<>();
-
     }
 
     @Test

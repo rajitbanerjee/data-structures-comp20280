@@ -47,7 +47,6 @@ class TreeMapTest {
         treeMap.put(0, 0);
         treeMap.put(-1, -1);
         treeMap.put(1, 1);
-        System.out.println(treeMap);
         assertEquals("\n          0           \n" +
                 "    ┌─────┴─────┐     \n" +
                 "    -1          1     \n" +

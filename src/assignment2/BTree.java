@@ -127,7 +127,7 @@ public class BTree<E extends Comparable<E>> extends LinkedBinaryTree<E> {
         }
     }
 
-    // Recursive helper function to find the distance between a node and it's lowest common ancestor
+    // Recursive helper function to find the distance between a node and its lowest common ancestor
     private int distFromLCA(Position<E> lca, E nodeElem) {
         int ans = -1;
         if (lca != null) {

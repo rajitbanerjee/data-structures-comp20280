@@ -37,7 +37,7 @@ class LinkedBinaryTreeTest {
         Position<Integer> root = tree.addRoot(0);
         Position<Integer> left = tree.addLeft(root, 1);
         assertEquals(root, tree.parent(left));
-        // in-order traversal by default
+        // In-order traversal by default
         assertEquals("[1, 0]", tree.toString());
         try {
             tree.addLeft(root, 2);
@@ -51,7 +51,7 @@ class LinkedBinaryTreeTest {
     void testAddRight() {
         Position<Integer> root = tree.addRoot(0);
         tree.addRight(root, 1);
-        // in-order traversal by default
+        // In-order traversal by default
         assertEquals("[0, 1]", tree.toString());
         try {
             tree.addRight(root, 2);

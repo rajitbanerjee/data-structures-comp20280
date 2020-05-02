@@ -150,7 +150,7 @@ public class ChainHashMap<K, V> extends AbstractHashMap<K, V> {
     }
 
     /**
-     * Gets the String for the hash map.
+     * Gets the String representation for the hash map.
      *
      * @return String for the hash map
      */

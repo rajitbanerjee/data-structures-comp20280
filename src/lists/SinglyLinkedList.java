@@ -207,7 +207,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
      */
     @Override
     public E remove(int i) {
-        if (isEmpty() || i >= size) {
+        if (isEmpty() || i < 0 || i >= size) {
             // Cannot remove element if list is empty or specified index is out of bounds
             return null;
         } else if (i == 0) {
@@ -371,7 +371,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     /**
-     * Gives the String implementation of the list.
+     * Gives the String representation of the list.
      *
      * @return the String containing the comma-separated list elements
      */

@@ -185,7 +185,6 @@ class CircularlyLinkedListTest {
         ll.removeFirst();
         ll.removeLast();
         assertEquals("[5, 4, 3, 2, 1, 0]", ll.toString());
-        // Removes the item in the specified index ll.remove(2); System.out.println(ll);
         ll.removeFirst();
         assertEquals("[4, 3, 2, 1, 0]", ll.toString());
         ll.removeLast();

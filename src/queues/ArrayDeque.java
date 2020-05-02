@@ -35,7 +35,7 @@ public class ArrayDeque<E> implements Deque<E> {
     }
 
     /**
-     * Constructs a Queue with default capacity 1000.
+     * Constructs a Deque with default capacity 1000.
      */
     ArrayDeque() {
         this(1000);
@@ -78,7 +78,7 @@ public class ArrayDeque<E> implements Deque<E> {
     }
 
     /**
-     * Tests whether the deque is empty.
+     * Checks whether the deque is empty.
      *
      * @return true if the deque is empty, false otherwise
      */

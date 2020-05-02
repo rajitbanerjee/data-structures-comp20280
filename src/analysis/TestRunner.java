@@ -13,8 +13,7 @@ import java.util.Scanner;
  */
 
 public class TestRunner {
-    private static final ArrayList<Integer[]> random_arrays = new ArrayList<>();
-    static Scanner sc = new Scanner(System.in);
+    private static final ArrayList<Integer[]> RANDOM_ARRAYS = new ArrayList<>();
 
     /**
      * Display user options and perform tasks according to choice
@@ -26,13 +25,10 @@ public class TestRunner {
     public static void run(String[] sortTypes, int[] array_sizes) throws Exception {
         generateRandomArrays(array_sizes);
         promptUser();
-        int op = 0;
-        try {
-            op = sc.nextInt();
-        } catch (InputMismatchException e) {
-            System.err.println("Invalid option!");
-        }
+        int op = readInt();
         switch (op) {
+            case 0:
+                break;
             case 1:
                 for (String type : sortTypes) {
                     timingAnalysis(type);
@@ -44,15 +40,15 @@ public class TestRunner {
                 }
                 break;
             default:
-                System.exit(0);
+                System.out.println("Invalid input, please try again!");
         }
     }
 
     // Generate random arrays of specified sizes
     private static void generateRandomArrays(int[] array_sizes) {
-        random_arrays.clear();
+        RANDOM_ARRAYS.clear();
         for (int size : array_sizes) {
-            random_arrays.add(generateArray(size));
+            RANDOM_ARRAYS.add(generateArray(size));
         }
     }
 
@@ -69,17 +65,31 @@ public class TestRunner {
 
     // Prompt the user to choose from a menu
     private static void promptUser() {
-        System.out.println("-Sorting Analysis-");
-        System.out.println("1. Run timing analysis.");
-        System.out.println("2. See sorted arrays (only small sizes).");
-        System.out.print("Choose 1 or 2: ");
+        System.out.println("1. Run timing analysis");
+        System.out.println("2. See sorted arrays (only small sizes)");
+        System.out.print("Choose 1 or 2 (0 to exit): ");
+    }
+
+    // Ensures that user enters an integer choice
+    private static int readInt() {
+        Scanner sc = new Scanner (System.in);
+        int input = -1;
+        while (input == -1) {
+            try {
+                input = sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input, please try again!\n");
+                promptUser();
+            }
+        }
+        return input;
     }
 
     // Timing analysis
     private static void timingAnalysis(String sortType) throws Exception {
         printLine();
         System.out.printf("-%s-\n", sortType.toUpperCase());
-        for (Integer[] a : random_arrays) {
+        for (Integer[] a : RANDOM_ARRAYS) {
             Integer[] array = new Integer[a.length];
             System.arraycopy(a, 0, array, 0, a.length);
             Sort<Integer> sort = new Sort<>(sortType, array);
@@ -96,7 +106,7 @@ public class TestRunner {
         Copy only the first 2 small arrays of size 10 and 12.
         Larger order array sizes are impractical to display in terminal.
         */
-        Integer[][] copy_arrays = {random_arrays.get(0), random_arrays.get(1)};
+        Integer[][] copy_arrays = {RANDOM_ARRAYS.get(0), RANDOM_ARRAYS.get(1)};
         for (Integer[] a : copy_arrays) {
             Integer[] array = new Integer[a.length];
             System.arraycopy(a, 0, array, 0, a.length);

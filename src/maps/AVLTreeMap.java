@@ -53,7 +53,8 @@ public class AVLTreeMap<K, V> extends TreeMap<K, V> {
         System.out.println(avl);
         System.out.println("Sanity check: " + (avl.sanityCheck() ? "passed" : "failed"));
 
-        System.out.println("After removing " + avl.remove(arr[0]) + ": " + avl);
+        System.out.println("AVL Tree keys after removing " + avl.remove(arr[0]) + ": " + avl.keySet());
+        System.out.println(avl);
         System.out.println("Sanity check: " + (avl.sanityCheck() ? "passed" : "failed"));
     }
 
