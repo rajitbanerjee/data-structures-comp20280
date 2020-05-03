@@ -50,11 +50,11 @@ public class AVLTreeMap<K, V> extends TreeMap<K, V> {
         }
         System.out.println("To insert: " + Arrays.toString(arr));
         System.out.println("AVL Tree keys after insertion: " + avl.keySet());
-        System.out.println(avl);
+        System.out.println(avl.toStringTree());
         System.out.println("Sanity check: " + (avl.sanityCheck() ? "passed" : "failed"));
 
         System.out.println("AVL Tree keys after removing " + avl.remove(arr[0]) + ": " + avl.keySet());
-        System.out.println(avl);
+        System.out.println(avl.toStringTree());
         System.out.println("Sanity check: " + (avl.sanityCheck() ? "passed" : "failed"));
     }
 

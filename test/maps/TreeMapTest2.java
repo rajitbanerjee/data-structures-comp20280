@@ -168,6 +168,8 @@ class TreeMapTest2 {
         for (Integer i : arr) {
             map.put(i, Integer.toString(i));
         }
+        assertEquals("[<1, 1>, <2, 2>, <4, 4>, <5, 5>, <12, 12>, <15, 15>, <21, 21>, " +
+                "<23, 23>, <24, 24>, <26, 26>, <33, 33>, <35, 35>]", map.toString());
         assertEquals("\n                                        35            \n" +
                 "                                     ┌──┴──┐          \n" +
                 "                                     26   null        \n" +
@@ -180,7 +182,7 @@ class TreeMapTest2 {
                 " ┌──┴──┐            ┌─┴─┐        ┌──┴──┐              \n" +
                 "null   2            5  null      21   null            \n" +
                 "    ┌──┴──┐      ┌──┴──┐      ┌──┴──┐                 \n" +
-                "   null  null   null  null   null  null               \n", map.toString());
+                "   null  null   null  null   null  null               \n", map.toStringTree());
     }
 
     @Test

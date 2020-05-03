@@ -47,11 +47,12 @@ class TreeMapTest {
         treeMap.put(0, 0);
         treeMap.put(-1, -1);
         treeMap.put(1, 1);
+        assertEquals("[<-1, -1>, <0, 0>, <1, 1>]", treeMap.toString());
         assertEquals("\n          0           \n" +
                 "    ┌─────┴─────┐     \n" +
                 "    -1          1     \n" +
                 " ┌──┴──┐     ┌──┴──┐  \n" +
-                "null  null  null  null\n", treeMap.toString());
+                "null  null  null  null\n", treeMap.toStringTree());
     }
 
 }

@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * <p>
  * 2. Implements Map ADT functions: size(), get(k), put(k, v), remove(k), entrySet()
  * <p>
- * 3. Additional public method: toString() to use BinaryTreePrinter to display the TreeMap.
+ * 3. Additional public methods: toString(), toStringTree() - uses BinaryTreePrinter
  * <p>
  * 4. Other Map ADT functions: isEmpty(), keySet(), values() are already implemented in
  * AbstractMap, the parent of AbstractSortedMap.
@@ -59,7 +59,7 @@ public class TreeMap<K, V> extends AbstractSortedMap<K, V> {
             treeMap.put(i, i);
         }
         System.out.println("Tree keys: " + treeMap.keySet());
-        System.out.println(treeMap);
+        System.out.println(treeMap.toStringTree());
         System.out.println("Size: " + treeMap.size());
         System.out.println("Value at key 44: " + treeMap.get(44));
         System.out.println("First entry: " + treeMap.firstEntry());
@@ -71,7 +71,7 @@ public class TreeMap<K, V> extends AbstractSortedMap<K, V> {
         System.out.println("Sub-map from key [76, 97) upper bound non-inclusive: " + treeMap.subMap(76, 97));
         System.out.println("Removed value at key 44: " + treeMap.remove(44));
         System.out.println("Tree keys after removal: " + treeMap.keySet());
-        System.out.println(treeMap);
+        System.out.println(treeMap.toStringTree());
 
         System.out.println("TEST 2, random tree entries:");
         treeMap = new TreeMap<>();
@@ -82,11 +82,20 @@ public class TreeMap<K, V> extends AbstractSortedMap<K, V> {
         for (Integer i : rands) {
             treeMap.put(i, i);
         }
-        System.out.println("Tree entries: " + treeMap.entrySet());
-        System.out.println(treeMap);
+        System.out.println("Tree entries: " + treeMap);
+        System.out.println(treeMap.toStringTree());
         System.out.println("Removed value: " + treeMap.remove(rands.get(1)));
-        System.out.println("Tree entries after removal: " + treeMap.entrySet());
-        System.out.println(treeMap);
+        System.out.println("Tree entries after removal: " + treeMap);
+        System.out.println(treeMap.toStringTree());
+    }
+
+    /**
+     * String representation of TreeMap entries.
+     *
+     * @return String representation of the TreeMap
+     */
+    public String toString() {
+        return entrySet().toString();
     }
 
     /**
@@ -94,8 +103,7 @@ public class TreeMap<K, V> extends AbstractSortedMap<K, V> {
      *
      * @return String representation of the TreeMap
      */
-    @Override
-    public String toString() {
+    public String toStringTree() {
         BinaryTreePrinter<Entry<K, V>> btp = new BinaryTreePrinter<>(tree);
         return btp.toString();
     }
