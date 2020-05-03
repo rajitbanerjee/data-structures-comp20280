@@ -33,7 +33,7 @@ Classes implemented in the repository are summarised below. Refer to the individ
 | 0 | [Interfaces](src/interfaces) |-|-
 | 1 | [Lists](./src/lists) | [SinglyLinkedList *](./src/lists/SinglyLinkedList.java)  | [SinglyLinkedListTest](./test/lists/SinglyLinkedListTest.java), [SinglyLinkedListTest2](./test/lists/SinglyLinkedListTest2.java) 
 | | | [DoublyLinkedList *](./src/lists/DoublyLinkedList.java) | [DoublyLinkedListTest](./test/lists/DoublyLinkedListTest.java), [DoublyLinkedListTest2](./test/lists/DoublyLinkedListTest2.java) 
-| | | [CircularlyLinkedList *](./src/lists/CircularlyLinkedList.java) | [CircularlyLinkedListTest](./test/lists/CircularlyLinkedListTest.java) 
+| | | [CircularlyLinkedList *](./src/lists/CircularlyLinkedList.java) | [CircularlyLinkedListTest](./test/lists/CircularlyLinkedListTest.java), [CircularlyLinkedListTest2](./test/lists/CircularlyLinkedListTest2.java) 
 | 2 | [Stacks](./src/stacks) | [ArrayStack *](./src/stacks/ArrayStack.java) | [ArrayStackTest](./test/stacks/ArrayStackTest.java)
 | | | [LinkedStack *](./src/stacks/LinkedStack.java) | [LinkedStackTest](./test/stacks/LinkedStackTest.java), [LinkedStackTest2](./test/stacks/LinkedStackTest2.java)
 | | | [BoundedStack](./src/stacks/BoundedStack.java) | [BoundedStackTest](./test/stacks/BoundedStackTest.java)
@@ -59,7 +59,7 @@ Classes implemented in the repository are summarised below. Refer to the individ
 | | | [HeapPriorityQueue *](./src/trees/HeapPriorityQueue.java) | [HeapPriorityQueueTest](./test/trees/HeapPriorityQueueTest.java), [HeapPriorityQueueTest2](./test/trees/HeapPriorityQueueTest2.java)
 | | | [BalanceableBinaryTree](./src/trees/BalanceableBinaryTree.java) | - |
 | | | [BinaryTreePrinter](./src/trees/BinaryTreePrinter.java) | - |
-| 7 | [Hash Map & Tree Maps](./src/maps) | [UnsortedTableMap *](./src/maps/UnsortedTableMap.java) | [UnsortedTableMapTest](./test/maps/UnsortedTableMapTest.java)
+| 7 | [Hash Map & Tree Maps](./src/maps) | [UnsortedTableMap *](./src/maps/UnsortedTableMap.java) | [UnsortedTableMapTest](./test/maps/UnsortedTableMapTest.java), [UnsortedTableMapTest2](./test/maps/UnsortedTableMapTest2.java)
 | | | [ChainHashMap *](./src/maps/ChainHashMap.java) | [ChainHashMapTest](./test/maps/ChainHashMapTest.java), [ChainHashMapTest2](./test/maps/ChainHashMapTest2.java)
 | | | [WordFrequency](./src/maps/WordFrequency.java) | [WordsFrequencyTest](./test/maps/WordFrequencyTest.java)
 | | | [Collisions](./src/maps/Collisions.java) | [CollisionsTest](./test/maps/CollisionsTest.java)
