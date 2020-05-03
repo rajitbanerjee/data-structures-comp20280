@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 
 class CollatzTest {
+
     @Test
     void testCollatz() {
         assertEquals(1, Collatz.sequence(5));

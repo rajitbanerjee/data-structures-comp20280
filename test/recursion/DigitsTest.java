@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 
 class DigitsTest {
+
     @Test
     void testSumDigits() {
         assertEquals(4, Digits.sum(121));

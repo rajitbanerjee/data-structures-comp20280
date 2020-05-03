@@ -7,16 +7,17 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Tests for ChainHashMap.
+ * Tests for UnsortedTableMap.
  *
  * @author Aonghus Lawlor
+ * @author Rajit Banerjee, 18202817
  */
 
-class ChainHashMapTest2 {
+class UnsortedTableMapTest2 {
 
     @Test
     void testSize() {
-        ChainHashMap<Integer, String> map = new ChainHashMap<>();
+        UnsortedTableMap<Integer, String> map = new UnsortedTableMap<>();
         int n = 10;
         for (int i = 0; i < n; ++i) {
             map.put(i, Integer.toString(i));
@@ -26,7 +27,7 @@ class ChainHashMapTest2 {
 
     @Test
     void testGet() {
-        ChainHashMap<String, Integer> map = new ChainHashMap<>();
+        UnsortedTableMap<String, Integer> map = new UnsortedTableMap<>();
         int n = 10;
         for (int i = 0; i < n; ++i) {
             map.put(Integer.toString(i), i);
@@ -37,7 +38,7 @@ class ChainHashMapTest2 {
 
     @Test
     void testRemove() {
-        ChainHashMap<String, Integer> map = new ChainHashMap<>();
+        UnsortedTableMap<String, Integer> map = new UnsortedTableMap<>();
         int n = 10;
         for (int i = 0; i < n; ++i) {
             map.put(Integer.toString(i), i);
@@ -48,7 +49,7 @@ class ChainHashMapTest2 {
 
     @Test
     void testPut() {
-        ChainHashMap<String, Integer> map = new ChainHashMap<>();
+        UnsortedTableMap<String, Integer> map = new UnsortedTableMap<>();
         int n = 10;
         for (int i = 0; i < n; ++i) {
             map.put(Integer.toString(i), i);
@@ -58,7 +59,7 @@ class ChainHashMapTest2 {
 
     @Test
     void testIsEmpty() {
-        ChainHashMap<String, Integer> map = new ChainHashMap<>();
+        UnsortedTableMap<String, Integer> map = new UnsortedTableMap<>();
         assertTrue(map.isEmpty());
         int n = 10;
         for (int i = 0; i < n; ++i) {
@@ -69,7 +70,7 @@ class ChainHashMapTest2 {
 
     @Test
     void testKeySet() {
-        ChainHashMap<String, Integer> map = new ChainHashMap<>();
+        UnsortedTableMap<String, Integer> map = new UnsortedTableMap<>();
         map.put("one", 1);
         map.put("two", 2);
         map.put("three", 3);
@@ -81,7 +82,7 @@ class ChainHashMapTest2 {
 
     @Test
     void testValues() {
-        ChainHashMap<String, Integer> map = new ChainHashMap<>();
+        UnsortedTableMap<String, Integer> map = new UnsortedTableMap<>();
         int n = 10;
         for (int i = 0; i < n; ++i) {
             map.put(Integer.toString(i), i);

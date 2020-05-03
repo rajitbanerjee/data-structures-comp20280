@@ -56,7 +56,6 @@ class SinglyLinkedListTest2 {
         assertEquals(-3, ll.last());
     }
 
-
     @Test
     void testRemoveLast() {
         SinglyLinkedList<Integer> ll = new SinglyLinkedList<>();

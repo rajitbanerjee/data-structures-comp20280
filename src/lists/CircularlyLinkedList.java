@@ -10,7 +10,7 @@ import java.util.Iterator;
  * 1. Implements List ADT functions: size(), isEmpty(), get(int i), add(int i, E e), addFirst(E e),
  * addLast(E e), remove(int i), removeFirst(), E removeLast(), Iterator<E> iterator()
  * <p>
- * 2. Additional public methods: rotate(), toString()
+ * 2. Additional public methods: first(), last(), rotate(), toString()
  * <p>
  * 3. Contains an inner Node class to represent list nodes.
  *
@@ -281,6 +281,36 @@ public class CircularlyLinkedList<E> implements List<E>, Iterable<E> {
     @Override
     public Iterator<E> iterator() {
         return new ListIterator();
+    }
+
+    /**
+     * Gets the first element of the list.
+     *
+     * @return the element at the first Node of the list, null if empty
+     */
+    public E first() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            return tail.getNext().getElement();
+        }
+    }
+
+    /**
+     * Gets the last element of the list.
+     *
+     * @return the element at the last Node of the list, null if empty
+     */
+    public E last() {
+        if (isEmpty()) {
+            return null;
+        } else {
+            Node<E> temp = tail.getNext(); // Temporary Node for list traversal
+            while (temp != tail) {
+                temp = temp.getNext();
+            }
+            return temp.getElement();
+        }
     }
 
     /**

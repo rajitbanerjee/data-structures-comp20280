@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.fail;
  */
 
 class FibonacciTest {
+
     @Test
     void testFibonacci() {
         try {

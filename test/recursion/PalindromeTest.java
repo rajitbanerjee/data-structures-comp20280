@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 
 class PalindromeTest {
+
     @Test
     void testSingleWord() {
         assertTrue(Palindrome.isPalindrome("Race-car"));
